@@ -1,6 +1,8 @@
 const express = require('express');
 import http from 'http';
 import { Server, Socket } from 'socket.io';
+import { generateRandomName } from './utils';
+const maxUsers = 25;
 
 interface Player {
   id: string;
@@ -17,23 +19,23 @@ const io = new Server(server, {
   cors: {
     origin: '*',
   },
+  pingTimeout: 120000,
+  pingInterval: 5000,
 });
 
-function generateRandomName(): string {
-  const adjectives = ['happy', 'sad', 'angry', 'excited', 'sleepy', 'hungry', 'thirsty'];
-  const nouns = ['dog', 'cat', 'bird', 'horse', 'fish', 'lion', 'tiger', 'bear'];
-  const random = Math.floor(Math.random() * 105);
-  const randomAdjective = adjectives[Math.floor(Math.random() * adjectives.length)];
-  const randomNoun = nouns[Math.floor(Math.random() * nouns.length)];
-  return `${randomAdjective}-${randomNoun}-${random}`;
-}
+
 
 io.on('connection', (socket: Socket) => {
+
   socket.on('client-ready', () => {
     console.log('client ready');
+    if (players.length < maxUsers) {
     const newPlayer: Player = { id: socket.id, name: generateRandomName(), points: 0, guess: false, correct: false };
     players.push(newPlayer);
     io.emit('update-players', players);
+    } else {
+      socket.emit('server-full');
+    }
   });
 
   socket.on('disconnect', () => {
@@ -59,29 +61,6 @@ io.on('connection', (socket: Socket) => {
     }
     io.emit('update-players', players);
   });
-
-  // socket.on('guess', () => {
-  //   console.log('player guessed');
-
-  //   const player = players.find((player) => player.id === socket.id);
-  //   if (player) {
-  //     player.guess = true;
-  //   }
-
-  //   io.emit('update-players', players);
-  // });
-
-  // socket.on('correct-guess', () => {
-  //   console.log('player guessed correctly');
-
-  //   const player = players.find((player) => player.id === socket.id);
-  //   if (player) {
-  //     player.correct = true;
-  //     player.points += 1;
-  //   }
-
-  //   io.emit('update-players', players);
-  // });
 });
 
 server.listen(3001, () => {
