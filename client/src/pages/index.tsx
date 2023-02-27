@@ -1,12 +1,48 @@
 import type { NextPage } from 'next'
+import { FC, useEffect, useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
+import { io } from 'socket.io-client'
+const socket = io('http://localhost:3001')
+
+
+interface Player {
+  id: string;
+  name: string;
+  points: number;
+  guess: boolean;
+  correct: boolean;
+}
 
 const Home: NextPage = () => {
+
+  useEffect(() => {
+
+  socket.emit('client-ready')
+
+  socket.on('update-players', (players: Player[]) => {
+    console.log(players);
+    const playerList = document.getElementById('playerlist') as HTMLElement;
+    if (playerList) {
+      playerList.innerHTML = '';
+      players.forEach((player) => {
+        const li = document.createElement('li');
+        li.textContent = player.name + ' | ' + player.points;
+        playerList.appendChild(li);
+      });
+    }
+  });
+  
+  
+
+  }, [])
+
+
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
       <Head>
-        <title>Create Next App</title>
+        <title>Test App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -18,12 +54,8 @@ const Home: NextPage = () => {
           </a>
         </h1>
 
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="rounded-md bg-gray-100 p-3 font-mono text-lg">
-            pages/index.tsx
-          </code>
-        </p>
+        <ul id='playerlist'>
+        </ul>
 
         <div className="mt-6 flex max-w-4xl flex-wrap items-center justify-around sm:w-full">
           <a
