@@ -31,18 +31,15 @@ function generateRandomName(): string {
 
 
 
-// Initialize player list
 const players: Player[] = [];
 
 io.on('connection', (socket: Socket) => {
   socket.on('client-ready', () => {
     console.log('client ready');
 
-    // Add new player to the list
     const newPlayer: Player = { id: socket.id, name: generateRandomName(), points: 0, guess: false, correct: false };
     players.push(newPlayer);
 
-    // Send updated player list to all clients
     io.emit('update-players', players);
   });
 
@@ -54,34 +51,29 @@ io.on('connection', (socket: Socket) => {
       players.splice(index, 1);
     }
 
-    // Send updated player list to all clients
     io.emit('update-players', players);
   });
 
   socket.on('guess', () => {
     console.log('player guessed');
 
-    // Update player's guess status
     const player = players.find((player) => player.id === socket.id);
     if (player) {
       player.guess = true;
     }
 
-    // Send updated player list to all clients
     io.emit('update-players', players);
   });
 
   socket.on('correct-guess', () => {
     console.log('player guessed correctly');
 
-    // Update player's correct guess status and points
     const player = players.find((player) => player.id === socket.id);
     if (player) {
       player.correct = true;
       player.points += 1;
     }
 
-    // Send updated player list to all clients
     io.emit('update-players', players);
   });
 });
