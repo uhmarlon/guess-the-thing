@@ -3,12 +3,14 @@ import { FC, useEffect, useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import { io } from 'socket.io-client'
-import ReName from '../components/rename'
+import { CountryFlag } from '../components/Flag'
 export const socket = io('http://localhost:3001')
 import * as Flags from 'country-flag-icons/react/3x2'
+import Gamejoincreate from '../components/Gamejoin'
+import Lobby from '../components/Lobby'
 
 
-interface Player {
+export interface Player {
   id: string;
   name: string;
   points: number;
@@ -16,33 +18,69 @@ interface Player {
   correct: boolean;
 }
 
-const flag = "UnitedStates";
 
 const Home: NextPage = () => {
+  const [timeLeft, setTimeLeft] = useState(0);
+  const [flagKey, setflagKey] = useState("DE");
+  const [countryTitel, setcountryTitel] = useState("Deutschland");
 
-  socket.on('server-full', () => {
-    alert('Server is full');
-  });
+  const [gameToken, setgameToken] = useState("DE");
+
+  const [gameCreator , setGameCreator] = useState<boolean>(false);
+
+  const [inGame, setInGame] = useState<boolean>(false);
+  const [inLobby, setinLobby] = useState<boolean>(false);
 
   useEffect(() => {
-  socket.emit('client-ready')
+    socket.on("gameCode", (gameCode) => {
+      setinLobby(true);
+      setGameCreator(true);
+      setgameToken(gameCode);
+      socket.emit('clientReady')
+    });
+    socket.on("gameCodeoc", (gameCode) => {
+      setinLobby(true);
+      setgameToken(gameCode);
+      socket.emit('clientReady')
+    });
 
-  socket.on('update-players', (players: Player[]) => {
-    console.log(players);
-    const playerList = document.getElementById('playerlist') as HTMLElement;
-    if (playerList) {
-      playerList.innerHTML = '';
-      players.forEach((player) => {
-        const li = document.createElement('li');
-        li.textContent = player.name + ' | ' + player.points;
-        playerList.appendChild(li);
-      });
+    socket.on("gameStarted", () => {
+      setInGame(true);
+    });
+
+    socket.on("gameCountdown", (timeLeft) => {
+      setTimeLeft(timeLeft);
+    });
+
+    socket.on("gameSetFlag", (flagKey) => {
+      setflagKey(flagKey);
+    });
+
+    socket.on("gameSetroomString", (roomString) => {
+      setcountryTitel(roomString);
+    });
+
+    socket.on('update-players', (players: Player[]) => {
+      console.log(players);
+      const playerList = document.getElementById('playerlistgame') as HTMLElement;
+      if (playerList) {
+        playerList.innerHTML = '';
+        players.forEach((player) => {
+          const li = document.createElement('li');
+          li.textContent = player.name + " | " + player.points;
+          playerList.appendChild(li);
+        });
+      }
+    });
+
+  }, []);
+
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      setcountryTitel(e.currentTarget.value)
     }
-  });
-
-  }, [])
-
-
+  };
 
   return (
     <>
@@ -50,24 +88,48 @@ const Home: NextPage = () => {
         <title>Guess The Flag</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className='mt-5'>
-        <h1 className='text-4xl text-center'>Guess The Flag</h1>
-        {/* <ReName /> */}
-        
 
-        <div className='grid grid-cols-6 gap-3'>
-          <div className='bg-gray-600 text-center rounded-lg max-h-[40rem]'>
-            <ul id='playerlist' className=' text-white'></ul>
-          </div>
-          <div className='col-span-5 bg-amber-300 h-[40rem]'>
-            <div className='flex flex-row justify-center'>
-              <Flags.{flag} title="United States" className="flag"/>
+      {!inLobby ? ( <Gamejoincreate /> ) : (
+         <Lobby gameToken={gameToken} startbutton={gameCreator} /> 
+      )}
+
+      <main className='mt-28'>
+      {/* <ReName /> */}
+        <h1 className='text-4xl text-center mb-5'>Guess The Flag</h1>
+        <div className='flex justify-center mb-6'>
+              <CountryFlag flagKey={flagKey} size={350} />
+        </div>
+        <div className='flex justify-center mb-6'>
+            <div className='grid grid-cols-4 gap-3'>
+              <div className='col-span-3'>
+                <h1 className='text-4xl'>{countryTitel}</h1>
+              </div>
+            <div className=''>
+              <h1 
+              className='text-4xl'
+              >{timeLeft} sec</h1>
             </div>
           </div>
-
         </div>
-
-
+        <div className='flex justify-center mb-6'>
+          <div className='grid grid-cols-4 gap-3'>
+            <div className='col-span-4'>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Name"
+                onKeyDown={handleKeyDown}
+                className="px-4 mr-3 py-2 text-white border rounded-lg bg-gray-800 border-gray-600  focus:border-blue-500 focus:outline-none focus:ring"
+              />
+            </div>
+          </div>
+        </div>
+        <div className='flex justify-center mb-6'>
+          <div className='bg-gray-600 text-center rounded-lg w-72'>
+            <ul id='playerlistgame' className=' text-white'></ul>
+          </div>
+        </div>
       </main>
     </>
   )
