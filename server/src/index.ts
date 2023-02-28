@@ -115,7 +115,7 @@ io.on('connection', (socket: Socket) => {
         playerdata.points += 10 + timer;
         playerdata.guess = true;
       }
-      gameSetPersonString(socket.id, roomMeta.countryString)
+      gameSetPersonString(socket.id, roomMeta.countryString + "✔️")
       io.to(roomName).emit('update-players', getPlayersInRoom(roomName));
     }
   }
@@ -204,7 +204,7 @@ export async function gameCountdown(roomName: string, timer: number): Promise<vo
 
     const roomMeta = gameMeta.find((room) => room.roomName === roomName);
     if (roomMeta) {
-      roomMeta.countryString = 'Hello';
+      roomMeta.countryString = 'HggfdgfellddXXo';
       gameMeta.push(roomMeta);
     }
     gameSetRoomString(roomName, countryString);
@@ -222,6 +222,7 @@ export async function gameCountdown(roomName: string, timer: number): Promise<vo
     gameCountdown(roomName, 15);
   } else {
     if (roomMeta.round === 10) {
+      io.to(roomName).emit('gameEnd', getPlayersPoints(roomName));
       return;
     }
     const [randomKey, countryString] = getRandomFlag();
@@ -249,7 +250,7 @@ export async function gameCountdown(roomName: string, timer: number): Promise<vo
       }, 1000);
     });
     if (roomMeta) {
-      roomMeta.countryString = 'Hello';
+      roomMeta.countryString = 'xxxFFXX33FF';
       gameMeta.push(roomMeta);
     }
     const playersInRoom = getPlayersInRoom(roomName);
@@ -293,6 +294,11 @@ export async function gameSetPersonString(socketId: string, roomString: string):
   io.to(socketId).emit('gameSetroomString', roomString);
 }
 
+export function getPlayersPoints(roomName: string): Player[] {
+  const playersInRoom = players.filter((player) => player.room === roomName);
+  playersInRoom.sort((a, b) => b.points - a.points);
+  return playersInRoom;
+}
 
 export function buildHiddenName(name: string): string {
   return name.replace(/ |\S/g, function(match) {
