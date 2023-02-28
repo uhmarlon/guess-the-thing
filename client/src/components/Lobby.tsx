@@ -49,8 +49,9 @@ export default function Lobby({ gameToken, startbutton}: { gameToken: string; st
             setShowModal(false);
         })
 
-        socket.on('gameEnd', () => {
-            setShowModal(true);
+        socket.on('gameEnd', (gameEnd) => {
+            alert('\t Gewinner: \n' + gameEnd[0].name + " | Mit " + gameEnd[0].points + " Punkten");
+            window.location.reload();
         })
 
     }, [])
