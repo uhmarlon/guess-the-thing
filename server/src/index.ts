@@ -112,7 +112,7 @@ io.on('connection', (socket: Socket) => {
         if (playerdata.guess) {
           return;
         }
-        playerdata.points += timer * 10;
+        playerdata.points += 10 + timer;
         playerdata.guess = true;
       }
       gameSetPersonString(socket.id, roomMeta.countryString)
@@ -271,29 +271,6 @@ export async function gameCountdown(roomName: string, timer: number): Promise<vo
     });
     gameCountdown(roomName, 15);
   }
-
-
-
-
-
-
-
-
-  // const room: Room = io.sockets.adapter.rooms.get(roomName) as unknown as Room;
-  // // set 
-
-  // if (!room) {
-  //   return Promise.reject('Room does not exist');
-  // }
-  // let counter = timer;
-  // const countdownInterval = setInterval(() => {
-  //   counter--;
-  //   io.to(roomName).emit('gameCountdown', counter);
-  //   if (counter === 0) {
-  //     clearInterval(countdownInterval);
-  //     return Promise.resolve('stop');
-  //   }
-  // }, 1000);
 }
 
 export async function gameSetFlag(roomName: string, flagKey: string): Promise<void> {
@@ -316,14 +293,13 @@ export async function gameSetPersonString(socketId: string, roomString: string):
   io.to(socketId).emit('gameSetroomString', roomString);
 }
 
-// Build me a function thats Hidde String with _ but keept the spaces
 
 export function buildHiddenName(name: string): string {
   return name.replace(/ |\S/g, function(match) {
     if (match === " ") {
-      return "ㅤ"; // Ersetzen Sie ein Leerzeichen mit einer 5
+      return "ㅤ";
     } else {
-      return "_ "; // Ersetzen Sie ein Nicht-Leerzeichen mit einem Unterstrich
+      return "_ ";
     }
   });
 }

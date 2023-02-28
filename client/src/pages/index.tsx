@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { io } from 'socket.io-client'
 import { CountryFlag } from '../components/Flag'
-export const socket = io('https://root.nighttech.de/')
+export const socket = io('http://localhost:3001')
 import * as Flags from 'country-flag-icons/react/3x2'
 import Gamejoincreate from '../components/Gamejoin'
 import Lobby from '../components/Lobby'
@@ -66,6 +66,7 @@ const Home: NextPage = () => {
       const playerList = document.getElementById('playerlistgame') as HTMLElement;
       if (playerList) {
         playerList.innerHTML = '';
+        players.sort((a, b) => b.points - a.points);
         players.forEach((player) => {
           const li = document.createElement('li');
           li.textContent = player.name + " | " + player.points;
@@ -80,6 +81,7 @@ const Home: NextPage = () => {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       socket.emit("pickString", e.currentTarget.value, timeLeft);
+      e.currentTarget.value = "";
     }
   };
 
@@ -112,21 +114,21 @@ const Home: NextPage = () => {
             </div>
           </div>
         </div>
-        <div className='flex justify-center mb-6'>
-          <div className='grid grid-cols-4 gap-3'>
-            <div className='col-span-4'>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                placeholder="Name"
-                onKeyDown={handleKeyDown}
-                className="px-4 mr-3 py-2 text-white border rounded-lg bg-gray-800 border-gray-600  focus:border-blue-500 focus:outline-none focus:ring"
-              />
-            </div>
-          </div>
+        <div className='flex justify-center mb-4'>
+          <input
+            type="text"
+            name="Eingabe"
+            placeholder="Land eingeben"
+
+            onKeyDown={handleKeyDown}
+            className="px-3 py-3 text-white border rounded-lg bg-gray-800 border-gray-600 w-72 focus:border-blue-500 focus:outline-none focus:ring"
+          />
         </div>
-        <div className='flex justify-center mb-6'>
+        <div className='flex justify-center mb-1'>
+          <h1 className='text-2xl'>Spieler</h1>
+        </div>
+
+        <div className='flex justify-center mb-4'>
           <div className='bg-gray-600 text-center rounded-lg w-72'>
             <ul id='playerlistgame' className=' text-white'></ul>
           </div>
