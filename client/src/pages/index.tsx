@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { io } from 'socket.io-client'
 import { CountryFlag } from '../components/Flag'
-export const socket = io('http://localhost:3001')
+export const socket = io('http://188.164.234.28:3001')
 import * as Flags from 'country-flag-icons/react/3x2'
 import Gamejoincreate from '../components/Gamejoin'
 import Lobby from '../components/Lobby'
