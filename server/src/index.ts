@@ -145,7 +145,7 @@ io.on('connection', (socket: Socket) => {
 
 });
 
-server.listen(3001, () => {
+server.listen(80, () => {
   console.log('✔️ Server listening on port 3001');
 });
 
