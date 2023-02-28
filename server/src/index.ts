@@ -145,7 +145,7 @@ io.on('connection', (socket: Socket) => {
 
 });
 
-server.listen(80, () => {
+server.listen(3001, () => {
   console.log('✔️ Server listening on port 3001');
 });
 
@@ -316,6 +316,14 @@ export async function gameSetPersonString(socketId: string, roomString: string):
   io.to(socketId).emit('gameSetroomString', roomString);
 }
 
+// Build me a function thats Hidde String with _ but keept the spaces
+
 export function buildHiddenName(name: string): string {
-  return name.replace(/./g, '_ ');
+  return name.replace(/ |\S/g, function(match) {
+    if (match === " ") {
+      return "ㅤ"; // Ersetzen Sie ein Leerzeichen mit einer 5
+    } else {
+      return "_ "; // Ersetzen Sie ein Nicht-Leerzeichen mit einem Unterstrich
+    }
+  });
 }
