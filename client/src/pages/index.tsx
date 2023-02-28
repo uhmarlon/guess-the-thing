@@ -22,7 +22,7 @@ export interface Player {
 const Home: NextPage = () => {
   const [timeLeft, setTimeLeft] = useState(0);
   const [flagKey, setflagKey] = useState("DE");
-  const [countryTitel, setcountryTitel] = useState("Deutschland");
+  const [countryTitel, setcountryTitel] = useState("Germany");
 
   const [gameToken, setgameToken] = useState("DE");
 
@@ -58,6 +58,7 @@ const Home: NextPage = () => {
 
     socket.on("gameSetroomString", (roomString) => {
       setcountryTitel(roomString);
+      console.log(roomString);
     });
 
     socket.on('update-players', (players: Player[]) => {
@@ -78,7 +79,7 @@ const Home: NextPage = () => {
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      setcountryTitel(e.currentTarget.value)
+      socket.emit("pickString", e.currentTarget.value, timeLeft);
     }
   };
 

@@ -111,20 +111,6 @@ export default function Lobby({ gameToken, startbutton}: { gameToken: string; st
                                 <div className='bg-gray-600 text-center rounded-lg w-72 mt-2'>
                                     <ul id='playerlist' className=' text-white'></ul>
                                 </div>
-
-                                {/* <div className="mt-4">
-                                    <input
-                                    type="text"
-                                    placeholder="Game ID"
-                                    ref={gameIdRef}
-                                    className="px-4 mr-3 py-2 text-white border rounded-lg bg-gray-800 border-gray-600  focus:border-blue-500 focus:outline-none focus:ring"
-                                    />
-                                    <button
-                                        type="submit"
-                                        onClick={handleSubmit}
-                                        className="px-4 py-2 text-sm font-medium text-white bg-blue-500 border border-transparent rounded-lg shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                                    >Join Game</button>
-                                </div> */}
                             </div>
                         </div>
                     </div>    

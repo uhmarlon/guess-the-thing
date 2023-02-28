@@ -1,13 +1,18 @@
-import { gameCountdown, gameSetFlag, gameSetRoomString } from "./index";
-export async function gameLoops(roomName: string) {
-    gameCountdown(roomName, 3);
-    gameSetFlag(roomName, "DE"); 
-    gameSetRoomString(roomName, "_ _ _");
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    gameSetFlag(roomName, "GB");
-    gameSetRoomString(roomName, "_ _ _ _ ");
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    gameSetFlag(roomName, "US");
-    gameSetRoomString(roomName, "_ _ _ _ _");
+import { gameCountdown, gameSetFlag, gameSetRoomString } from './index';
+interface FlagData {
+    [key: string]: string;
+  }
+  import flags from './flags.json';
+  
+  const typedFlags: FlagData = flags;
+
+export async function gameLoops(roomName: string): Promise<void> {
+    gameCountdown(roomName, 15);
 }
 
+export function getRandomFlag(): [string, string] {
+    const keys: string[] = Object.keys(typedFlags);
+    const randomKey: string = keys[Math.floor(Math.random() * keys.length)];
+    const randomFlag: string = typedFlags[randomKey];
+    return [randomKey as string, randomFlag as string];
+}
