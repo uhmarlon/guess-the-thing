@@ -24,7 +24,7 @@ export default function Lobby({ gameToken, startbutton}: { gameToken: string; st
 
     const checkInputLength = () => {
         const name = nameRef.current?.value.trim() ?? "";
-        if (name.length >= 3 && name.length <= 10) {
+        if (name.length >= 3 && name.length <= 21) {
             setIsValidName(true);
         } else {
             setIsValidName(false);
