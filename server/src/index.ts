@@ -105,18 +105,20 @@ io.on('connection', (socket: Socket) => {
     if (!roomMeta) {
       return;
     }
-
-    if (pickWord.toLowerCase() === roomMeta.countryString.toLowerCase()) {
-      const playerdata = players.find((player) => player.id === socket.id);
+    const playerdata = players.find((player) => player.id === socket.id);
       if (playerdata) {
         if (playerdata.guess) {
           return;
         }
-        playerdata.points += 10 + timer;
-        playerdata.guess = true;
+      if (pickWord.toLowerCase() === roomMeta.countryString.toLowerCase()) {
+          playerdata.points += 10 + timer;
+          playerdata.guess = true;
+        gameSetPersonString(socket.id, roomMeta.countryString + "✔️")
+        io.to(roomName).emit('update-players', getPlayersInRoom(roomName));
+      } else {
+        let newString = buildHiddenName(roomMeta.countryString, pickWord);
+        gameSetPersonString(socket.id, newString)
       }
-      gameSetPersonString(socket.id, roomMeta.countryString + "✔️")
-      io.to(roomName).emit('update-players', getPlayersInRoom(roomName));
     }
   }
 
@@ -300,14 +302,16 @@ export function getPlayersPoints(roomName: string): Player[] {
   return playersInRoom;
 }
 
-export function buildHiddenName(name: string): string {
-  return name.replace(/ |\S/g, function(match) {
-    if (match === " ") {
-      return " ";
-    } else if (match === "-") {
-      return "-";
+export function buildHiddenName(name: string, guess: string = ''): string {
+  return name.split('').map((char: string, index: number) => {
+    if (guess.charAt(index).toLowerCase() === char.toLowerCase()) {
+      return name.charAt(index);
+    } else if (char === ' ') {
+      return '_';
+    } else if (char === '-') {
+      return '-';
     } else {
-      return "_ ";
+      return '_';
     }
-  });
+  }).join(' ');
 }
