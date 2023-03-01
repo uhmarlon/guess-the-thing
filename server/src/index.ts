@@ -106,7 +106,7 @@ io.on('connection', (socket: Socket) => {
       return;
     }
 
-    if (pickWord === roomMeta.countryString) {
+    if (pickWord.toLowerCase() === roomMeta.countryString.toLowerCase()) {
       const playerdata = players.find((player) => player.id === socket.id);
       if (playerdata) {
         if (playerdata.guess) {
