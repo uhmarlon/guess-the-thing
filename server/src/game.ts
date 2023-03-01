@@ -2,9 +2,9 @@ import { gameCountdown, gameSetFlag, gameSetRoomString } from './index';
 interface FlagData {
     [key: string]: string;
   }
-  import flags from './flags.json';
+  import flags_de from './flags/de_de.json';
   
-  const typedFlags: FlagData = flags;
+  const typedFlags: FlagData = flags_de;
 
 export async function gameLoops(roomName: string): Promise<void> {
     gameCountdown(roomName, 15);
