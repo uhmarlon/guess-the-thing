@@ -101,7 +101,6 @@ const Home: NextPage = () => {
       )}
 
       <main className='mt-28'>
-      {/* <ReName /> */}
         <h1 className='text-4xl text-center mb-2'>Guess The Flag</h1>
         <h2 className='text-1xl text-center mb-2'>Runde: {gameRounds}/10</h2>
         <div className='flex justify-center mb-6'>
