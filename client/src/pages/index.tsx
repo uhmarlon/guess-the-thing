@@ -130,7 +130,7 @@ const Home: NextPage = () => {
           />
         </div>
         <div className='flex justify-center mb-1'>
-          <h1 className='text-2xl'>Spieler Runde</h1>
+          <h1 className='text-2xl'>Spieler</h1>
         </div>
 
         <div className='flex justify-center mb-4'>

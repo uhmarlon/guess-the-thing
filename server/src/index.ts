@@ -176,6 +176,7 @@ export async function gameCountdown(roomName: string, timer: number): Promise<vo
       countryString: countryString,
       round: 1,
     };
+    gameSetRound(roomName, newRoomMeta.round);
     gameMeta.push(newRoomMeta);
     gameSetRoomString(roomName, buildHiddenName(countryString));
     gameSetFlag(roomName, randomKey);
@@ -230,6 +231,7 @@ export async function gameCountdown(roomName: string, timer: number): Promise<vo
     roomMeta.countryString = countryString;
     roomMeta.round++;
     gameMeta.push(roomMeta);
+    gameSetRound(roomName, roomMeta.round);
     gameSetRoomString(roomName, buildHiddenName(countryString));
     gameSetFlag(roomName, randomKey);
     io.to(roomName).emit('gameSetFlag', randomKey);
@@ -289,6 +291,14 @@ export async function gameSetRoomString(roomName: string, roomString: string): P
     return
   }
   io.to(roomName).emit('gameSetroomString', roomString);
+}
+
+export async function gameSetRound(roomName: string, gameRounds: number): Promise<void> {
+  const room: Room = io.sockets.adapter.rooms.get(roomName) as unknown as Room;
+  if (!room) {
+    return
+  }
+  io.to(roomName).emit('gameRounds', gameRounds);
 }
 
 export async function gameSetPersonString(socketId: string, roomString: string): Promise<void> {
