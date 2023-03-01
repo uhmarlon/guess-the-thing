@@ -303,7 +303,9 @@ export function getPlayersPoints(roomName: string): Player[] {
 export function buildHiddenName(name: string): string {
   return name.replace(/ |\S/g, function(match) {
     if (match === " ") {
-      return "ㅤ";
+      return " ";
+    } else if (match === "-") {
+      return "-";
     } else {
       return "_ ";
     }
