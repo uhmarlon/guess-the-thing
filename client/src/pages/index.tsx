@@ -4,8 +4,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { io } from 'socket.io-client'
 import { CountryFlag } from '../components/Flag'
-export const socket = io('https://root.nighttech.de/')
-import * as Flags from 'country-flag-icons/react/3x2'
+export const socket = io('http://localhost:3001/')
 import Gamejoincreate from '../components/Gamejoin'
 import Lobby from '../components/Lobby'
 
@@ -23,6 +22,7 @@ const Home: NextPage = () => {
   const [timeLeft, setTimeLeft] = useState(0);
   const [flagKey, setflagKey] = useState("DE");
   const [countryTitel, setcountryTitel] = useState("Germany");
+  const [gameRounds, setgameRounds] = useState(0);
 
   const [gameToken, setgameToken] = useState("DE");
 
@@ -46,6 +46,10 @@ const Home: NextPage = () => {
 
     socket.on("gameStarted", () => {
       setInGame(true);
+    });
+
+    socket.on("gameRounds", (gameRounds) => {
+      setgameRounds(gameRounds);
     });
 
     socket.on("gameCountdown", (timeLeft) => {
@@ -98,7 +102,8 @@ const Home: NextPage = () => {
 
       <main className='mt-28'>
       {/* <ReName /> */}
-        <h1 className='text-4xl text-center mb-5'>Guess The Flag</h1>
+        <h1 className='text-4xl text-center mb-2'>Guess The Flag</h1>
+        <h2 className='text-1xl text-center mb-2'>Runde: {gameRounds}/10</h2>
         <div className='flex justify-center mb-6'>
               <CountryFlag flagKey={flagKey} size={350} />
         </div>
@@ -125,7 +130,7 @@ const Home: NextPage = () => {
           />
         </div>
         <div className='flex justify-center mb-1'>
-          <h1 className='text-2xl'>Spieler</h1>
+          <h1 className='text-2xl'>Spieler Runde</h1>
         </div>
 
         <div className='flex justify-center mb-4'>
