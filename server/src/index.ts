@@ -81,7 +81,6 @@ io.on('connection', (socket: Socket) => {
   }
 
   function removePlayer(socket: Socket) {
-    console.log('remove player');
     const roomName = clientRooms[socket.id];
     if (!roomName) {
       return;
@@ -307,7 +306,7 @@ export function buildHiddenName(name: string, guess: string = ''): string {
     if (guess.charAt(index).toLowerCase() === char.toLowerCase()) {
       return name.charAt(index);
     } else if (char === ' ') {
-      return '_';
+      return 'ㅤ';
     } else if (char === '-') {
       return '-';
     } else {
