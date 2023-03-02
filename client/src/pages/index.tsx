@@ -7,6 +7,8 @@ import { CountryFlag } from '../components/Flag'
 export const socket = io('https://root.nighttech.de/')
 import Gamejoincreate from '../components/Gamejoin'
 import Lobby from '../components/Lobby'
+import { useRouter } from 'next/router'
+import { useLobby, useGameToken } from '../utils/game'
 
 
 export interface Player {
@@ -18,18 +20,19 @@ export interface Player {
 }
 
 
-const Home: NextPage = () => {
+export const Home: NextPage = () => {
+  const router = useRouter()
+  const { inLobby, setinLobby } = useLobby()
+  const { gameToken, setgameToken } = useGameToken()
+  
   const [timeLeft, setTimeLeft] = useState(0);
   const [flagKey, setflagKey] = useState("DE");
   const [countryTitel, setcountryTitel] = useState("Germany");
   const [gameRounds, setgameRounds] = useState(0);
 
-  const [gameToken, setgameToken] = useState("DE");
 
   const [gameCreator , setGameCreator] = useState<boolean>(false);
-
   const [inGame, setInGame] = useState<boolean>(false);
-  const [inLobby, setinLobby] = useState<boolean>(false);
 
   useEffect(() => {
     socket.on("gameCode", (gameCode) => {
