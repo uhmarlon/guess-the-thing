@@ -2,7 +2,7 @@ const express = require('express');
 import http from 'http';
 import { Server, Socket } from 'socket.io';
 import { generateRandomName, makeid } from './utils';
-import { gameLoops, getRandomFlag } from './game';
+import { gameLoop, getRandomFlag } from './game';
 const maxUsers = 25;
 
 export interface Player {
@@ -24,7 +24,7 @@ export const gameMeta: RoomGameMetadata[] = [];
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server, {
+export const io = new Server(server, {
   cors: {
     origin: '*',
   },
@@ -131,8 +131,7 @@ io.on('connection', (socket: Socket) => {
       return;
     }
     io.to(roomName).emit('gameStarted');
-    gameLoops(roomName);
-
+    gameLoop(roomName);
   }
 
   socket.on('rename-player', (name: string) => {
@@ -169,8 +168,9 @@ function createPlayer(roomName: string, socketId: any) {
 export async function gameCountdown(roomName: string, timer: number): Promise<void> {
   const room: Room = io.sockets.adapter.rooms.get(roomName) as unknown as Room;
   const roomMeta = gameMeta.find((room) => room.roomName === roomName);
+  const [randomKey, countryString] = getRandomFlag();
+
   if (!roomMeta) {
-    const [randomKey, countryString] = getRandomFlag();
     const newRoomMeta: RoomGameMetadata = {
       roomName,
       countryString: countryString,
@@ -180,101 +180,59 @@ export async function gameCountdown(roomName: string, timer: number): Promise<vo
     gameMeta.push(newRoomMeta);
     gameSetRoomString(roomName, buildHiddenName(countryString));
     gameSetFlag(roomName, randomKey);
-    let counter = timer;
-    await new Promise((resolve) => {
-      const countdownInterval = setInterval(() => {
-        const playersInRoom = getPlayersInRoom(roomName);
-        const allGuessed = playersInRoom.every((player: { guess: boolean; }) => player.guess === true);
-        if (allGuessed) {
-          clearInterval(countdownInterval);
-          resolve('stop');
-        }
-        counter--;
-        io.to(roomName).emit('gameCountdown', counter);
-        if (counter === 0) {
-          clearInterval(countdownInterval);
-          resolve('stop');
-        }
-      }, 1000);
-    });
-
-    const playersInRoom = getPlayersInRoom(roomName);
-    playersInRoom.forEach((player: { guess: boolean; }) => {
-      player.guess = false;
-    });
-    io.to(roomName).emit('update-players', playersInRoom);
-
-    const roomMeta = gameMeta.find((room) => room.roomName === roomName);
-    if (roomMeta) {
-      roomMeta.countryString = 'HggfdgfellddXXo';
-      gameMeta.push(roomMeta);
-    }
-    gameSetRoomString(roomName, countryString);
-    await new Promise((resolve) => {
-      let outTimer = 5;
-      const countdownInterval = setInterval(() => {
-        outTimer--;
-        io.to(roomName).emit('gameCountdown', outTimer);
-        if (outTimer === 0) {
-          clearInterval(countdownInterval);
-          resolve('stop');
-        }
-      }, 1000);
-    });
-    gameCountdown(roomName, 15);
   } else {
     if (roomMeta.round === 10) {
       io.to(roomName).emit('gameEnd', getPlayersPoints(roomName));
       return;
     }
-    const [randomKey, countryString] = getRandomFlag();
     roomMeta.countryString = countryString;
     roomMeta.round++;
     gameMeta.push(roomMeta);
     gameSetRound(roomName, roomMeta.round);
-    gameSetRoomString(roomName, buildHiddenName(countryString));
-    gameSetFlag(roomName, randomKey);
-    io.to(roomName).emit('gameSetFlag', randomKey);
-    let counter = timer;
-    await new Promise((resolve) => {
-      const countdownInterval = setInterval(() => {
-        const playersInRoom = getPlayersInRoom(roomName);
-        const allGuessed = playersInRoom.every((player: { guess: boolean; }) => player.guess === true);
-        if (allGuessed) {
-          clearInterval(countdownInterval);
-          resolve('stop');
-        }
-        counter--;
-        io.to(roomName).emit('gameCountdown', counter);
-        if (counter === 0) {
-          clearInterval(countdownInterval);
-          resolve('stop');
-        }
-      }, 1000);
-    });
-    if (roomMeta) {
-      roomMeta.countryString = 'xxxFFXX33FF';
-      gameMeta.push(roomMeta);
-    }
-    const playersInRoom = getPlayersInRoom(roomName);
-    playersInRoom.forEach((player: { guess: boolean; }) => {
-      player.guess = false;
-    });
-    io.to(roomName).emit('update-players', playersInRoom);
-    gameSetRoomString(roomName, countryString);
-    await new Promise((resolve) => {
-      let outTimer = 5;
-      const countdownInterval = setInterval(() => {
-        outTimer--;
-        io.to(roomName).emit('gameCountdown', outTimer);
-        if (outTimer === 0) {
-          clearInterval(countdownInterval);
-          resolve('stop');
-        }
-      }, 1000);
-    });
-    gameCountdown(roomName, 15);
   }
+
+  gameSetRoomString(roomName, buildHiddenName(countryString));
+  gameSetFlag(roomName, randomKey);
+  io.to(roomName).emit('gameSetFlag', randomKey);
+  let counter = timer;
+  await new Promise((resolve) => {
+    const countdownInterval = setInterval(() => {
+      const playersInRoom = getPlayersInRoom(roomName);
+      const allGuessed = playersInRoom.every((player: { guess: boolean; }) => player.guess === true);
+      if (allGuessed) {
+        clearInterval(countdownInterval);
+        resolve('stop');
+      }
+      counter--;
+      io.to(roomName).emit('gameCountdown', counter);
+      if (counter === 0) {
+        clearInterval(countdownInterval);
+        resolve('stop');
+      }
+    }, 1000);
+  });
+  if (roomMeta) {
+    roomMeta.countryString = generateRandomName();
+    gameMeta.push(roomMeta);
+  }
+  const playersInRoom = getPlayersInRoom(roomName);
+  playersInRoom.forEach((player: { guess: boolean; }) => {
+    player.guess = false;
+  });
+  io.to(roomName).emit('update-players', playersInRoom);
+  gameSetRoomString(roomName, countryString);
+  await new Promise((resolve) => {
+    let outTimer = 5;
+    const countdownInterval = setInterval(() => {
+      outTimer--;
+      io.to(roomName).emit('gameCountdown', outTimer);
+      if (outTimer === 0) {
+        clearInterval(countdownInterval);
+        resolve('stop');
+      }
+    }, 1000);
+  });
+  gameCountdown(roomName, 15);
 }
 
 export async function gameSetFlag(roomName: string, flagKey: string): Promise<void> {
