@@ -49,8 +49,28 @@ export default function Lobby({ gameToken, startbutton}: { gameToken: string; st
             setShowModal(false);
         })
 
+
         socket.on('gameEnd', (gameEnd) => {
-            alert('\t Gewinner: \n' + gameEnd[0].name + " | Mit " + gameEnd[0].points + " Punkten");
+            
+            switch(gameEnd.length)
+            {
+                case 1:
+                    alert('\t 1: \n \t' + gameEnd[0].name + " | Mit " + gameEnd[0].points + " Punkten");
+                    break;
+                case 2:
+                        alert(
+                            '\t 1: \n\t' + gameEnd[0].name + " | Mit " + gameEnd[0].points + " Punkten\n" +
+                            '\t 2: \n\t' + gameEnd[1].name + " | Mit " + gameEnd[1].points + " Punkten"
+                            );
+                        break;
+                default:
+                    alert(
+                        '\t 1: \n\t' + gameEnd[0].name + " | Mit " + gameEnd[0].points + " Punkten\n" +
+                        '\t 2: \n\t' + gameEnd[1].name + " | Mit " + gameEnd[1].points + " Punkten\n" +
+                        '\t 3: \n\t' + gameEnd[2].name + " | Mit " + gameEnd[2].points + " Punkten"
+                        );
+                    break;
+            }   
             window.location.reload();
         })
 

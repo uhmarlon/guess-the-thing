@@ -3,7 +3,9 @@ interface FlagData {
     [key: string]: string;
   }
 import flags_de from './flags/de_de.json';
-  
+//Unused Import for now, will be used for lang impl.
+import flags_en from './flags/en_us.json';
+   
   const typedFlags: FlagData = flags_de;
 
 export async function gameLoop(roomName: string): Promise<void> {

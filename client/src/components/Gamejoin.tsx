@@ -40,7 +40,7 @@ export default function Gamejoincreate({}) {
                         <div className="bg-gray-700 text-white rounded-lg shadow-lg w-full md:max-w-md">
                             <div className="px-6 py-4">
                                 <h3 id="modal-title" className="text-lg font-medium">
-                                    Guss The Flag - Join or Create a Game
+                                    Guess The Flag - Join or Create a Game
                                 </h3>
                                 {/* center button */}
                                 <div className="flex items-center justify-center mt-4">
