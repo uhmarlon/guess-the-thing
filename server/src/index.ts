@@ -190,7 +190,7 @@ export async function gameCountdown(roomName: string, timer: number): Promise<vo
   gameSetRoomString(roomName, buildHiddenName(countryString));
   gameSetFlag(roomName, randomKey);
   io.to(roomName).emit('gameSetFlag', randomKey);
-  let counter = timer;
+  let counter = timer + countryString.length * 0.75;
   await new Promise((resolve) => {
     const countdownInterval = setInterval(() => {
       const playersInRoom = getPlayersInRoom(roomName);
