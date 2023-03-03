@@ -13,7 +13,7 @@ export default function Gamejoincreate({}) {
             return;
         }
         console.log(gameToken);
-        socket.emit("joinGame", gameToken);
+        socket.emit("joinGame", gameToken.trim());
         socket.on("unknownCode", (gameCode) => {
             alert("Unknown game code: " + gameCode);
         });
