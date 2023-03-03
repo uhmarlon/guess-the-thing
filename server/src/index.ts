@@ -126,10 +126,6 @@ io.on('connection', (socket: Socket) => {
     if (!roomName) {
       return;
     }
-    const playersInRoom = getPlayersInRoom(roomName);
-    if (playersInRoom.length < 2) {
-      return;
-    }
     io.to(roomName).emit('gameStarted');
     gameLoop(roomName);
   }
