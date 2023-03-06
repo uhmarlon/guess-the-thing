@@ -26,7 +26,8 @@ const app = express();
 const server = http.createServer(app);
 export const io = new Server(server, {
   cors: {
-    origin: '*',
+    origin: ['http://localhost:3000', 'https://guessthething.vercel.app/'],
+    methods: ['GET', 'POST'],
   },
   pingTimeout: 120000,
   pingInterval: 5000,
