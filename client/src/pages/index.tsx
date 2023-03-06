@@ -21,6 +21,7 @@ export interface Player {
 
 
 export const Home: NextPage = () => {
+  console.log(process.env.SOCKET_SERVER_URL || 'http://localhost:3001');
   const router = useRouter()
   const { inLobby, setinLobby } = useLobby()
   const { gameToken, setgameToken } = useGameToken()
