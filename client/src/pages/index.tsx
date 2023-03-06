@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { io } from 'socket.io-client'
 import { CountryFlag } from '../components/Flag'
-export const socket = io('https://root.nighttech.de/')
+export const socket = io(process.env.SOCKET_SERVER_URL || 'http://localhost:3001');
 import Gamejoincreate from '../components/Gamejoin'
 import Lobby from '../components/Lobby'
 import { useRouter } from 'next/router'

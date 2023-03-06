@@ -1,0 +1,9 @@
+{
+  "name": "main",
+  "version": "1.0.0",
+  "scripts": {
+    "dev-server": "cd server && npm run dev",
+    "dev-client": "cd client && npm run dev"
+  },
+  "author": "uhmarlon"
+}
