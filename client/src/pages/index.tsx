@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { io } from 'socket.io-client'
 import { CountryFlag } from '../components/Flag'
-export const socket = io(process.env.SOCKET_SERVER_URL || 'http://localhost:3001');
+export const socket = io(process.env.SOCKET_SERVER as string);
 import Gamejoincreate from '../components/Gamejoin'
 import Lobby from '../components/Lobby'
 import { useRouter } from 'next/router'
@@ -21,7 +21,6 @@ export interface Player {
 
 
 export const Home: NextPage = () => {
-  console.log(process.env.SOCKET_SERVER_URL || 'http://localhost:3001');
   const router = useRouter()
   const { inLobby, setinLobby } = useLobby()
   const { gameToken, setgameToken } = useGameToken()
