@@ -27,7 +27,7 @@ const server = http.createServer(app);
 export const io = new Server(server, {
   // only allow from our https://guessthething.vercel.app/ * and localhost *
   cors: {
-    origin: ['https://guessthething.vercel.app', 'http://localhost:3000'],
+    origin: ['https://guessthething.vercel.app', 'http://localhost:3000', 'https://infoscreen.vercel.app/'],
   },
   pingTimeout: 120000,
   pingInterval: 5000,
