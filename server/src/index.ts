@@ -49,6 +49,7 @@ io.on('connection', (socket: Socket) => {
   socket.on('clientReady', handleClientReady);
   socket.on('cgameStart', handleGameStart);
   socket.on('pickString', handlepickString);
+  socket.on('changeDaily', (daily: string) => {socket.emit('daily', daily); });
   socket.on('disconnect', () => {
     removePlayer(socket);
   });
