@@ -25,9 +25,13 @@ export const gameMeta: RoomGameMetadata[] = [];
 const app = express();
 const server = http.createServer(app);
 export const io = new Server(server, {
-  // only allow from our https://guessthething.vercel.app/ * and localhost *
   cors: {
+<<<<<<< HEAD
     origin: ['https://guessthething.vercel.app', 'http://localhost:3000', 'https://infoscreen.vercel.app/'],
+=======
+    origin: ['http://localhost:3000', 'https://guessthething.vercel.app/'],
+    methods: ['GET', 'POST'],
+>>>>>>> parent of 72c0e41 (fix methods)
   },
   pingTimeout: 120000,
   pingInterval: 5000,
