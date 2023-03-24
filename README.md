@@ -4,7 +4,7 @@ This is a multiplayer game built using Next.js, Tailwind CSS, and Socket.IO. The
 
 ## Getting Started
 
-To get started with the game, you will need to have Docker installed on your machine. Once Docker is installed, you can run the following command to start the game:
+To get started, you will need to have Docker installed on your machine. Once Docker is installed, you can run the following command to start the application:
 
 ```bash
 docker-compose up
