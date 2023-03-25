@@ -3,7 +3,6 @@ import http from 'http';
 import { Server, Socket } from 'socket.io';
 import { generateRandomName, makeid } from './utils';
 import { gameLoop, getRandomFlag } from './game';
-const maxUsers = 25;
 
 export interface Player {
   id: string;
@@ -26,12 +25,8 @@ const app = express();
 const server = http.createServer(app);
 export const io = new Server(server, {
   cors: {
-<<<<<<< HEAD
-    origin: ['https://guessthething.vercel.app', 'http://localhost:3000', 'https://infoscreen.vercel.app/'],
-=======
     origin: ['http://localhost:3000', 'https://guessthething.vercel.app/'],
     methods: ['GET', 'POST'],
->>>>>>> parent of 72c0e41 (fix methods)
   },
   pingTimeout: 120000,
   pingInterval: 5000,
