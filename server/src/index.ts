@@ -18,6 +18,7 @@ export interface RoomGameMetadata {
   roomName: string;
   countryString: string;
   round: number;
+  maxRounds: number;
 }
 export const gameMeta: RoomGameMetadata[] = [];
 
@@ -121,13 +122,13 @@ io.on('connection', (socket: Socket) => {
     }
   }
 
-  function handleGameStart() {
+  function handleGameStart(rounds: number) {
     const roomName = clientRooms[socket.id];
     if (!roomName) {
       return;
     }
     io.to(roomName).emit('gameStarted');
-    gameLoop(roomName);
+    gameLoop(roomName, rounds);
   }
 
   socket.on('rename-player', (name: string) => {
@@ -161,7 +162,7 @@ function createPlayer(roomName: string, socketId: any) {
   return player;
 }
 
-export async function gameCountdown(roomName: string, timer: number): Promise<void> {
+export async function gameCountdown(roomName: string, timer: number, rounds: number): Promise<void> {
   const room: Room = io.sockets.adapter.rooms.get(roomName) as unknown as Room;
   const roomMeta = gameMeta.find((room) => room.roomName === roomName);
   const [randomKey, countryString] = getRandomFlag();
@@ -171,13 +172,14 @@ export async function gameCountdown(roomName: string, timer: number): Promise<vo
       roomName,
       countryString: countryString,
       round: 1,
+      maxRounds: rounds,
     };
     gameSetRound(roomName, newRoomMeta.round);
     gameMeta.push(newRoomMeta);
     gameSetRoomString(roomName, buildHiddenName(countryString));
     gameSetFlag(roomName, randomKey);
   } else {
-    if (roomMeta.round === 10) {
+    if (roomMeta.round === roomMeta.maxRounds) {
       io.to(roomName).emit('gameEnd', getPlayersPoints(roomName));
       return;
     }
@@ -228,7 +230,7 @@ export async function gameCountdown(roomName: string, timer: number): Promise<vo
       }
     }, 1000);
   });
-  gameCountdown(roomName, 15);
+  gameCountdown(roomName, 15, rounds);
 }
 
 export async function gameSetFlag(roomName: string, flagKey: string): Promise<void> {

@@ -9,6 +9,7 @@ export default function Lobby({ gameToken, startbutton}: { gameToken: string; st
     const gameIdRef = useRef<HTMLInputElement>(null);
     const [isValidName, setIsValidName] = useState<boolean>(false);
     const nameRef = useRef<HTMLInputElement>(null);
+    const [gameRound, setGameRound] = useState<number>(10);
 
     const handleSubmit = () => {
         const name = nameRef.current?.value ?? "";
@@ -19,7 +20,7 @@ export default function Lobby({ gameToken, startbutton}: { gameToken: string; st
     };
 
     const handleNewGame = () => {
-        socket.emit("cgameStart");
+        socket.emit("cgameStart", gameRound);
     }
 
     const checkInputLength = () => {
@@ -92,7 +93,30 @@ export default function Lobby({ gameToken, startbutton}: { gameToken: string; st
                                     Game Token: <br />{gameToken}
                                 </h3>
                                 {/* center button */}
+                                <hr className="my-4" />
                                 {startbutton ? (
+                                <>
+                                <h3 className="text-lg font-medium">
+                                    Choose the number of rounds
+                                </h3>
+                                <div className="flex items-center justify-center mt-4">
+                                    <button
+                                        type="submit"
+                                        onClick={() => setGameRound(10) }
+                                        className={`px-4 mx-2 py-2 text-sm font-medium text-white ${gameRound == 10 ? 'bg-blue-500' : 'bg-green-500'} border border-transparent rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500`}
+                                    >10</button>
+                                    <button
+                                        type="submit"
+                                        onClick={() => setGameRound(15) }
+                                        className={`px-4 mx-2 py-2 text-sm font-medium text-white ${gameRound == 15 ? 'bg-blue-500' : 'bg-green-500'} border border-transparent rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500`}
+                                    >15</button>
+                                    <button 
+                                        type="submit"
+                                        onClick={() => setGameRound(30)} 
+                                        className={`px-4 mx-2 py-2 text-sm font-medium text-white  ${gameRound == 30 ? 'bg-blue-500' : 'bg-green-500'} border border-transparent rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500`}
+                                    >30</button>
+                                </div>
+                                    
                                 <div className="flex items-center justify-center mt-4">
                                     <button
                                         type="submit"
@@ -100,7 +124,9 @@ export default function Lobby({ gameToken, startbutton}: { gameToken: string; st
                                         className="px-4 py-2 text-sm font-medium text-white bg-green-500 border border-transparent rounded-lg shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                                     >Start Game</button>
                                 </div>
+                                </>
                                 ) : (<></>)}
+                                <hr className="my-4" />
                                 { showRename ? (
                                     <div className="mt-4">
                                     <input

@@ -8,7 +8,7 @@ import flags_en from './flags/en_us.json';
    
   const typedFlags: FlagData = flags_de;
 
-export async function gameLoop(roomName: string): Promise<void> {
+export async function gameLoop(roomName: string, rounds : number): Promise<void> {
     gameSetRoomString(roomName, 'Get ready!');
     await new Promise((resolve) => {
         let outTimer = 3;
@@ -23,7 +23,7 @@ export async function gameLoop(roomName: string): Promise<void> {
           }
         }, 1000);
       });
-    gameCountdown(roomName, 15);
+    gameCountdown(roomName, 15, rounds);
 }
 
 export function getRandomFlag(): [string, string] {
