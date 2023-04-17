@@ -29,6 +29,7 @@ export const Home: NextPage = () => {
   const [flagKey, setflagKey] = useState("DE");
   const [countryTitel, setcountryTitel] = useState("Germany");
   const [gameRounds, setgameRounds] = useState(0);
+  const [maxGameRounds, setmaxGameRounds] = useState(0);
 
 
   const [gameCreator , setGameCreator] = useState<boolean>(false);
@@ -51,8 +52,9 @@ export const Home: NextPage = () => {
       setInGame(true);
     });
 
-    socket.on("gameRounds", (gameRounds) => {
+    socket.on("gameRounds", (gameRounds, maxRounds) => {
       setgameRounds(gameRounds);
+      setmaxGameRounds(maxRounds);
     });
 
     socket.on("gameCountdown", (timeLeft) => {
@@ -105,7 +107,7 @@ export const Home: NextPage = () => {
 
       <main className='mt-28'>
         <h1 className='text-4xl text-center mb-2'>Guess The Flag</h1>
-        <h2 className='text-1xl text-center mb-2'>Runde: {gameRounds}/10</h2>
+        <h2 className='text-1xl text-center mb-2'>Runde: {gameRounds}/{maxGameRounds}</h2>
         <div className='flex justify-center mb-6'>
               <CountryFlag flagKey={flagKey} size={350} />
         </div>
