@@ -93,9 +93,9 @@ export default function Lobby({ gameToken, startbutton}: { gameToken: string; st
                                     Game Token: <br />{gameToken}
                                 </h3>
                                 {/* center button */}
-                                <hr className="my-4" />
                                 {startbutton ? (
                                 <>
+                                <hr className="my-4" />
                                 <h3 className="text-lg font-medium">
                                     Choose the number of rounds
                                 </h3>
