@@ -118,7 +118,7 @@ export const Home: NextPage = () => {
               </div>
             <div className=''>
               <h1 
-              className='text-4xl'
+              className='text-3xl'
               >{timeLeft} sec</h1>
             </div>
           </div>

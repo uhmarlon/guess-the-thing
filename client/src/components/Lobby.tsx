@@ -2,9 +2,11 @@ import React from "react";
 import { io } from "socket.io-client";
 import { socket, Player } from "../pages/gusstheflag";
 import { useRef, useState, useEffect } from "react";
+import Confetti from 'react-confetti'
 
 export default function Lobby({ gameToken, startbutton}: { gameToken: string; startbutton: boolean; }) {
     const [showModal, setShowModal] = useState<boolean>(true);
+    const [showConfetti, setShowConfetti] = useState<boolean>(false);
     const [showRename, setShowRename] = useState<boolean>(false);
     const gameIdRef = useRef<HTMLInputElement>(null);
     const [isValidName, setIsValidName] = useState<boolean>(false);
@@ -52,6 +54,7 @@ export default function Lobby({ gameToken, startbutton}: { gameToken: string; st
 
 
         socket.on('gameEnd', (gameEnd) => {
+            setShowConfetti(true);
             
             switch(gameEnd.length)
             {
@@ -79,6 +82,12 @@ export default function Lobby({ gameToken, startbutton}: { gameToken: string; st
 
     return (
         <>
+        {showConfetti && (
+            <Confetti
+                width={window.innerWidth}
+                height={window.innerHeight}
+            />
+        )}
         {showModal && (
                 <div
                 className="fixed inset-0 flex items-center justify-center z-50 overflow-x-hidden overflow-y-auto backdrop-blur-sm"
