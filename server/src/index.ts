@@ -1,7 +1,7 @@
 const express = require('express');
 import http from 'http';
 import { Server, Socket } from 'socket.io';
-import { generateRandomName, makeid, buildHiddenName, getPlayersInRoom } from './utils';
+import { generateRandomName, makeid, buildHiddenName} from './utils';
 import { gameLoop, getRandomFlag } from './game';
 
 const app = express();
@@ -20,6 +20,7 @@ export interface Player {
 }
 export interface RoomGameMetadata {
   roomName: string;
+  game: string
   countryString: string;
   round: number;
   maxRounds: number;
@@ -49,9 +50,7 @@ io.on('connection', (socket: Socket) => {
   socket.on('clientReady', handleClientReady);
   socket.on('cgameStart', handleGameStart);
   socket.on('pickString', handlepickString);
-  socket.on('disconnect', () => {
-    removePlayer(socket);
-  });
+  socket.on('disconnect', () => { removePlayer(socket); });
   socket.on('getPlayerinRoom', getPlayersInRoom);
 
   function handleJoinGame(roomName: string) {
@@ -142,10 +141,6 @@ io.on('connection', (socket: Socket) => {
 
 });
 
-server.listen(3001, () => {
-  console.log('✔️ Server listening on port 3001');
-});
-
 
 function createPlayer(roomName: string, socketId: any) {
   const id = socketId;
@@ -170,6 +165,7 @@ export async function gameCountdown(roomName: string, timer: number, rounds: num
   if (!roomMeta) {
     const newRoomMeta: RoomGameMetadata = {
       roomName,
+      game: 'flag',
       countryString: countryString,
       round: 1,
       maxRounds: rounds,
@@ -266,3 +262,8 @@ export function getPlayersPoints(roomName: string): Player[] {
   playersInRoom.sort((a, b) => b.points - a.points);
   return playersInRoom;
 }
+
+
+server.listen(3001, () => {
+  console.log('✔️ Server listening on port 3001');
+});

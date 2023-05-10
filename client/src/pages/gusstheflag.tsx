@@ -20,7 +20,7 @@ export interface Player {
 }
 
 
-export const Home: NextPage = () => {
+export const gusstheflag: NextPage = () => {
   const router = useRouter()
   const { inLobby, setinLobby } = useLobby()
   const { gameToken, setgameToken } = useGameToken()
@@ -147,4 +147,4 @@ export const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default gusstheflag
