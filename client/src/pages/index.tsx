@@ -2,144 +2,39 @@ import type { NextPage } from 'next'
 import { FC, useEffect, useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
-import { io } from 'socket.io-client'
-import { CountryFlag } from '../components/Flag'
-export const socket = io(process.env.SOCKET_SERVER as string || 'https://root.nighttech.de/');
-import Gamejoincreate from '../components/Gamejoin'
-import Lobby from '../components/Lobby'
 import { useRouter } from 'next/router'
-import { useLobby, useGameToken } from '../utils/game'
-
-
-export interface Player {
-  id: string;
-  name: string;
-  points: number;
-  guess: boolean;
-  correct: boolean;
-}
-
+import Link from 'next/link'
 
 export const Home: NextPage = () => {
   const router = useRouter()
-  const { inLobby, setinLobby } = useLobby()
-  const { gameToken, setgameToken } = useGameToken()
-  
-  const [timeLeft, setTimeLeft] = useState(0);
-  const [flagKey, setflagKey] = useState("DE");
-  const [countryTitel, setcountryTitel] = useState("Germany");
-  const [gameRounds, setgameRounds] = useState(0);
-  const [maxGameRounds, setmaxGameRounds] = useState(0);
-
-
-  const [gameCreator , setGameCreator] = useState<boolean>(false);
-  const [inGame, setInGame] = useState<boolean>(false);
-
-  useEffect(() => {
-    socket.on("gameCode", (gameCode) => {
-      setinLobby(true);
-      setGameCreator(true);
-      setgameToken(gameCode);
-      socket.emit('clientReady')
-    });
-    socket.on("gameCodeoc", (gameCode) => {
-      setinLobby(true);
-      setgameToken(gameCode);
-      socket.emit('clientReady')
-    });
-
-    socket.on("gameStarted", () => {
-      setInGame(true);
-    });
-
-    socket.on("gameRounds", (gameRounds, maxRounds) => {
-      setgameRounds(gameRounds);
-      setmaxGameRounds(maxRounds);
-    });
-
-    socket.on("gameCountdown", (timeLeft) => {
-      setTimeLeft(timeLeft);
-    });
-
-    socket.on("gameSetFlag", (flagKey) => {
-      setflagKey(flagKey);
-    });
-
-    socket.on("gameSetroomString", (roomString) => {
-      setcountryTitel(roomString);
-      console.log(roomString);
-    });
-
-    socket.on('update-players', (players: Player[]) => {
-      console.log(players);
-      const playerList = document.getElementById('playerlistgame') as HTMLElement;
-      if (playerList) {
-        playerList.innerHTML = '';
-        players.sort((a, b) => b.points - a.points);
-        players.forEach((player) => {
-          const li = document.createElement('li');
-          li.textContent = player.name + " | " + player.points;
-          playerList.appendChild(li);
-        });
-      }
-    });
-
-  }, []);
-
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      socket.emit("pickString", e.currentTarget.value, timeLeft);
-      e.currentTarget.value = "";
-    }
-  };
 
   return (
     <>
       <Head>
-        <title>Guess The Flag</title>
+        <title>Guess The Thing</title>
+        <meta name="description" content="Guess The Thing a online multiplayer game" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {!inLobby ? ( <Gamejoincreate /> ) : (
-         <Lobby gameToken={gameToken} startbutton={gameCreator} /> 
-      )}
-
       <main className='mt-28'>
-        <h1 className='text-4xl text-center mb-2'>Guess The Flag</h1>
-        <h2 className='text-1xl text-center mb-2'>Runde: {gameRounds}/{maxGameRounds}</h2>
-        <div className='flex justify-center mb-6'>
-              <CountryFlag flagKey={flagKey} size={350} />
-        </div>
-        <div className='flex justify-center mb-6'>
-            <div className='grid grid-cols-4 gap-3'>
-              <div className='col-span-3'>
-                <h1 className='text-4xl'>{countryTitel}</h1>
+        <div className="z-20 flex w-full flex-col">
+          <span className="mx-auto mb-6 rounded-full border border-white/20 bg-white/10 px-9 py-2 font-medium text-white backdrop-blur-sm">Multiplayer and single-player guess games</span>
+          <h1 className='text-4xl font-bold text-center mb-2'>Guess The Thing</h1>
+          <span className='text-1xl text-center mb-2'>Challenge your friends or test your skills solo.</span>
+          
+          <div className="flex flex-row justify-center mt-6">
+
+            <div className="relative w-1/2 h-[15rem] mb-3">
+              <Link href="/gusstheflag">
+              <Image src="/flag.webp" alt='' layout="fill" objectFit="cover" className="rounded-xl" />
+              <div className="absolute bottom-0 w-full h-full bg-gradient-to-t from-black/80 to-transparent rounded-xl"></div>
+              <div className="absolute bottom-0 w-full h-full flex flex-col justify-end px-6 pb-6">
+                <h3 className="text-2xl font-bold mb-2 text-white">Guess The Flag</h3>
+                <p className="text-white/80">Guess the flag of a country.</p>
               </div>
-            <div className=''>
-              <h1 
-              className='text-4xl'
-              >{timeLeft} sec</h1>
+              </Link>
             </div>
-          </div>
-        </div>
-        <div className='flex justify-center mb-4'>
-          <input
-            type="text"
-            name="Eingabe"
-            placeholder="Land eingeben"
 
-            onKeyDown={handleKeyDown}
-            className="px-3 py-3 text-white border rounded-lg bg-gray-800 border-gray-600 w-72 focus:border-blue-500 focus:outline-none focus:ring"
-          />
-        </div>
-        <div className='flex justify-center mb-1'>
-          <h1 className='text-2xl'>Spieler</h1>
-        </div>
-
-        <div className='flex justify-center mb-4'>
-          <div className='bg-gray-600 text-center rounded-lg w-72'>
-            <ul id='playerlistgame' className=' text-white'></ul>
           </div>
         </div>
       </main>

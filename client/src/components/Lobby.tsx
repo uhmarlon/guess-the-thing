@@ -1,6 +1,6 @@
 import React from "react";
 import { io } from "socket.io-client";
-import { socket, Player } from "../pages/index";
+import { socket, Player } from "../pages/gusstheflag";
 import { useRef, useState, useEffect } from "react";
 
 export default function Lobby({ gameToken, startbutton}: { gameToken: string; startbutton: boolean; }) {
@@ -92,7 +92,6 @@ export default function Lobby({ gameToken, startbutton}: { gameToken: string; st
                                 <h3 id="modal-title" className="text-lg font-medium">
                                     Game Token: <br />{gameToken}
                                 </h3>
-                                {/* center button */}
                                 {startbutton ? (
                                 <>
                                 <hr className="my-4" />
