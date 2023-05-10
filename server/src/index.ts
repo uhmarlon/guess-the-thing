@@ -1,8 +1,14 @@
 const express = require('express');
 import http from 'http';
 import { Server, Socket } from 'socket.io';
-import { generateRandomName, makeid, buildHiddenName } from './utils';
+import { generateRandomName, makeid, buildHiddenName, getPlayersInRoom } from './utils';
 import { gameLoop, getRandomFlag } from './game';
+
+const app = express();
+const server = http.createServer(app);
+export const players: Player[] = [];
+export const gameMeta: RoomGameMetadata[] = [];
+const clientRooms: { [key: string]: string } = {};
 
 export interface Player {
   id: string;
@@ -12,18 +18,17 @@ export interface Player {
   guess: boolean;
   correct: boolean;
 }
-export const players: Player[] = [];
-
 export interface RoomGameMetadata {
   roomName: string;
   countryString: string;
   round: number;
   maxRounds: number;
 }
-export const gameMeta: RoomGameMetadata[] = [];
 
-const app = express();
-const server = http.createServer(app);
+interface Room {
+  sockets: Set<Socket>;
+}
+
 export const io = new Server(server, {
   cors: {
     origin: ['https://guessthething.vercel.app', 'http://localhost:3000'],
@@ -32,10 +37,6 @@ export const io = new Server(server, {
   pingInterval: 5000,
 });
 
-const clientRooms: { [key: string]: string } = {};
-interface Room {
-  sockets: Set<Socket>;
-}
 
 function getPlayersInRoom(roomName: string) {
   const playersInRoom = players.filter((player) => player.room === roomName);
