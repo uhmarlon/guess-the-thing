@@ -1,6 +1,6 @@
 import React from "react";
 import { io } from "socket.io-client";
-import { socket } from "../pages/index";
+import { socket } from "../pages/gusstheflag";
 import { useRef, useState } from "react";
 
 export default function Gamejoincreate({}) {
