@@ -1,7 +1,7 @@
 const express = require('express');
 import http from 'http';
 import { Server, Socket } from 'socket.io';
-import { generateRandomName, makeid } from './utils';
+import { generateRandomName, makeid, buildHiddenName } from './utils';
 import { gameLoop, getRandomFlag } from './game';
 
 export interface Player {
@@ -264,18 +264,4 @@ export function getPlayersPoints(roomName: string): Player[] {
   const playersInRoom = players.filter((player) => player.room === roomName);
   playersInRoom.sort((a, b) => b.points - a.points);
   return playersInRoom;
-}
-
-export function buildHiddenName(name: string, guess: string = ''): string {
-  return name.split('').map((char: string, index: number) => {
-    if (guess.charAt(index).toLowerCase() === char.toLowerCase()) {
-      return name.charAt(index);
-    } else if (char === ' ') {
-      return 'ㅤ';
-    } else if (char === '-') {
-      return '-';
-    } else {
-      return '_';
-    }
-  }).join(' ');
 }
