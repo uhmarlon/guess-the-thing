@@ -2,8 +2,10 @@ const express = require('express');
 import http from 'http';
 import { Server, Socket } from 'socket.io';
 import { generateRandomName, makeid, buildHiddenName} from './utils';
-import { gameLoop, getRandomFlag } from './game';
+import { gameLoop, getRandomFlag } from './flagGame';
 import { arrayBuffer } from 'stream/consumers';
+import { Player, RoomGameMetadata, Room } from './interfaces';
+
 
 const app = express();
 const server = http.createServer(app);
@@ -11,28 +13,6 @@ export const players: Player[] = [];
 export const gameMeta: RoomGameMetadata[] = [];
 const clientRooms: { [key: string]: { gameType: string, roomName: string } } = {};
 
-
-// const clientRooms with gameType and  roomName
-
-export interface Player {
-  id: string;
-  name: string;
-  points: number;
-  room: string;
-  guess: boolean;
-  correct: boolean;
-}
-export interface RoomGameMetadata {
-  roomName: string;
-  game: string
-  countryString: string;
-  round: number;
-  maxRounds: number;
-}
-
-interface Room {
-  sockets: Set<Socket>;
-}
 
 export const io = new Server(server, {
   cors: {
@@ -58,23 +38,10 @@ io.on('connection', (socket: Socket) => {
   socket.on('disconnect', () => { removePlayer(socket); });
   socket.on('getPlayerinRoom', getPlayersInRoom);
 
-  function handleJoinGame(roomName: string, gameType: string) {
-    const room = io.sockets.adapter.rooms.get(roomName);
-    const roomString: string = Array.from(room ?? []).join(', ');
-    if (room) {
-      const roomInfo = clientRooms[roomString];
-      if (roomInfo && roomInfo.gameType === gameType) {
-        socket.join(roomName);
-        console.log(roomName);
-        console.log("test");
-        socket.emit('gameCodeoc', roomName);
-      } else {
-        socket.emit('invalidGameType');
-      }} else {
-          socket.emit('unknownCode');
-    }
-  }
-  
+  // Main functions
+  // Like Lobby and Game Handling
+  // Rename etc...
+
   function handleNewGame(gameType: string) {
     let roomName = makeid(5);
     clientRooms[socket.id] = { gameType, roomName };
@@ -83,39 +50,70 @@ io.on('connection', (socket: Socket) => {
     console.log(roomName);
   }
 
+  function handleJoinGame(roomName: string, gameType: string) {
+    const room = io.sockets.adapter.rooms.get(roomName);
+    const roomString: string = Array.from(room ?? []).join(', ');
+    if (room) {
+      const roomInfo = clientRooms[roomString];
+      if (roomInfo && roomInfo.gameType === gameType) {
+        socket.join(roomName);
+        clientRooms[socket.id] = { gameType, roomName };
+        socket.emit('gameCodeoc', roomName);
+      } else {
+        socket.emit('invalidGameType');
+      }} else {
+        socket.emit('unknownCode');
+    }
+  }
+  
+
   function handleClientReady() {
     const roomName = clientRooms[socket.id];
     if (!roomName) {
       return;
     }
     const player = createPlayer(roomName.roomName as string, socket.id);
-    console.log(player + ' is ready');
     io.to(roomName.roomName).emit('update-players', getPlayersInRoom(roomName.roomName));
   }
 
-  // function handleClientReady() {
-  //   const roomInfo = clientRooms[socket.id];
-  //   console.log(roomInfo);
-  //   if (!roomInfo) {
-  //     return;
-  //   }
-  //   const { roomName } = roomInfo;
-  //   const player = createPlayer(roomName, socket.id);
-  //   io.to(roomName).emit('update-players', getPlayersInRoom(roomName));
-  // }
-
   function removePlayer(socket: Socket) {
+    const roomName = clientRooms[socket.id];
+    if (!roomName) {
+      return;
+    }
+    socket.leave(roomName.roomName);
+    const playerIndex = players.findIndex((player) => {
+      return player.id === socket.id;
+    });
+    if (playerIndex !== -1) {
+      players.splice(playerIndex, 1);
+    }
+    io.to(roomName.roomName).emit('update-players', getPlayersInRoom(roomName.roomName));
+  }
+
+  socket.on('rename-player', (name: string) => {
     const roomInfo = clientRooms[socket.id];
     if (!roomInfo) {
       return;
     }
     const { roomName } = roomInfo;
-    socket.leave(roomName);
-    const playerIndex = players.findIndex((player) => player.id === socket.id);
-    if (playerIndex !== -1) {
-      players.splice(playerIndex, 1);
+    const player = players.find((player) => player.id === socket.id);
+    if (player) {
+      player.name = name;
     }
     io.to(roomName).emit('update-players', getPlayersInRoom(roomName));
+  });
+
+  // Game functions
+
+  function handleGameStart(rounds: number) {
+    const roomInfo = clientRooms[socket.id];
+    if (!roomInfo) {
+      return;
+    }
+    const { roomName } = roomInfo;
+    io.to(roomName).emit('gameStarted');
+    gameLoop(roomName, rounds);
   }
   
 
@@ -145,31 +143,6 @@ io.on('connection', (socket: Socket) => {
       }
     }
   }
-  
-
-  function handleGameStart(rounds: number) {
-    const roomInfo = clientRooms[socket.id];
-    if (!roomInfo) {
-      return;
-    }
-    const { roomName } = roomInfo;
-    io.to(roomName).emit('gameStarted');
-    gameLoop(roomName, rounds);
-  }
-  
-
-  socket.on('rename-player', (name: string) => {
-    const roomInfo = clientRooms[socket.id];
-    if (!roomInfo) {
-      return;
-    }
-    const { roomName } = roomInfo;
-    const player = players.find((player) => player.id === socket.id);
-    if (player) {
-      player.name = name;
-    }
-    io.to(roomName).emit('update-players', getPlayersInRoom(roomName));
-  });
   
 
 });
