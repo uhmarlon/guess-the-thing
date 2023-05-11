@@ -3,7 +3,7 @@ import { FC, useEffect, useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import { io } from 'socket.io-client'
-import { socket } from './gusstheflag'
+import { Player, socket } from './gusstheflag'
 import Gamejoincreate from '../components/Gamejoin'
 import Lobby from '../components/Lobby'
 import { useRouter } from 'next/router'
@@ -11,6 +11,56 @@ import { useLobby, useGameToken } from '../utils/game'
 
 
 export const gussthecocktail: NextPage = () => {
+  const router = useRouter()
+  const { inLobby, setinLobby } = useLobby()
+  const { gameToken, setgameToken } = useGameToken()
+
+  const [timeLeft, setTimeLeft] = useState(0);
+  const [gameRounds, setgameRounds] = useState(0);
+  const [maxGameRounds, setmaxGameRounds] = useState(0);
+
+  const [gameCreator , setGameCreator] = useState<boolean>(false);
+  const [inGame, setInGame] = useState<boolean>(false);
+
+  useEffect(() => {
+    socket.on("gameCode", (gameCode) => {
+      setinLobby(true);
+      setGameCreator(true);
+      setgameToken(gameCode);
+      socket.emit('clientReady')
+    });
+    socket.on("gameCodeoc", (gameCode) => {
+      setinLobby(true);
+      setgameToken(gameCode);
+      socket.emit('clientReady')
+    });
+    socket.on("gameStarted", () => {
+      setInGame(true);
+    });
+    socket.on("gameRounds", (gameRounds, maxRounds) => {
+      setgameRounds(gameRounds);
+      setmaxGameRounds(maxRounds);
+    });
+    socket.on("gameCountdown", (timeLeft) => {
+      setTimeLeft(timeLeft);
+    });
+
+    socket.on('update-players', (players: Player[]) => {
+      console.log(players);
+      
+      const playerList = document.getElementById('playerlistgame') as HTMLElement;
+      if (playerList) {
+        playerList.innerHTML = '';
+        players.sort((a, b) => b.points - a.points);
+        players.forEach((player) => {
+          const li = document.createElement('li');
+          li.textContent = player.name + " | " + player.points;
+          playerList.appendChild(li);
+        });
+      }
+    });
+
+  }, []);
 
 return (
     <>
@@ -19,9 +69,9 @@ return (
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* {!inLobby ? ( <Gamejoincreate /> ) : (
+      {!inLobby ? ( <Gamejoincreate gameType="cocktail" /> ) : (
          <Lobby gameToken={gameToken} startbutton={gameCreator} /> 
-      )} */}
+      )}
 
       <main className='mt-28'>
         <h1 className='text-4xl text-center mb-2'>Guess The Cocktail</h1>

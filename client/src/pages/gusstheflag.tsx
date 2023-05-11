@@ -44,7 +44,6 @@ export const gusstheflag: NextPage = () => {
     });
     socket.on("gameCodeoc", (gameCode) => {
       setinLobby(true);
-      console.log(gameCode + "oc");
       setgameToken(gameCode);
       socket.emit('clientReady')
     });
