@@ -5,6 +5,8 @@ import { generateRandomName, makeid, buildHiddenName} from './utils';
 import { gameLoop, getRandomFlag } from './flagGame';
 import { arrayBuffer } from 'stream/consumers';
 import { Player, RoomGameMetadata, Room } from './interfaces';
+import { gameCocktailStart } from './cocktailGame';
+import e from 'express';
 
 
 const app = express();
@@ -35,6 +37,7 @@ io.on('connection', (socket: Socket) => {
   socket.on('clientReady', handleClientReady);
   socket.on('cgameStart', handleGameStart);
   socket.on('pickString', handlepickString);
+  socket.on('cocktailguss', handlepickCocktail);
   socket.on('disconnect', () => { removePlayer(socket); });
   socket.on('getPlayerinRoom', getPlayersInRoom);
 
@@ -113,9 +116,43 @@ io.on('connection', (socket: Socket) => {
     }
     const { roomName } = roomInfo;
     io.to(roomName).emit('gameStarted');
+
+
+
+    if (roomInfo.gameType === 'flag') {
     gameLoop(roomName, rounds);
+    } 
+
+    if (roomInfo.gameType === 'cocktail') {
+      gameCocktailStart(roomName, rounds);
+    }
   }
   
+  function handlepickCocktail(pickCocktail: string) {
+    const roomInfo = clientRooms[socket.id];
+    if (!roomInfo) {
+      return;
+    }
+    const { roomName } = roomInfo;
+    const roomMeta = gameMeta.find((room) => room.roomName === roomName);
+    if (!roomMeta) {
+      return;
+    }
+    const playerData = players.find((player) => player.id === socket.id);
+    if (playerData) {
+      if (playerData.guess) { return; }
+      if (pickCocktail === roomMeta.countryString) {
+        playerData.points += 10;
+        gameSetPersonString(socket.id, "✔️✔️✔️");
+        io.to(roomName).emit('update-players', getPlayersInRoom(roomName));
+      } else {
+        gameSetPersonString(socket.id, "❌ Wrong Answer ❌");
+      }
+      playerData.guess = true;
+    }
+  }
+
+
 
   function handlepickString(pickWord: string, timer: number) {
     const roomInfo = clientRooms[socket.id];
@@ -143,8 +180,6 @@ io.on('connection', (socket: Socket) => {
       }
     }
   }
-  
-
 });
 
 

@@ -8,21 +8,30 @@ import Gamejoincreate from '../components/Gamejoin'
 import Lobby from '../components/Lobby'
 import { useRouter } from 'next/router'
 import { useLobby, useGameToken } from '../utils/game'
+import CocktailButtons from '../components/CocktailButtons'
 
 
 export const gussthecocktail: NextPage = () => {
   const router = useRouter()
+
   const { inLobby, setinLobby } = useLobby()
   const { gameToken, setgameToken } = useGameToken()
 
   const [timeLeft, setTimeLeft] = useState(0);
   const [gameRounds, setgameRounds] = useState(0);
   const [maxGameRounds, setmaxGameRounds] = useState(0);
+  const [cocktailtitel, setCocktailtitel] = useState<string>("");
+  const [cocktailIMG, setCocktailIMG] = useState<string>("https://www.thecocktaildb.com/images/media/drink/nkwr4c1606770558.jpg");
+  const [drinkInfo, setDrinkInfo] = useState([{strDrink:'California Lemonade',idDrink:'11205'},{strDrink:'Bloody Maria',idDrink:'11112'},{strDrink:'Alexander',idDrink:'11014'},{strDrink:'Gin Toddy',idDrink:'11420'}]);
 
   const [gameCreator , setGameCreator] = useState<boolean>(false);
   const [inGame, setInGame] = useState<boolean>(false);
+  const [activeButton, setActiveButton] = useState<boolean>(false);
 
   useEffect(() => {
+    // button click console log key 
+
+
     socket.on("gameCode", (gameCode) => {
       setinLobby(true);
       setGameCreator(true);
@@ -37,6 +46,11 @@ export const gussthecocktail: NextPage = () => {
     socket.on("gameStarted", () => {
       setInGame(true);
     });
+
+    socket.on("gameSetroomString", (roomString) => {
+      setCocktailtitel(roomString);
+    });
+
     socket.on("gameRounds", (gameRounds, maxRounds) => {
       setgameRounds(gameRounds);
       setmaxGameRounds(maxRounds);
@@ -44,6 +58,19 @@ export const gussthecocktail: NextPage = () => {
     socket.on("gameCountdown", (timeLeft) => {
       setTimeLeft(timeLeft);
     });
+
+    socket.on("gameActivButton", (button) => {
+      setActiveButton(button);
+    });
+
+    socket.on("gameSetCocktails", (clientDrinkInfo) => {
+      setDrinkInfo(clientDrinkInfo);
+    });
+
+    socket.on("gameSetCocktailsIMG", (strDrinkThumb) => {
+      setCocktailIMG(strDrinkThumb);
+    });
+
 
     socket.on('update-players', (players: Player[]) => {
       console.log(players);
@@ -75,33 +102,24 @@ return (
 
       <main className='mt-28'>
         <h1 className='text-4xl text-center mb-2'>Guess The Cocktail</h1>
-        <h2 className='text-1xl text-center mb-2'>Runde: 5/5</h2>
+        <h2 className='text-1xl text-center mb-2'>Runde: {gameRounds}/{maxGameRounds}</h2>
         <div className='flex justify-center mb-6'>
               <Image
-                src="https://www.thecocktaildb.com/images/media/drink/nkwr4c1606770558.jpg"
-                alt="Picture of the author"
+                src={cocktailIMG}
+                alt="Picture of the Cocktail"
                 width={350}
                 height={350}
                 className='rounded-xl'
                 />
         </div>
         <div className='flex justify-center mb-1'>
-          <h1 className='text-4xl'>Cocktailname</h1>
+          <h1 className='text-4xl'>{cocktailtitel}</h1>
         </div>
         <div className='flex justify-center mb-6'>
-          <h1 className='text-1xl'>4 Sekunden</h1>
+          <h1 className='text-1xl'>{timeLeft} Seconds</h1>
         </div>
         <div className='flex justify-center mb-4'>
-        <div className='grid grid-cols-2 gap-3 text-lg'>
-          <button className='bg-gray-600 text-white text-center rounded-lg w-72 h-14'>Old Fashioned</button>
-          <button className='bg-gray-600 text-white text-center rounded-lg w-72 h-14'>Old Fashioned</button>
-          <button className='bg-gray-600 text-white text-center rounded-lg w-72 h-14'>Old Fashioned</button>
-          <button className='bg-gray-600 text-white text-center rounded-lg w-72 h-14'>Old Fashioned</button>
-        </div>
-
-
-
-        
+          <CocktailButtons active={activeButton} cocktailArray={drinkInfo} />
         </div>
         <div className='flex justify-center mb-1'>
           <h1 className='text-2xl'>Spieler</h1>

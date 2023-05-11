@@ -10,6 +10,7 @@ module.exports = {
   },
   images: {
     domains: ['www.thecocktaildb.com'],
+    unoptimized: true,
   },
   reactStrictMode: true,
 }

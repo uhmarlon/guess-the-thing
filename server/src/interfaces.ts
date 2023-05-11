@@ -19,3 +19,10 @@ export interface Player {
   export interface Room {
     sockets: Set<Socket>;
   }
+
+  export interface Cocktail {
+    strDrink: string;
+    strDrinkThumb: string;
+    strInstructions: string;
+    idDrink: string;
+  }

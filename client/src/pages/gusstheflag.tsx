@@ -67,7 +67,6 @@ export const gusstheflag: NextPage = () => {
 
     socket.on("gameSetroomString", (roomString) => {
       setcountryTitel(roomString);
-      console.log(roomString);
     });
 
     socket.on('update-players', (players: Player[]) => {
