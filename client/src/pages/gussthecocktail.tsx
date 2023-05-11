@@ -35,27 +35,23 @@ return (
                 className='rounded-xl'
                 />
         </div>
+        <div className='flex justify-center mb-1'>
+          <h1 className='text-4xl'>Cocktailname</h1>
+        </div>
         <div className='flex justify-center mb-6'>
-            <div className='grid grid-cols-4 gap-3'>
-              <div className='col-span-3'>
-                <h1 className='text-4xl'>5</h1>
-              </div>
-            <div className=''>
-              <h1 
-              className='text-3xl'
-              >5 sec</h1>
-            </div>
-          </div>
+          <h1 className='text-1xl'>4 Sekunden</h1>
         </div>
         <div className='flex justify-center mb-4'>
-          <input
-            type="text"
-            name="Eingabe"
-            placeholder="Land eingeben"
+        <div className='grid grid-cols-2 gap-3 text-lg'>
+          <button className='bg-gray-600 text-white text-center rounded-lg w-72 h-14'>Old Fashioned</button>
+          <button className='bg-gray-600 text-white text-center rounded-lg w-72 h-14'>Old Fashioned</button>
+          <button className='bg-gray-600 text-white text-center rounded-lg w-72 h-14'>Old Fashioned</button>
+          <button className='bg-gray-600 text-white text-center rounded-lg w-72 h-14'>Old Fashioned</button>
+        </div>
 
-            // onKeyDown={handleKeyDown}
-            className="px-3 py-3 text-white border rounded-lg bg-gray-800 border-gray-600 w-72 focus:border-blue-500 focus:outline-none focus:ring"
-          />
+
+
+        
         </div>
         <div className='flex justify-center mb-1'>
           <h1 className='text-2xl'>Spieler</h1>

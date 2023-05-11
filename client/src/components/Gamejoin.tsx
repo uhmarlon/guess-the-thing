@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 import { socket } from "../pages/gusstheflag";
 import { useRef, useState } from "react";
 
-export default function Gamejoincreate({}) {
+export default function Gamejoincreate({gameType}: {gameType: string}) {
     const [showModal, setShowModal] = useState<boolean>(true);
     const gameIdRef = useRef<HTMLInputElement>(null);
 
@@ -13,7 +13,7 @@ export default function Gamejoincreate({}) {
             return;
         }
         console.log(gameToken);
-        socket.emit("joinGame", gameToken.trim());
+        socket.emit("joinGame", gameToken.trim(), gameType);
         socket.on("unknownCode", (gameCode) => {
             alert("Unknown game code: " + gameCode);
         });
@@ -24,7 +24,7 @@ export default function Gamejoincreate({}) {
     };
 
     const handleNewGame = () => {
-        socket.emit("newGame");
+        socket.emit("newGame", gameType);
     }
 
     return (
@@ -40,9 +40,8 @@ export default function Gamejoincreate({}) {
                         <div className="bg-gray-700 text-white rounded-lg shadow-lg w-full md:max-w-md">
                             <div className="px-6 py-4">
                                 <h3 id="modal-title" className="text-lg font-medium">
-                                    Guess The Flag - Join or Create a Game
+                                    Join or Create a Game
                                 </h3>
-                                {/* center button */}
                                 <div className="flex items-center justify-center mt-4">
                                     <button
                                         type="submit"

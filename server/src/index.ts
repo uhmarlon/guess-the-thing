@@ -3,12 +3,16 @@ import http from 'http';
 import { Server, Socket } from 'socket.io';
 import { generateRandomName, makeid, buildHiddenName} from './utils';
 import { gameLoop, getRandomFlag } from './game';
+import { arrayBuffer } from 'stream/consumers';
 
 const app = express();
 const server = http.createServer(app);
 export const players: Player[] = [];
 export const gameMeta: RoomGameMetadata[] = [];
-const clientRooms: { [key: string]: string } = {};
+const clientRooms: { [key: string]: { gameType: string, roomName: string } } = {};
+
+
+// const clientRooms with gameType and  roomName
 
 export interface Player {
   id: string;
@@ -39,10 +43,11 @@ export const io = new Server(server, {
 });
 
 
-function getPlayersInRoom(roomName: string) {
+function getPlayersInRoom(roomName: string): Player[] {
   const playersInRoom = players.filter((player) => player.room === roomName);
   return playersInRoom;
 }
+
 
 io.on('connection', (socket: Socket) => {
   socket.on('newGame', handleNewGame);
@@ -53,22 +58,29 @@ io.on('connection', (socket: Socket) => {
   socket.on('disconnect', () => { removePlayer(socket); });
   socket.on('getPlayerinRoom', getPlayersInRoom);
 
-  function handleJoinGame(roomName: string) {
-    const room: Room = io.sockets.adapter.rooms.get(roomName) as unknown as Room;
+  function handleJoinGame(roomName: string, gameType: string) {
+    const room = io.sockets.adapter.rooms.get(roomName);
+    const roomString: string = Array.from(room ?? []).join(', ');
     if (room) {
-      clientRooms[socket.id] = roomName;
-      socket.join(roomName);
-      socket.emit('gameCodeoc', roomName);
-    } else {
-      socket.emit('unknownCode');
+      const roomInfo = clientRooms[roomString];
+      if (roomInfo && roomInfo.gameType === gameType) {
+        socket.join(roomName);
+        console.log(roomName);
+        console.log("test");
+        socket.emit('gameCodeoc', roomName);
+      } else {
+        socket.emit('invalidGameType');
+      }} else {
+          socket.emit('unknownCode');
     }
   }
-
-  function handleNewGame() {
+  
+  function handleNewGame(gameType: string) {
     let roomName = makeid(5);
-    clientRooms[socket.id] = roomName;
+    clientRooms[socket.id] = { gameType, roomName };
     socket.emit('gameCode', roomName);
     socket.join(roomName);
+    console.log(roomName);
   }
 
   function handleClientReady() {
@@ -76,68 +88,89 @@ io.on('connection', (socket: Socket) => {
     if (!roomName) {
       return;
     }
-    const player = createPlayer(roomName as string, socket.id);
-    io.to(roomName).emit('update-players', getPlayersInRoom(roomName));
+    const player = createPlayer(roomName.roomName as string, socket.id);
+    console.log(player + ' is ready');
+    io.to(roomName.roomName).emit('update-players', getPlayersInRoom(roomName.roomName));
   }
 
+  // function handleClientReady() {
+  //   const roomInfo = clientRooms[socket.id];
+  //   console.log(roomInfo);
+  //   if (!roomInfo) {
+  //     return;
+  //   }
+  //   const { roomName } = roomInfo;
+  //   const player = createPlayer(roomName, socket.id);
+  //   io.to(roomName).emit('update-players', getPlayersInRoom(roomName));
+  // }
+
   function removePlayer(socket: Socket) {
-    const roomName = clientRooms[socket.id];
-    if (!roomName) {
+    const roomInfo = clientRooms[socket.id];
+    if (!roomInfo) {
       return;
     }
+    const { roomName } = roomInfo;
     socket.leave(roomName);
-    const playerIndex = players.findIndex((player) => {
-      return player.id === socket.id;
-    });
+    const playerIndex = players.findIndex((player) => player.id === socket.id);
     if (playerIndex !== -1) {
       players.splice(playerIndex, 1);
     }
     io.to(roomName).emit('update-players', getPlayersInRoom(roomName));
   }
+  
 
-  function handlepickString(pickWord: string, timer : number){
-    const roomName = clientRooms[socket.id];
-    if (!roomName) {
+  function handlepickString(pickWord: string, timer: number) {
+    const roomInfo = clientRooms[socket.id];
+    if (!roomInfo) {
       return;
     }
+    const { roomName } = roomInfo;
     const roomMeta = gameMeta.find((room) => room.roomName === roomName);
     if (!roomMeta) {
       return;
     }
-    const playerdata = players.find((player) => player.id === socket.id);
-      if (playerdata) {
-        if (playerdata.guess) {
-          return;
-        }
+    const playerData = players.find((player) => player.id === socket.id);
+    if (playerData) {
+      if (playerData.guess) {
+        return;
+      }
       if (pickWord.toLowerCase() === roomMeta.countryString.toLowerCase()) {
-          playerdata.points += 10 + timer;
-          playerdata.guess = true;
-        gameSetPersonString(socket.id, roomMeta.countryString + "✔️")
+        playerData.points += 10 + timer;
+        playerData.guess = true;
+        gameSetPersonString(socket.id, roomMeta.countryString + "✔️");
         io.to(roomName).emit('update-players', getPlayersInRoom(roomName));
       } else {
-        let newString = buildHiddenName(roomMeta.countryString, pickWord);
-        gameSetPersonString(socket.id, newString)
+        const newString = buildHiddenName(roomMeta.countryString, pickWord);
+        gameSetPersonString(socket.id, newString);
       }
     }
   }
+  
 
   function handleGameStart(rounds: number) {
-    const roomName = clientRooms[socket.id];
-    if (!roomName) {
+    const roomInfo = clientRooms[socket.id];
+    if (!roomInfo) {
       return;
     }
+    const { roomName } = roomInfo;
     io.to(roomName).emit('gameStarted');
     gameLoop(roomName, rounds);
   }
+  
 
   socket.on('rename-player', (name: string) => {
-    const roomName = clientRooms[socket.id];
+    const roomInfo = clientRooms[socket.id];
+    if (!roomInfo) {
+      return;
+    }
+    const { roomName } = roomInfo;
     const player = players.find((player) => player.id === socket.id);
     if (player) {
       player.name = name;
     }
     io.to(roomName).emit('update-players', getPlayersInRoom(roomName));
   });
+  
 
 });
 

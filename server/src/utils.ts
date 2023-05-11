@@ -30,8 +30,3 @@ return name.split('').map((char: string, index: number) => {
     }
 }).join(' ');
 }
-
-function getPlayersInRoom(roomName: string) {
-    const playersInRoom = players.filter((player) => player.room === roomName);
-    return playersInRoom;
-}

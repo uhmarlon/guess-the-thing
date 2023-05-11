@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { io } from 'socket.io-client'
 import { CountryFlag } from '../components/Flag'
-export const socket = io(process.env.SOCKET_SERVER as string || 'https://root.nighttech.de/');
+export const socket = io(process.env.SOCKET_SERVER as string || 'localhost:3001');
 import Gamejoincreate from '../components/Gamejoin'
 import Lobby from '../components/Lobby'
 import { useRouter } from 'next/router'
@@ -72,6 +72,7 @@ export const gusstheflag: NextPage = () => {
 
     socket.on('update-players', (players: Player[]) => {
       console.log(players);
+      
       const playerList = document.getElementById('playerlistgame') as HTMLElement;
       if (playerList) {
         playerList.innerHTML = '';
@@ -101,7 +102,7 @@ export const gusstheflag: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {!inLobby ? ( <Gamejoincreate /> ) : (
+      {!inLobby ? ( <Gamejoincreate gameType="flag" /> ) : (
          <Lobby gameToken={gameToken} startbutton={gameCreator} /> 
       )}
 
