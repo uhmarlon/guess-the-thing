@@ -4,6 +4,18 @@ import { gameMeta, gameSetPersonString, gameSetRound, getPlayersInRoom, getPlaye
 import { gameSetRoomString } from './flagGame';
 
 export async function gameCocktailStart(roomName: string, rounds: number): Promise<void> {
+    gameSetRoomString(roomName, 'Get ready!');
+    await new Promise((resolve) => {
+        let outTimer = 3;
+        const countdownInterval = setInterval(() => {
+          outTimer--;
+          io.to(roomName).emit('gameCountdown', outTimer);
+          if (outTimer === 0) {
+            clearInterval(countdownInterval);
+            resolve('stop');
+          }
+        }, 1000);
+      });
     gameCocktailLoop(roomName, rounds);
 
     // let rightCocktail = getRandomCocktail();
