@@ -76,7 +76,6 @@ export async function gameCocktailLoop(roomName: string, rounds: number): Promis
     }
 
     gameSetCocktailIMG(roomName, rightCocktail.strDrinkThumb);
-    console.log(rightCocktail)
     gameSetCocktails(roomName, clientDrinkInfo);
     // io.to(roomName).emit('gameActivButton', false);
     let counter = 10;

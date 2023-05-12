@@ -47,27 +47,50 @@ io.on('connection', (socket: Socket) => {
 
   function handleNewGame(gameType: string) {
     let roomName = makeid(5);
-    clientRooms[socket.id] = { gameType, roomName };
+    clientRooms[socket.id] = { roomName, gameType };
     socket.emit('gameCode', roomName);
     socket.join(roomName);
-    console.log(roomName);
   }
 
   function handleJoinGame(roomName: string, gameType: string) {
     const room = io.sockets.adapter.rooms.get(roomName);
-    const roomString: string = Array.from(room ?? []).join(', ');
+    const roomString: string = Array.from(room ?? [])[0];
+
     if (room) {
-      const roomInfo = clientRooms[roomString];
-      if (roomInfo && roomInfo.gameType === gameType) {
+      if (clientRooms.hasOwnProperty(roomString) && clientRooms[roomString].gameType == gameType) {
+        clientRooms[socket.id] = { roomName, gameType };
         socket.join(roomName);
-        clientRooms[socket.id] = { gameType, roomName };
         socket.emit('gameCodeoc', roomName);
       } else {
         socket.emit('invalidGameType');
-      }} else {
-        socket.emit('unknownCode');
+      }
+    } else {
+      socket.emit('unknownCode');
     }
   }
+
+  // function handleJoinGame(roomName: string, gameType: string) {
+  //   const room = io.sockets.adapter.rooms.get(roomName);
+  //   const roomString: string = Array.from(room ?? []).join(', ');
+  //   if (room) {
+  //     console.log("checkroom")
+  //     const roomInfo = clientRooms[roomString];
+  //     console.log(roomInfo)
+  //     if (roomInfo && roomInfo.gameType === gameType) {
+  //       clientRooms[roomString] = { roomName: roomName, gameType: gameType};
+  //       console.log(roomName + " " + gameType + " " + socket.id + " " + roomString)
+  //       socket.join(roomName);
+  //       console.log(socket.id);
+  //       socket.emit('gameCodeoc', roomName);
+  //     } else {
+  //       socket.emit('invalidGameType');
+  //       console.log('invalidGameType');
+  //     }} else {
+  //       socket.emit('unknownCode');
+  //       console.log('unknownCode')
+  //   }
+  //   console.log("//////")
+  // }
   
 
   function handleClientReady() {
