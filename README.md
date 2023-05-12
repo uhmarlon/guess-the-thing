@@ -1,6 +1,6 @@
-# Multiplayer Guess The Flag
+# Multiplayer Guess The Game
 
-This is a multiplayer game built using Next.js, Tailwind CSS, and Socket.IO. The game allows players to guess the flag of a country and compete with other players in real-time.
+This is a multiplayer game built using Next.js, Tailwind CSS, and Socket.IO. The game allows players to guess the things of a country and compete with other players in real-time.
 
 ## Getting Started
 
