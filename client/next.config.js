@@ -8,5 +8,9 @@ module.exports = {
     })
     return config
   },
+  images: {
+    domains: ['www.thecocktaildb.com'],
+    unoptimized: true,
+  },
   reactStrictMode: true,
 }

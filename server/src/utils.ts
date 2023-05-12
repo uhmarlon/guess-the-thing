@@ -16,3 +16,17 @@ export function makeid(length :number) {
     }
     return result;
  }
+
+export function buildHiddenName(name: string, guess: string = ''): string {
+return name.split('').map((char: string, index: number) => {
+    if (guess.charAt(index).toLowerCase() === char.toLowerCase()) {
+    return name.charAt(index);
+    } else if (char === ' ') {
+    return 'ㅤ';
+    } else if (char === '-') {
+    return '-';
+    } else {
+    return '_';
+    }
+}).join(' ');
+}
