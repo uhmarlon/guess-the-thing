@@ -18,13 +18,13 @@ export const Home: NextPage = () => {
 
       <main className='mt-28'>
         <div className="z-20 flex w-full flex-col">
-          <span className="mx-auto mb-6 rounded-full border border-white/20 bg-white/10 px-9 py-2 font-medium text-white backdrop-blur-sm">Multiplayer and single-player guess games</span>
+          <span className="mx-auto mb-6 rounded-full border border-white/20 bg-white/10 px-9 py-2 text-center font-medium text-white backdrop-blur-sm">Multiplayer and single-player guess games</span>
           <h1 className='text-4xl font-bold text-center mb-2'>Guess The Thing</h1>
           <span className='text-1xl text-center mb-2'>Challenge your friends or test your skills solo.</span>
           
 
           <div className="grid grid-cols-1 gap-1 m-4 justify-center items-center content-center justify-items-center">
-  <div className="relative w-1/2 h-[15rem] mb-3">
+  <div className="relative w-[20rem] md:w-1/2 h-[15rem] mb-3">
     <Link href="/gussthecocktail">
       <Image src="https://www.thecocktaildb.com/images/media/drink/nkwr4c1606770558.jpg" alt='' fill className="rounded-xl layout-fill object-cover" />
       <div className="absolute bottom-0 w-full h-full bg-gradient-to-t from-black/80 to-transparent rounded-xl"></div>
@@ -35,7 +35,7 @@ export const Home: NextPage = () => {
     </Link>
   </div>
 
-  <div className="relative w-1/2 h-[15rem] mb-3">
+  <div className="relative w-[20rem] md:w-1/2 h-[15rem] mb-3">
     <Link href="/gusstheflag">
       <Image src="/flag.webp" alt='' fill className="rounded-xl layout-fill object-cover" />
       <div className="absolute bottom-0 w-full h-full bg-gradient-to-t from-black/80 to-transparent rounded-xl"></div>
