@@ -62,52 +62,6 @@ export default function Lobby({
     socket.on("gameEnd", (gameEnd) => {
       setShowConfetti(true);
       setGameWinner(gameEnd);
-
-      /* switch (gameEnd.length) {
-        case 1:
-          alert(
-            "\t 1: \n \t" +
-              gameEnd[0].name +
-              " | Mit " +
-              gameEnd[0].points +
-              " Punkten"
-          );
-          break;
-        case 2:
-          alert(
-            "\t 1: \n\t" +
-              gameEnd[0].name +
-              " | Mit " +
-              gameEnd[0].points +
-              " Punkten\n" +
-              "\t 2: \n\t" +
-              gameEnd[1].name +
-              " | Mit " +
-              gameEnd[1].points +
-              " Punkten"
-          );
-          break;
-        default:
-          alert(
-            "\t 1: \n\t" +
-              gameEnd[0].name +
-              " | Mit " +
-              gameEnd[0].points +
-              " Punkten\n" +
-              "\t 2: \n\t" +
-              gameEnd[1].name +
-              " | Mit " +
-              gameEnd[1].points +
-              " Punkten\n" +
-              "\t 3: \n\t" +
-              gameEnd[2].name +
-              " | Mit " +
-              gameEnd[2].points +
-              " Punkten"
-          );
-          break;
-      } */
-      //window.location.href = "/";
     });
   }, []);
 
