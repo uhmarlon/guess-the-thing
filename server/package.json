@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.ts",
+    "dev": "nodemon src/app.ts",
     "build": "tsc && echo Build Ready!",
-    "prod": "node dist/index.js"
+    "prod": "node dist/app.js"
   },
   "author": "uhmarlon",
   "dependencies": {
