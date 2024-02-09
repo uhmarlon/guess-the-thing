@@ -1,10 +1,9 @@
 import React from "react";
-import { io } from "socket.io-client";
-import { socket } from "../pages/gusstheflag";
+import { socket } from "../core/gameSocket";
 import { useRef, useState } from "react";
 
 export default function Gamejoincreate({gameType}: {gameType: string}) {
-    const [showModal, setShowModal] = useState<boolean>(true);
+    const [showModal] = useState<boolean>(true);
     const gameIdRef = useRef<HTMLInputElement>(null);
 
     const handleSubmit = () => {

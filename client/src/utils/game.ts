@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { useState } from 'react';
 
 let inLobbyInitialState = false;
 let gameTokenInitialState = 'xxxx';

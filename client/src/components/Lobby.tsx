@@ -1,8 +1,8 @@
 import React from "react";
-import { io } from "socket.io-client";
-import { socket, Player } from "../pages/gusstheflag";
+import { Player } from "../pages/gusstheflag";
 import { useRef, useState, useEffect } from "react";
 import Confetti from "react-confetti";
+import { socket } from "../core/gameSocket";
 
 export default function Lobby({
   gameToken,

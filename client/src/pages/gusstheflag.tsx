@@ -1,16 +1,12 @@
 import type { NextPage } from "next";
-import { FC, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
-import Image from "next/image";
-import { io } from "socket.io-client";
 import { CountryFlag } from "../components/Flag";
-export const socket = io(
-  (process.env.SOCKET_SERVER as string) || "https://root.nighttech.de/"
-);
 import Gamejoincreate from "../components/Gamejoin";
 import Lobby from "../components/Lobby";
 import { useRouter } from "next/router";
 import { useLobby, useGameToken } from "../utils/game";
+import { socket } from "../core/gameSocket";
 
 export interface Player {
   id: string;
