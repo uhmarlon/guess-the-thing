@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { socket } from '../pages/gusstheflag';
+import { socket } from '../core/gameSocket';
 
 interface Props {
   active: boolean;

@@ -10,7 +10,7 @@ To get started, you will need to have Docker installed on your machine. Once Doc
 docker-compose up
 ```
 
-This will start both the client and server applications, and you can access the game by navigating to `http://localhost:3000` in your browser.
+This will start both the client and server applications, and you can access the game by navigating to `http://guessthething.localhost` in your browser.
 
 ## Folder Structure
 
