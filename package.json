@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "dev-server": "cd server && npm run dev",
-    "dev-client": "cd client && npm run dev"
+    "dev-client": "cd client && npm run dev",
+    "install-dependencies": "(cd server && npm install) && (cd client && npm install)"
   },
   "author": "uhmarlon"
 }
