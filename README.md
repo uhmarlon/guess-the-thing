@@ -11,8 +11,8 @@ Once Docker is installed, you can run the
 following command to start the application:
 
 ## Dev Setup
-Choose the correct NPM Version using NVM:
-**Maybe you've to bee the administrator so try to use sudo BUT JUST FOR NVM INSTALL**
+Choose the correct NPM Version using NVM:  
+**Maybe you have to be the administrator of your system, so try to use sudo BUT JUST FOR NVM INSTALL**
 
 ```bash
 sudo su
