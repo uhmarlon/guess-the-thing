@@ -18,10 +18,16 @@ unlink ./server/.env
 cp $env_file ./server/.env
 
 # Install correct node version and install dependencies
+# shellcheck disable=SC1090
+source ~/.nvm/nvm.sh
 nvm install
 nvm use
 npm run install-dependencies
 
+# Fix permissions of entrypoint
+chmod +x ./server/entrypoint.sh
+chmod +x ./client/entrypoint.sh
+
 # Start the application
-docker compose down --volumes
-docker compose up client server --build --remove-orphans --force-recreate
+docker compose --file docker-compose.dev.yml down --volumes
+docker compose --file docker-compose.dev.yml up --build --remove-orphans --force-recreate
