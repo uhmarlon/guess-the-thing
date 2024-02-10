@@ -9,7 +9,7 @@ the flag of a country or the name of a cocktail and compete with other players i
 <details>
 <summary>Run Project in Production Mode using Docker Compose</summary>
 
-### Run Project in Production Mode
+### Run Project in Production Mode using docker
 
 To get started, you will need to have [Docker](https://docs.docker.com/get-docker/) installed on your machine.
 Once Docker is installed, you can run the
@@ -29,9 +29,9 @@ http://api.guessthething.localhost.
 </details>
 
 <details>
-<summary>Run Project in Dev Mode using GitPod</summary>
+<summary>Run Project in Development Mode using GitPod</summary>
 
-### Run Project in Dev Mode using GitPod
+### Run Project in Development Mode using GitPod
 
 - First you need to install
   the [GitPod Browser Extension](https://www.gitpod.io/docs/configure/user-settings/browser-extension), then you can
@@ -44,8 +44,8 @@ http://api.guessthething.localhost.
 - Login to GitPod and wait for the project to start.
     - The Project will be installed and started automatically.
 
-- **⚠️ VERY IMPORTANT:** You have to set the WebSocket (Port 3001) to public. 
-  Otherwise the Frontend cannot access the backend 
+- **⚠️ ATTENTION:** You have to set the WebSocket (Port 3001) to public. 
+  Otherwise the Frontend cannot access the backend. (Should be done automatically)
 
 - Access the Application by clicking on the "Open Browser" button in the bottom right corner:
   ![Screenshot](https://zockerbandewqhd.nimbusweb.me/box/attachment/10234594/641inbfau2ud6gp52pb9/TZ58Koy9NRng3CnD/screenshot-uhmarlon-guessthething-65249tt4ht3.ws-eu108.gitpod.io-2024.02.10-00_53_23.png)
@@ -104,6 +104,28 @@ npm run dev-server
 
 The client application will be running on http://localhost:3000, and the server application will be running on
 http://localhost:3001.
+</details>
+
+<details>
+<summary>Run Project in Production Mode using Docker Compose</summary>
+
+### Run Project in Development Mode using docker
+
+To get started, you will need to have [Docker](https://docs.docker.com/get-docker/) installed on your machine.
+Once Docker is installed, you can run the
+following command to start the application:
+
+Start the docker-compose setup by using the following command:
+
+```bash
+./start-coker-dev-setup
+```
+
+This will start both the client and server applications,
+and you can access the game by navigating to http://guessthething.localhost in your browser.
+
+Client application will be running on http://guessthething.localhost, and the server application will be running on
+http://api.guessthething.localhost.
 </details>
 
 ## Folder Structure
