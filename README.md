@@ -59,7 +59,7 @@ http://api.guessthething.localhost.
   ./startGitPod
   ```
 
-*⚠️ ATTENTION:* The `.env`-file of the server is regularly not needed. In GitPod mode, the `.env`-file is copied from
+**⚠️ ATTENTION:** The `.env`-file of the server is regularly not needed. In GitPod mode, the `.env`-file is copied from
 the
 client
 and overwrites the one from the server.
@@ -126,7 +126,7 @@ Contributions to the project are always welcome!
 If you find a bug or have an idea for an improvement, feel free to
 submit a pull request.
 
-- *Keep in mind, that Frontend .env-Variables have to begin with `NEXT_PUBLIC_` to be accessible in the frontend.*
+- **Keep in mind, that Frontend .env-Variables have to begin with `NEXT_PUBLIC_` to be accessible in the frontend.**
 - https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables#bundling-environment-variables-for-the-browser
 
 - Before you submit a pull request, make sure that the project runs in every environment (Docker, GitPod, local NodeJS)
