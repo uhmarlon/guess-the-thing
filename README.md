@@ -59,7 +59,7 @@ http://api.guessthething.localhost.
 - To stop the Project, you can click into the terminal and press `Ctrl + C`.
 - To start the Project again, you can run the following command:
   ```bash
-  ./startGitPod
+  ./start-docker-dev-setup
   ```
 
 **⚠️ ATTENTION:** The `.env`-file of the server is regularly not needed. In GitPod mode, the `.env`-file is copied from
