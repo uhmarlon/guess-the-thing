@@ -4,18 +4,16 @@ This is a multiplayer game website built using Next.js, Tailwind CSS, and Socket
 The website allows players to guess
 the flag of a country or the name of a cocktail and compete with other players in real-time.
 
-## Getting Started
-
-To get started, you will need to have Docker installed on your machine.
-Once Docker is installed, you can run the
-following command to start the application:
-
 ## Dev Setup
 
 <details>
 <summary>Run Project in Production Mode using Docker Compose</summary>
 
 ### Run Project in Production Mode
+
+To get started, you will need to have [Docker](https://docs.docker.com/get-docker/) installed on your machine.
+Once Docker is installed, you can run the
+following command to start the application:
 
 Start the docker-compose setup:
 
@@ -111,7 +109,7 @@ More games are coming soon!
 
 ## Contributing
 
-Contributions to the project are always welcome!
+Contributions to the project are always welcome!  
 If you find a bug or have an idea for an improvement, feel free to
 submit a pull request.
 
