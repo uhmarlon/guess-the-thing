@@ -1,0 +1,40 @@
+#!/bin/bash
+
+IS_GITPOD=0
+env_file='./client/.env'
+
+# Check if the first argument is '--gitpod'
+if [[ $1 == "--gitpod" ]]; then
+    IS_GITPOD=1
+fi
+
+if (( IS_GITPOD )); then
+    # Check if NEXT_PUBLIC_GITPOD_WORKSPACE_URL is in ./client/.env
+    if grep -qF 'NEXT_PUBLIC_GITPOD_WORKSPACE_URL' "$env_file"; then
+        # If it exists, update its value
+        sed -i "s|^NEXT_PUBLIC_GITPOD_WORKSPACE_URL=\".*\"$|NEXT_PUBLIC_GITPOD_WORKSPACE_URL=\"${GITPOD_WORKSPACE_URL}\"|" "$env_file"
+    else
+        # If not present, append the line
+        echo "
+NEXT_PUBLIC_GITPOD_WORKSPACE_URL=\"${GITPOD_WORKSPACE_URL}\"" >> "$env_file"
+    fi
+
+    # Delete the .env file in ./server if it exits and copy the .env file from ./client
+    unlink ./server/.env
+    cp $env_file ./server/.env
+fi
+
+# Install correct node version and install dependencies
+# shellcheck disable=SC1090
+source ~/.nvm/nvm.sh
+nvm install
+nvm use
+npm run install-dependencies
+
+# Fix permissions of entrypoint
+chmod +x ./server/entrypoint.sh
+chmod +x ./client/entrypoint.sh
+
+# Start the application
+docker compose --file docker-compose.dev.yml down --volumes
+docker compose --file docker-compose.dev.yml up --build --remove-orphans --force-recreate
