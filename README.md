@@ -127,10 +127,10 @@ If you find a bug or have an idea for an improvement, feel free to
 submit a pull request.
 
 - **Keep in mind, that Frontend .env-Variables have to begin with `NEXT_PUBLIC_` to be accessible in the frontend.**
-- https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables#bundling-environment-variables-for-the-browser
+  [[More Information]](https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables#bundling-environment-variables-for-the-browser)
 
-- Before you submit a pull request, make sure that the project runs in every environment (Docker, GitPod, local NodeJS)
-  or send a note if it is not testet in every environment.
+- **Before you submit a pull request, make sure that the project runs in every environment (Docker, GitPod, local NodeJS)
+  or send a note if it is not testet in every environment.**
 
 ## License
 
