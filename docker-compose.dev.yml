@@ -2,7 +2,7 @@ version: '3'
 
 x-common-node-service: &common-node-service
   image: node:19-alpine
-  entrypoint: ./entrypoint.sh
+  entrypoint: ["/bin/sh", "-c", "/app/entrypoint.sh"]
   working_dir: /app
 
 services:

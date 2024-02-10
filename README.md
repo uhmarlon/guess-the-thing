@@ -44,6 +44,9 @@ http://api.guessthething.localhost.
 - Login to GitPod and wait for the project to start.
     - The Project will be installed and started automatically.
 
+- **⚠️ VERY IMPORTANT:** You have to set the WebSocket (Port 3001) to public. 
+  Otherwise the Frontend cannot access the backend 
+
 - Access the Application by clicking on the "Open Browser" button in the bottom right corner:
   ![Screenshot](https://zockerbandewqhd.nimbusweb.me/box/attachment/10234594/641inbfau2ud6gp52pb9/TZ58Koy9NRng3CnD/screenshot-uhmarlon-guessthething-65249tt4ht3.ws-eu108.gitpod.io-2024.02.10-00_53_23.png)
 
