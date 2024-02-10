@@ -51,6 +51,19 @@ http://api.guessthething.localhost.
   Browser" button:
   ![Screenshot](https://zockerbandewqhd.nimbusweb.me/box/attachment/10234622/l5qrxmhyrxx290r13x3o/H72UC7CAJyGb3NnD/screenshot-uhmarlon-guessthething-65249tt4ht3.ws-eu108.gitpod.io-2024.02.10-00_54_47.png)
 
+#### Restarting the Project
+
+- To stop the Project, you can click into the terminal and press `Ctrl + C`.
+- To start the Project again, you can run the following command:
+  ```bash
+  ./startGitPod
+  ```
+
+*⚠️ ATTENTION:* The `.env`-file of the server is regularly not needed. In GitPod mode, the `.env`-file is copied from
+the
+client
+and overwrites the one from the server.
+
 </details>
 
 <details>
@@ -112,6 +125,12 @@ More games are coming soon!
 Contributions to the project are always welcome!  
 If you find a bug or have an idea for an improvement, feel free to
 submit a pull request.
+
+- *Keep in mind, that Frontend .env-Variables have to begin with `NEXT_PUBLIC_` to be accessible in the frontend.*
+- https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables#bundling-environment-variables-for-the-browser
+
+- Before you submit a pull request, make sure that the project runs in every environment (Docker, GitPod, local NodeJS)
+  or send a note if it is not testet in every environment.
 
 ## License
 
