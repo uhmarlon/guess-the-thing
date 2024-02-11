@@ -1,4 +1,4 @@
-const express = require("express");
+import express from "express";
 import http from "http";
 import { Server, Socket } from "socket.io";
 import { generateRandomName, makeid, buildHiddenName, getSocketUrl } from "./utils/utils";

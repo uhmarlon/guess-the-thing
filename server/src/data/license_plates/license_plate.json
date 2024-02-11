@@ -1,652 +1,2703 @@
 {
-  "drinks": [
-    {
-      "strDrink": "Mojito",
-      "idDrink": "11000",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/metwgh1606770327.jpg",
-      "strInstructions": "Muddle mint leaves with sugar and lime juice. Add a splash of soda water and fill the glass with cracked ice. Pour the rum and top with soda water. Garnish and serve with straw."
-    },
-    {
-      "strDrink": "Old Fashioned",
-      "idDrink": "11001",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/vrwquq1478252802.jpg",
-      "strInstructions": "Place sugar cube in old fashioned glass and saturate with bitters, add a dash of plain water. Muddle until dissolved.\r\nFill the glass with ice cubes and add whiskey.\r\n\r\nGarnish with orange twist, and a cocktail cherry."
-    },
-    {
-      "strDrink": "Long Island Tea",
-      "idDrink": "11002",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/nkwr4c1606770558.jpg",
-      "strInstructions": "Combine all ingredients (except cola) and pour over ice in a highball glass. Add the splash of cola for color. Decorate with a slice of lemon and serve."
-    },
-    {
-      "strDrink": "Negroni",
-      "idDrink": "11003",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/qgdu971561574065.jpg",
-      "strInstructions": "Stir into glass over ice, garnish and serve."
-    },
-    {
-      "strDrink": "Whiskey Sour",
-      "idDrink": "11004",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/hbkfsh1589574990.jpg",
-      "strInstructions": "Shake with ice. Strain into chilled glass, garnish and serve. If served 'On the rocks', strain ingredients into old-fashioned glass filled with ice."
-    },
-    {
-      "strDrink": "Dry Martini",
-      "idDrink": "11005",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/6ck9yi1589574317.jpg",
-      "strInstructions": "Straight: Pour all ingredients into mixing glass with ice cubes. Stir well. Strain in chilled martini cocktail glass. Squeeze oil from lemon peel onto the drink, or garnish with olive."
-    },
-    {
-      "strDrink": "Daiquiri",
-      "idDrink": "11006",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/mrz9091589574515.jpg",
-      "strInstructions": "Pour all ingredients into shaker with ice cubes. Shake well. Strain in chilled cocktail glass."
-    },
-    {
-      "strDrink": "Margarita",
-      "idDrink": "11007",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg",
-      "strInstructions": "Rub the rim of the glass with the lime slice to make the salt stick to it. Take care to moisten only the outer rim and sprinkle the salt on it. The salt should present to the lips of the imbiber and never mix into the cocktail. Shake the other ingredients with ice, then carefully pour into the glass."
-    },
-    {
-      "strDrink": "Manhattan",
-      "idDrink": "11008",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/yk70e31606771240.jpg",
-      "strInstructions": "Stirred over ice, strained into a chilled glass, garnished, and served up."
-    },
-    {
-      "strDrink": "Moscow Mule",
-      "idDrink": "11009",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/3pylqc1504370988.jpg",
-      "strInstructions": "Combine vodka and ginger beer in a highball glass filled with ice. Add lime juice. Stir gently. Garnish."
-    },
-    {
-      "strDrink": "After Dinner Cocktail",
-      "idDrink": "11010",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/vtytxq1483387578.jpg",
-      "strInstructions": "Shake all ingredients (except lime wedge) with ice and strain into a cocktail glass. Add the wedge of lime and serve."
-    },
-    {
-      "strDrink": "After Supper Cocktail",
-      "idDrink": "11011",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/quyxwu1483387610.jpg",
-      "strInstructions": "Shake all ingredients with ice, strain into a cocktail glass, and serve."
-    },
-    {
-      "strDrink": "Alabama Slammer",
-      "idDrink": "11012",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/jntghf1606771886.jpg",
-      "strInstructions": "Pour all ingredients (except for lemon juice) over ice in a highball glass. Stir, add a dash of lemon juice, and serve."
-    },
-    {
-      "strDrink": "Alaska Cocktail",
-      "idDrink": "11013",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/wsyryt1483387720.jpg",
-      "strInstructions": "Stir all ingredients with ice, strain contents into a cocktail glass. Drop in a twist of lemon and serve."
-    },
-    {
-      "strDrink": "Alexander",
-      "idDrink": "11014",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/0clus51606772388.jpg",
-      "strInstructions": "Shake all ingredients with ice and strain contents into a cocktail glass. Sprinkle nutmeg on top and serve."
-    },
-    {
-      "strDrink": "Brandy Alexander",
-      "idDrink": "11016",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/mlyk1i1606772340.jpg",
-      "strInstructions": "Shake all ingredients (except nutmeg) with ice and strain contents into a cocktail glass. Sprinkle nutmeg on top and serve."
-    },
-    {
-      "strDrink": "Alfie Cocktail",
-      "idDrink": "11019",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/ypxsqy1483387829.jpg",
-      "strInstructions": "Combine and shake all ingredients with ice, strain into a cocktail glass, and serve."
-    },
-    {
-      "strDrink": "Algonquin",
-      "idDrink": "11020",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/uwryxx1483387873.jpg",
-      "strInstructions": "Combine and shake all ingredients with ice, strain contents into a cocktail glass, and serve."
-    },
-    {
-      "strDrink": "Allegheny",
-      "idDrink": "11021",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/uwvyts1483387934.jpg",
-      "strInstructions": "Shake all ingredients (except lemon peel) with ice and strain into a cocktail glass. Top with the twist of lemon peel and serve."
-    },
-    {
-      "strDrink": "Allies Cocktail",
-      "idDrink": "11022",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/qvprvp1483388104.jpg",
-      "strInstructions": "Stir all ingredients with ice, strain contents into a cocktail glass, and serve."
-    },
-    {
-      "strDrink": "Almeria",
-      "idDrink": "11023",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/rwsyyu1483388181.jpg",
-      "strInstructions": "In a shaker half-filled with ice cubes, combine all of the ingredients. Shake well. Strain into a cocktail glass."
-    },
-    {
-      "strDrink": "Almond Joy",
-      "idDrink": "11024",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/xutuqs1483388296.jpg",
-      "strInstructions": "Shake all ingredients with ice, strain into a cocktail glass, and serve."
-    },
-    {
-      "strDrink": "Amaretto And Cream",
-      "idDrink": "11025",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/dj8n0r1504375018.jpg",
-      "strInstructions": "Shake well with cracked ice, strain contents into a cocktail glass, and serve."
-    },
-    {
-      "strDrink": "Amaretto Mist",
-      "idDrink": "11026",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/utpxxq1483388370.jpg",
-      "strInstructions": "Pour amaretto in an old-fashioned glass over crushed ice. Add the wedge of lime and serve. (A wedge of lemon may be substituted for lime, if preferred.)"
-    },
-    {
-      "strDrink": "Amaretto Rose",
-      "idDrink": "11027",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/3jm41q1493069578.jpg",
-      "strInstructions": "Pour amaretto and lime juice over ice in a collins glass. Fill with club soda and serve."
-    },
-    {
-      "strDrink": "Amaretto Stinger",
-      "idDrink": "11028",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/vvop4w1493069934.jpg",
-      "strInstructions": "Shake ingredients well with cracked ice, strain into a cocktail glass, and serve."
-    },
-    {
-      "strDrink": "Amaretto Tea",
-      "idDrink": "11029",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/b7qzo21493070167.jpg",
-      "strInstructions": "Pour hot tea into a pousse-cafe glass, using a spoon in glass to prevent cracking. Add amaretto, but do not stir. Top with chilled whipped cream and serve."
-    },
-    {
-      "strDrink": "Angel Face",
-      "idDrink": "11034",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/vaukir1606772580.jpg",
-      "strInstructions": "Shake all ingredients with ice and strain contents into a cocktail glass."
-    },
-    {
-      "strDrink": "Applecar",
-      "idDrink": "11046",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/sbffau1504389764.jpg",
-      "strInstructions": "Shake all ingredients with ice, strain into a cocktail glass, and serve."
-    },
-    {
-      "strDrink": "Apricot Lady",
-      "idDrink": "11050",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/7ityp11582579598.jpg",
-      "strInstructions": "In a shaker half-filled with ice cubes, combine the rum, apricot brandy, triple sec, lemon juice, and egg white. Shake well. Strain into an old-fashioned glass almost filled with ice cubes. Garnish with the orange slice."
-    },
-    {
-      "strDrink": "Archbishop",
-      "idDrink": "11052",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/4g6xds1582579703.jpg",
-      "strInstructions": "In an old-fashioned glass almost filled with ice cubes, combine all of the ingredients. Stir well."
-    },
-    {
-      "strDrink": "Arise My Love",
-      "idDrink": "11053",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/wyrrwv1441207432.jpg",
-      "strInstructions": "Put creme de menthe into a champagne flute. Fill with chilled champagne and serve."
-    },
-    {
-      "strDrink": "Arthur Tompkins",
-      "idDrink": "11054",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/7onfhz1493067921.jpg",
-      "strInstructions": "In a shaker half-filled with ice cubes, combine the gin, Grand Marnier, and lemon juice. Shake well. Strain into a sour glass and garnish with the lemon twist."
-    },
-    {
-      "strDrink": "Artillery",
-      "idDrink": "11055",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/g1vnbe1493067747.jpg",
-      "strInstructions": "Stir all ingredients with ice, strain into a cocktail glass, and serve."
-    },
-    {
-      "strDrink": "Balmoral",
-      "idDrink": "11060",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/vysuyq1441206297.jpg",
-      "strInstructions": "In a mixing glass half-filled with ice cubes, combine all of the ingredients. Stir well. Strain into a cocktail glass."
-    },
-    {
-      "strDrink": "Banana Daiquiri",
-      "idDrink": "11064",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/k1xatq1504389300.jpg",
-      "strInstructions": "Pour all ingredients into shaker with ice cubes. Shake well. Strain in chilled cocktail glass."
-    },
-    {
-      "strDrink": "Bermuda Highball",
-      "idDrink": "11084",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/qrvtww1441206528.jpg",
-      "strInstructions": "Pour brandy, gin, and dry vermouth into a highball glass over ice cubes. Fill with carbonated water and stir. Add the twist of lemon and serve. (Ginger ale may be substituted for carbonated water, if preferred.)"
-    },
-    {
-      "strDrink": "Black Russian",
-      "idDrink": "11102",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/8oxlqf1606772765.jpg",
-      "strInstructions": "Pour the ingredients into an old fashioned glass filled with ice cubes. Stir gently."
-    },
-    {
-      "strDrink": "Blackthorn",
-      "idDrink": "11106",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/dgj92f1616098672.jpg",
-      "strInstructions": "Stir sloe gin and vermouth with ice and strain into a cocktail glass. Add the twist of lemon peel and serve."
-    },
-    {
-      "strDrink": "Bloody Maria",
-      "idDrink": "11112",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/yz0j6z1504389461.jpg",
-      "strInstructions": "Shake all ingredients (except lemon slice) with cracked ice and strain into an old-fashioned glass over ice cubes. Add the slice of lemon and serve."
-    },
-    {
-      "strDrink": "Bloody Mary",
-      "idDrink": "11113",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/t6caa21582485702.jpg",
-      "strInstructions": "Stirring gently, pour all ingredients into highball glass. Garnish."
-    },
-    {
-      "strDrink": "Blue Lagoon",
-      "idDrink": "11117",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/5wm4zo1582579154.jpg",
-      "strInstructions": "Pour vodka and curacao over ice in a highball glass. Fill with lemonade, top with the cherry, and serve."
-    },
-    {
-      "strDrink": "Blue Margarita",
-      "idDrink": "11118",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/bry4qh1582751040.jpg",
-      "strInstructions": "Rub rim of cocktail glass with lime juice. Dip rim in coarse salt. Shake tequila, blue curacao, and lime juice with ice, strain into the salt-rimmed glass, and serve."
-    },
-    {
-      "strDrink": "Blue Mountain",
-      "idDrink": "11119",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/bih7ln1582485506.jpg",
-      "strInstructions": "In a shaker half-filled with ice cubes, combine all of the ingredients. Shake well. Strain into an old-fashioned glass almost filled with ice cubes."
-    },
-    {
-      "strDrink": "Bluebird",
-      "idDrink": "11120",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/5jhyd01582579843.jpg",
-      "strInstructions": "In a mixing glass half-filled with crushed ice, combine the gin, triple sec, Curacao, and bitters. Stir well. Strain into a cocktail glass and garnish with the lemon twist and the cherry."
-    },
-    {
-      "strDrink": "Bobby Burns Cocktail",
-      "idDrink": "11121",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/km6se51484411608.jpg",
-      "strInstructions": "Stir all ingredients (except lemon peel) with ice and strain into a cocktail glass. Add the twist of lemon peel and serve."
-    },
-    {
-      "strDrink": "Boomerang",
-      "idDrink": "11124",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/3m6yz81504389551.jpg",
-      "strInstructions": "In a mixing glass half-filled with ice cubes, combine the gin, vermouth, bitters, and maraschino liqueur. Stir well. Strain into a cocktail glass and garnish with the cherry."
-    },
-    {
-      "strDrink": "Boston Sidecar",
-      "idDrink": "11128",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/qzs5d11504365962.jpg",
-      "strInstructions": "Shake all ingredients with ice, strain into a cocktail glass, and serve."
-    },
-    {
-      "strDrink": "Boston Sour",
-      "idDrink": "11129",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/kxlgbi1504366100.jpg",
-      "strInstructions": "Shake juice of lemon, powdered sugar, blended whiskey, and egg white with cracked ice and strain into a whiskey sour glass. Add the slice of lemon, top with the cherry, and serve."
-    },
-    {
-      "strDrink": "Classic Old-Fashioned",
-      "idDrink": "11145",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/w8cxqv1582485254.jpg",
-      "strInstructions": "In an old-fashioned glass, muddle the bitters and water into the sugar cube, using the back of a teaspoon. Almost fill the glass with ice cubes and add the bourbon. Garnish with the orange slice and the cherry. Serve with a swizzle stick."
-    },
-    {
-      "strDrink": "Bourbon Sling",
-      "idDrink": "11146",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/3s36ql1504366260.jpg",
-      "strInstructions": "In a shaker half-filled with ice cubes, combine the sugar, water, lemon juice, and bourbon. Shake well. Strain well. Strain into a highball glass. Garnish with the lemon twist."
-    },
-    {
-      "strDrink": "Bourbon Sour",
-      "idDrink": "11147",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/dms3io1504366318.jpg",
-      "strInstructions": "In a shaker half-filled with ice cubes, combine the bourbon, lemon juice, and sugar. Shake well. Strain into a whiskey sour glass, garnish with the orange slice and cherry."
-    },
-    {
-      "strDrink": "Boxcar",
-      "idDrink": "11149",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/pwgtpa1504366376.jpg",
-      "strInstructions": "In a shaker half-filled with ice cubes, combine all of the ingredients. Shake well. Strain into a sour glass."
-    },
-    {
-      "strDrink": "Brandy Cobbler",
-      "idDrink": "11157",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/5xgu591582580586.jpg",
-      "strInstructions": "In an old-fashioned glass, dissolve the sugar in the club soda. Add crushed ice until the glass is almost full. Add the brandy. Stir well. Garnish with the cherry and the orange and lemon slices."
-    },
-    {
-      "strDrink": "Brandy Flip",
-      "idDrink": "11164",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/6ty09d1504366461.jpg",
-      "strInstructions": "In a shaker half-filled with ice cubes, combine the brandy, egg, sugar, and cream. Shake well. Strain into a sour glass and garnish with the nutmeg."
-    },
-    {
-      "strDrink": "Brandy Sour",
-      "idDrink": "11170",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/b1bxgq1582484872.jpg",
-      "strInstructions": "Shake brandy, juice of lemon, and powdered sugar with ice and strain into a whiskey sour glass. Decorate with the lemon slice, top with the cherry, and serve."
-    },
-    {
-      "strDrink": "Caipirinha",
-      "idDrink": "11202",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/jgvn7p1582484435.jpg",
-      "strInstructions": "Place lime and sugar into old fashioned glass and muddle (mash the two ingredients together using a muddler or a wooden spoon). Fill the glass with ice and add the Cacha\u00e7a."
-    },
-    {
-      "strDrink": "California Lemonade",
-      "idDrink": "11205",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/q5z4841582484168.jpg",
-      "strInstructions": "Shake all ingredients (except carbonated water) with ice and strain into a collins glass over shaved ice. Fill with carbonated water and stir. Decorate with slices of orange and lemon. Add the cherry and serve with a straw."
-    },
-    {
-      "strDrink": "Casa Blanca",
-      "idDrink": "11222",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/usspxq1441553762.jpg",
-      "strInstructions": "Shake all ingredients with ice, strain into a cocktail glass, and serve."
-    },
-    {
-      "strDrink": "Casino Royale",
-      "idDrink": "11224",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/3qpv121504366699.jpg",
-      "strInstructions": "In a shaker half-filled with ice cubes, combine all of the ingredients. Shake well. Strain into a sour glass."
-    },
-    {
-      "strDrink": "Champagne Cocktail",
-      "idDrink": "11227",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/t5pv461606773026.jpg",
-      "strInstructions": "Add dash of Angostura bitter onto sugar cube and drop it into champagne flute. Add cognac followed by gently pouring chilled champagne. Garnish with orange slice and maraschino cherry."
-    },
-    {
-      "strDrink": "Cherry Rum",
-      "idDrink": "11239",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/twsuvr1441554424.jpg",
-      "strInstructions": "Shake all ingredients with ice, strain into a cocktail glass, and serve."
-    },
-    {
-      "strDrink": "Chicago Fizz",
-      "idDrink": "11242",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/qwvwqr1441207763.jpg",
-      "strInstructions": "Shake all ingredients (except carbonated water) with ice and strain into a highball glass over two ice cubes. Fill with carbonated water, stir, and serve."
-    },
-    {
-      "strDrink": "Chocolate Black Russian",
-      "idDrink": "11243",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/yyvywx1472720879.jpg",
-      "strInstructions": "Combine all ingredients in an electric blender and blend at a low speed for a short length of time. Pour into a chilled champagne flute and serve."
-    },
-    {
-      "strDrink": "City Slicker",
-      "idDrink": "11251",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/dazdlg1504366949.jpg",
-      "strInstructions": "In a shaker half-filled with ice cubes, combine all of the ingredients. Shake well. Strain into a cocktail glass."
-    },
-    {
-      "strDrink": "Clove Cocktail",
-      "idDrink": "11255",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/qxvtst1461867579.jpg",
-      "strInstructions": "Stir all ingredients with ice, strain into a cocktail glass, and serve."
-    },
-    {
-      "strDrink": "Cuba Libre",
-      "idDrink": "11288",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/wmkbfj1606853905.jpg",
-      "strInstructions": "Build all ingredients in a Collins glass filled with ice. Garnish with lime wedge."
-    },
-    {
-      "strDrink": "Dragonfly",
-      "idDrink": "11320",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/uc63bh1582483589.jpg",
-      "strInstructions": "In a highball glass almost filled with ice cubes, combine the gin and ginger ale. Stir well. Garnish with the lime wedge."
-    },
-    {
-      "strDrink": "Dry Rob Roy",
-      "idDrink": "11324",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/typuyq1439456976.jpg",
-      "strInstructions": "In a mixing glass half-filled with ice cubes, combine the Scotch and vermouth. Stir well. Strain into a cocktail glass. Garnish with the lemon twist."
-    },
-    {
-      "strDrink": "Dubonnet Cocktail",
-      "idDrink": "11326",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/pfz3hz1582483111.jpg",
-      "strInstructions": "Stir all ingredients (except lemon peel) with ice and strain into a cocktail glass. Add the twist of lemon peel and serve."
-    },
-    {
-      "strDrink": "English Highball",
-      "idDrink": "11338",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/dhvr7d1504519752.jpg",
-      "strInstructions": "Pour brandy, gin, and sweet vermouth into a highball glass over ice cubes. Fill with carbonated water. Add the twist of lemon peel, stir, and serve. (Ginger ale may be substituted for carbonated water, if preferred.)"
-    },
-    {
-      "strDrink": "English Rose Cocktail",
-      "idDrink": "11339",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/yxwrpp1441208697.jpg",
-      "strInstructions": "Rub rim of cocktail glass with lemon juice and dip rim of glass in powdered sugar. Shake all ingredients (except cherry) with ice and strain into sugar-rimmed glass. Top with the cherry and serve."
-    },
-    {
-      "strDrink": "Flying Dutchman",
-      "idDrink": "11368",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/mwko4q1582482903.jpg",
-      "strInstructions": "In an old-fashioned glass almost filled with ice cubes, combine the gin and triple sec. Stir well."
-    },
-    {
-      "strDrink": "Flying Scotchman",
-      "idDrink": "11369",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/q53l911582482518.jpg",
-      "strInstructions": "Shake all ingredients with ice, strain into a cocktail glass, and serve."
-    },
-    {
-      "strDrink": "Foxy Lady",
-      "idDrink": "11375",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/r9cz3q1504519844.jpg",
-      "strInstructions": "Shake all ingredients with ice, strain into a chilled cocktail glass, and serve."
-    },
-    {
-      "strDrink": "Frisco Sour",
-      "idDrink": "11382",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/acuvjz1582482022.jpg",
-      "strInstructions": "Shake all ingredients (except slices of lemon and lime) with ice and strain into a whiskey sour glass. Decorate with the slices of lemon and lime and serve."
-    },
-    {
-      "strDrink": "Frozen Daiquiri",
-      "idDrink": "11387",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/7oyrj91504884412.jpg",
-      "strInstructions": "Combine all ingredients (except for the cherry) in an electric blender and blend at a low speed for five seconds, then blend at a high speed until firm. Pour contents into a champagne flute, top with the cherry, and serve."
-    },
-    {
-      "strDrink": "Frozen Mint Daiquiri",
-      "idDrink": "11390",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/jrhn1q1504884469.jpg",
-      "strInstructions": "Combine all ingredients with 1 cup of crushed ice in an electric blender. Blend at a low speed for a short length of time. Pour into an old-fashioned glass and serve."
-    },
-    {
-      "strDrink": "Frozen Pineapple Daiquiri",
-      "idDrink": "11391",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/k3aecd1582481679.jpg",
-      "strInstructions": "Combine all ingredients with 1 cup of crushed ice in an electric blender. Blend at a low speed for a short length of time. Pour into a cocktail glass and serve."
-    },
-    {
-      "strDrink": "Gentleman's Club",
-      "idDrink": "11396",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/k2r7wv1582481454.jpg",
-      "strInstructions": "In an old-fashioned glass almost filled with ice cubes, combine all of the ingredients. Stir well."
-    },
-    {
-      "strDrink": "Gin And Tonic",
-      "idDrink": "11403",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/k0508k1668422436.jpg",
-      "strInstructions": "Pour the gin and the tonic water into a highball glass almost filled with ice cubes. Stir well. Garnish with the lime wedge."
-    },
-    {
-      "strDrink": "Gin Cooler",
-      "idDrink": "11407",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/678xt11582481163.jpg",
-      "strInstructions": "Stir powdered sugar and 2 oz. carbonated water in a collins glass. Fill glass with ice and add gin. Fill with carbonated water and stir. Add the lemon peel and the orange spiral so that the end of the orange spiral dangles over rim of glass."
-    },
-    {
-      "strDrink": "Gin Daisy",
-      "idDrink": "11408",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/z6e22f1582581155.jpg",
-      "strInstructions": "In a shaker half-filled with ice cubes, combine the gin, lemon juice, sugar, and grenadine. Shake well. Pour into an old-fashioned glass and garnish with the cherry and the orange slice."
-    },
-    {
-      "strDrink": "Gin Fizz",
-      "idDrink": "11410",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/drtihp1606768397.jpg",
-      "strInstructions": "Shake all ingredients with ice cubes, except soda water. Pour into glass. Top with soda water."
-    },
-    {
-      "strDrink": "Gin Sling",
-      "idDrink": "11415",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/8cl9sm1582581761.jpg",
-      "strInstructions": "Dissolve powdered sugar in mixture of water and juice of lemon. Add gin. Pour into an old-fashioned glass over ice cubes and stir. Add the twist of orange peel and serve."
-    },
-    {
-      "strDrink": "Gin Smash",
-      "idDrink": "11416",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/iprva61606768774.jpg",
-      "strInstructions": "Muddle sugar with carbonated water and mint sprigs in an old-fashioned glass. Add gin and 1 ice cube. Stir, add the orange slice and the cherry, and serve."
-    },
-    {
-      "strDrink": "Gin Sour",
-      "idDrink": "11417",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/noxp7e1606769224.jpg",
-      "strInstructions": "In a shaker half-filled with ice cubes, combine the gin, lemon juice, and sugar. Shake well. Strain into a sour glass and garnish with the orange slice and the cherry."
-    },
-    {
-      "strDrink": "Gin Squirt",
-      "idDrink": "11418",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/xrbhz61504883702.jpg",
-      "strInstructions": "Stir gin, grenadine, and powdered sugar with ice and strain into a highball glass over ice cubes. Fill with carbonated water and stir. Decorate with the pineapple chunks and the strawberries and serve."
-    },
-    {
-      "strDrink": "Gin Swizzle",
-      "idDrink": "11419",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/sybce31504884026.jpg",
-      "strInstructions": "In a shaker half-filled with ice cubes, combine the lime juice, sugar, gin, and bitters. Shake well. Almost fill a colling glass with ice cubes. Stir until the glass is frosted. Strain the mixture in the shaker into the glass and add the club soda."
-    },
-    {
-      "strDrink": "Gin Toddy",
-      "idDrink": "11420",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/jxstwf1582582101.jpg",
-      "strInstructions": "Mix powdered sugar and water in an old-fashioned glass. Add gin and one ice cube. Stir, add the twist of lemon peel, and serve."
-    },
-    {
-      "strDrink": "Godchild",
-      "idDrink": "11422",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/m5nhtr1504820829.jpg",
-      "strInstructions": "Shake all ingredients well with cracked ice, strain into a champagne flute, and serve."
-    },
-    {
-      "strDrink": "Godfather",
-      "idDrink": "11423",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/e5zgao1582582378.jpg",
-      "strInstructions": "Pour all ingredients directly into old fashioned glass filled with ice cubes. Stir gently."
-    },
-    {
-      "strDrink": "Godmother",
-      "idDrink": "11424",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/quksqg1582582597.jpg",
-      "strInstructions": "Pour vodka and amaretto into an old-fashioned glass over ice and serve."
-    },
-    {
-      "strDrink": "Grass Skirt",
-      "idDrink": "11433",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/qyvprp1473891585.jpg",
-      "strInstructions": "In a shaker half-filled with ice cubes, combine the gin, triple sec, pineapple juice, and grenadine. Shake well. Pour into an old-fashioned glass and garnish with the pineapple slice."
-    },
-    {
-      "strDrink": "Harvey Wallbanger",
-      "idDrink": "11462",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/7os4gs1606854357.jpg",
-      "strInstructions": "Stir the vodka and orange juice with ice in the glass, then float the Galliano on top. Garnish and serve."
-    },
-    {
-      "strDrink": "Havana Cocktail",
-      "idDrink": "11470",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/59splc1504882899.jpg",
-      "strInstructions": "In a shaker half-filled with ice cubes, combine all of the ingredients. Shake well. Strain into a cocktail glass."
-    },
-    {
-      "strDrink": "Hawaiian Cocktail",
-      "idDrink": "11472",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/ujoh9x1504882987.jpg",
-      "strInstructions": "Shake all ingredients with ice, strain into a cocktail glass, and serve."
-    },
-    {
-      "strDrink": "Highland Fling Cocktail",
-      "idDrink": "11476",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/0bkwca1492975553.jpg",
-      "strInstructions": "Stir all ingredients (except olive) with ice and strain into a cocktail glass. Add the olive and serve."
-    },
-    {
-      "strDrink": "Imperial Fizz",
-      "idDrink": "11524",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/zj1usl1504884548.jpg",
-      "strInstructions": "Shake all ingredients (except carbonated water) with ice and strain into a highball glass over two ice cubes. Fill with carbonated water, stir, and serve."
-    },
-    {
-      "strDrink": "Irish Spring",
-      "idDrink": "11528",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/sot8v41504884783.jpg",
-      "strInstructions": "Pour all ingredients (except orange slice and cherry) into a collins glass over ice cubes. Garnish with the slice of orange, add the cherry on top, and serve."
-    },
-    {
-      "strDrink": "Jack Rose Cocktail",
-      "idDrink": "11542",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/uuqqrv1439907068.jpg",
-      "strInstructions": "Shake all ingredients with ice, strain into a cocktail glass, and serve."
-    },
-    {
-      "strDrink": "Japanese Fizz",
-      "idDrink": "11558",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/37vzv11504884831.jpg",
-      "strInstructions": "Shake all ingredients (except carbonated water) with ice and strain into a highball glass over two ice cubes. Fill with carbonated water, stir, and serve."
-    },
-    {
-      "strDrink": "Jewel Of The Nile",
-      "idDrink": "11566",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/hx4nrb1504884947.jpg",
-      "strInstructions": "In a mixing glass half-filled with ice cubes, combine all of the ingredients. Stir well. Strain into a cocktail glass."
-    },
-    {
-      "strDrink": "John Collins",
-      "idDrink": "11580",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/0t4bv71606854479.jpg",
-      "strInstructions": "Pour all ingredients directly into highball glass filled with ice. Stir gently. Garnish. Add a dash of Angostura bitters."
-    },
-    {
-      "strDrink": "Kamikaze",
-      "idDrink": "11600",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/d7ff7u1606855412.jpg",
-      "strInstructions": "Shake all ingredients together with ice. Strain into glass, garnish and serve."
-    },
-    {
-      "strDrink": "Kentucky B And B",
-      "idDrink": "11602",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/sqxsxp1478820236.jpg",
-      "strInstructions": "Pour the bourbon and Benedictine into a brandy snifter."
-    },
-    {
-      "strDrink": "Kentucky Colonel",
-      "idDrink": "11604",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/utqwpu1478820348.jpg",
-      "strInstructions": "In a shaker half-filled with ice cubes combine the courbon and Benedictine. Shake and strain into a cocktail glass. Garnish with the lemon twist."
-    },
-    {
-      "strDrink": "Lady Love Fizz",
-      "idDrink": "11634",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/20d63k1504885263.jpg",
-      "strInstructions": "Shake all ingredients (except carbonated water) with ice and strain into a cocktail glass over two ice cubes. Fill with carbonated water, stir, and serve."
+  "license_plates": [
+    {
+      "A": {
+        "city": "Aachen",
+        "state": "Nordrhein-Westfalen"
+      },
+      "AA": {
+        "city": "Augsburg",
+        "state": "Bayern"
+      },
+      "AB": {
+        "city": "Aschaffenburg",
+        "state": "Bayern"
+      },
+      "ABG": {
+        "city": "Altenburger Land",
+        "state": "Thüringen"
+      },
+      "ABI": {
+        "city": "Anhalt-Bitterfeld",
+        "state": "Sachsen-Anhalt"
+      },
+      "AC": {
+        "city": "Aachen",
+        "state": "Nordrhein-Westfalen"
+      },
+      "AD": {
+        "city": "Andernach",
+        "state": "Rheinland-Pfalz"
+      },
+      "AE": {
+        "city": "Ahaus-Enschede",
+        "state": "Nordrhein-Westfalen"
+      },
+      "AH": {
+        "city": "Altena-Hemer",
+        "state": "Nordrhein-Westfalen"
+      },
+      "AIC": {
+        "city": "Aichach-Friedberg",
+        "state": "Bayern"
+      },
+      "AK": {
+        "city": "Altenkirchen",
+        "state": "Rheinland-Pfalz"
+      },
+      "ALF": {
+        "city": "Altenburger Land",
+        "state": "Thüringen"
+      },
+      "ALZ": {
+        "city": "Alzenau",
+        "state": "Bayern"
+      },
+      "AM": {
+        "city": "Amberg",
+        "state": "Bayern"
+      },
+      "AN": {
+        "city": "Ansbach",
+        "state": "Bayern"
+      },
+      "ANG": {
+        "city": "Angermünde",
+        "state": "Brandenburg"
+      },
+      "ANK": {
+        "city": "Anklam",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "AÖ": {
+        "city": "Altötting",
+        "state": "Bayern"
+      },
+      "AP": {
+        "city": "Apolda",
+        "state": "Thüringen"
+      },
+      "APD": {
+        "city": "Apolda",
+        "state": "Thüringen"
+      },
+      "ARN": {
+        "city": "Arnstadt",
+        "state": "Thüringen"
+      },
+      "ART": {
+        "city": "Artern",
+        "state": "Thüringen"
+      },
+      "AS": {
+        "city": "Amberg-Sulzbach",
+        "state": "Bayern"
+      },
+      "ASL": {
+        "city": "Aschersleben",
+        "state": "Sachsen-Anhalt"
+      },
+      "AT": {
+        "city": "Aue",
+        "state": "Sachsen"
+      },
+      "ATF": {
+        "city": "Altenkirchen",
+        "state": "Rheinland-Pfalz"
+      },
+      "AU": {
+        "city": "Aue-Schwarzenberg",
+        "state": "Sachsen"
+      },
+      "AUR": {
+        "city": "Aurich",
+        "state": "Niedersachsen"
+      },
+      "AW": {
+        "city": "Ahrweiler",
+        "state": "Rheinland-Pfalz"
+      },
+      "AZ": {
+        "city": "Alzey",
+        "state": "Rheinland-Pfalz"
+      },
+      "AZE": {
+        "city": "Anhalt-Zerbst",
+        "state": "Sachsen-Anhalt"
+      },
+      "B": {
+        "city": "Berlin",
+        "state": "Berlin"
+      },
+      "BA": {
+        "city": "Bamberg",
+        "state": "Bayern"
+      },
+      "BAB": {
+        "city": "Bad Kissingen",
+        "state": "Bayern"
+      },
+      "BAD": {
+        "city": "Baden-Baden",
+        "state": "Baden-Württemberg"
+      },
+      "BAR": {
+        "city": "Barnim",
+        "state": "Brandenburg"
+      },
+      "BB": {
+        "city": "Böblingen",
+        "state": "Baden-Württemberg"
+      },
+      "BBL": {
+        "city": "Biberach",
+        "state": "Baden-Württemberg"
+      },
+      "BC": {
+        "city": "Biberach",
+        "state": "Baden-Württemberg"
+      },
+      "BCH": {
+        "city": "Buchen",
+        "state": "Baden-Württemberg"
+      },
+      "BD": {
+        "city": "Landkreis Lüneburg",
+        "state": "Niedersachsen"
+      },
+      "BE": {
+        "city": "Beckum-Warendorf",
+        "state": "Nordrhein-Westfalen"
+      },
+      "BED": {
+        "city": "Bergisch Gladbach",
+        "state": "Nordrhein-Westfalen"
+      },
+      "BER": {
+        "city": "Bernburg",
+        "state": "Sachsen-Anhalt"
+      },
+      "BF": {
+        "city": "Bad Freienwalde",
+        "state": "Brandenburg"
+      },
+      "BG": {
+        "city": "Bergen",
+        "state": "Niedersachsen"
+      },
+      "BGL": {
+        "city": "Berchtesgadener Land",
+        "state": "Bayern"
+      },
+      "BH": {
+        "city": "Bühl",
+        "state": "Baden-Württemberg"
+      },
+      "BI": {
+        "city": "Bielefeld",
+        "state": "Nordrhein-Westfalen"
+      },
+      "BID": {
+        "city": "Biedenkopf",
+        "state": "Hessen"
+      },
+      "BIN": {
+        "city": "Bingen",
+        "state": "Rheinland-Pfalz"
+      },
+      "BIR": {
+        "city": "Birkenfeld",
+        "state": "Rheinland-Pfalz"
+      },
+      "BIT": {
+        "city": "Bitterfeld",
+        "state": "Sachsen-Anhalt"
+      },
+      "BIW": {
+        "city": "Bielefeld-Wiedenbrück",
+        "state": "Nordrhein-Westfalen"
+      },
+      "BK": {
+        "city": "Backnang",
+        "state": "Baden-Württemberg"
+      },
+      "BL": {
+        "city": "Balingen",
+        "state": "Baden-Württemberg"
+      },
+      "BLB": {
+        "city": "Bad Belzig",
+        "state": "Brandenburg"
+      },
+      "BLK": {
+        "city": "Burgenlandkreis",
+        "state": "Sachsen-Anhalt"
+      },
+      "BM": {
+        "city": "Bergheim",
+        "state": "Nordrhein-Westfalen"
+      },
+      "BN": {
+        "city": "Bonn",
+        "state": "Nordrhein-Westfalen"
+      },
+      "BNA": {
+        "city": "Bad Neustadt an der Saale",
+        "state": "Bayern"
+      },
+      "BO": {
+        "city": "Bochum",
+        "state": "Nordrhein-Westfalen"
+      },
+      "BÖ": {
+        "city": "Borken",
+        "state": "Nordrhein-Westfalen"
+      },
+      "BOH": {
+        "city": "Borna",
+        "state": "Sachsen"
+      },
+      "BOR": {
+        "city": "Borken",
+        "state": "Nordrhein-Westfalen"
+      },
+      "BOT": {
+        "city": "Bottrop",
+        "state": "Nordrhein-Westfalen"
+      },
+      "BP": {
+        "city": "Bundespolizei",
+        "state": "Bundespolizei"
+      },
+      "BRA": {
+        "city": "Brakel",
+        "state": "Nordrhein-Westfalen"
+      },
+      "BRB": {
+        "city": "Brandenburg an der Havel",
+        "state": "Brandenburg"
+      },
+      "BRG": {
+        "city": "Brigachtal",
+        "state": "Baden-Württemberg"
+      },
+      "BRK": {
+        "city": "Bruchköbel",
+        "state": "Hessen"
+      },
+      "BRL": {
+        "city": "Bremervörde",
+        "state": "Niedersachsen"
+      },
+      "BRV": {
+        "city": "Bremervörde",
+        "state": "Niedersachsen"
+      },
+      "BS": {
+        "city": "Braunschweig",
+        "state": "Niedersachsen"
+      },
+      "BT": {
+        "city": "Braunau am Inn",
+        "state": "Österreich"
+      },
+      "BÜD": {
+        "city": "Büdingen",
+        "state": "Hessen"
+      },
+      "BUL": {
+        "city": "Bülstringen",
+        "state": "Sachsen-Anhalt"
+      },
+      "BUM": {
+        "city": "Büdingen-Meerholz",
+        "state": "Hessen"
+      },
+      "BÜS": {
+        "city": "Büsingen am Hochrhein",
+        "state": "Baden-Württemberg"
+      },
+      "BÜZ": {
+        "city": "Büchen",
+        "state": "Schleswig-Holstein"
+      },
+      "BW": {
+        "city": "Baden-Württemberg",
+        "state": "Baden-Württemberg"
+      },
+      "BWL": {
+        "city": "Balingen-Weilstetten",
+        "state": "Baden-Württemberg"
+      },
+      "BYL": {
+        "city": "Bayern",
+        "state": "Bayern"
+      },
+      "BZ": {
+        "city": "Bautzen",
+        "state": "Sachsen"
+      },
+      "BZA": {
+        "city": "Bautzen",
+        "state": "Sachsen"
+      },
+      "BZG": {
+        "city": "Bersenbrück",
+        "state": "Niedersachsen"
+      },
+      "C": {
+        "city": "Chemnitz",
+        "state": "Sachsen"
+      },
+      "CA": {
+        "city": "Calau",
+        "state": "Brandenburg"
+      },
+      "CAS": {
+        "city": "Calau-Senftenberg",
+        "state": "Brandenburg"
+      },
+      "CB": {
+        "city": "Cottbus",
+        "state": "Brandenburg"
+      },
+      "CE": {
+        "city": "Celle",
+        "state": "Niedersachsen"
+      },
+      "CHA": {
+        "city": "Cham",
+        "state": "Bayern"
+      },
+      "CLP": {
+        "city": "Cloppenburg",
+        "state": "Niedersachsen"
+      },
+      "CLZ": {
+        "city": "Cloppenburg-Zweibrücken",
+        "state": "Niedersachsen"
+      },
+      "CO": {
+        "city": "Coburg",
+        "state": "Bayern"
+      },
+      "COC": {
+        "city": "Cochem-Zell",
+        "state": "Rheinland-Pfalz"
+      },
+      "CUX": {
+        "city": "Cuxhaven",
+        "state": "Niedersachsen"
+      },
+      "CW": {
+        "city": "Calw",
+        "state": "Baden-Württemberg"
+      },
+      "D": {
+        "city": "Düsseldorf",
+        "state": "Nordrhein-Westfalen"
+      },
+      "DA": {
+        "city": "Darmstadt",
+        "state": "Hessen"
+      },
+      "DAH": {
+        "city": "Dachau",
+        "state": "Bayern"
+      },
+      "DAN": {
+        "city": "Dannenberg",
+        "state": "Niedersachsen"
+      },
+      "DAU": {
+        "city": "Daun",
+        "state": "Rheinland-Pfalz"
+      },
+      "DB": {
+        "city": "Dieburg",
+        "state": "Hessen"
+      },
+      "DBR": {
+        "city": "Duderstadt",
+        "state": "Niedersachsen"
+      },
+      "DD": {
+        "city": "Dresden",
+        "state": "Sachsen"
+      },
+      "DE": {
+        "city": "Dessau",
+        "state": "Sachsen-Anhalt"
+      },
+      "DEG": {
+        "city": "Deggendorf",
+        "state": "Bayern"
+      },
+      "DEL": {
+        "city": "Delmenhorst",
+        "state": "Niedersachsen"
+      },
+      "DGF": {
+        "city": "Dingolfing",
+        "state": "Bayern"
+      },
+      "DH": {
+        "city": "Diepholz",
+        "state": "Niedersachsen"
+      },
+      "DI": {
+        "city": "Dieburg",
+        "state": "Hessen"
+      },
+      "DIN": {
+        "city": "Dingolfing",
+        "state": "Bayern"
+      },
+      "DL": {
+        "city": "Döbeln",
+        "state": "Sachsen"
+      },
+      "DLG": {
+        "city": "Dillingen",
+        "state": "Saarland"
+      },
+      "DM": {
+        "city": "Demmin",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "DN": {
+        "city": "Düren",
+        "state": "Nordrhein-Westfalen"
+      },
+      "DO": {
+        "city": "Dortmund",
+        "state": "Nordrhein-Westfalen"
+      },
+      "DON": {
+        "city": "Donauwörth",
+        "state": "Bayern"
+      },
+      "DU": {
+        "city": "Duisburg",
+        "state": "Nordrhein-Westfalen"
+      },
+      "DÜW": {
+        "city": "Bad Dürkheim",
+        "state": "Rheinland-Pfalz"
+      },
+      "DW": {
+        "city": "Deggendorf-Wolfratshausen",
+        "state": "Bayern"
+      },
+      "DY": {
+        "city": "Düsseldorf-Mettmann",
+        "state": "Nordrhein-Westfalen"
+      },
+      "E": {
+        "city": "Essen",
+        "state": "Nordrhein-Westfalen"
+      },
+      "EA": {
+        "city": "Eisenach",
+        "state": "Thüringen"
+      },
+      "EB": {
+        "city": "Eberswalde",
+        "state": "Brandenburg"
+      },
+      "EBE": {
+        "city": "Ebersberg",
+        "state": "Bayern"
+      },
+      "EBN": {
+        "city": "Ebern",
+        "state": "Bayern"
+      },
+      "EBS": {
+        "city": "Eibenstock",
+        "state": "Sachsen"
+      },
+      "ECK": {
+        "city": "Eckernförde",
+        "state": "Schleswig-Holstein"
+      },
+      "ED": {
+        "city": "Erding",
+        "state": "Bayern"
+      },
+      "EE": {
+        "city": "Elbe-Elster",
+        "state": "Brandenburg"
+      },
+      "EF": {
+        "city": "Erfurt",
+        "state": "Thüringen"
+      },
+      "EG": {
+        "city": "Eisenberg",
+        "state": "Thüringen"
+      },
+      "EH": {
+        "city": "Eisenhüttenstadt",
+        "state": "Brandenburg"
+      },
+      "EI": {
+        "city": "Eichstätt",
+        "state": "Bayern"
+      },
+      "EIC": {
+        "city": "Eichsfeld",
+        "state": "Thüringen"
+      },
+      "EIL": {
+        "city": "Eichsfeld",
+        "state": "Thüringen"
+      },
+      "EIN": {
+        "city": "Eisenberg",
+        "state": "Thüringen"
+      },
+      "EIS": {
+        "city": "Eisenach",
+        "state": "Thüringen"
+      },
+      "EK": {
+        "city": "Emmendingen",
+        "state": "Baden-Württemberg"
+      },
+      "EL": {
+        "city": "Emsland",
+        "state": "Niedersachsen"
+      },
+      "EM": {
+        "city": "Emmendingen",
+        "state": "Baden-Württemberg"
+      },
+      "EMS": {
+        "city": "Emmerich",
+        "state": "Nordrhein-Westfalen"
+      },
+      "EN": {
+        "city": "Ennepe-Ruhr-Kreis",
+        "state": "Nordrhein-Westfalen"
+      },
+      "ER": {
+        "city": "Erlangen",
+        "state": "Bayern"
+      },
+      "ERB": {
+        "city": "Erbach",
+        "state": "Hessen"
+      },
+      "ERH": {
+        "city": "Erlangen-Höchstadt",
+        "state": "Bayern"
+      },
+      "ERK": {
+        "city": "Erkelenz",
+        "state": "Nordrhein-Westfalen"
+      },
+      "ERZ": {
+        "city": "Erzgebirgskreis",
+        "state": "Sachsen"
+      },
+      "ES": {
+        "city": "Esslingen",
+        "state": "Baden-Württemberg"
+      },
+      "ESB": {
+        "city": "Esslingen",
+        "state": "Baden-Württemberg"
+      },
+      "ESW": {
+        "city": "Eschwege",
+        "state": "Hessen"
+      },
+      "ET": {
+        "city": "Eisenach",
+        "state": "Thüringen"
+      },
+      "EU": {
+        "city": "Euskirchen",
+        "state": "Nordrhein-Westfalen"
+      },
+      "EUT": {
+        "city": "Eutin",
+        "state": "Schleswig-Holstein"
+      },
+      "EW": {
+        "city": "Eisenach-Weimar",
+        "state": "Thüringen"
+      },
+      "F": {
+        "city": "Frankfurt am Main",
+        "state": "Hessen"
+      },
+      "FB": {
+        "city": "Friedberg",
+        "state": "Hessen"
+      },
+      "FD": {
+        "city": "Fulda",
+        "state": "Hessen"
+      },
+      "FEU": {
+        "city": "Feuchtwangen",
+        "state": "Bayern"
+      },
+      "FF": {
+        "city": "Frankfurt am Main",
+        "state": "Hessen"
+      },
+      "FFB": {
+        "city": "Fürstenfeldbruck",
+        "state": "Bayern"
+      },
+      "FG": {
+        "city": "Freudenstadt",
+        "state": "Baden-Württemberg"
+      },
+      "FL": {
+        "city": "Flensburg",
+        "state": "Schleswig-Holstein"
+      },
+      "FLÖ": {
+        "city": "Flöha",
+        "state": "Sachsen"
+      },
+      "FN": {
+        "city": "Friedrichshafen",
+        "state": "Baden-Württemberg"
+      },
+      "FR": {
+        "city": "Freiburg im Breisgau",
+        "state": "Baden-Württemberg"
+      },
+      "FRA": {
+        "city": "Frankfurt am Main",
+        "state": "Hessen"
+      },
+      "FRG": {
+        "city": "Freyung-Grafenau",
+        "state": "Bayern"
+      },
+      "FRI": {
+        "city": "Friesland",
+        "state": "Niedersachsen"
+      },
+      "FRW": {
+        "city": "Freiberg",
+        "state": "Sachsen"
+      },
+      "FS": {
+        "city": "Freising",
+        "state": "Bayern"
+      },
+      "FÜ": {
+        "city": "Fürth",
+        "state": "Bayern"
+      },
+      "FUL": {
+        "city": "Fulda",
+        "state": "Hessen"
+      },
+      "FÜS": {
+        "city": "Fürstenfeldbruck",
+        "state": "Bayern"
+      },
+      "FZ": {
+        "city": "Friesland",
+        "state": "Niedersachsen"
+      },
+      "G": {
+        "city": "Gießen",
+        "state": "Hessen"
+      },
+      "GA": {
+        "city": "Garmisch-Partenkirchen",
+        "state": "Bayern"
+      },
+      "GAN": {
+        "city": "Gadebusch",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "GAP": {
+        "city": "Garmisch-Partenkirchen",
+        "state": "Bayern"
+      },
+      "GAR": {
+        "city": "Gardelegen",
+        "state": "Sachsen-Anhalt"
+      },
+      "GC": {
+        "city": "Greiz",
+        "state": "Thüringen"
+      },
+      "GD": {
+        "city": "Görlitz",
+        "state": "Sachsen"
+      },
+      "GE": {
+        "city": "Gelsenkirchen",
+        "state": "Nordrhein-Westfalen"
+      },
+      "GEB": {
+        "city": "Gebesee",
+        "state": "Thüringen"
+      },
+      "GEL": {
+        "city": "Gelnhausen",
+        "state": "Hessen"
+      },
+      "GEO": {
+        "city": "Georgsmarienhütte-Oesede",
+        "state": "Niedersachsen"
+      },
+      "GER": {
+        "city": "Gerolzhofen",
+        "state": "Bayern"
+      },
+      "GF": {
+        "city": "Wolfenbüttel",
+        "state": "Niedersachsen"
+      },
+      "GG": {
+        "city": "Groß-Gerau",
+        "state": "Hessen"
+      },
+      "GI": {
+        "city": "Gießen",
+        "state": "Hessen"
+      },
+      "GL": {
+        "city": "Rheinisch-Bergischer Kreis",
+        "state": "Nordrhein-Westfalen"
+      },
+      "GLA": {
+        "city": "Glückstadt",
+        "state": "Schleswig-Holstein"
+      },
+      "GM": {
+        "city": "Remscheid",
+        "state": "Nordrhein-Westfalen"
+      },
+      "GÖ": {
+        "city": "Göttingen",
+        "state": "Niedersachsen"
+      },
+      "GP": {
+        "city": "Göppingen",
+        "state": "Baden-Württemberg"
+      },
+      "GR": {
+        "city": "Görlitz",
+        "state": "Sachsen"
+      },
+      "GRA": {
+        "city": "Grafenau",
+        "state": "Bayern"
+      },
+      "GRH": {
+        "city": "Griesheim",
+        "state": "Hessen"
+      },
+      "GRI": {
+        "city": "Gräfenhainichen",
+        "state": "Sachsen-Anhalt"
+      },
+      "GRM": {
+        "city": "Grimma",
+        "state": "Sachsen"
+      },
+      "GRZ": {
+        "city": "Greiz",
+        "state": "Thüringen"
+      },
+      "GS": {
+        "city": "Goslar",
+        "state": "Niedersachsen"
+      },
+      "GT": {
+        "city": "Gütersloh",
+        "state": "Nordrhein-Westfalen"
+      },
+      "GTH": {
+        "city": "Gotha",
+        "state": "Thüringen"
+      },
+      "GÜ": {
+        "city": "Güstrow",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "GUB": {
+        "city": "Guben",
+        "state": "Brandenburg"
+      },
+      "GVM": {
+        "city": "Grevesmühlen",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "GW": {
+        "city": "Greifswald",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "GZ": {
+        "city": "Günzburg",
+        "state": "Bayern"
+      },
+      "H": {
+        "city": "Hannover",
+        "state": "Niedersachsen"
+      },
+      "HA": {
+        "city": "Hagen",
+        "state": "Nordrhein-Westfalen"
+      },
+      "HAL": {
+        "city": "Halle (Saale)",
+        "state": "Sachsen-Anhalt"
+      },
+      "HAM": {
+        "city": "Hamm",
+        "state": "Nordrhein-Westfalen"
+      },
+      "HAS": {
+        "city": "Haßberge",
+        "state": "Bayern"
+      },
+      "HB": {
+        "city": "Bremen",
+        "state": "Bremen"
+      },
+      "HBN": {
+        "city": "Hildburghausen",
+        "state": "Thüringen"
+      },
+      "HBS": {
+        "city": "Halberstadt",
+        "state": "Sachsen-Anhalt"
+      },
+      "HC": {
+        "city": "Herzberg",
+        "state": "Brandenburg"
+      },
+      "HCH": {
+        "city": "Heidenheim",
+        "state": "Baden-Württemberg"
+      },
+      "HD": {
+        "city": "Heidelberg",
+        "state": "Baden-Württemberg"
+      },
+      "HDH": {
+        "city": "Heidenheim",
+        "state": "Baden-Württemberg"
+      },
+      "HDL": {
+        "city": "Hammelburg",
+        "state": "Bayern"
+      },
+      "HE": {
+        "city": "Hersfeld",
+        "state": "Hessen"
+      },
+      "HEF": {
+        "city": "Hersfeld",
+        "state": "Hessen"
+      },
+      "HEI": {
+        "city": "Heide",
+        "state": "Schleswig-Holstein"
+      },
+      "HEL": {
+        "city": "Helmstedt",
+        "state": "Niedersachsen"
+      },
+      "HER": {
+        "city": "Herne",
+        "state": "Nordrhein-Westfalen"
+      },
+      "HF": {
+        "city": "Herford",
+        "state": "Nordrhein-Westfalen"
+      },
+      "HG": {
+        "city": "Hofgeismar",
+        "state": "Hessen"
+      },
+      "HGN": {
+        "city": "Hagenow",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "HH": {
+        "city": "Hamburg",
+        "state": "Hamburg"
+      },
+      "HHM": {
+        "city": "Hohenmölsen",
+        "state": "Sachsen-Anhalt"
+      },
+      "HI": {
+        "city": "Hildesheim",
+        "state": "Niedersachsen"
+      },
+      "HIG": {
+        "city": "Hildburghausen",
+        "state": "Thüringen"
+      },
+      "HIP": {
+        "city": "Hirschberg",
+        "state": "Sachsen"
+      },
+      "HK": {
+        "city": "Hückelhoven-Kreis Heinsberg",
+        "state": "Nordrhein-Westfalen"
+      },
+      "HL": {
+        "city": "Lübeck",
+        "state": "Schleswig-Holstein"
+      },
+      "HM": {
+        "city": "Hameln-Pyrmont",
+        "state": "Niedersachsen"
+      },
+      "HMÜ": {
+        "city": "Hemau",
+        "state": "Bayern"
+      },
+      "HN": {
+        "city": "Heilbronn",
+        "state": "Baden-Württemberg"
+      },
+      "HO": {
+        "city": "Hof",
+        "state": "Bayern"
+      },
+      "HOL": {
+        "city": "Holzminden",
+        "state": "Niedersachsen"
+      },
+      "HOM": {
+        "city": "Saarbrücken",
+        "state": "Saarland"
+      },
+      "HOR": {
+        "city": "Horb am Neckar",
+        "state": "Baden-Württemberg"
+      },
+      "HOT": {
+        "city": "Hohenstein-Ernstthal",
+        "state": "Sachsen"
+      },
+      "HP": {
+        "city": "Hofheim",
+        "state": "Hessen"
+      },
+      "HR": {
+        "city": "Homberg (Efze)",
+        "state": "Hessen"
+      },
+      "HRO": {
+        "city": "Rostock",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "HS": {
+        "city": "Herford",
+        "state": "Nordrhein-Westfalen"
+      },
+      "HST": {
+        "city": "Hagenow",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "HU": {
+        "city": "Hanau",
+        "state": "Hessen"
+      },
+      "HÜ": {
+        "city": "Hünfeld",
+        "state": "Hessen"
+      },
+      "HVL": {
+        "city": "Havelland",
+        "state": "Brandenburg"
+      },
+      "HWI": {
+        "city": "Hagenow",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "HX": {
+        "city": "Höxter",
+        "state": "Nordrhein-Westfalen"
+      },
+      "HY": {
+        "city": "Hoyerswerda",
+        "state": "Sachsen"
+      },
+      "HZ": {
+        "city": "Harz",
+        "state": "Niedersachsen"
+      },
+      "I": {
+        "city": "Ilmenau",
+        "state": "Thüringen"
+      },
+      "IGB": {
+        "city": "Saarlouis",
+        "state": "Saarland"
+      },
+      "IK": {
+        "city": "Ilm-Kreis",
+        "state": "Thüringen"
+      },
+      "IL": {
+        "city": "Ilmenau",
+        "state": "Thüringen"
+      },
+      "IN": {
+        "city": "Ingolstadt",
+        "state": "Bayern"
+      },
+      "IZ": {
+        "city": "Itzehoe",
+        "state": "Schleswig-Holstein"
+      },
+      "J": {
+        "city": "Jena",
+        "state": "Thüringen"
+      },
+      "JL": {
+        "city": "Jerichower Land",
+        "state": "Sachsen-Anhalt"
+      },
+      "JÜL": {
+        "city": "Jülich",
+        "state": "Nordrhein-Westfalen"
+      },
+      "K": {
+        "city": "Köln",
+        "state": "Nordrhein-Westfalen"
+      },
+      "KA": {
+        "city": "Karlsruhe",
+        "state": "Baden-Württemberg"
+      },
+      "KB": {
+        "city": "Korbach",
+        "state": "Hessen"
+      },
+      "KBR": {
+        "city": "Kreis Bergstraße",
+        "state": "Hessen"
+      },
+      "KC": {
+        "city": "Kronach",
+        "state": "Bayern"
+      },
+      "KE": {
+        "city": "Kempen",
+        "state": "Nordrhein-Westfalen"
+      },
+      "KEH": {
+        "city": "Kelheim",
+        "state": "Bayern"
+      },
+      "KEL": {
+        "city": "Kempten",
+        "state": "Bayern"
+      },
+      "KEN": {
+        "city": "Kehl",
+        "state": "Baden-Württemberg"
+      },
+      "KF": {
+        "city": "Kaufbeuren",
+        "state": "Bayern"
+      },
+      "KG": {
+        "city": "Klagenfurt am Wörthersee",
+        "state": "Österreich"
+      },
+      "KH": {
+        "city": "Bad Kreuznach",
+        "state": "Rheinland-Pfalz"
+      },
+      "KI": {
+        "city": "Kiel",
+        "state": "Schleswig-Holstein"
+      },
+      "KIB": {
+        "city": "Kirchheimbolanden",
+        "state": "Rheinland-Pfalz"
+      },
+      "KK": {
+        "city": "Kleve",
+        "state": "Nordrhein-Westfalen"
+      },
+      "KL": {
+        "city": "Kaiserslautern",
+        "state": "Rheinland-Pfalz"
+      },
+      "KLE": {
+        "city": "Kleve",
+        "state": "Nordrhein-Westfalen"
+      },
+      "KLZ": {
+        "city": "Kölleda",
+        "state": "Thüringen"
+      },
+      "KM": {
+        "city": "Kamenz",
+        "state": "Sachsen"
+      },
+      "KN": {
+        "city": "Konstanz",
+        "state": "Baden-Württemberg"
+      },
+      "KO": {
+        "city": "Koblenz",
+        "state": "Rheinland-Pfalz"
+      },
+      "KÖN": {
+        "city": "Königslutter",
+        "state": "Niedersachsen"
+      },
+      "KR": {
+        "city": "Krefeld",
+        "state": "Nordrhein-Westfalen"
+      },
+      "KS": {
+        "city": "Kassel",
+        "state": "Hessen"
+      },
+      "KT": {
+        "city": "Kitzingen",
+        "state": "Bayern"
+      },
+      "KU": {
+        "city": "Kulmbach",
+        "state": "Bayern"
+      },
+      "KÜN": {
+        "city": "Künzelsau",
+        "state": "Baden-Württemberg"
+      },
+      "KUS": {
+        "city": "Kusel",
+        "state": "Rheinland-Pfalz"
+      },
+      "KW": {
+        "city": "Königs Wusterhausen",
+        "state": "Brandenburg"
+      },
+      "KY": {
+        "city": "Kyritz",
+        "state": "Brandenburg"
+      },
+      "KYF": {
+        "city": "Kyffhäuserkreis",
+        "state": "Thüringen"
+      },
+      "L": {
+        "city": "Leipzig",
+        "state": "Sachsen"
+      },
+      "LA": {
+        "city": "Landshut",
+        "state": "Bayern"
+      },
+      "LAN": {
+        "city": "Landsberg am Lech",
+        "state": "Bayern"
+      },
+      "LAU": {
+        "city": "Lauf an der Pegnitz",
+        "state": "Bayern"
+      },
+      "LB": {
+        "city": "Ludwigsburg",
+        "state": "Baden-Württemberg"
+      },
+      "LBS": {
+        "city": "Laubach",
+        "state": "Hessen"
+      },
+      "LBZ": {
+        "city": "Leibniz",
+        "state": "Brandenburg"
+      },
+      "LC": {
+        "city": "Löbau",
+        "state": "Sachsen"
+      },
+      "LD": {
+        "city": "Landau in der Pfalz",
+        "state": "Rheinland-Pfalz"
+      },
+      "LBS": {
+        "city": "Lübtheen",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "LDK": {
+        "city": "Lahn-Dill-Kreis",
+        "state": "Hessen"
+      },
+      "LDS": {
+        "city": "Landkreis Dahme-Spreewald",
+        "state": "Brandenburg"
+      },
+      "LEO": {
+        "city": "Leopard 2",
+        "state": "Leopard 2"
+      },
+      "LEG": {
+        "city": "Leingarten",
+        "state": "Baden-Württemberg"
+      },
+      "LER": {
+        "city": "Lengerich",
+        "state": "Niedersachsen"
+      },
+      "LEV": {
+        "city": "Leverkusen",
+        "state": "Nordrhein-Westfalen"
+      },
+      "LF": {
+        "city": "Lichtenfels",
+        "state": "Bayern"
+      },
+      "LBS": {
+        "city": "Lübtheen",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "LHG": {
+        "city": "Lübbenau",
+        "state": "Brandenburg"
+      },
+      "LHOG": {
+        "city": "Lübbenau/Spreewald",
+        "state": "Brandenburg"
+      },
+      "LI": {
+        "city": "Lindau (Bodensee)",
+        "state": "Bayern"
+      },
+      "LIB": {
+        "city": "Lichtenberg",
+        "state": "Bayern"
+      },
+      "LIF": {
+        "city": "Lichtenfels",
+        "state": "Bayern"
+      },
+      "LIP": {
+        "city": "Lippstadt",
+        "state": "Nordrhein-Westfalen"
+      },
+      "LL": {
+        "city": "Landsberg am Lech",
+        "state": "Bayern"
+      },
+      "LM": {
+        "city": "Limburg an der Lahn",
+        "state": "Hessen"
+      },
+      "LÖ": {
+        "city": "Lörrach",
+        "state": "Baden-Württemberg"
+      },
+      "LOS": {
+        "city": "Landkreis Oder-Spree",
+        "state": "Brandenburg"
+      },
+      "LP": {
+        "city": "Lippstadt",
+        "state": "Nordrhein-Westfalen"
+      },
+      "LRO": {
+        "city": "Ribnitz-Damgarten",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "LS": {
+        "city": "Landsberg",
+        "state": "Sachsen-Anhalt"
+      },
+      "LSA": {
+        "city": "Lutherstadt Eisleben",
+        "state": "Sachsen-Anhalt"
+      },
+      "LSK": {
+        "city": "Landsberg-Kriegshaber",
+        "state": "Bayern"
+      },
+      "LÜN": {
+        "city": "Lünen",
+        "state": "Nordrhein-Westfalen"
+      },
+      "LU": {
+        "city": "Ludwigshafen am Rhein",
+        "state": "Rheinland-Pfalz"
+      },
+      "LUP": {
+        "city": "Ludwigslust-Parchim",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "LWL": {
+        "city": "Landsweiler-Reden",
+        "state": "Saarland"
+      },
+      "M": {
+        "city": "München",
+        "state": "Bayern"
+      },
+      "MA": {
+        "city": "Mannheim",
+        "state": "Baden-Württemberg"
+      },
+      "MAB": {
+        "city": "Meldorf",
+        "state": "Schleswig-Holstein"
+      },
+      "MAI": {
+        "city": "Mainburg",
+        "state": "Bayern"
+      },
+      "MAL": {
+        "city": "Malchin",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "MB": {
+        "city": "Miesbach",
+        "state": "Bayern"
+      },
+      "MC": {
+        "city": "Mittlerer Erzgebirgskreis",
+        "state": "Sachsen"
+      },
+      "MD": {
+        "city": "Magdeburg",
+        "state": "Sachsen-Anhalt"
+      },
+      "ME": {
+        "city": "Mettmann",
+        "state": "Nordrhein-Westfalen"
+      },
+      "MEI": {
+        "city": "Meißen",
+        "state": "Sachsen"
+      },
+      "MEK": {
+        "city": "Mittelsachsen",
+        "state": "Sachsen"
+      },
+      "MER": {
+        "city": "Merseburg",
+        "state": "Sachsen-Anhalt"
+      },
+      "MET": {
+        "city": "Metzingen",
+        "state": "Baden-Württemberg"
+      },
+      "MG": {
+        "city": "Mönchengladbach",
+        "state": "Nordrhein-Westfalen"
+      },
+      "MGN": {
+        "city": "Mölln",
+        "state": "Schleswig-Holstein"
+      },
+      "MGN": {
+        "city": "Mölln",
+        "state": "Schleswig-Holstein"
+      },
+      "MH": {
+        "city": "Mühlhausen",
+        "state": "Thüringen"
+      },
+      "MHL": {
+        "city": "Mühlhausen",
+        "state": "Thüringen"
+      },
+      "MI": {
+        "city": "Miltenberg",
+        "state": "Bayern"
+      },
+      "MIL": {
+        "city": "Miltenberg",
+        "state": "Bayern"
+      },
+      "MK": {
+        "city": "Märkischer Kreis",
+        "state": "Nordrhein-Westfalen"
+      },
+      "MKK": {
+        "city": "Main-Kinzig-Kreis",
+        "state": "Hessen"
+      },
+      "ML": {
+        "city": "Merseburg",
+        "state": "Sachsen-Anhalt"
+      },
+      "MM": {
+        "city": "Memmingen",
+        "state": "Bayern"
+      },
+      "MN": {
+        "city": "Minden-Lübbecke",
+        "state": "Nordrhein-Westfalen"
+      },
+      "MO": {
+        "city": "Montabaur",
+        "state": "Rheinland-Pfalz"
+      },
+      "MOD": {
+        "city": "Mödlareuth",
+        "state": "Bayern"
+      },
+      "MOL": {
+        "city": "Märkisch-Oderland",
+        "state": "Brandenburg"
+      },
+      "MOS": {
+        "city": "Mosbach",
+        "state": "Baden-Württemberg"
+      },
+      "MQ": {
+        "city": "Müllheim",
+        "state": "Baden-Württemberg"
+      },
+      "MR": {
+        "city": "Marburg",
+        "state": "Hessen"
+      },
+      "MS": {
+        "city": "Münster",
+        "state": "Nordrhein-Westfalen"
+      },
+      "MSH": {
+        "city": "Mansfeld-Südharz",
+        "state": "Sachsen-Anhalt"
+      },
+      "MSP": {
+        "city": "Main-Spessart",
+        "state": "Bayern"
+      },
+      "MST": {
+        "city": "Mecklenburg-Strelitz",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "MT": {
+        "city": "Merzig",
+        "state": "Saarland"
+      },
+      "MÜ": {
+        "city": "Mühldorf am Inn",
+        "state": "Bayern"
+      },
+      "MVL": {
+        "city": "Mühlhausen",
+        "state": "Thüringen"
+      },
+      "MW": {
+        "city": "Mittweida",
+        "state": "Sachsen"
+      },
+      "MY": {
+        "city": "Mayen",
+        "state": "Rheinland-Pfalz"
+      },
+      "MZ": {
+        "city": "Mainz",
+        "state": "Rheinland-Pfalz"
+      },
+      "MZG": {
+        "city": "Merzig-Wadern",
+        "state": "Saarland"
+      },
+      "N": {
+        "city": "Nürnberg",
+        "state": "Bayern"
+      },
+      "NA": {
+        "city": "Nürnberg",
+        "state": "Bayern"
+      },
+      "NAB": {
+        "city": "Nabburg",
+        "state": "Bayern"
+      },
+      "NAC": {
+        "city": "Nachrodt-Wiblingwerde",
+        "state": "Nordrhein-Westfalen"
+      },
+      "NAL": {
+        "city": "Nalbach",
+        "state": "Saarland"
+      },
+      "NAS": {
+        "city": "Nassau",
+        "state": "Rheinland-Pfalz"
+      },
+      "NB": {
+        "city": "Neubrandenburg",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "ND": {
+        "city": "Neubrandenburg",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "NDH": {
+        "city": "Nordhausen",
+        "state": "Thüringen"
+      },
+      "NE": {
+        "city": "Neuss",
+        "state": "Nordrhein-Westfalen"
+      },
+      "NEA": {
+        "city": "Neustadt an der Aisch-Bad Windsheim",
+        "state": "Bayern"
+      },
+      "NEB": {
+        "city": "Neuburg an der Donau",
+        "state": "Bayern"
+      },
+      "NEC": {
+        "city": "Neckarsulm",
+        "state": "Baden-Württemberg"
+      },
+      "NEL": {
+        "city": "Nordenham",
+        "state": "Niedersachsen"
+      },
+      "NEN": {
+        "city": "Nauen",
+        "state": "Brandenburg"
+      },
+      "NEU": {
+        "city": "Neuhaus am Rennweg",
+        "state": "Thüringen"
+      },
+      "NEW": {
+        "city": "Neustadt an der Waldnaab",
+        "state": "Bayern"
+      },
+      "NF": {
+        "city": "Nordfriesland",
+        "state": "Schleswig-Holstein"
+      },
+      "NH": {
+        "city": "Neuhof",
+        "state": "Hessen"
+      },
+      "NI": {
+        "city": "Nienburg",
+        "state": "Niedersachsen"
+      },
+      "NK": {
+        "city": "Neunkirchen",
+        "state": "Saarland"
+      },
+      "NL": {
+        "city": "Nordhausen",
+        "state": "Thüringen"
+      },
+      "NM": {
+        "city": "Neumarkt in der Oberpfalz",
+        "state": "Bayern"
+      },
+      "NMB": {
+        "city": "Neubukow",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "NMS": {
+        "city": "Neumünster",
+        "state": "Schleswig-Holstein"
+      },
+      "NOH": {
+        "city": "Nordhorn",
+        "state": "Niedersachsen"
+      },
+      "NOL": {
+        "city": "Nordhorn",
+        "state": "Niedersachsen"
+      },
+      "NOM": {
+        "city": "Northeim",
+        "state": "Niedersachsen"
+      },
+      "NOR": {
+        "city": "Nordhausen",
+        "state": "Thüringen"
+      },
+      "NP": {
+        "city": "Neumarkt in der Oberpfalz",
+        "state": "Bayern"
+      },
+      "NR": {
+        "city": "Neuwied",
+        "state": "Rheinland-Pfalz"
+      },
+      "NRW": {
+        "city": "Nordrhein-Westfalen",
+        "state": "Nordrhein-Westfalen"
+      },
+      "NSK": {
+        "city": "Niesky",
+        "state": "Sachsen"
+      },
+      "NT": {
+        "city": "Neu-Ulm",
+        "state": "Bayern"
+      },
+      "NU": {
+        "city": "Neu-Ulm",
+        "state": "Bayern"
+      },
+      "NVP": {
+        "city": "Nordvorpommern",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "NW": {
+        "city": "Nordwestmecklenburg",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "NWM": {
+        "city": "Nordwestmecklenburg",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "NY": {
+        "city": "Niesky",
+        "state": "Sachsen"
+      },
+      "NZ": {
+        "city": "Neustrelitz",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "OA": {
+        "city": "Ostallgäu",
+        "state": "Bayern"
+      },
+      "OAL": {
+        "city": "Oberallgäu",
+        "state": "Bayern"
+      },
+      "OB": {
+        "city": "Oberbergischer Kreis",
+        "state": "Nordrhein-Westfalen"
+      },
+      "OBB": {
+        "city": "Oberboihingen",
+        "state": "Baden-Württemberg"
+      },
+      "OBI": {
+        "city": "Oberkirch",
+        "state": "Baden-Württemberg"
+      },
+      "OBK": {
+        "city": "Ostholstein",
+        "state": "Schleswig-Holstein"
+      },
+      "OC": {
+        "city": "Oberspreewald-Lausitz",
+        "state": "Brandenburg"
+      },
+      "OD": {
+        "city": "Oberhausen",
+        "state": "Nordrhein-Westfalen"
+      },
+      "OE": {
+        "city": "Olpe",
+        "state": "Nordrhein-Westfalen"
+      },
+      "OF": {
+        "city": "Offenbach am Main",
+        "state": "Hessen"
+      },
+      "OG": {
+        "city": "Ortenaukreis",
+        "state": "Baden-Württemberg"
+      },
+      "OH": {
+        "city": "Ostholstein",
+        "state": "Schleswig-Holstein"
+      },
+      "OHA": {
+        "city": "Osterode am Harz",
+        "state": "Niedersachsen"
+      },
+      "OHV": {
+        "city": "Oberhavel",
+        "state": "Brandenburg"
+      },
+      "OHZ": {
+        "city": "Osterholz",
+        "state": "Niedersachsen"
+      },
+      "OI": {
+        "city": "Osnabrück",
+        "state": "Niedersachsen"
+      },
+      "OL": {
+        "city": "Oldenburg",
+        "state": "Niedersachsen"
+      },
+      "OPR": {
+        "city": "Ostprignitz-Ruppin",
+        "state": "Brandenburg"
+      },
+      "OS": {
+        "city": "Osnabrück",
+        "state": "Niedersachsen"
+      },
+      "OSL": {
+        "city": "Oberspreewald-Lausitz",
+        "state": "Brandenburg"
+      },
+      "OVP": {
+        "city": "Ostvorpommern",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "P": {
+        "city": "Potsdam",
+        "state": "Brandenburg"
+      },
+      "PA": {
+        "city": "Passau",
+        "state": "Bayern"
+      },
+      "PAF": {
+        "city": "Pfaffenhofen an der Ilm",
+        "state": "Bayern"
+      },
+      "PAN": {
+        "city": "Parchim",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "PB": {
+        "city": "Paderborn",
+        "state": "Nordrhein-Westfalen"
+      },
+      "PCH": {
+        "city": "Parchim",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "PE": {
+        "city": "Peine",
+        "state": "Niedersachsen"
+      },
+      "PEG": {
+        "city": "Pegnitz",
+        "state": "Bayern"
+      },
+      "PF": {
+        "city": "Pforzheim",
+        "state": "Baden-Württemberg"
+      },
+      "PI": {
+        "city": "Pinneberg",
+        "state": "Schleswig-Holstein"
+      },
+      "PIR": {
+        "city": "Pirna",
+        "state": "Sachsen"
+      },
+      "PL": {
+        "city": "Plauen",
+        "state": "Sachsen"
+      },
+      "PLÖ": {
+        "city": "Plön",
+        "state": "Schleswig-Holstein"
+      },
+      "PM": {
+        "city": "Potsdam-Mittelmark",
+        "state": "Brandenburg"
+      },
+      "PN": {
+        "city": "Prenzlau",
+        "state": "Brandenburg"
+      },
+      "PR": {
+        "city": "Prignitz",
+        "state": "Brandenburg"
+      },
+      "PRÜ": {
+        "city": "Prüm",
+        "state": "Rheinland-Pfalz"
+      },
+      "PS": {
+        "city": "Pirmasens",
+        "state": "Rheinland-Pfalz"
+      },
+      "PW": {
+        "city": "Prignitz",
+        "state": "Brandenburg"
+      },
+      "PZ": {
+        "city": "Pforzheim",
+        "state": "Baden-Württemberg"
+      },
+      "QFT": {
+        "city": "Quedlinburg",
+        "state": "Sachsen-Anhalt"
+      },
+      "R": {
+        "city": "Regensburg",
+        "state": "Bayern"
+      },
+      "RA": {
+        "city": "Rastatt",
+        "state": "Baden-Württemberg"
+      },
+      "RAF": {
+        "city": "Ramstein",
+        "state": "Rheinland-Pfalz"
+      },
+      "RD": {
+        "city": "Rendsburg",
+        "state": "Schleswig-Holstein"
+      },
+      "RDG": {
+        "city": "Roding",
+        "state": "Bayern"
+      },
+      "RDG": {
+        "city": "Roding",
+        "state": "Bayern"
+      },
+      "RE": {
+        "city": "Recklinghausen",
+        "state": "Nordrhein-Westfalen"
+      },
+      "REG": {
+        "city": "Regen",
+        "state": "Bayern"
+      },
+      "REI": {
+        "city": "Reichenbach im Vogtland",
+        "state": "Sachsen"
+      },
+      "REK": {
+        "city": "Reichenbach im Vogtland",
+        "state": "Sachsen"
+      },
+      "REM": {
+        "city": "Regen",
+        "state": "Bayern"
+      },
+      "RES": {
+        "city": "Rees",
+        "state": "Nordrhein-Westfalen"
+      },
+      "RG": {
+        "city": "Riesa-Großenhain",
+        "state": "Sachsen"
+      },
+      "RH": {
+        "city": "Rhein-Hunsrück-Kreis",
+        "state": "Rheinland-Pfalz"
+      },
+      "RI": {
+        "city": "Riesa",
+        "state": "Sachsen"
+      },
+      "RID": {
+        "city": "Riedenburg",
+        "state": "Bayern"
+      },
+      "RIE": {
+        "city": "Riesa",
+        "state": "Sachsen"
+      },
+      "RIG": {
+        "city": "Rügen",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "RIS": {
+        "city": "Riesa",
+        "state": "Sachsen"
+      },
+      "RK": {
+        "city": "Rhein-Kreis Neuss",
+        "state": "Nordrhein-Westfalen"
+      },
+      "RL": {
+        "city": "Rostock",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "RM": {
+        "city": "Rhein-Main-Flughafen",
+        "state": "Hessen"
+      },
+      "RN": {
+        "city": "Rinteln",
+        "state": "Niedersachsen"
+      },
+      "RO": {
+        "city": "Rosenheim",
+        "state": "Bayern"
+      },
+      "ROD": {
+        "city": "Roding",
+        "state": "Bayern"
+      },
+      "ROL": {
+        "city": "Rodenberg",
+        "state": "Niedersachsen"
+      },
+      "ROS": {
+        "city": "Rosslau",
+        "state": "Sachsen-Anhalt"
+      },
+      "ROW": {
+        "city": "Rotenburg (Wümme)",
+        "state": "Niedersachsen"
+      },
+      "ROZ": {
+        "city": "Roßlau",
+        "state": "Sachsen-Anhalt"
+      },
+      "RP": {
+        "city": "Rhein-Pfalz-Kreis",
+        "state": "Rheinland-Pfalz"
+      },
+      "RPL": {
+        "city": "Rendsburg",
+        "state": "Schleswig-Holstein"
+      },
+      "RS": {
+        "city": "Remscheid",
+        "state": "Nordrhein-Westfalen"
+      },
+      "RSL": {
+        "city": "Riesa-Großenhain",
+        "state": "Sachsen"
+      },
+      "RÜD": {
+        "city": "Rüdersdorf bei Berlin",
+        "state": "Brandenburg"
+      },
+      "RÜG": {
+        "city": "Rügen",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "RÜL": {
+        "city": "Rüsselsheim",
+        "state": "Hessen"
+      },
+      "RÜN": {
+        "city": "Rüsselsheim",
+        "state": "Hessen"
+      },
+      "RUS": {
+        "city": "Riesa",
+        "state": "Sachsen"
+      },
+      "RV": {
+        "city": "Ravensburg",
+        "state": "Baden-Württemberg"
+      },
+      "RW": {
+        "city": "Rotenburg (Wümme)",
+        "state": "Niedersachsen"
+      },
+      "RZ": {
+        "city": "Ratzeburg",
+        "state": "Schleswig-Holstein"
+      },
+      "S": {
+        "city": "Stuttgart",
+        "state": "Baden-Württemberg"
+      },
+      "SA": {
+        "city": "Saarbrücken",
+        "state": "Saarland"
+      },
+      "SAB": {
+        "city": "Schwabach",
+        "state": "Bayern"
+      },
+      "SAD": {
+        "city": "Schwandorf",
+        "state": "Bayern"
+      },
+      "SAF": {
+        "city": "Saarburg",
+        "state": "Rheinland-Pfalz"
+      },
+      "SAL": {
+        "city": "Salzwedel",
+        "state": "Sachsen-Anhalt"
+      },
+      "SAN": {
+        "city": "Starnberg",
+        "state": "Bayern"
+      },
+      "SÄK": {
+        "city": "Saalekreis",
+        "state": "Sachsen-Anhalt"
+      },
+      "SÄL": {
+        "city": "Salzwedel",
+        "state": "Sachsen-Anhalt"
+      },
+      "SÄM": {
+        "city": "Salzgitter",
+        "state": "Niedersachsen"
+      },
+      "SAR": {
+        "city": "Saarbrücken",
+        "state": "Saarland"
+      },
+      "SB": {
+        "city": "Saarbrücken",
+        "state": "Saarland"
+      },
+      "SBG": {
+        "city": "St. Blasien",
+        "state": "Baden-Württemberg"
+      },
+      "SBK": {
+        "city": "Storkow (Mark)",
+        "state": "Brandenburg"
+      },
+      "SBÜ": {
+        "city": "Sonderburg",
+        "state": "Schleswig-Holstein"
+      },
+      "SC": {
+        "city": "Schwabach",
+        "state": "Bayern"
+      },
+      "SCZ": {
+        "city": "Schweinfurt",
+        "state": "Bayern"
+      },
+      "SDH": {
+        "city": "Sondershausen",
+        "state": "Thüringen"
+      },
+      "SDL": {
+        "city": "Schönebeck (Elbe)",
+        "state": "Sachsen-Anhalt"
+      },
+      "SE": {
+        "city": "Segeberg",
+        "state": "Schleswig-Holstein"
+      },
+      "SEB": {
+        "city": "Sebnitz",
+        "state": "Sachsen"
+      },
+      "SEE": {
+        "city": "Seesen",
+        "state": "Niedersachsen"
+      },
+      "SEF": {
+        "city": "Selb",
+        "state": "Bayern"
+      },
+      "SEG": {
+        "city": "Segeberg",
+        "state": "Schleswig-Holstein"
+      },
+      "SEK": {
+        "city": "Schmölln",
+        "state": "Thüringen"
+      },
+      "SEL": {
+        "city": "Selm",
+        "state": "Nordrhein-Westfalen"
+      },
+      "SFT": {
+        "city": "Suhl",
+        "state": "Thüringen"
+      },
+      "SG": {
+        "city": "Solingen",
+        "state": "Nordrhein-Westfalen"
+      },
+      "SH": {
+        "city": "Schleswig",
+        "state": "Schleswig-Holstein"
+      },
+      "SHA": {
+        "city": "Schwäbisch Hall",
+        "state": "Baden-Württemberg"
+      },
+      "SHG": {
+        "city": "Schweinfurt",
+        "state": "Bayern"
+      },
+      "SHL": {
+        "city": "Schmalkalden-Meiningen",
+        "state": "Thüringen"
+      },
+      "SHK": {
+        "city": "Saale-Holzland-Kreis",
+        "state": "Thüringen"
+      },
+      "SHL": {
+        "city": "Schmalkalden-Meiningen",
+        "state": "Thüringen"
+      },
+      "SHW": {
+        "city": "Schwäbisch Hall",
+        "state": "Baden-Württemberg"
+      },
+      "SI": {
+        "city": "Siegen",
+        "state": "Nordrhein-Westfalen"
+      },
+      "SIG": {
+        "city": "Sigmaringen",
+        "state": "Baden-Württemberg"
+      },
+      "SIM": {
+        "city": "Simbach am Inn",
+        "state": "Bayern"
+      },
+      "SK": {
+        "city": "Saalkreis",
+        "state": "Sachsen-Anhalt"
+      },
+      "SL": {
+        "city": "Saarlouis",
+        "state": "Saarland"
+      },
+      "SLE": {
+        "city": "Schleiden",
+        "state": "Nordrhein-Westfalen"
+      },
+      "SLF": {
+        "city": "Saalfeld/Saale",
+        "state": "Thüringen"
+      },
+      "SLK": {
+        "city": "Saalekreis",
+        "state": "Sachsen-Anhalt"
+      },
+      "SLS": {
+        "city": "Saarlouis",
+        "state": "Saarland"
+      },
+      "SLÜ": {
+        "city": "Schlüchtern",
+        "state": "Hessen"
+      },
+      "SLZ": {
+        "city": "Salzwedel",
+        "state": "Sachsen-Anhalt"
+      },
+      "SM": {
+        "city": "Schmalkalden-Meiningen",
+        "state": "Thüringen"
+      },
+      "SN": {
+        "city": "Schwerin",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "SO": {
+        "city": "Soest",
+        "state": "Nordrhein-Westfalen"
+      },
+      "SOB": {
+        "city": "Schrobenhausen",
+        "state": "Bayern"
+      },
+      "SOG": {
+        "city": "Soltau",
+        "state": "Niedersachsen"
+      },
+      "SOK": {
+        "city": "Saale-Orla-Kreis",
+        "state": "Thüringen"
+      },
+      "SÖM": {
+        "city": "Sömmerda",
+        "state": "Thüringen"
+      },
+      "SÖN": {
+        "city": "Sömmerda",
+        "state": "Thüringen"
+      },
+      "SON": {
+        "city": "Sonneberg",
+        "state": "Thüringen"
+      },
+      "SP": {
+        "city": "Speyer",
+        "state": "Rheinland-Pfalz"
+      },
+      "SPB": {
+        "city": "Speyer",
+        "state": "Rheinland-Pfalz"
+      },
+      "SPN": {
+        "city": "Spree-Neiße",
+        "state": "Brandenburg"
+      },
+      "SR": {
+        "city": "Straubing",
+        "state": "Bayern"
+      },
+      "SRB": {
+        "city": "Schwarzenberg/Erzgebirge",
+        "state": "Sachsen"
+      },
+      "SRO": {
+        "city": "Sangerhausen",
+        "state": "Sachsen-Anhalt"
+      },
+      "ST": {
+        "city": "Stendal",
+        "state": "Sachsen-Anhalt"
+      },
+      "STA": {
+        "city": "Starnberg",
+        "state": "Bayern"
+      },
+      "STD": {
+        "city": "Stade",
+        "state": "Niedersachsen"
+      },
+      "STE": {
+        "city": "Stendal",
+        "state": "Sachsen-Anhalt"
+      },
+      "STL": {
+        "city": "Sangerhausen",
+        "state": "Sachsen-Anhalt"
+      },
+      "SU": {
+        "city": "Siegen-Wittgenstein",
+        "state": "Nordrhein-Westfalen"
+      },
+      "SÜW": {
+        "city": "Südliche Weinstraße",
+        "state": "Rheinland-Pfalz"
+      },
+      "SW": {
+        "city": "Schwäbisch Hall",
+        "state": "Baden-Württemberg"
+      },
+      "SWA": {
+        "city": "Schwabach",
+        "state": "Bayern"
+      },
+      "SWN": {
+        "city": "Schweinfurt",
+        "state": "Bayern"
+      },
+      "SWN": {
+        "city": "Schweinfurt",
+        "state": "Bayern"
+      },
+      "SWS": {
+        "city": "Schweinfurt",
+        "state": "Bayern"
+      },
+      "SWV": {
+        "city": "Schweinfurt",
+        "state": "Bayern"
+      },
+      "SÖM": {
+        "city": "Sömmerda",
+        "state": "Thüringen"
+      },
+      "TBB": {
+        "city": "Main-Tauber-Kreis",
+        "state": "Baden-Württemberg"
+      },
+      "TDO": {
+        "city": "Teterow",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "TE": {
+        "city": "Herford",
+        "state": "Nordrhein-Westfalen"
+      },
+      "TET": {
+        "city": "Teterow",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "TF": {
+        "city": "Teltow-Fläming",
+        "state": "Brandenburg"
+      },
+      "TG": {
+        "city": "Torgau-Oschatz",
+        "state": "Sachsen"
+      },
+      "THL": {
+        "city": "Thal",
+        "state": "Thüringen"
+      },
+      "THW": {
+        "city": "Thal",
+        "state": "Thüringen"
+      },
+      "THX": {
+        "city": "Thal",
+        "state": "Thüringen"
+      },
+      "TIR": {
+        "city": "Tirschenreuth",
+        "state": "Bayern"
+      },
+      "TIZ": {
+        "city": "Tirschenreuth",
+        "state": "Bayern"
+      },
+      "TO": {
+        "city": "Torgau-Oschatz",
+        "state": "Sachsen"
+      },
+      "TÖL": {
+        "city": "Bad Tölz-Wolfratshausen",
+        "state": "Bayern"
+      },
+      "TÖN": {
+        "city": "Tönning",
+        "state": "Schleswig-Holstein"
+      },
+      "TP": {
+        "city": "Templin",
+        "state": "Brandenburg"
+      },
+      "TR": {
+        "city": "Trier",
+        "state": "Rheinland-Pfalz"
+      },
+      "TS": {
+        "city": "Traunstein",
+        "state": "Bayern"
+      },
+      "TÜ": {
+        "city": "Tübingen",
+        "state": "Baden-Württemberg"
+      },
+      "TUT": {
+        "city": "Tuttlingen",
+        "state": "Baden-Württemberg"
+      },
+      "UE": {
+        "city": "Uelzen",
+        "state": "Niedersachsen"
+      },
+      "UEM": {
+        "city": "Ueckermünde",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "UFF": {
+        "city": "Uffenheim",
+        "state": "Bayern"
+      },
+      "UH": {
+        "city": "Unstrut-Hainich-Kreis",
+        "state": "Thüringen"
+      },
+      "UL": {
+        "city": "Ulm",
+        "state": "Baden-Württemberg"
+      },
+      "UM": {
+        "city": "Uckermark",
+        "state": "Brandenburg"
+      },
+      "UN": {
+        "city": "Unna",
+        "state": "Nordrhein-Westfalen"
+      },
+      "USI": {
+        "city": "Usedom",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "V": {
+        "city": "Vogtlandkreis",
+        "state": "Sachsen"
+      },
+      "VAI": {
+        "city": "Vaihingen an der Enz",
+        "state": "Baden-Württemberg"
+      },
+      "VB": {
+        "city": "Vogelsbergkreis",
+        "state": "Hessen"
+      },
+      "VEC": {
+        "city": "Vechta",
+        "state": "Niedersachsen"
+      },
+      "VER": {
+        "city": "Verden",
+        "state": "Niedersachsen"
+      },
+      "VG": {
+        "city": "Vogtlandkreis",
+        "state": "Sachsen"
+      },
+      "VIB": {
+        "city": "Vilsbiburg",
+        "state": "Bayern"
+      },
+      "VK": {
+        "city": "Völklingen",
+        "state": "Saarland"
+      },
+      "VOH": {
+        "city": "Vohenstrauß",
+        "state": "Bayern"
+      },
+      "VOL": {
+        "city": "Völklingen",
+        "state": "Saarland"
+      },
+      "VÖL": {
+        "city": "Völklingen",
+        "state": "Saarland"
+      },
+      "VOR": {
+        "city": "Vohenstrauß",
+        "state": "Bayern"
+      },
+      "VR": {
+        "city": "Vorpommern-Rügen",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "VS": {
+        "city": "Villingen-Schwenningen",
+        "state": "Baden-Württemberg"
+      },
+      "W": {
+        "city": "Wuppertal",
+        "state": "Nordrhein-Westfalen"
+      },
+      "WA": {
+        "city": "Warendorf",
+        "state": "Nordrhein-Westfalen"
+      },
+      "WAF": {
+        "city": "Warendorf",
+        "state": "Nordrhein-Westfalen"
+      },
+      "WAK": {
+        "city": "Wartburgkreis",
+        "state": "Thüringen"
+      },
+      "WAN": {
+        "city": "Wangen im Allgäu",
+        "state": "Baden-Württemberg"
+      },
+      "WAR": {
+        "city": "Waren (Müritz)",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "WAT": {
+        "city": "Wattenscheid",
+        "state": "Nordrhein-Westfalen"
+      },
+      "WAX": {
+        "city": "Wasserburg am Inn",
+        "state": "Bayern"
+      },
+      "WB": {
+        "city": "Waiblingen",
+        "state": "Baden-Württemberg"
+      },
+      "WBS": {
+        "city": "Wittenberge",
+        "state": "Brandenburg"
+      },
+      "WBS": {
+        "city": "Wittenberge",
+        "state": "Brandenburg"
+      },
+      "WDA": {
+        "city": "Westerland",
+        "state": "Schleswig-Holstein"
+      },
+      "WE": {
+        "city": "Weimar",
+        "state": "Thüringen"
+      },
+      "WEL": {
+        "city": "Westerland",
+        "state": "Schleswig-Holstein"
+      },
+      "WEN": {
+        "city": "Weiden in der Oberpfalz",
+        "state": "Bayern"
+      },
+      "WER": {
+        "city": "Werdau",
+        "state": "Sachsen"
+      },
+      "WES": {
+        "city": "Wesel",
+        "state": "Nordrhein-Westfalen"
+      },
+      "WF": {
+        "city": "Wolfenbüttel",
+        "state": "Niedersachsen"
+      },
+      "WHV": {
+        "city": "Wilhelmshaven",
+        "state": "Niedersachsen"
+      },
+      "WI": {
+        "city": "Wiesbaden",
+        "state": "Hessen"
+      },
+      "WIL": {
+        "city": "Wittenberg",
+        "state": "Sachsen-Anhalt"
+      },
+      "WIS": {
+        "city": "Wiesbaden",
+        "state": "Hessen"
+      },
+      "WIT": {
+        "city": "Wittenberg",
+        "state": "Sachsen-Anhalt"
+      },
+      "WK": {
+        "city": "Wartburgkreis",
+        "state": "Thüringen"
+      },
+      "WL": {
+        "city": "Pinneberg",
+        "state": "Schleswig-Holstein"
+      },
+      "WLG": {
+        "city": "Wolgast",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "WM": {
+        "city": "Weilheim-Schongau",
+        "state": "Bayern"
+      },
+      "WMS": {
+        "city": "Weilheim-Schongau",
+        "state": "Bayern"
+      },
+      "WN": {
+        "city": "Wesel",
+        "state": "Nordrhein-Westfalen"
+      },
+      "WND": {
+        "city": "St. Wendel",
+        "state": "Saarland"
+      },
+      "WO": {
+        "city": "Worms",
+        "state": "Rheinland-Pfalz"
+      },
+      "WOB": {
+        "city": "Wolfsburg",
+        "state": "Niedersachsen"
+      },
+      "WOL": {
+        "city": "Wolfsburg",
+        "state": "Niedersachsen"
+      },
+      "WOR": {
+        "city": "Worms",
+        "state": "Rheinland-Pfalz"
+      },
+      "WOS": {
+        "city": "Wolfhagen",
+        "state": "Hessen"
+      },
+      "WR": {
+        "city": "Waren (Müritz)",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "WRN": {
+        "city": "Waren (Müritz)",
+        "state": "Mecklenburg-Vorpommern"
+      },
+      "WS": {
+        "city": "Wiesbaden",
+        "state": "Hessen"
+      },
+      "WSF": {
+        "city": "Wiesbaden",
+        "state": "Hessen"
+      },
+      "WT": {
+        "city": "Wittmund",
+        "state": "Niedersachsen"
+      },
+      "WTM": {
+        "city": "Weißwasser/O.L.",
+        "state": "Sachsen"
+      },
+      "WÜ": {
+        "city": "Würzburg",
+        "state": "Bayern"
+      },
+      "WUG": {
+        "city": "Weißenburg in Bayern",
+        "state": "Bayern"
+      },
+      "WÜM": {
+        "city": "Weißenfels",
+        "state": "Sachsen-Anhalt"
+      },
+      "WUN": {
+        "city": "Wunsiedel im Fichtelgebirge",
+        "state": "Bayern"
+      },
+      "WUR": {
+        "city": "Wurzen",
+        "state": "Sachsen"
+      },
+      "WÜR": {
+        "city": "Würzburg",
+        "state": "Bayern"
+      },
+      "WW": {
+        "city": "Westerwaldkreis",
+        "state": "Rheinland-Pfalz"
+      },
+      "WZ": {
+        "city": "Wetzlar",
+        "state": "Hessen"
+      },
+      "X": {
+        "city": "Nicht zuordenbare Orte",
+        "state": ""
+      },
+      "Y": {
+        "city": "Nicht zuordenbare Orte",
+        "state": ""
+      },
+      "Z": {
+        "city": "Zwickau",
+        "state": "Sachsen"
+      },
+      "ZI": {
+        "city": "Zittau",
+        "state": "Sachsen"
+      },
+      "ZP": {
+        "city": "Zweibrücken",
+        "state": "Rheinland-Pfalz"
+      },
+      "ZR": {
+        "city": "Zeitz",
+        "state": "Sachsen-Anhalt"
+      },
+      "ZW": {
+        "city": "Zweibrücken",
+        "state": "Rheinland-Pfalz"
+      },
+      "ZZ": {
+        "city": "Zeitz",
+        "state": "Sachsen-Anhalt"
+      }
     }
+    
   ]
 }
