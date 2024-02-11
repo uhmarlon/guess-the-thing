@@ -7,16 +7,14 @@ import {GameController} from "../gameController";
  * Starts a countdown for a game in a specific room.
  *
  * @param {string} roomName - The name of the room where the game is being played.
- * @param {number} timer - The initial time for the countdown, in seconds.
  * @param {number} rounds - The maximum number of rounds for the game.
  * @return {Promise<void>} - A promise that resolves when the countdown is finished.
  */
-export async function startLicensePlateGame(roomName: string, timer: number, rounds: number): Promise<void> {
-    const gameController = GameController.getInstance();
+export async function startLicensePlateGame(roomName: string, rounds: number): Promise<void> {
 
-    const roomMeta = gameController.gameMeta.find(room => room.roomName === roomName) || {
+    const roomMeta = GameController.gameMeta.find(room => room.roomName === roomName) || {
         roomName,
-        game: "license_plate",
+        game: "LicensePlate",
         countryString: '',
         round: 1,
         maxRounds: rounds,
@@ -26,25 +24,31 @@ export async function startLicensePlateGame(roomName: string, timer: number, rou
     // Set the room meta
     roomMeta.countryString = licensePlate.city;
     roomMeta.round = roomMeta.round === roomMeta.maxRounds ? roomMeta.round : roomMeta.round + 1;
-    gameController.gameMeta.push(roomMeta);
+    GameController.gameMeta.push(roomMeta);
 
     // Set the game meta
-    gameController.gameSetRound(roomName, roomMeta.round, roomMeta.maxRounds);
-    gameController.gameSetRoomString(roomName, buildHiddenName(licensePlate.city));
-    gameController.gameSetLicensePlate(roomName, licensePlate.abbreviation);
-    gameController.checkAndHandleGameEnd(roomMeta, roomName);
+    GameController.gameSetRound(roomName, roomMeta.round, roomMeta.maxRounds);
+    GameController.gameSetRoomString(roomName, buildHiddenName(licensePlate.city));
+
+    GameController.emitGameEventToRoom(roomName, 'Abbreviation', licensePlate.abbreviation);
+    GameController.emitGameEventToRoom(roomName, 'City', licensePlate.city);
+
+    if (GameController.checkAndHandleGameEnd(roomMeta, roomName)) return;
 
     // Start the game countdown
-    let counter = timer + Math.round((licensePlate.city.length / 4) * 0.5);
-    await gameController.startGameCountdown(roomName, counter);
+    let counter = 15 + Math.round((licensePlate.city.length / 4) * 0.5);
+    const countdownResult = await GameController.startGameCountdown(roomName, counter);
 
-    // Start the game
-    gameController.resetGuessesAndNotifyPlayers(roomName);
-    gameController.gameSetRoomString(roomName, licensePlate.city);
+    // If all players have guessed or the countdown has finished, start the final countdown
+    if (countdownResult === "stop") {
+        // Start the final countdown
+        const finalCountdownResult = await GameController.emitFinalCountdown(roomName);
 
-    // Start the game countdown
-    await gameController.emitFinalCountdown(roomName);
-    await startLicensePlateGame(roomName, 15, rounds);
+        // If the final countdown has finished and the game has not ended, start a new game
+        if (finalCountdownResult === "stop" && roomMeta.round < roomMeta.maxRounds) {
+            await startLicensePlateGame(roomName, rounds);
+        }
+    }
 }
 
 /**
@@ -58,3 +62,4 @@ function getRandomLicensePlate(): LicensePlate {
             Math.random() * licensePlates.license_plates.length
         )];
 }
+

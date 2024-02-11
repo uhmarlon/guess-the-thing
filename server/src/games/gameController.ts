@@ -6,19 +6,8 @@ import {Player, Room, RoomGameMetadata, RoomMeta} from "../interfaces/interfaces
  * GameController class for managing game logic and player interactions.
  */
 export class GameController {
-
-    gameMeta: RoomGameMetadata[] = [];
-    players: Player[] = [];
-
-    /**
-     * Returns an instance of the GameController class.
-     *
-     * @return {GameController} An instance of the GameController class.
-     */
-    public static getInstance(): GameController {
-        return new GameController();
-    }
-
+    public static gameMeta: RoomGameMetadata[] = [];
+    public static players: Player[] = [];
 
     /**
      * Resets the guesses of players in a room
@@ -27,14 +16,13 @@ export class GameController {
      * @param {string} roomName - The name of the room.
      * @return {void} - This method does not return any value.
      */
-    resetGuessesAndNotifyPlayers(roomName: string): void {
+    public static resetGuessesAndNotifyPlayers(roomName: string): void {
         const playersInRoom = this.getPlayersInRoom(roomName);
         playersInRoom.forEach((player: { guess: boolean }) => {
             player.guess = false;
         });
         io.to(roomName).emit("update-players", playersInRoom);
     }
-
 
     /**
      * Start the game countdown timer.
@@ -43,24 +31,29 @@ export class GameController {
      * @param {number} counter - The initial counter value.
      * @return {Promise<string>} - A promise that resolves with "stop" when the countdown is stopped.
      */
-    startGameCountdown(roomName: string, counter: number): Promise<string> {
+    public static startGameCountdown(roomName: string, counter: number): Promise<string> {
         return new Promise((resolve) => {
             const countdownInterval = setInterval(() => {
                 const playersInRoom = this.getPlayersInRoom(roomName);
                 const allGuessed = playersInRoom.every(
                     (player: { guess: boolean }) => player.guess
                 );
+
+                if (playersInRoom.length === 0) {
+                    clearInterval(countdownInterval);
+                    return resolve("stop");
+                }
                 if (allGuessed) {
                     clearInterval(countdownInterval);
-                    resolve("stop");
+                    return resolve("stop");
                 }
                 counter--;
                 io.to(roomName).emit("gameCountdown", counter);
                 if (counter === 0) {
                     clearInterval(countdownInterval);
-                    resolve("stop");
+                    return resolve("stop");
                 }
-            }, 1000);
+            }, 1000); // Ensure this is 1000 for a countdown every second
         });
     }
 
@@ -70,7 +63,7 @@ export class GameController {
      * @param {string} roomName - The name of the room.
      * @return {Promise<string>} - A promise that resolves with the string "stop" when the countdown reaches zero.
      */
-    emitFinalCountdown(roomName: string): Promise<string> {
+    public static emitFinalCountdown(roomName: string): Promise<string> {
         return new Promise((resolve) => {
             let outTimer = 5;
             const countdownInterval = setInterval(() => {
@@ -86,16 +79,16 @@ export class GameController {
 
 
     /**
-     * Sets the license plate for a game in the specified room.
-     *
-     * @param {string} roomName - The name of the room where the game is being played.
-     * @param {string} flagKey - The key representing the license plate.
+     * Emits a game event to the specified room.
+     * @param {string} roomName - The name of the room to emit the event to.
+     * @param {string} gameName - The name of the game corresponding to the game event.
+     * @param {string} key - The key associated with the game event.
      * @return {void}
      */
-    gameSetLicensePlate(roomName: string, flagKey: string): void {
+    public static emitGameEventToRoom(roomName: string, gameName: string, key: string): void {
         const room: Room = io.sockets.adapter.rooms.get(roomName) as unknown as Room;
         if (room) {
-            io.to(roomName).emit("gameSetFlag", flagKey);
+            io.to(roomName).emit("gameSet" + gameName, key);
         }
     }
 
@@ -107,7 +100,7 @@ export class GameController {
      * @param {string} roomString - The new room string.
      * @return {void}
      */
-    gameSetRoomString(roomName: string, roomString: string): void {
+    public static gameSetRoomString(roomName: string, roomString: string): void {
         const room: Room = io.sockets.adapter.rooms.get(roomName) as unknown as Room;
         if (room) {
             io.to(roomName).emit("gameSetroomString", roomString);
@@ -123,7 +116,7 @@ export class GameController {
      * @param {number} maxRounds - The maximum number of rounds for the game
      * @return {void} - This method does not return any value.
      */
-    gameSetRound(roomName: string, gameRounds: number, maxRounds: number): void {
+    public static gameSetRound(roomName: string, gameRounds: number, maxRounds: number): void {
         if (!io.sockets.adapter.rooms.get(roomName)) return;
         io.to(roomName).emit("gameRounds", gameRounds, maxRounds);
     }
@@ -136,11 +129,12 @@ export class GameController {
      * @param {string} roomName - The name of the room.
      * @return {void}
      */
-    checkAndHandleGameEnd(roomMeta: RoomMeta, roomName: string): void {
+    public static checkAndHandleGameEnd(roomMeta: RoomMeta, roomName: string): boolean {
         if (roomMeta.round === roomMeta.maxRounds) {
             io.to(roomName).emit("gameEnd", this.getPlayersPoints(roomName));
-            return;
+            return true;
         }
+        return false;
     }
 
 
@@ -149,7 +143,7 @@ export class GameController {
      * @param {string} roomName - The name of the room.
      * @return {Player[]} - An array containing the players in the room.
      */
-    getPlayersInRoom(roomName: string): Player[] {
+    public static getPlayersInRoom(roomName: string): Player[] {
         return this.players.filter((player) => player.room === roomName);
     }
 
@@ -160,7 +154,7 @@ export class GameController {
      * @param {string} roomName - The name of the room to get the players' points from.
      * @return {Player[]} - An array of Player objects sorted in descending order based on their points.
      */
-    getPlayersPoints(roomName: string): Player[] {
+    public static getPlayersPoints(roomName: string): Player[] {
         const playersInRoom = this.players.filter((player) => player.room === roomName);
         return playersInRoom.sort((a, b) => b.points - a.points);
     }

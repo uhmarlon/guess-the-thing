@@ -1,7 +1,7 @@
 import express from "express";
 import http from "http";
 import { Server, Socket } from "socket.io";
-import { generateRandomName, makeid, buildHiddenName, getSocketUrl } from "./utils/utils";
+import { generateRandomName, makeId, buildHiddenName, getSocketUrl } from "./utils/utils";
 import { gameLoop } from "./games/flagGame/flagGame";
 import { Player, RoomGameMetadata } from "./interfaces/interfaces";
 import { gameCocktailStart } from "./games/cocktailGame/cocktailGame";
@@ -38,7 +38,7 @@ io.on("connection", (socket: Socket) => {
   // Rename etc...
 
   function handleNewGame(gameType: string) {
-    let roomName = makeid(5);
+    let roomName = makeId(5);
     clientRooms[socket.id] = { roomName, gameType };
     socket.emit("gameCode", roomName);
     socket.join(roomName);
@@ -49,43 +49,21 @@ io.on("connection", (socket: Socket) => {
     const roomString: string = Array.from(room ?? [])[0];
 
     if (room) {
-      if (
-        clientRooms.hasOwnProperty(roomString) &&
-        clientRooms[roomString].gameType == gameType
-      ) {
-        clientRooms[socket.id] = { roomName, gameType };
+      const roomInfo = clientRooms[roomString];
+      if (roomInfo && roomInfo.gameType === gameType) {
+        clientRooms[roomString] = { roomName: roomName, gameType: gameType};
         socket.join(roomName);
-        socket.emit("gameCodeoc", roomName);
+        socket.emit('gameCodeoc', roomName);
+
+        // Create a new player and add them to the list of players in the room
+        createPlayer(roomName, socket.id);
       } else {
-        socket.emit("invalidGameType");
+        socket.emit('invalidGameType');
       }
     } else {
-      socket.emit("unknownCode");
+      socket.emit('unknownCode');
     }
   }
-
-  // function handleJoinGame(roomName: string, gameType: string) {
-  //   const room = io.sockets.adapter.rooms.get(roomName);
-  //   const roomString: string = Array.from(room ?? []).join(', ');
-  //   if (room) {
-  //     console.log("checkroom")
-  //     const roomInfo = clientRooms[roomString];
-  //     console.log(roomInfo)
-  //     if (roomInfo && roomInfo.gameType === gameType) {
-  //       clientRooms[roomString] = { roomName: roomName, gameType: gameType};
-  //       console.log(roomName + " " + gameType + " " + socket.id + " " + roomString)
-  //       socket.join(roomName);
-  //       console.log(socket.id);
-  //       socket.emit('gameCodeoc', roomName);
-  //     } else {
-  //       socket.emit('invalidGameType');
-  //       console.log('invalidGameType');
-  //     }} else {
-  //       socket.emit('unknownCode');
-  //       console.log('unknownCode')
-  //   }
-  //   console.log("//////")
-  // }
 
   function handleClientReady() {
     const roomName = clientRooms[socket.id];
@@ -145,8 +123,8 @@ io.on("connection", (socket: Socket) => {
       case "cocktail":
         gameCocktailStart(roomName, rounds);
         break;
-      case "license_plate":
-        startLicensePlateGame(roomName, 15, rounds);
+      case "LicensePlate":
+        startLicensePlateGame(roomName, rounds);
         break;
       default:
         break;
@@ -210,6 +188,7 @@ io.on("connection", (socket: Socket) => {
 function createPlayer(roomName: string, socketId: any) {
   const id = socketId;
   const name = generateRandomName();
+  console.log('Generated name:', name); // Hinzugefügt für Debugging-Zwecke
   const player: Player = {
     id,
     name,
@@ -219,6 +198,7 @@ function createPlayer(roomName: string, socketId: any) {
     room: roomName,
   };
   players.push(player);
+  console.log('Players:', players); // Hinzugefügt für Debugging-Zwecke
   return player;
 }
 
@@ -247,29 +227,29 @@ server.listen(3001, () => {
  * @deprecated This method is deprecated and should not be used. Use the GameController class instead.
  */
 export function getPlayersPoints(roomName: string): Player[] {
-  return GameController.getInstance().getPlayersPoints(roomName);
+  return GameController.getPlayersPoints(roomName);
 }
 
 /**
  * @deprecated This method is deprecated and should not be used. Use the GameController class instead.
  */
 export function gameSetRound(roomName: string, gameRounds: number, maxRounds: number): void {
-  GameController.getInstance().gameSetRound(roomName, gameRounds, maxRounds);
+  GameController.gameSetRound(roomName, gameRounds, maxRounds);
 }
 
 /**
  * @deprecated This method is deprecated and should not be used. Use the GameController class instead.
  */
 export function getPlayersInRoom(roomName: string): Player[] {
-  return GameController.getInstance().getPlayersInRoom(roomName);
+  return GameController.getPlayersInRoom(roomName);
 }
 
 /**
  * @deprecated This method is deprecated and should not be used. Use the GameController class instead.
  */
-export const gameMeta: RoomGameMetadata[] = GameController.getInstance().gameMeta;
+export const gameMeta: RoomGameMetadata[] = GameController.gameMeta;
 
 /**
  * @deprecated This method is deprecated and should not be used. Use the GameController class instead.
  */
-export const players: Player[] = GameController.getInstance().players;
+export const players: Player[] = GameController.players;
