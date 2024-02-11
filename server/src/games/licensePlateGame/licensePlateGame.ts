@@ -1,4 +1,4 @@
-import licensePlates from "../../data/licensePlates/licensePlate.json";
+import licensePlates from "../../data/licensePlates/licensePlate_full.json";
 import {LicensePlate} from "../../interfaces/interfaces";
 import {buildHiddenName} from "../../utils/utils";
 import {GameController} from "../gameController";
