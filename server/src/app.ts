@@ -6,6 +6,7 @@ import { gameLoop } from "./games/flagGame/flagGame";
 import { Player, RoomGameMetadata } from "./interfaces/interfaces";
 import { gameCocktailStart } from "./games/cocktailGame/cocktailGame";
 import {GameController} from "./games/gameController";
+import {startLicensePlateGame} from "./games/licensePlateGame/licensePlateGame";
 
 const app = express();
 const server = http.createServer(app);
@@ -88,11 +89,9 @@ io.on("connection", (socket: Socket) => {
 
   function handleClientReady() {
     const roomName = clientRooms[socket.id];
-    if (!roomName) {
-      return;
-    }
-    const player = createPlayer(roomName.roomName as string, socket.id);
-    io.to(roomName.roomName).emit(
+    if (!roomName) return;
+      createPlayer(roomName.roomName as string, socket.id);
+      io.to(roomName.roomName).emit(
       "update-players",
       getPlayersInRoom(roomName.roomName)
     );
@@ -139,12 +138,18 @@ io.on("connection", (socket: Socket) => {
     const { roomName } = roomInfo;
     io.to(roomName).emit("gameStarted");
 
-    if (roomInfo.gameType === "flag") {
-      gameLoop(roomName, rounds);
-    }
-
-    if (roomInfo.gameType === "cocktail") {
-      gameCocktailStart(roomName, rounds);
+    switch (roomInfo.gameType) {
+      case "flag":
+        gameLoop(roomName, rounds);
+        break;
+      case "cocktail":
+        gameCocktailStart(roomName, rounds);
+        break;
+      case "license_plate":
+        startLicensePlateGame(roomName, 15, rounds);
+        break;
+      default:
+        break;
     }
   }
 

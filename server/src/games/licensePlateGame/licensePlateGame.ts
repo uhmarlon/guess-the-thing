@@ -11,7 +11,7 @@ import {GameController} from "../gameController";
  * @param {number} rounds - The maximum number of rounds for the game.
  * @return {Promise<void>} - A promise that resolves when the countdown is finished.
  */
-async function gameCountdown(roomName: string, timer: number, rounds: number) {
+export async function startLicensePlateGame(roomName: string, timer: number, rounds: number): Promise<void> {
     const gameController = GameController.getInstance();
 
     const roomMeta = gameController.gameMeta.find(room => room.roomName === roomName) || {
@@ -44,7 +44,7 @@ async function gameCountdown(roomName: string, timer: number, rounds: number) {
 
     // Start the game countdown
     await gameController.emitFinalCountdown(roomName);
-    await gameCountdown(roomName, 15, rounds);
+    await startLicensePlateGame(roomName, 15, rounds);
 }
 
 /**
