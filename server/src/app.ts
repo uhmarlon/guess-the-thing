@@ -3,13 +3,13 @@ import http from "http";
 import { Server, Socket } from "socket.io";
 import { generateRandomName, makeid, buildHiddenName, getSocketUrl } from "./utils/utils";
 import { gameLoop } from "./games/flagGame/flagGame";
-import { Player, RoomGameMetadata, Room } from "./interfaces/interfaces";
+import { Player, RoomGameMetadata } from "./interfaces/interfaces";
 import { gameCocktailStart } from "./games/cocktailGame/cocktailGame";
+import {GameController} from "./games/gameController";
 
 const app = express();
 const server = http.createServer(app);
-export const players: Player[] = [];
-export const gameMeta: RoomGameMetadata[] = [];
+
 const clientRooms: { [key: string]: { gameType: string; roomName: string } } = {};
 
 export const io = new Server(server, {
@@ -19,11 +19,6 @@ export const io = new Server(server, {
   pingTimeout: 120000,
   pingInterval: 5000,
 });
-
-export function getPlayersInRoom(roomName: string): Player[] {
-  const playersInRoom = players.filter((player) => player.room === roomName);
-  return playersInRoom;
-}
 
 io.on("connection", (socket: Socket) => {
   socket.on("newGame", handleNewGame);
@@ -222,18 +217,6 @@ function createPlayer(roomName: string, socketId: any) {
   return player;
 }
 
-export async function gameSetRound(
-  roomName: string,
-  gameRounds: number,
-  maxRounds: number
-): Promise<void> {
-  const room: Room = io.sockets.adapter.rooms.get(roomName) as unknown as Room;
-  if (!room) {
-    return;
-  }
-  io.to(roomName).emit("gameRounds", gameRounds, maxRounds);
-}
-
 export async function gameSetPersonString(
   socketId: string,
   roomString: string
@@ -241,12 +224,47 @@ export async function gameSetPersonString(
   io.to(socketId).emit("gameSetroomString", roomString);
 }
 
-export function getPlayersPoints(roomName: string): Player[] {
-  const playersInRoom = players.filter((player) => player.room === roomName);
-  playersInRoom.sort((a, b) => b.points - a.points);
-  return playersInRoom;
-}
+
+
 
 server.listen(3001, () => {
   console.log("✔️ Server listening on port 3001");
 });
+
+
+/**
+ *
+ * DEPRECATED METHODS AND VARIABLES
+ *
+ */
+
+/**
+ * @deprecated This method is deprecated and should not be used. Use the GameController class instead.
+ */
+export function getPlayersPoints(roomName: string): Player[] {
+  return GameController.getInstance().getPlayersPoints(roomName);
+}
+
+/**
+ * @deprecated This method is deprecated and should not be used. Use the GameController class instead.
+ */
+export function gameSetRound(roomName: string, gameRounds: number, maxRounds: number): void {
+  GameController.getInstance().gameSetRound(roomName, gameRounds, maxRounds);
+}
+
+/**
+ * @deprecated This method is deprecated and should not be used. Use the GameController class instead.
+ */
+export function getPlayersInRoom(roomName: string): Player[] {
+  return GameController.getInstance().getPlayersInRoom(roomName);
+}
+
+/**
+ * @deprecated This method is deprecated and should not be used. Use the GameController class instead.
+ */
+export const gameMeta: RoomGameMetadata[] = GameController.getInstance().gameMeta;
+
+/**
+ * @deprecated This method is deprecated and should not be used. Use the GameController class instead.
+ */
+export const players: Player[] = GameController.getInstance().players;
