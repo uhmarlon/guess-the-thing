@@ -1,14 +1,3569 @@
 {
   "license_plates": [
     {
-      "abbreviation": "MD",
-      "city": "Magdeburg",
+      "abbreviation": "A",
+      "city": "Augsburg",
       "state": "Bayern"
+    },
+    {
+      "abbreviation": "AA",
+      "city": "Aalen",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "AB",
+      "city": "Aschaffenburg",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "ABG",
+      "city": "Altenburger Land",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "ABI",
+      "city": "Abensberg",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "AC",
+      "city": "Aachen",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "AD",
+      "city": "Andechs",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "AE",
+      "city": "Aichach",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "AÖ",
+      "city": "Altötting",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "AH",
+      "city": "Arnsberg",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "AIB",
+      "city": "Aibling",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "AK",
+      "city": "Altenkirchen (Westerwald)",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "ALF",
+      "city": "Alfeld (Leine)",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "ALZ",
+      "city": "Altötting",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "AM",
+      "city": "Amberg",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "AN",
+      "city": "Ansbach",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "ANA",
+      "city": "Annaberg-Buchholz",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "ANG",
+      "city": "Angermünde",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "ANK",
+      "city": "Anklam",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "AÖ",
+      "city": "Altötting",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "AP",
+      "city": "Achern",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "APD",
+      "city": "Apolda",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "ARN",
+      "city": "Arnstadt",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "ART",
+      "city": "Artern/Unstrut",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "AS",
+      "city": "Amberg-Sulzbach",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "ASL",
+      "city": "Aschersleben",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "ASZ",
+      "city": "Aschersleben",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "AT",
+      "city": "Altenburg",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "AU",
+      "city": "Aue-Schwarzenberg",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "AUG",
+      "city": "Augsburg",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "AUR",
+      "city": "Aurich",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "AW",
+      "city": "Ahrweiler",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "AZ",
+      "city": "Alzey",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "AZE",
+      "city": "Anzeige nicht verfügbar",
+      "state": ""
     },
     {
       "abbreviation": "B",
       "city": "Berlin",
+      "state": "Berlin"
+    },
+    {
+      "abbreviation": "BA",
+      "city": "Bamberg",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "BAB",
+      "city": "Baden-Baden",
       "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "BAD",
+      "city": "Baden-Baden",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "BAL",
+      "city": "Balingen",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "BAR",
+      "city": "Barnim",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "BAS",
+      "city": "Bassum",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "BB",
+      "city": "Böblingen",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "BBG",
+      "city": "Bernburg (Saale)",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "BBL",
+      "city": "Büdingen",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "BBN",
+      "city": "Bebra",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "BBS",
+      "city": "Bebra",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "BBÜ",
+      "city": "Bad Berleburg",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "BC",
+      "city": "Biberach an der Riß",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "BCH",
+      "city": "Büchen",
+      "state": "Schleswig-Holstein"
+    },
+    {
+      "abbreviation": "BD",
+      "city": "Bad Doberan",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "BDG",
+      "city": "Bad Oldesloe",
+      "state": "Schleswig-Holstein"
+    },
+    {
+      "abbreviation": "BDM",
+      "city": "Bad Oldesloe",
+      "state": "Schleswig-Holstein"
+    },
+    {
+      "abbreviation": "BE",
+      "city": "Beckum",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "BED",
+      "city": "Bedeutung",
+      "state": ""
+    },
+    {
+      "abbreviation": "BER",
+      "city": "Beverungen",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "BEN",
+      "city": "Bensheim",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "BER",
+      "city": "Bergen",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "BER",
+      "city": "Berlin",
+      "state": "Berlin"
+    },
+    {
+      "abbreviation": "BES",
+      "city": "Bersenbrück",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "BGL",
+      "city": "Berchtesgadener Land",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "BGL",
+      "city": "Bad Griesbach im Rottal",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "BH",
+      "city": "Biedenkopf",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "BIR",
+      "city": "Birkenfeld",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "BIW",
+      "city": "Bischofswerda",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "BIZ",
+      "city": "Bischofswerda",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "BK",
+      "city": "Bernkastel-Wittlich",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "BL",
+      "city": "Böblingen",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "BLB",
+      "city": "Bad Lobenstein",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "BLK",
+      "city": "Burgenlandkreis",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "BM",
+      "city": "Bergheim",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "BNA",
+      "city": "Borna",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "BN",
+      "city": "Bonn",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "BÖ",
+      "city": "Börde",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "BOD",
+      "city": "Bodenseekreis",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "BOR",
+      "city": "Borken",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "BOT",
+      "city": "Bottrop",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "BP",
+      "city": "Bundespolizei",
+      "state": ""
+    },
+    {
+      "abbreviation": "BRA",
+      "city": "Brakel",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "BRB",
+      "city": "Brandenburg an der Havel",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "BRG",
+      "city": "Burg",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "BRL",
+      "city": "Brilon",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "BRV",
+      "city": "Bremervörde",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "BS",
+      "city": "Braunschweig",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "BTF",
+      "city": "Bitterfeld",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "BTZ",
+      "city": "Bitterfeld",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "BU",
+      "city": "Burg",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "BÜD",
+      "city": "Büdingen",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "BÜZ",
+      "city": "Bützow",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "BW",
+      "city": "Bremen",
+      "state": "Bremen"
+    },
+    {
+      "abbreviation": "BWL",
+      "city": "Baden-Württemberg",
+      "state": ""
+    },
+    {
+      "abbreviation": "BYL",
+      "city": "Bayern",
+      "state": ""
+    },
+    {
+      "abbreviation": "BZ",
+      "city": "Brandenburg",
+      "state": ""
+    },
+    {
+      "abbreviation": "C",
+      "city": "Chemnitz",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "CA",
+      "city": "Calau",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "COC",
+      "city": "Cochem-Zell",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "COE",
+      "city": "Coesfeld",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "CR",
+      "city": "Cottbus",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "CUX",
+      "city": "Cuxhaven",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "CW",
+      "city": "Calw",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "D",
+      "city": "Düsseldorf",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "DA",
+      "city": "Darmstadt",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "DAH",
+      "city": "Dachau",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "DAN",
+      "city": "Dannenberg (Elbe)",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "DAU",
+      "city": "Daun",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "DB",
+      "city": "Düren",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "DBR",
+      "city": "Doberlug-Kirchhain",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "DD",
+      "city": "Dresden",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "DE",
+      "city": "Dessau-Roßlau",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "DEG",
+      "city": "Deggendorf",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "DEL",
+      "city": "Delmenhorst",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "DGF",
+      "city": "Dingolfing",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "DH",
+      "city": "Diepholz",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "DI",
+      "city": "Dieburg",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "DIN",
+      "city": "Dinslaken",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "DIZ",
+      "city": "Ditzingen",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "DKB",
+      "city": "Dinkelsbühl",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "DL",
+      "city": "Döbeln",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "DLG",
+      "city": "Dillingen an der Donau",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "DM",
+      "city": "Demmin",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "DN",
+      "city": "Düren",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "DO",
+      "city": "Dortmund",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "DON",
+      "city": "Donau-Ries",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "DOR",
+      "city": "Dornbirn (Österreich)",
+      "state": ""
+    },
+    {
+      "abbreviation": "DR",
+      "city": "Deggendorf",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "DRG",
+      "city": "Doberlug-Kirchhain",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "DS",
+      "city": "Dessau",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "DSK",
+      "city": "Dessau-Roßlau",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "DT",
+      "city": "Detmold",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "DTÖ",
+      "city": "Detmold",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "DU",
+      "city": "Duisburg",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "DUD",
+      "city": "Duderstadt",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "DÜ",
+      "city": "Düsseldorf",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "DÜW",
+      "city": "Bad Dürkheim",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "DW",
+      "city": "Dippoldiswalde",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "DW",
+      "city": "Dessau",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "DZ",
+      "city": "Dresden",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "E",
+      "city": "Essen",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "EA",
+      "city": "Eisenach",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "EB",
+      "city": "Eberswalde",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "EBE",
+      "city": "Ebersberg",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "EBN",
+      "city": "Ebern",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "EBS",
+      "city": "Ebern",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "ED",
+      "city": "Erding",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "EE",
+      "city": "Elbe-Elster",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "EE",
+      "city": "Eberswalde",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "EF",
+      "city": "Erfurt",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "EG",
+      "city": "Eilenburg",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "EH",
+      "city": "Eisenhüttenstadt",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "EI",
+      "city": "Eichstätt",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "EIC",
+      "city": "Eichsfeld",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "EIL",
+      "city": "Eichsfeld",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "EIN",
+      "city": "Einbeck",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "EIS",
+      "city": "Eisenach",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "EL",
+      "city": "Emsland",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "EM",
+      "city": "Emden",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "EMD",
+      "city": "Emden",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "EN",
+      "city": "Ennepe-Ruhr-Kreis",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "ER",
+      "city": "Erlangen",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "ERB",
+      "city": "Erbach",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "ERH",
+      "city": "Erlangen-Höchstadt",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "ERK",
+      "city": "Euskirchen",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "ERZ",
+      "city": "Erzgebirgskreis",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "ES",
+      "city": "Esslingen",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "ESB",
+      "city": "Eschwege",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "ESW",
+      "city": "Eschwege",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "EU",
+      "city": "Euskirchen",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "EUT",
+      "city": "Eutin",
+      "state": "Schleswig-Holstein"
+    },
+    {
+      "abbreviation": "EW",
+      "city": "Eberswalde",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "EWO",
+      "city": "Eberswalde",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "F",
+      "city": "Frankfurt am Main",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "FB",
+      "city": "Friedberg (Hessen)",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "FD",
+      "city": "Frankfurt am Main",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "FDS",
+      "city": "Freudenstadt",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "FEU",
+      "city": "Freudenstadt",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "FF",
+      "city": "Frankfurt (Oder)",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "FFB",
+      "city": "Fürstenfeldbruck",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "FG",
+      "city": "Freiberg",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "FI",
+      "city": "Finnentrop",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "FKB",
+      "city": "Frankenberg",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "FL",
+      "city": "Flensburg",
+      "state": "Schleswig-Holstein"
+    },
+    {
+      "abbreviation": "FLÖ",
+      "city": "Flöha",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "FN",
+      "city": "Friedrichshafen",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "FO",
+      "city": "Forchheim",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "FOR",
+      "city": "Forst (Lausitz)",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "FR",
+      "city": "Freiburg im Breisgau",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "FRG",
+      "city": "Freyung-Grafenau",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "FRI",
+      "city": "Friedrichshafen",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "FRW",
+      "city": "Freiwaldau (Tschechien)",
+      "state": ""
+    },
+    {
+      "abbreviation": "FS",
+      "city": "Freising",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "FT",
+      "city": "Frankenthal (Pfalz)",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "FTL",
+      "city": "Frankenthal (Oder)",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "FÜ",
+      "city": "Fürth",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "FÜS",
+      "city": "Fürstenwalde/Spree",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "FZ",
+      "city": "Forst (Lausitz)",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "G",
+      "city": "Gießen",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "GAN",
+      "city": "Garmisch-Partenkirchen",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "GAP",
+      "city": "Garmisch-Partenkirchen",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "GAS",
+      "city": "Gau-Algesheim",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "GÖ",
+      "city": "Göttingen",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "GE",
+      "city": "Gelsenkirchen",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "GD",
+      "city": "Garmisch-Partenkirchen",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "GDB",
+      "city": "Grundbuchamt",
+      "state": ""
+    },
+    {
+      "abbreviation": "GDB",
+      "city": "Gadebusch",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "GDE",
+      "city": "Grundbuchamt",
+      "state": ""
+    },
+    {
+      "abbreviation": "GDZ",
+      "city": "Grundbuchamt",
+      "state": ""
+    },
+    {
+      "abbreviation": "GE",
+      "city": "Gelsenkirchen",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "GEL",
+      "city": "Gelnhausen",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "GEN",
+      "city": "Genthin",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "GEO",
+      "city": "Georgsmarienhütte",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "GER",
+      "city": "Gera",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "GES",
+      "city": "Gelsenkirchen",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "GEZ",
+      "city": "Genthin",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "GF",
+      "city": "Wolfenbüttel",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "GG",
+      "city": "Groß-Gerau",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "GHA",
+      "city": "Geithain",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "GH",
+      "city": "Greifswald",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "GHA",
+      "city": "Greifswald",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "GI",
+      "city": "Gießen",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "GK",
+      "city": "Görlitz",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "GL",
+      "city": "Gummersbach",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "GLA",
+      "city": "Glauchau",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "GM",
+      "city": "Gummersbach",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "GÖ",
+      "city": "Göttingen",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "GNT",
+      "city": "Grundbuchamt",
+      "state": ""
+    },
+    {
+      "abbreviation": "GOA",
+      "city": "Gotha",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "GOH",
+      "city": "Gotha",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "GP",
+      "city": "Göppingen",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "GR",
+      "city": "Görlitz",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "GRM",
+      "city": "Grimma",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "GRS",
+      "city": "Großschirma",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "GS",
+      "city": "Goslar",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "GT",
+      "city": "Gütersloh",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "GTH",
+      "city": "Gotha",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "GTL",
+      "city": "Grünthal",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "GU",
+      "city": "Günzburg",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "GUB",
+      "city": "Guben",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "GVM",
+      "city": "Güstrow",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "GW",
+      "city": "Greifswald",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "GZ",
+      "city": "Günzburg",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "GZ",
+      "city": "Gadebusch",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "H",
+      "city": "Hannover",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "HAL",
+      "city": "Halle (Saale)",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "HAM",
+      "city": "Hamm",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "HAS",
+      "city": "Hammelburg",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "HB",
+      "city": "Bremen",
+      "state": "Bremen"
+    },
+    {
+      "abbreviation": "HBN",
+      "city": "Helmbrechts",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "HBS",
+      "city": "Halberstadt",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "HC",
+      "city": "Heidenau",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "HD",
+      "city": "Heidelberg",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "HDH",
+      "city": "Heidenheim an der Brenz",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "HE",
+      "city": "Helmstedt",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "HEB",
+      "city": "Heide (Holstein)",
+      "state": "Schleswig-Holstein"
+    },
+    {
+      "abbreviation": "HEF",
+      "city": "Hersfeld (Bezirk)",
+      "state": ""
+    },
+    {
+      "abbreviation": "HEF",
+      "city": "Hersfeld",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "HEI",
+      "city": "Heidelberg",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "HEL",
+      "city": "Helmstedt",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "HER",
+      "city": "Herne",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "HET",
+      "city": "Herzberg (Elster)",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "HF",
+      "city": "Höxter",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "HG",
+      "city": "Hochtaunuskreis",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "HGN",
+      "city": "Hoyerswerda",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "HH",
+      "city": "Hamburg",
+      "state": "Hamburg"
+    },
+    {
+      "abbreviation": "HI",
+      "city": "Hildesheim",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "HIG",
+      "city": "Hildburghausen",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "HIP",
+      "city": "Hofheim",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "HK",
+      "city": "Heilbronn",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "HL",
+      "city": "Hansestadt Lübeck",
+      "state": "Schleswig-Holstein"
+    },
+    {
+      "abbreviation": "HM",
+      "city": "Hameln-Pyrmont",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "HMÜ",
+      "city": "Helmstedt",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "HN",
+      "city": "Heilbronn",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "HO",
+      "city": "Hof",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "HOG",
+      "city": "Hof",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "HOH",
+      "city": "Hohenstein-Ernstthal",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "HOL",
+      "city": "Holzminden",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "HOM",
+      "city": "Homburg",
+      "state": "Saarland"
+    },
+    {
+      "abbreviation": "HOR",
+      "city": "Horb am Neckar",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "HÖS",
+      "city": "Höxter",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "HP",
+      "city": "Heppenheim (Bergstraße)",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "HR",
+      "city": "Homberg (Efze)",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "HRO",
+      "city": "Rostock",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "HS",
+      "city": "Hochsauerlandkreis",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "HST",
+      "city": "Hansestadt Stralsund",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "HU",
+      "city": "Hofheim",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "HVL",
+      "city": "Havelland",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "HWI",
+      "city": "Hagenow",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "HX",
+      "city": "Höxter",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "HY",
+      "city": "Hoyerswerda",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "HZ",
+      "city": "Halberstadt",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "IGB",
+      "city": "Saarbrücken",
+      "state": "Saarland"
+    },
+    {
+      "abbreviation": "IK",
+      "city": "Ilmkreis",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "IL",
+      "city": "Ilmenau",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "IN",
+      "city": "Ingolstadt",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "IZ",
+      "city": "Itzehoe",
+      "state": "Schleswig-Holstein"
+    },
+    {
+      "abbreviation": "J",
+      "city": "Jena",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "JE",
+      "city": "Jerichower Land",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "JL",
+      "city": "Jerichower Land",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "JÜL",
+      "city": "Jülich",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "K",
+      "city": "Köln",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "KA",
+      "city": "Karlsruhe",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "KB",
+      "city": "Korbach",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "KC",
+      "city": "Kronach",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "KE",
+      "city": "Kempen",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "KEH",
+      "city": "Kelheim",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "KEL",
+      "city": "Kelheim",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "KF",
+      "city": "Kaufbeuren",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "KG",
+      "city": "Kusel",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "KH",
+      "city": "Bad Kreuznach",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "KI",
+      "city": "Kiel",
+      "state": "Schleswig-Holstein"
+    },
+    {
+      "abbreviation": "KIB",
+      "city": "Kirchheimbolanden",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "KIR",
+      "city": "Kirchhain",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "KK",
+      "city": "Kleve",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "KL",
+      "city": "Kaiserslautern",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "KLE",
+      "city": "Kleve",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "KLZ",
+      "city": "Kölleda",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "KM",
+      "city": "Kamenz",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "KN",
+      "city": "Konstanz",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "KO",
+      "city": "Koblenz",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "KÖN",
+      "city": "Königsberg in Bayern",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "KÖT",
+      "city": "Köthen",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "KR",
+      "city": "Krefeld",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "KS",
+      "city": "Kassel",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "KT",
+      "city": "Kreischa",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "KU",
+      "city": "Kulmbach",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "KU",
+      "city": "Kusel",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "KÜ",
+      "city": "Künzelsau",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "KU",
+      "city": "Kulmbach",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "KÜN",
+      "city": "Künzelsau",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "KW",
+      "city": "Königs Wusterhausen",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "KY",
+      "city": "Kyritz",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "KYF",
+      "city": "Kyffhäuserkreis",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "L",
+      "city": "Leipzig",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "LA",
+      "city": "Landshut",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "LAN",
+      "city": "Landau in der Pfalz",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "LAU",
+      "city": "Lauf (bei Nürnberg)",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "LB",
+      "city": "Ludwigsburg",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "LBG",
+      "city": "Ludwigsburg",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "LBS",
+      "city": "Landsberg am Lech",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "LBZ",
+      "city": "Lübz",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "LD",
+      "city": "Lüdenscheid",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "LDK",
+      "city": "Lahn-Dill-Kreis",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "LDS",
+      "city": "Landkreis Dahme-Spreewald",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "LEE",
+      "city": "Leer",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "LEG",
+      "city": "Leinefelde",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "LEG",
+      "city": "Leinefelde",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "LEK",
+      "city": "Leipzig",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "LEM",
+      "city": "Leipzig",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "LEO",
+      "city": "Leer (Ostfriesland)",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "LER",
+      "city": "Leer (Ostfriesland)",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "LEV",
+      "city": "Leverkusen",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "LF",
+      "city": "Lübz",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "LH",
+      "city": "Lübbenau/Spreewald",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "LI",
+      "city": "Lindau (Bodensee)",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "LIF",
+      "city": "Lichtenfels",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "LIP",
+      "city": "Lippe",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "LK",
+      "city": "Lichtenfels",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "LL",
+      "city": "Landshut",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "LM",
+      "city": "Limburg an der Lahn",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "LN",
+      "city": "Lüneburg",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "LO",
+      "city": "Landsberg am Lech",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "LÖ",
+      "city": "Löbau",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "LÖB",
+      "city": "Löbau",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "LÖR",
+      "city": "Lörrach",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "LOS",
+      "city": "Landkreis Oder-Spree",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "LP",
+      "city": "Landkreis Osterode am Harz",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "LRO",
+      "city": "Landkreis Rostock",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "LS",
+      "city": "Lüchow-Dannenberg",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "LSN",
+      "city": "Landkreis Schmalkalden-Meiningen",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "LU",
+      "city": "Ludwigshafen am Rhein",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "LÜN",
+      "city": "Lünen",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "LWL",
+      "city": "Landschaftsverband Westfalen-Lippe",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "M",
+      "city": "München",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "MA",
+      "city": "Mannheim",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "MAB",
+      "city": "Marienberg",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "MAK",
+      "city": "Main-Kinzig-Kreis",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "MAL",
+      "city": "Malchin",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "MAN",
+      "city": "Marienberg",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "MB",
+      "city": "Merseburg",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "MC",
+      "city": "Meißen",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "MD",
+      "city": "Magdeburg",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "ME",
+      "city": "Mettmann",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "MED",
+      "city": "Medebach",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "MEG",
+      "city": "Meißen",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "MEI",
+      "city": "Meißen",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "MEK",
+      "city": "Mittelsachsen",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "MER",
+      "city": "Merseburg",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "MET",
+      "city": "Medebach",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "MG",
+      "city": "Mönchengladbach",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "MGN",
+      "city": "Mölln (Lauenburg)",
+      "state": "Schleswig-Holstein"
+    },
+    {
+      "abbreviation": "MH",
+      "city": "Mülheim an der Ruhr",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "MHL",
+      "city": "Mühlhausen/Thüringen",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "MI",
+      "city": "Miltenberg",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "MIL",
+      "city": "Miltenberg",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "MK",
+      "city": "Märkischer Kreis",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "MKK",
+      "city": "Main-Kinzig-Kreis",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "ML",
+      "city": "Mansfelder Land",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "MM",
+      "city": "Memmingen",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "MN",
+      "city": "Minden-Lübbecke",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "MO",
+      "city": "Mittweida",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "MOD",
+      "city": "Mödling",
+      "state": "Niederösterreich"
+    },
+    {
+      "abbreviation": "MOL",
+      "city": "Landkreis Märkisch-Oderland",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "MON",
+      "city": "Montabaur",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "MOS",
+      "city": "Mosbach",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "MQ",
+      "city": "Merseburg",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "MR",
+      "city": "Marburg",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "MS",
+      "city": "Münster",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "MSH",
+      "city": "Mansfeld-Südharz",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "MSP",
+      "city": "Main-Spessart",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "MST",
+      "city": "Mecklenburg-Strelitz",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "MÜ",
+      "city": "Mühldorf am Inn",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "MÜR",
+      "city": "Müritz",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "MVL",
+      "city": "Mansfelder Land",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "MW",
+      "city": "Mecklenburgische Seenplatte",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "MY",
+      "city": "Mayen",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "MZ",
+      "city": "Mainz",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "MZG",
+      "city": "Merzig",
+      "state": "Saarland"
+    },
+    {
+      "abbreviation": "N",
+      "city": "Nürnberg",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "NA",
+      "city": "Anhalt-Bitterfeld",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "NAB",
+      "city": "Nabburg",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "NÄ",
+      "city": "Nordhausen",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "NB",
+      "city": "Neubrandenburg",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "ND",
+      "city": "Neubrandenburg",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "NE",
+      "city": "Neuss",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "NEA",
+      "city": "Neustadt an der Aisch-Bad Windsheim",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "NEB",
+      "city": "Neustadt (bei Coburg)",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "NEU",
+      "city": "Neustadt (Weinstraße)",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "NEW",
+      "city": "Neumarkt in der Oberpfalz",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "NF",
+      "city": "Nordfriesland",
+      "state": "Schleswig-Holstein"
+    },
+    {
+      "abbreviation": "NG",
+      "city": "Nagold",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "NH",
+      "city": "Neumünster",
+      "state": "Schleswig-Holstein"
+    },
+    {
+      "abbreviation": "NI",
+      "city": "Nienburg/Weser",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "NK",
+      "city": "Neunkirchen",
+      "state": "Saarland"
+    },
+    {
+      "abbreviation": "NL",
+      "city": "Niederschlesischer Oberlausitzkreis",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "NM",
+      "city": "Neumarkt in der Oberpfalz",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "NOH",
+      "city": "Nordhorn",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "NOM",
+      "city": "Northeim",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "NOR",
+      "city": "Nordhausen",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "NP",
+      "city": "Neunkirchen",
+      "state": "Saarland"
+    },
+    {
+      "abbreviation": "NVP",
+      "city": "Nordvorpommern",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "NR",
+      "city": "Neuwied",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "NR",
+      "city": "Northeim",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "NU",
+      "city": "Nürnberger Land",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "NVP",
+      "city": "Nordvorpommern",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "NW",
+      "city": "Neustadt (Weinstraße)",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "NW",
+      "city": "Neuwied",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "NY",
+      "city": "Nienburg/Weser",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "O",
+      "city": "Oberhausen",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "OA",
+      "city": "Oberallgäu",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "OB",
+      "city": "Oberbergischer Kreis",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "OC",
+      "city": "Oberhavel",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "OD",
+      "city": "Oder-Spree",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "OE",
+      "city": "Olpe",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "OF",
+      "city": "Offenbach am Main",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "OG",
+      "city": "Ortenaukreis",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "OH",
+      "city": "Herzogtum Lauenburg",
+      "state": "Schleswig-Holstein"
+    },
+    {
+      "abbreviation": "OH",
+      "city": "Hochtaunuskreis",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "OHV",
+      "city": "Oberhavel",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "OHZ",
+      "city": "Osterholz",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "OK",
+      "city": "Ostprignitz-Ruppin",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "OL",
+      "city": "Oldenburg (Oldenburg)",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "OPR",
+      "city": "Ostprignitz-Ruppin",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "OS",
+      "city": "Osnabrück",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "OSL",
+      "city": "Oberspreewald-Lausitz",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "OVL",
+      "city": "Ostvorpommern",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "P",
+      "city": "Potsdam",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "PA",
+      "city": "Passau",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "PAF",
+      "city": "Pfaffenhofen an der Ilm",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "PAN",
+      "city": "Parchim",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "PB",
+      "city": "Paderborn",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "PCH",
+      "city": "Parchim",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "PE",
+      "city": "Peine",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "PF",
+      "city": "Pforzheim",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "PI",
+      "city": "Pinneberg",
+      "state": "Schleswig-Holstein"
+    },
+    {
+      "abbreviation": "PIR",
+      "city": "Pirna",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "PL",
+      "city": "Pirna",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "PLÖ",
+      "city": "Plön",
+      "state": "Schleswig-Holstein"
+    },
+    {
+      "abbreviation": "PM",
+      "city": "Potsdam-Mittelmark",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "PN",
+      "city": "Parchim",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "PR",
+      "city": "Prignitz",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "PS",
+      "city": "Pirmasens",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "PW",
+      "city": "Potsdam",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "PZ",
+      "city": "Pirmasens",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "QFT",
+      "city": "Quedlinburg",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "QR",
+      "city": "Querfurt",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "R",
+      "city": "Regensburg",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "RA",
+      "city": "Rastatt",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "RAN",
+      "city": "Rastatt",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "RD",
+      "city": "Rendsburg-Eckernförde",
+      "state": "Schleswig-Holstein"
+    },
+    {
+      "abbreviation": "RDG",
+      "city": "Rendsburg-Eckernförde",
+      "state": "Schleswig-Holstein"
+    },
+    {
+      "abbreviation": "RE",
+      "city": "Recklinghausen",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "REG",
+      "city": "Regensburg",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "REI",
+      "city": "Reichenbach (Vogtland)",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "REK",
+      "city": "Rhein-Erft-Kreis",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "REM",
+      "city": "Remscheid",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "REN",
+      "city": "Reichenbach (Vogtland)",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "RES",
+      "city": "Regen",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "RG",
+      "city": "Riesa",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "RH",
+      "city": "Roth",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "RI",
+      "city": "Rinteln",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "RI",
+      "city": "Rheingau-Taunus-Kreis",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "RID",
+      "city": "Ried im Innkreis",
+      "state": "Oberösterreich"
+    },
+    {
+      "abbreviation": "RIE",
+      "city": "Riesa",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "RIS",
+      "city": "Riesa",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "RM",
+      "city": "Rhein-Main-Gebiet",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "RO",
+      "city": "Rosenheim",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "RO",
+      "city": "Rostock",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "ROD",
+      "city": "Rodenberg",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "ROF",
+      "city": "Rottweil",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "ROS",
+      "city": "Rosenheim",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "ROW",
+      "city": "Rotenburg (Wümme)",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "RP",
+      "city": "Rotenburg an der Fulda",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "RPL",
+      "city": "Rheinland-Pfalz",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "RS",
+      "city": "Remscheid",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "RÜD",
+      "city": "Rüdesheim",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "RÜG",
+      "city": "Rügen",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "RÜG",
+      "city": "Rügen",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "RÜG",
+      "city": "Rügen",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "RÜG",
+      "city": "Rügen",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "RV",
+      "city": "Ravensburg",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "RW",
+      "city": "Rheinisch-Bergischer Kreis",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "RZ",
+      "city": "Reichenbach (Vogtland)",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "S",
+      "city": "Stuttgart",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "SA",
+      "city": "Saarbrücken",
+      "state": "Saarland"
+    },
+    {
+      "abbreviation": "SAB",
+      "city": "Saale-Orla-Kreis",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "SAD",
+      "city": "Schwandorf",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "SAL",
+      "city": "Saarlouis",
+      "state": "Saarland"
+    },
+    {
+      "abbreviation": "SAN",
+      "city": "Sangerhausen",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "SÄK",
+      "city": "Sächsische Schweiz-Osterzgebirge",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "SÄM",
+      "city": "Sömmerda",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "SAW",
+      "city": "Altmarkkreis Salzwedel",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "SB",
+      "city": "St. Blasien",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "SBG",
+      "city": "Saarburg",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "SBK",
+      "city": "Saale-Orla-Kreis",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "SC",
+      "city": "Schwabach",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "SC",
+      "city": "Schwarzwald-Baar-Kreis",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "SCH",
+      "city": "Schwabach",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "SCH",
+      "city": "Schweinfurt",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "SDH",
+      "city": "Nordhausen",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "SDL",
+      "city": "Stendal",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "SDT",
+      "city": "Stadtoldendorf",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "SE",
+      "city": "Segeberg",
+      "state": "Schleswig-Holstein"
+    },
+    {
+      "abbreviation": "SEB",
+      "city": "Sebnitz",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "SEE",
+      "city": "Seelow",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "SEG",
+      "city": "Segeberg",
+      "state": "Schleswig-Holstein"
+    },
+    {
+      "abbreviation": "SEL",
+      "city": "Seelow",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "SEM",
+      "city": "Sömmerda",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "SG",
+      "city": "Schweinfurt",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "SGH",
+      "city": "Solingen",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "SH",
+      "city": "Schleswig",
+      "state": "Schleswig-Holstein"
+    },
+    {
+      "abbreviation": "SHA",
+      "city": "Schwäbisch Hall",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "SHG",
+      "city": "Stollberg/Erzgebirge",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "SHK",
+      "city": "Saale-Holzland-Kreis",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "SHL",
+      "city": "Suhl",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "SHG",
+      "city": "Stollberg/Erzgebirge",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "SHG",
+      "city": "Stollberg/Erzgebirge",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "SHL",
+      "city": "Suhl",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "SHG",
+      "city": "Stollberg/Erzgebirge",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "SHL",
+      "city": "Suhl",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "SHW",
+      "city": "Schwalm-Eder-Kreis",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "SI",
+      "city": "Siegen",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "SIG",
+      "city": "Sigmaringen",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "SIM",
+      "city": "Simmern",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "SK",
+      "city": "Saalekreis",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "SL",
+      "city": "Schleswig-Flensburg",
+      "state": "Schleswig-Holstein"
+    },
+    {
+      "abbreviation": "SLF",
+      "city": "Saalfeld/Saale",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "SLK",
+      "city": "Saalekreis",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "SLS",
+      "city": "Saarlouis",
+      "state": "Saarland"
+    },
+    {
+      "abbreviation": "SLÜ",
+      "city": "Schlüchtern",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "SLZ",
+      "city": "Saarlouis",
+      "state": "Saarland"
+    },
+    {
+      "abbreviation": "SM",
+      "city": "Schmalkalden-Meiningen",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "SMÜ",
+      "city": "Schmalkalden-Meiningen",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "SN",
+      "city": "Stendal",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "SO",
+      "city": "Solingen",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "SO",
+      "city": "Soest",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "SÖM",
+      "city": "Sömmerda",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "SÖM",
+      "city": "Sömmerda",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "SON",
+      "city": "Sonneberg",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "SON",
+      "city": "Sonneberg",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "SP",
+      "city": "Speyer",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "SP",
+      "city": "Spree-Neiße",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "SPB",
+      "city": "Spree-Neiße",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "SPN",
+      "city": "Spree-Neiße",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "SR",
+      "city": "Straubing",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "SRB",
+      "city": "Schwarzenberg/Erzgebirge",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "SRO",
+      "city": "Straubing-Bogen",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "ST",
+      "city": "Stendal",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "STA",
+      "city": "Starnberg",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "STB",
+      "city": "Starnberg",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "STD",
+      "city": "Stade",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "STE",
+      "city": "Stendal",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "STL",
+      "city": "Stolberg (Rheinland)",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "STÖ",
+      "city": "Stolberg (Rheinland)",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "SU",
+      "city": "Rhein-Sieg-Kreis",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "SÜW",
+      "city": "Südliche Weinstraße",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "SW",
+      "city": "Schweinfurt",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "SWA",
+      "city": "Schwalmstadt",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "SWN",
+      "city": "Schweinfurt",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "SWN",
+      "city": "Schwandorf",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "SWN",
+      "city": "Schwandorf",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "SWW",
+      "city": "Schweinfurt",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "SZ",
+      "city": "Salzgitter",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "SZ",
+      "city": "Saarbrücken",
+      "state": "Saarland"
+    },
+    {
+      "abbreviation": "SZ",
+      "city": "Schwarzenberg/Erzgebirge",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "TBB",
+      "city": "Main-Tauber-Kreis",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "TDO",
+      "city": "Torgau-Oschatz",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "TE",
+      "city": "Tecklenburg",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "TET",
+      "city": "Teterow",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "TF",
+      "city": "Teltow-Fläming",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "TG",
+      "city": "Torgau-Oschatz",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "THL",
+      "city": "Thalheim (Erzgebirge)",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "THW",
+      "city": "Thüringen",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "TIR",
+      "city": "Tirschenreuth",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "TO",
+      "city": "Torgau-Oschatz",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "TO",
+      "city": "Tuttlingen",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "TÖL",
+      "city": "Bad Tölz-Wolfratshausen",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "TP",
+      "city": "Töpferstadt Neumarkt in Sachsen",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "TR",
+      "city": "Trier",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "TS",
+      "city": "Trier-Saarburg",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "TÜ",
+      "city": "Tübingen",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "TUT",
+      "city": "Tuttlingen",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "UE",
+      "city": "Uelzen",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "UE",
+      "city": "Überlingen",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "UER",
+      "city": "Uecker-Randow",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "UFF",
+      "city": "Uffenheim",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "UH",
+      "city": "Unstrut-Hainich-Kreis",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "UL",
+      "city": "Ulm",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "UM",
+      "city": "Uckermark",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "UN",
+      "city": "Unna",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "UNI",
+      "city": "Unna",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "UO",
+      "city": "Uckermark",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "USI",
+      "city": "Uckermark",
+      "state": "Brandenburg"
+    },
+    {
+      "abbreviation": "V",
+      "city": "Vogtlandkreis",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "VAI",
+      "city": "Vaihingen an der Enz",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "VB",
+      "city": "Vogelsbergkreis",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "VEC",
+      "city": "Vechta",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "VER",
+      "city": "Verden",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "VG",
+      "city": "Vogtlandkreis",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "VG",
+      "city": "Vogtlandkreis",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "VK",
+      "city": "Völklingen",
+      "state": "Saarland"
+    },
+    {
+      "abbreviation": "VOH",
+      "city": "Vohenstrauß",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "VOL",
+      "city": "Vogelsbergkreis",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "VÖL",
+      "city": "Völklingen",
+      "state": "Saarland"
+    },
+    {
+      "abbreviation": "VP",
+      "city": "Vogtlandkreis",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "VR",
+      "city": "Vorpommern-Rügen",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "VR",
+      "city": "Vogelsbergkreis",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "VW",
+      "city": "Vorpommern-Greifswald",
+      "state": "Mecklenburg-Vorpommern"
+    },
+    {
+      "abbreviation": "W",
+      "city": "Wuppertal",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "WA",
+      "city": "Warendorf",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "WAF",
+      "city": "Warendorf",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "WAK",
+      "city": "Wartburgkreis",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "WAN",
+      "city": "Wittenberg",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "WAT",
+      "city": "Wattenscheid",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "WB",
+      "city": "Wittmund",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "WBS",
+      "city": "Westerburg",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "WDA",
+      "city": "Waldau",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "WEL",
+      "city": "Westerland",
+      "state": "Schleswig-Holstein"
+    },
+    {
+      "abbreviation": "WEN",
+      "city": "Weiden in der Oberpfalz",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "WEN",
+      "city": "Wernigerode",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "WER",
+      "city": "Werdenberg",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "WES",
+      "city": "Wesel",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "WF",
+      "city": "Wolfenbüttel",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "WHV",
+      "city": "Wilhelmshaven",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "WI",
+      "city": "Wiesbaden",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "WIL",
+      "city": "Willich",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "WIL",
+      "city": "Wittenberg",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "WIS",
+      "city": "Wittenberg",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "WIT",
+      "city": "Witten",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "WIZ",
+      "city": "Weißwasser/O.L.",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "WL",
+      "city": "Landkreis Harburg",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "WL",
+      "city": "Landsberg am Lech",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "WL",
+      "city": "Landsberg am Lech",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "WL",
+      "city": "Landkreis Harburg",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "WM",
+      "city": "Weimar",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "WMS",
+      "city": "Weimar",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "WMS",
+      "city": "Weimar",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "WMS",
+      "city": "Weimar",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "WMS",
+      "city": "Weimar",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "WMS",
+      "city": "Weimar",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "WND",
+      "city": "St. Wendel",
+      "state": "Saarland"
+    },
+    {
+      "abbreviation": "WO",
+      "city": "Wolfenbüttel",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "WOB",
+      "city": "Wolfsburg",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "WOH",
+      "city": "Wolfhagen",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "WOL",
+      "city": "Wolmirstedt",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "WOR",
+      "city": "Worringen",
+      "state": "Nordrhein-Westfalen"
+    },
+    {
+      "abbreviation": "WOS",
+      "city": "Wolfhagen",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "WR",
+      "city": "Wernigerode",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "WR",
+      "city": "Würzburg",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "WR",
+      "city": "Wernigerode",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "WR",
+      "city": "Würzburg",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "WR",
+      "city": "Wernigerode",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "WR",
+      "city": "Würzburg",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "WS",
+      "city": "Westerstede",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "WS",
+      "city": "Wiesbaden",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "WSF",
+      "city": "Westerstede",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "WST",
+      "city": "West",
+      "state": "Thüringen"
+    },
+    {
+      "abbreviation": "WT",
+      "city": "Württemberg-Hohenzollern",
+      "state": "Baden-Württemberg"
+    },
+    {
+      "abbreviation": "WTM",
+      "city": "Wittenberg",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "WÜ",
+      "city": "Würzburg",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "WUG",
+      "city": "Weißenburg-Gunzenhausen",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "WÜM",
+      "city": "Wümme",
+      "state": "Niedersachsen"
+    },
+    {
+      "abbreviation": "WUN",
+      "city": "Wunsiedel",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "WÜR",
+      "city": "Würzburg",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "WW",
+      "city": "Westerwaldkreis",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "WZ",
+      "city": "Wetzlar",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "WZ",
+      "city": "Wetzlar",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "WZ",
+      "city": "Wetzlar",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "WZ",
+      "city": "Wetzlar",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "WZ",
+      "city": "Wetzlar",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "WZ",
+      "city": "Wetzlar",
+      "state": "Hessen"
+    },
+    {
+      "abbreviation": "ZE",
+      "city": "Zeitz",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "ZI",
+      "city": "Zittau",
+      "state": "Sachsen"
+    },
+    {
+      "abbreviation": "ZP",
+      "city": "Zweibrücken",
+      "state": "Rheinland-Pfalz"
+    },
+    {
+      "abbreviation": "ZR",
+      "city": "Zerbst/Anhalt",
+      "state": "Sachsen-Anhalt"
+    },
+    {
+      "abbreviation": "ZW",
+      "city": "Zweibrücken",
+      "state": "Rheinland-Pfalz"
     }
   ]
 }
