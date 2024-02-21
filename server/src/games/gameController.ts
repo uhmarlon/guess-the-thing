@@ -11,12 +11,11 @@ export class GameController {
 
     /**
      * Resets the guesses of players in a room
-     * and notifies all the players in the room of the updated player information.
      *
      * @param {string} roomName - The name of the room.
      * @return {void} - This method does not return any value.
      */
-    public static resetGuessesAndNotifyPlayers(roomName: string): void {
+    public static resetGuesses(roomName: string): void {
         const playersInRoom = this.getPlayersInRoom(roomName);
         playersInRoom.forEach((player: { guess: boolean }) => {
             player.guess = false;

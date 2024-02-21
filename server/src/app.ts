@@ -6,7 +6,7 @@ import { gameLoop } from "./games/flagGame/flagGame";
 import { Player, RoomGameMetadata } from "./interfaces/interfaces";
 import { gameCocktailStart } from "./games/cocktailGame/cocktailGame";
 import {GameController} from "./games/gameController";
-import {startLicensePlateGame} from "./games/licensePlateGame/licensePlateGame";
+import {startGame} from "./games/licensePlateGame/licensePlateGame";
 
 const app = express();
 const server = http.createServer(app);
@@ -124,7 +124,7 @@ io.on("connection", (socket: Socket) => {
         gameCocktailStart(roomName, rounds);
         break;
       case "LicensePlate":
-        startLicensePlateGame(roomName, rounds);
+        startGame(roomName, rounds);
         break;
       default:
         break;
@@ -188,7 +188,6 @@ io.on("connection", (socket: Socket) => {
 function createPlayer(roomName: string, socketId: any) {
   const id = socketId;
   const name = generateRandomName();
-  console.log('Generated name:', name); // Hinzugefügt für Debugging-Zwecke
   const player: Player = {
     id,
     name,
@@ -198,7 +197,6 @@ function createPlayer(roomName: string, socketId: any) {
     room: roomName,
   };
   players.push(player);
-  console.log('Players:', players); // Hinzugefügt für Debugging-Zwecke
   return player;
 }
 

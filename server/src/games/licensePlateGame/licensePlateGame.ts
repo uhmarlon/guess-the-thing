@@ -1,17 +1,10 @@
-import licensePlates from "../../data/licensePlates/licensePlate_full.json";
-import {LicensePlate} from "../../interfaces/interfaces";
+import licensePlates from "../../data/licensePlates/licensePlate.json";
+import {LicensePlate, RoomGameMetadata} from "../../interfaces/interfaces";
 import {buildHiddenName} from "../../utils/utils";
 import {GameController} from "../gameController";
 
-/**
- * Starts a countdown for a game in a specific room.
- *
- * @param {string} roomName - The name of the room where the game is being played.
- * @param {number} rounds - The maximum number of rounds for the game.
- * @return {Promise<void>} - A promise that resolves when the countdown is finished.
- */
-export async function startLicensePlateGame(roomName: string, rounds: number): Promise<void> {
 
+export async function startGame(roomName: string, rounds: number): Promise<void> {
     const roomMeta = GameController.gameMeta.find(room => room.roomName === roomName) || {
         roomName,
         game: "LicensePlate",
@@ -19,6 +12,20 @@ export async function startLicensePlateGame(roomName: string, rounds: number): P
         round: 1,
         maxRounds: rounds,
     };
+
+    await startLicensePlateGame(roomName, rounds, roomMeta);
+}
+
+
+/**
+ * Starts a countdown for a game in a specific room.
+ *
+ * @param {string} roomName - The name of the room where the game is being played.
+ * @param {number} rounds - The maximum number of rounds for the game.
+ * @param roomMeta
+ * @return {Promise<void>} - A promise that resolves when the countdown is finished.
+ */
+export async function startLicensePlateGame(roomName: string, rounds: number, roomMeta: RoomGameMetadata): Promise<void> {
     const licensePlate = getRandomLicensePlate();
 
     // Set the room meta
@@ -29,6 +36,8 @@ export async function startLicensePlateGame(roomName: string, rounds: number): P
     // Set the game meta
     GameController.gameSetRound(roomName, roomMeta.round, roomMeta.maxRounds);
     GameController.gameSetRoomString(roomName, buildHiddenName(licensePlate.city));
+
+    GameController.resetGuesses(roomName);
 
     GameController.emitGameEventToRoom(roomName, 'Abbreviation', licensePlate.abbreviation);
     GameController.emitGameEventToRoom(roomName, 'City', licensePlate.city);
@@ -46,7 +55,7 @@ export async function startLicensePlateGame(roomName: string, rounds: number): P
 
         // If the final countdown has finished and the game has not ended, start a new game
         if (finalCountdownResult === "stop" && roomMeta.round < roomMeta.maxRounds) {
-            await startLicensePlateGame(roomName, rounds);
+            await startLicensePlateGame(roomName, rounds, roomMeta);
         }
     }
 }

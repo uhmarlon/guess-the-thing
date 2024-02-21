@@ -60,6 +60,19 @@ export const guessTheLicensePlate: NextPage = () => {
 
     socket.on("update-players", (players: Player[]) => {
       console.log(players);
+
+      const playerList = document.getElementById(
+          "playerlistgame"
+      ) as HTMLElement;
+      if (playerList) {
+        playerList.innerHTML = "";
+        players.sort((a, b) => b.points - a.points);
+        players.forEach((player) => {
+          const li = document.createElement("li");
+          li.textContent = player.name + " | " + player.points;
+          playerList.appendChild(li);
+        });
+      }
     });
   }, []);
 
@@ -106,6 +119,16 @@ export const guessTheLicensePlate: NextPage = () => {
               onKeyDown={handleKeyDown}
               className="px-3 py-3 text-white border rounded-lg bg-gray-800 border-gray-600 w-72 focus:border-blue-500 focus:outline-none focus:ring"
           />
+        </div>
+
+        <div className="flex justify-center mb-1">
+          <h1 className="text-2xl">Spieler</h1>
+        </div>
+
+        <div className="flex justify-center mb-4">
+          <div className="bg-gray-600 text-center rounded-lg w-72">
+            <ul id="playerlistgame" className=" text-white"></ul>
+          </div>
         </div>
       </main>
     </>
