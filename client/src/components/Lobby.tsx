@@ -15,7 +15,6 @@ export default function Lobby({
   const [showConfetti, setShowConfetti] = useState<boolean>(false);
   const [gameWinner, setGameWinner] = useState<Player[]>([]);
   const [showRename, setShowRename] = useState<boolean>(false);
-  const gameIdRef = useRef<HTMLInputElement>(null);
   const [isValidName, setIsValidName] = useState<boolean>(false);
   const nameRef = useRef<HTMLInputElement>(null);
   const [gameRound, setGameRound] = useState<number>(10);

@@ -26,3 +26,23 @@ export interface Cocktail {
   strInstructions: string;
   idDrink: string;
 }
+
+export interface LicensePlate {
+    "abbreviation": string,
+    "city": string,
+    "state": string
+}
+
+export interface LicensePlates {
+    license_plates: [
+        LicensePlate
+    ]
+}
+
+export interface RoomMeta {
+    roomName: string;
+    game: string;
+    countryString: string;
+    round: number;
+    maxRounds: number;
+}

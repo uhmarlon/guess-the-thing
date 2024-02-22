@@ -1,0 +1,14 @@
+{
+  "license_plates": [
+    {
+      "abbreviation": "MD",
+      "city": "Magdeburg",
+      "state": "Bayern"
+    },
+    {
+      "abbreviation": "B",
+      "city": "Berlin",
+      "state": "Baden-Württemberg"
+    }
+  ]
+}

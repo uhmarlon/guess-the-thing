@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: License-Plate;
+    src: url("/fonts/license_plate.otf") format("opentype");
+}

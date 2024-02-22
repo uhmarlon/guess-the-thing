@@ -66,6 +66,24 @@ export const Home: NextPage = () => {
                 </div>
               </Link>
             </div>
+
+            <div className="relative w-[20rem] md:w-1/2 h-[15rem] mb-3">
+              <Link href="/guess-the-licenseplate">
+                <Image
+                  src="/flag.webp"
+                  alt=""
+                  fill
+                  className="rounded-xl layout-fill object-cover"
+                />
+                <div className="absolute bottom-0 w-full h-full bg-gradient-to-t from-black/80 to-transparent rounded-xl"></div>
+                <div className="absolute bottom-0 w-full h-full flex flex-col justify-end px-6 pb-6">
+                  <h3 className="text-2xl font-bold mb-2 text-white">
+                    Guess The License Plate
+                  </h3>
+                  <p className="text-white/80">Guess the German License Plate.</p>
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
       </main>
