@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Header from "../components/header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,10 +34,11 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang="en">
-      <body
-        className={`${inter.className} text-white flex flex-row justify-center w-full h-full bg-gradient-to-bl from-black to-[#001429] min-h-screen`}
-      >
-        <div className="w-[80%] md:w-[65rem]">{children}</div>
+      <body className={`${inter.className} `}>
+        <Header />
+        <div className="text-white flex flex-row justify-center w-full h-full bg-gradient-to-bl from-black to-[#001429] min-h-screen">
+          <div className="w-[80%] md:w-[65rem]">{children}</div>
+        </div>
       </body>
     </html>
   );

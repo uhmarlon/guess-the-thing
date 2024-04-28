@@ -17,10 +17,10 @@ export default function Page(): JSX.Element {
           <div className="relative w-[20rem] md:w-1/2 h-[15rem] mb-3">
             <Link href="/gussthecocktail">
               <Image
-                src="https://www.thecocktaildb.com/images/media/drink/nkwr4c1606770558.jpg"
                 alt=""
-                fill
                 className="rounded-xl layout-fill object-cover"
+                fill
+                src="https://www.thecocktaildb.com/images/media/drink/nkwr4c1606770558.jpg"
               />
               <div className="absolute bottom-0 w-full h-full bg-gradient-to-t from-black/80 to-transparent rounded-xl" />{" "}
               <div className="absolute bottom-0 w-full h-full flex flex-col justify-end px-6 pb-6">
@@ -35,10 +35,10 @@ export default function Page(): JSX.Element {
           <div className="relative w-[20rem] md:w-1/2 h-[15rem] mb-3">
             <Link href="/gusstheflag">
               <Image
-                src="/flag.webp"
                 alt=""
-                fill
                 className="rounded-xl layout-fill object-cover"
+                fill
+                src="/flag.webp"
               />
               <div className="absolute bottom-0 w-full h-full bg-gradient-to-t from-black/80 to-transparent rounded-xl" />
               <div className="absolute bottom-0 w-full h-full flex flex-col justify-end px-6 pb-6">
