@@ -13,15 +13,16 @@
   "dependencies": {
     "country-flag-icons": "^1.5.11",
     "next": "^14.1.1",
+    "next-pwa": "^5.6.0",
     "react": "^18.2.0",
     "react-confetti": "^6.1.0",
     "react-dom": "^18.2.0",
     "socket.io-client": "^4.7.5"
   },
   "devDependencies": {
-    "@repo/tailwind-config": "workspace:*",
     "@next/eslint-plugin-next": "^14.1.1",
     "@repo/eslint-config": "workspace:^",
+    "@repo/tailwind-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@svgr/webpack": "^8.1.0",
     "@types/eslint": "^8.56.5",

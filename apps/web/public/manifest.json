@@ -1,0 +1,33 @@
+{
+  "theme_color": "#09326b",
+  "background_color": "#310394",
+  "display": "fullscreen",
+  "scope": "/",
+  "start_url": "/",
+  "name": "Guess The Thing",
+  "short_name": "GuessThing",
+  "description": "Guess The Thing a online multiplayer game",
+  "icons": [
+    {
+      "src": "icon/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icon/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "icon/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "icon/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
