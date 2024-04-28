@@ -1,12 +1,14 @@
 {
-  "name": "web",
+  "name": "guess-the-thing",
   "version": "1.0.0",
-  "private": true,
+  "description": "A simple game to guess the thing",
+  "author": "uhmarlon - uhmarlon.dev",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --max-warnings 0"
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "country-flag-icons": "^1.5.11",
@@ -26,7 +28,6 @@
     "@types/node": "^20.11.24",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
-    "add": "^2.0.6",
     "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
     "pnpm": "^9.0.6",

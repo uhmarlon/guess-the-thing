@@ -1,8 +1,5 @@
 {
-  "name": "guess-the-thing",
-  "version": "1.0.0",
-  "description": "A simple game to guess the thing",
-  "author": "uhmarlon - uhmarlon.dev",
+  "private": true,
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
@@ -16,7 +13,7 @@
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.11",
     "@repo/typescript-config": "workspace:*",
-    "turbo": "^1.12.4"
+    "turbo": "latest"
   },
   "packageManager": "pnpm@8.9.0",
   "engines": {
