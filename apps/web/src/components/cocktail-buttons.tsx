@@ -22,7 +22,7 @@ function CocktailButtons({
     }
   }, [active]);
 
-  const handleClick = (idDrink: number) => {
+  const handleClick = (idDrink: number): void => {
     setDisabled(true);
     socket.emit("cocktailguss", idDrink);
     setClickedId(idDrink);

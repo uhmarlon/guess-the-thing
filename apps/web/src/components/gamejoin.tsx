@@ -6,10 +6,10 @@ export default function Gamejoincreate({
 }: {
   gameType: string;
 }): React.JSX.Element {
-  const [showModal, _setShowModal] = useState<boolean>(true);
+  const [showModal] = useState<boolean>(true);
   const gameIdRef = useRef<HTMLInputElement>(null);
 
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     const gameToken = gameIdRef.current?.value ?? "";
     if (gameIdRef.current === null || gameToken.length === 0) {
       return;
@@ -17,7 +17,7 @@ export default function Gamejoincreate({
     socket.emit("joinGame", gameToken.trim(), gameType);
   };
 
-  const handleNewGame = () => {
+  const handleNewGame = (): void => {
     socket.emit("newGame", gameType);
   };
 
