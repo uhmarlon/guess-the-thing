@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { socket } from "../core/gameSocket";
+import { socket } from "../utils/game-socket";
 
-interface Props {
+interface CocktailButtonProps {
   active: boolean;
-  cocktailArray: any[];
+  cocktailArray: {
+    idDrink: number;
+    strDrink: string;
+  }[];
 }
 
-const CocktailButtons: React.FC<Props> = ({ active, cocktailArray }) => {
+function CocktailButtons({
+  active,
+  cocktailArray,
+}: CocktailButtonProps): JSX.Element {
   const [disabled, setDisabled] = useState(false);
   const [clickedId, setClickedId] = useState<number | null>(null);
 
@@ -26,20 +32,23 @@ const CocktailButtons: React.FC<Props> = ({ active, cocktailArray }) => {
     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-lg">
       {cocktailArray.map((cocktail) => (
         <button
-          disabled={!active || disabled}
-          key={cocktail.idDrink}
-          onClick={() => handleClick(cocktail.idDrink)}
           className={`rounded-lg w-full max-md:p-4 md:w-72 h-14 ${
             clickedId === cocktail.idDrink
               ? "bg-blue-600 text-white"
               : "bg-gray-600 disabled:bg-gray-800 text-white"
           }`}
+          disabled={!active || disabled}
+          key={cocktail.idDrink}
+          onClick={() => {
+            handleClick(cocktail.idDrink);
+          }}
+          type="button"
         >
           {cocktail.strDrink}
         </button>
       ))}
     </div>
   );
-};
+}
 
 export default CocktailButtons;

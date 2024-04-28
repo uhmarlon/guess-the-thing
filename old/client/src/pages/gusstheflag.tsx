@@ -6,7 +6,7 @@ import Gamejoincreate from "../components/Gamejoin";
 import Lobby from "../components/Lobby";
 import { useRouter } from "next/router";
 import { useLobby, useGameToken } from "../utils/game";
-import { socket } from "../core/gameSocket";
+import { socket } from "../../../../apps/web/src/utils/game-socket";
 
 export interface Player {
   id: string;
@@ -68,7 +68,7 @@ export const gusstheflag: NextPage = () => {
       console.log(players);
 
       const playerList = document.getElementById(
-        "playerlistgame",
+        "playerlistgame"
       ) as HTMLElement;
       if (playerList) {
         playerList.innerHTML = "";

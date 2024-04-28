@@ -9,7 +9,7 @@ function Header(): JSX.Element {
         <Link href="/">
           <Image
             alt="logo"
-            className="h-8 w-8 sm:h-10 sm:w-10 sm:ml-10 mr-0"
+            className="h-8 w-8 sm:h-10 sm:w-10 ml-1 sm:ml-10"
             height={50}
             src="icon/logo.png"
             width={50}
@@ -29,7 +29,7 @@ function Header(): JSX.Element {
         </nav>
       </div>
 
-      <div className="flex items-center gap-2 sm:mr-10">
+      <div className="flex items-center gap-2 mr-1 sm:mr-10">
         <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-center font-medium text-white backdrop-blur-sm">
           JOIN WITH CODE
         </span>
