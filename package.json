@@ -1,10 +1,20 @@
 {
-  "name": "main",
-  "version": "1.0.0",
+  "name": "my-turborepo",
+  "private": true,
   "scripts": {
-    "dev-server": "cd server && npm run dev",
-    "dev-client": "cd client && npm run dev",
-    "install-dependencies": "(cd server && npm install) && (cd client && npm install)"
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
-  "author": "uhmarlon"
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "prettier": "^3.2.5",
+    "turbo": "latest"
+  },
+  "packageManager": "pnpm@8.9.0",
+  "engines": {
+    "node": ">=18"
+  }
 }
