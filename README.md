@@ -26,6 +26,7 @@ and you can access the game by navigating to http://guessthething.localhost in y
 
 Client application will be running on http://guessthething.localhost, and the server application will be running on
 http://api.guessthething.localhost.
+
 </details>
 
 <details>
@@ -42,9 +43,10 @@ http://api.guessthething.localhost.
   ![Screenshot](https://zockerbandewqhd.nimbusweb.me/box/attachment/10234588/7nyg6sosh611lkliibrf/d2CNYbWn5ULiwZFY/screenshot-github.com-2024.02.10-00_50_18.png)
 
 - Login to GitPod and wait for the project to start.
-    - The Project will be installed and started automatically.
 
-- **⚠️ ATTENTION:** You have to set the WebSocket (Port 3001) to public. 
+  - The Project will be installed and started automatically.
+
+- **⚠️ ATTENTION:** You have to set the WebSocket (Port 3001) to public.
   Otherwise the Frontend cannot access the backend. (Should be done automatically)
 
 - Access the Application by clicking on the "Open Browser" button in the bottom right corner:
@@ -79,7 +81,7 @@ Choose the correct NPM Version using NVM:
 
 ```bash
 sudo su
-nvm install 
+nvm install
 exit
 nvm use
 ```
@@ -104,6 +106,7 @@ npm run dev-server
 
 The client application will be running on http://localhost:3000, and the server application will be running on
 http://localhost:3001.
+
 </details>
 
 <details>
@@ -126,6 +129,7 @@ and you can access the game by navigating to http://guessthething.localhost in y
 
 Client application will be running on http://guessthething.localhost, and the server application will be running on
 http://api.guessthething.localhost.
+
 </details>
 
 ## Folder Structure

@@ -18,7 +18,7 @@ const typedFlags: FlagData = flags_de;
 
 export async function gameLoop(
   roomName: string,
-  rounds: number
+  rounds: number,
 ): Promise<void> {
   gameSetRoomString(roomName, "Get ready!");
   await new Promise((resolve) => {
@@ -47,7 +47,7 @@ export function getRandomFlag(): [string, string] {
 export async function gameCountdown(
   roomName: string,
   timer: number,
-  rounds: number
+  rounds: number,
 ): Promise<void> {
   const room: Room = io.sockets.adapter.rooms.get(roomName) as unknown as Room;
   const roomMeta = gameMeta.find((room) => room.roomName === roomName);
@@ -84,7 +84,7 @@ export async function gameCountdown(
     const countdownInterval = setInterval(() => {
       const playersInRoom = getPlayersInRoom(roomName);
       const allGuessed = playersInRoom.every(
-        (player: { guess: boolean }) => player.guess === true
+        (player: { guess: boolean }) => player.guess === true,
       );
       if (allGuessed) {
         clearInterval(countdownInterval);
@@ -124,7 +124,7 @@ export async function gameCountdown(
 
 export async function gameSetFlag(
   roomName: string,
-  flagKey: string
+  flagKey: string,
 ): Promise<void> {
   const room: Room = io.sockets.adapter.rooms.get(roomName) as unknown as Room;
   if (!room) {
@@ -135,7 +135,7 @@ export async function gameSetFlag(
 
 export async function gameSetRoomString(
   roomName: string,
-  roomString: string
+  roomString: string,
 ): Promise<void> {
   const room: Room = io.sockets.adapter.rooms.get(roomName) as unknown as Room;
   if (!room) {

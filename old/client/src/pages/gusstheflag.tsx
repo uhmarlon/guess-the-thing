@@ -68,7 +68,7 @@ export const gusstheflag: NextPage = () => {
       console.log(players);
 
       const playerList = document.getElementById(
-        "playerlistgame"
+        "playerlistgame",
       ) as HTMLElement;
       if (playerList) {
         playerList.innerHTML = "";

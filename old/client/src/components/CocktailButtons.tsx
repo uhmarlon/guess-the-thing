@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { socket } from '../core/gameSocket';
+import React, { useState, useEffect } from "react";
+import { socket } from "../core/gameSocket";
 
 interface Props {
   active: boolean;
@@ -16,15 +16,14 @@ const CocktailButtons: React.FC<Props> = ({ active, cocktailArray }) => {
     }
   }, [active]);
 
-
   const handleClick = (idDrink: number) => {
     setDisabled(true);
-    socket.emit('cocktailguss', idDrink);
+    socket.emit("cocktailguss", idDrink);
     setClickedId(idDrink);
   };
 
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 gap-3 text-lg'>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-lg">
       {cocktailArray.map((cocktail) => (
         <button
           disabled={!active || disabled}
@@ -32,8 +31,8 @@ const CocktailButtons: React.FC<Props> = ({ active, cocktailArray }) => {
           onClick={() => handleClick(cocktail.idDrink)}
           className={`rounded-lg w-full max-md:p-4 md:w-72 h-14 ${
             clickedId === cocktail.idDrink
-              ? 'bg-blue-600 text-white'
-              : 'bg-gray-600 disabled:bg-gray-800 text-white'
+              ? "bg-blue-600 text-white"
+              : "bg-gray-600 disabled:bg-gray-800 text-white"
           }`}
         >
           {cocktail.strDrink}

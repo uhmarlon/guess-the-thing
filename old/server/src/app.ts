@@ -1,7 +1,12 @@
 const express = require("express");
 import http from "http";
 import { Server, Socket } from "socket.io";
-import { generateRandomName, makeid, buildHiddenName, getSocketUrl } from "./utils/utils";
+import {
+  generateRandomName,
+  makeid,
+  buildHiddenName,
+  getSocketUrl,
+} from "./utils/utils";
 import { gameLoop } from "./games/flagGame/flagGame";
 import { Player, RoomGameMetadata, Room } from "./interfaces/interfaces";
 import { gameCocktailStart } from "./games/cocktailGame/cocktailGame";
@@ -10,11 +15,17 @@ const app = express();
 const server = http.createServer(app);
 export const players: Player[] = [];
 export const gameMeta: RoomGameMetadata[] = [];
-const clientRooms: { [key: string]: { gameType: string; roomName: string } } = {};
+const clientRooms: { [key: string]: { gameType: string; roomName: string } } =
+  {};
 
 export const io = new Server(server, {
   cors: {
-    origin: ["https://guessthething.vercel.app", "http://localhost:3000", getSocketUrl(), 'http://guessthething.localhost'],
+    origin: [
+      "https://guessthething.vercel.app",
+      "http://localhost:3000",
+      getSocketUrl(),
+      "http://guessthething.localhost",
+    ],
   },
   pingTimeout: 120000,
   pingInterval: 5000,
@@ -99,7 +110,7 @@ io.on("connection", (socket: Socket) => {
     const player = createPlayer(roomName.roomName as string, socket.id);
     io.to(roomName.roomName).emit(
       "update-players",
-      getPlayersInRoom(roomName.roomName)
+      getPlayersInRoom(roomName.roomName),
     );
   }
 
@@ -117,7 +128,7 @@ io.on("connection", (socket: Socket) => {
     }
     io.to(roomName.roomName).emit(
       "update-players",
-      getPlayersInRoom(roomName.roomName)
+      getPlayersInRoom(roomName.roomName),
     );
   }
 
@@ -225,7 +236,7 @@ function createPlayer(roomName: string, socketId: any) {
 export async function gameSetRound(
   roomName: string,
   gameRounds: number,
-  maxRounds: number
+  maxRounds: number,
 ): Promise<void> {
   const room: Room = io.sockets.adapter.rooms.get(roomName) as unknown as Room;
   if (!room) {
@@ -236,7 +247,7 @@ export async function gameSetRound(
 
 export async function gameSetPersonString(
   socketId: string,
-  roomString: string
+  roomString: string,
 ): Promise<void> {
   io.to(socketId).emit("gameSetroomString", roomString);
 }

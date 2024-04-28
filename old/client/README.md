@@ -1,3 +1,3 @@
 # Client Side
-Next.js + Tailwind CSS + Socket IO
 
+Next.js + Tailwind CSS + Socket IO

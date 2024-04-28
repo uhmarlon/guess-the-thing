@@ -12,7 +12,7 @@ import { gameSetRoomString } from "../flagGame/flagGame";
 
 export async function gameCocktailStart(
   roomName: string,
-  rounds: number
+  rounds: number,
 ): Promise<void> {
   gameSetRoomString(roomName, "Get ready!");
   await new Promise((resolve) => {
@@ -46,7 +46,7 @@ export async function gameCocktailStart(
 
 export async function gameCocktailLoop(
   roomName: string,
-  rounds: number
+  rounds: number,
 ): Promise<void> {
   const room: Room = io.sockets.adapter.rooms.get(roomName) as unknown as Room;
   const roomMeta = gameMeta.find((room) => room.roomName === roomName);
@@ -96,7 +96,7 @@ export async function gameCocktailLoop(
     const countdownInterval = setInterval(() => {
       const playersInRoom = getPlayersInRoom(roomName);
       const allGuessed = playersInRoom.every(
-        (player: { guess: boolean }) => player.guess === true
+        (player: { guess: boolean }) => player.guess === true,
       );
       if (allGuessed) {
         clearInterval(countdownInterval);
@@ -133,7 +133,7 @@ export async function gameCocktailLoop(
 
 export async function gameSetCocktails(
   roomName: string,
-  clientDrinkInfo: { strDrink: string; idDrink: string }[]
+  clientDrinkInfo: { strDrink: string; idDrink: string }[],
 ): Promise<void> {
   const room: Room = io.sockets.adapter.rooms.get(roomName) as unknown as Room;
   if (!room) {
@@ -144,7 +144,7 @@ export async function gameSetCocktails(
 
 export async function gameSetCocktailIMG(
   roomName: string,
-  strDrinkThumb: string
+  strDrinkThumb: string,
 ): Promise<void> {
   const room: Room = io.sockets.adapter.rooms.get(roomName) as unknown as Room;
   if (!room) {

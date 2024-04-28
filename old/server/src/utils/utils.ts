@@ -58,8 +58,8 @@ export function getSocketUrl(): string {
   if (process.env.NEXT_PUBLIC_GITPOD_WORKSPACE_URL) {
     let workspaceUrl = process.env.NEXT_PUBLIC_GITPOD_WORKSPACE_URL;
     workspaceUrl = workspaceUrl.slice(8);
-    return 'https://3000-' + workspaceUrl;
+    return "https://3000-" + workspaceUrl;
   }
 
-  return process.env.SOCKET_SERVER ?? 'https://root.nighttech.de';
+  return process.env.SOCKET_SERVER ?? "https://root.nighttech.de";
 }
