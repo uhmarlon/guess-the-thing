@@ -8,14 +8,14 @@ export default function LoginBtn(): JSX.Element {
       {session?.user ? (
         <>
           Signed in as {session.user.name} <br />
-          <button type="button" onClick={(): unknown => signOut()}>
+          <button onClick={(): unknown => signOut()} type="button">
             Sign out
           </button>
         </>
       ) : (
         <>
           Not signed in <br />
-          <button type="button" onClick={(): unknown => signIn()}>
+          <button onClick={(): unknown => signIn()} type="button">
             Sign in
           </button>
         </>

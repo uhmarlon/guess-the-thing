@@ -1,8 +1,10 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
+import { useSession, signIn } from "next-auth/react";
 
 function Header(): JSX.Element {
+  const { data: session } = useSession();
   return (
     <header className="flex items-center justify-between bg-[#515186] text-white p-1">
       <div className="flex items-center">
@@ -33,9 +35,39 @@ function Header(): JSX.Element {
         <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-center font-medium text-white backdrop-blur-sm">
           JOIN WITH CODE
         </span>
-        <span className="mx-auto rounded-full border border-blue-500/90 bg-blue-500/40 px-4 py-2 text-center font-medium text-white backdrop-blur-sm">
-          LOGIN
-        </span>
+        {session?.user ? (
+          <div>
+            <div className="hidden sm:flex">
+              <span className="rounded-full border border-white/20 bg-white/10 px-4 py-1 text-center font-medium text-white backdrop-blur-sm whitespace-nowrap flex items-center">
+                <Image
+                  alt="logo"
+                  className="h-2 w-2 sm:h-8 sm:w-8 rounded-full mr-2"
+                  height={50}
+                  src={session.user.image ?? ""}
+                  width={50}
+                />
+                {session.user.name?.toUpperCase()}
+              </span>
+            </div>
+            <div className="sm:hidden">
+              <Image
+                alt="logo"
+                className="h-9 w-9 rounded-full"
+                height={50}
+                src={session.user.image ?? ""}
+                width={50}
+              />
+            </div>
+          </div>
+        ) : (
+          <button
+            className="mx-auto rounded-full border border-blue-500/90 bg-blue-500/40 px-4 py-2 text-center font-medium text-white backdrop-blur-sm"
+            onClick={(): unknown => signIn()}
+            type="button"
+          >
+            LOGIN
+          </button>
+        )}
       </div>
     </header>
   );
