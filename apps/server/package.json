@@ -1,0 +1,22 @@
+{
+  "name": "socket-server",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "nodemon src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "lint": "eslint src --ext .ts"
+  },
+  "author": "uhmarlon",
+  "dependencies": {
+    "fastify": "^4.26.2",
+    "nodemon": "^3.1.0",
+    "socket.io": "^4.7.5",
+    "ts-node": "^10.9.1"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:^",
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "^20.11.24"
+  }
+}
