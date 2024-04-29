@@ -1,46 +1,28 @@
-const { resolve } = require("node:path");
+// @ts-expect-error module has no type declarations
+const nextPlugin = require("@next/eslint-plugin-next");
 
-const project = resolve(process.cwd(), "tsconfig.json");
-
-/*
- * This is a custom ESLint configuration for use with
- * Next.js apps.
- *
- * This config extends the Vercel Engineering Style Guide.
- * For more information, see https://github.com/vercel/style-guide
- *
- */
+const rules = {
+  ...nextPlugin.configs.recommended.rules,
+  ...nextPlugin.configs["core-web-vitals"].rules,
+};
 
 module.exports = {
-  extends: [
-    "@vercel/style-guide/eslint/node",
-    "@vercel/style-guide/eslint/typescript",
-    "@vercel/style-guide/eslint/browser",
-    "@vercel/style-guide/eslint/react",
-    "@vercel/style-guide/eslint/next",
-    "eslint-config-turbo",
-  ].map(require.resolve),
-  parserOptions: {
-    project,
+  plugins: {
+    "@next/next": nextPlugin, // Register the plugin with an alias
   },
-  globals: {
-    React: true,
-    JSX: true,
+  parserOptions: {
+    project: "./tsconfig.json", // Adjust if your tsconfig is elsewhere
   },
   settings: {
     "import/resolver": {
       typescript: {
-        project,
+        project: "./tsconfig.json", // Repeat this if you have more complex setup
       },
       node: {
         extensions: [".mjs", ".js", ".jsx", ".ts", ".tsx"],
       },
     },
   },
-  ignorePatterns: ["node_modules/", "dist/"],
-  // add rules configurations here
-  rules: {
-    "import/no-default-export": "off",
-    "turbo/no-undeclared-env-vars": "off",
-  },
+  rules,
+  ignorePatterns: ["node_modules/", "dist/"], // Keeping your ignore patterns
 };

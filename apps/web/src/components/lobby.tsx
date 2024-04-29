@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import Confetti from "react-confetti";
-import type { Player } from "../../../../old/client/src/pages/gusstheflag";
+//import type { Player } from "../../../../old/client/src/pages/gusstheflag";
 import { socket } from "../utils/game-socket";
 
 export default function Lobby({
