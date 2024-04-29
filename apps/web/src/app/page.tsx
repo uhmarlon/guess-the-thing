@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import LoginBtn from "../components/login-btn";
 
 export default function Page(): JSX.Element {
   return (
@@ -31,6 +32,8 @@ export default function Page(): JSX.Element {
               </div>
             </Link>
           </div>
+
+          <LoginBtn />
 
           <div className="relative w-[20rem] md:w-1/2 h-[15rem] mb-3">
             <Link href="/gusstheflag">
