@@ -41,7 +41,7 @@ function Header(): JSX.Element {
           </span>
         </Link>
         {session?.user ? (
-          <Link href="/me">
+          <Link href="/my">
             <div className="hidden sm:flex">
               <React.Fragment>
                 <span className="rounded-full border border-white/20 bg-white/10 px-4 py-1 text-center font-medium text-white backdrop-blur-sm whitespace-nowrap flex items-center">

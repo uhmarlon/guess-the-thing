@@ -10,5 +10,5 @@ function getSocketUrl(): string {
   //   return `https://3001-${workspaceUrl}`;
   // }
 
-  return process.env.NEXT_PUBLIC_SOCKET_SERVER;
+  return process.env.NEXT_PUBLIC_SOCKET_SERVER as string;
 }

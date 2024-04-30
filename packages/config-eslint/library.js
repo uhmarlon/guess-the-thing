@@ -34,4 +34,7 @@ module.exports = {
     },
   },
   ignorePatterns: ["node_modules/", "dist/"],
+  rules: {
+    "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+  },
 };
