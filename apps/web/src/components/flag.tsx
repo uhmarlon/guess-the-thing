@@ -1,3 +1,4 @@
+"use client";
 import flags from "country-flag-icons/react/3x2";
 
 const DEFAULT_FLAG_SIZE = 18;
