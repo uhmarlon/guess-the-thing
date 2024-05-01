@@ -26,6 +26,7 @@ export default function Page(): JSX.Element {
                 <div className="px-6 mt-16">
                   <h1 className="font-bold text-3xl text-center mb-1">
                     {session.user.name?.toUpperCase()}
+                    {session.user.sessionToken}
                   </h1>
                   <p className="text-gray-800 text-sm text-center">
                     <span className="inline-flex items-center justify-center w-6 h-6 me-2 text-sm font-semibold  rounded-full bg-gray-700 text-blue-400">

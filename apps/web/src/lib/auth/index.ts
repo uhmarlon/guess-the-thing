@@ -7,13 +7,14 @@ import { db } from "../../utils/db/schema.ts";
 
 declare module "next-auth" {
   interface Session {
-    user: DefaultUser & { id: string };
+    user: DefaultUser & { id: string } & { sessionToken: string };
   }
 }
 
 declare module "next-auth/jwt" {
   interface JWT {
     uid?: string;
+    sessionToken?: string;
   }
 }
 
@@ -42,4 +43,5 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.DISCORD_CLIENT_SECRET!,
     }),
   ],
+  secret: process.env.NEXTAUTH_SECRET,
 };
