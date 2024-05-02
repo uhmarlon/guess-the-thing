@@ -1,4 +1,6 @@
 "use client";
+import { motion } from "framer-motion";
+
 export function Levelprogressbar({
   currentPoints,
   rangeStart,
@@ -11,13 +13,16 @@ export function Levelprogressbar({
   const percentage =
     ((currentPoints - rangeStart) / (rangeEnd - rangeStart)) * 100;
   const formattedPercentage = Math.min(Math.max(percentage, 0), 100).toFixed(0);
+
   return (
     <div className="relative mb-5 pt-1">
-      <div className="flex h-2 overflow-hidden rounded bg-gray-100 text-xs">
-        <div
-          className="bg-green-500 transition-width duration-300 ease-in-out"
-          style={{ width: `${formattedPercentage}%` }}
-        ></div>
+      <div className="flex h-5 overflow-hidden rounded bg-gttblack text-xs">
+        <motion.div
+          className="bg-gttgold"
+          initial={{ width: "0%" }}
+          animate={{ width: `${formattedPercentage}%` }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+        ></motion.div>
       </div>
       <div className="flex mb-2 items-center justify-between text-xs">
         <div className="text-white">{rangeStart}p</div>

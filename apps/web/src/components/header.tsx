@@ -7,7 +7,7 @@ import React from "react";
 function Header(): JSX.Element {
   const { data: session } = useSession();
   return (
-    <header className="flex items-center justify-between bg-[#515186] text-white p-1">
+    <header className="flex items-center justify-between bg-[#8A24FF] text-white p-1">
       <div className="flex items-center">
         <Link href="/">
           <Image
