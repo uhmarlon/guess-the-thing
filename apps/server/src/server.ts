@@ -1,16 +1,21 @@
 import createFastify from "fastify";
+import cors from "@fastify/cors";
 import { Server } from "socket.io";
-import index from "./api/level";
+import index from "./api/player/level";
 
 const PORT = 3005;
 const server = createFastify();
+server.register(cors, {
+  origin: "http://localhost:3000",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Authorization"],
+});
 
 const io: Server = new Server(server.server, {
   cors: {
-    origin: "*",
+    origin: "http://localhost:3000",
   },
 });
-
 export { io };
 
 server.register(index);

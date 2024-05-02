@@ -1,10 +1,49 @@
 "use client";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { Viewhead } from "../../components/viewc";
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import { Levelprogressbar } from "../../components/my/progressbar";
 
 export default function Page(): JSX.Element {
   const { data: session } = useSession();
+  const [currentPoints, setCurrentPoints] = useState(0);
+  const [startPoints, setStartPoints] = useState(0);
+  const [level, setlevel] = useState(0);
+  const [endPoints, setEndPoints] = useState(100);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchUserData() {
+      if (session) {
+        try {
+          const response = await fetch(`http://localhost:3005/player/level`, {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${session.user.id}`,
+            },
+          });
+
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+
+          const data = await response.json();
+          setCurrentPoints(data.currentPoints);
+          setStartPoints(data.rangeStart);
+          setEndPoints(data.rangeEnd);
+          setlevel(data.currentLevel);
+        } catch (error) {
+          console.error("Failed to fetch data:", error);
+        } finally {
+          setLoading(false);
+        }
+      }
+    }
+
+    fetchUserData();
+  }, [session]);
+
   return (
     <Viewhead>
       <main>
@@ -26,7 +65,6 @@ export default function Page(): JSX.Element {
                 <div className="px-6 mt-16">
                   <h1 className="font-bold text-3xl text-center mb-1">
                     {session.user.name?.toUpperCase()}
-                    {session.user.sessionToken}
                   </h1>
                   <p className="text-gray-800 text-sm text-center">
                     <span className="inline-flex items-center justify-center w-6 h-6 me-2 text-sm font-semibold  rounded-full bg-gray-700 text-blue-400">
@@ -49,12 +87,21 @@ export default function Page(): JSX.Element {
                       <span className="sr-only">Icon description</span>
                     </span>
                   </p>
-                  <p className="text-center text-gray-600 text-base pt-3 font-normal">
-                    Carole Steward is a visionary CEO known for her exceptional
-                    leadership and strategic acumen. With a wealth of experience
-                    in the corporate world, she has a proven track record of
-                    driving innovation and achieving remarkable business growth.
-                  </p>
+                  {loading ? (
+                    <p className="text-center">Loading...</p>
+                  ) : (
+                    <>
+                      <p className="text-gray-200 text-sm text-center">
+                        Current Level: {level} / Points {currentPoints}
+                      </p>
+                      <Levelprogressbar
+                        currentPoints={currentPoints}
+                        rangeStart={startPoints}
+                        rangeEnd={endPoints}
+                      />
+                    </>
+                  )}
+
                   <p className="text-gray-200 text-sm text-center">
                     id: {session.user.id}
                   </p>

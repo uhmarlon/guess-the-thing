@@ -9,6 +9,7 @@
   },
   "author": "uhmarlon",
   "dependencies": {
+    "@fastify/cors": "^9.0.1",
     "drizzle-orm": "^0.30.9",
     "fastify": "^4.26.2",
     "mysql2": "^3.9.7",
@@ -17,6 +18,8 @@
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
     "@types/node": "^20.11.24",
+    "dotenv": "latest",
+    "drizzle-kit": "^0.20.17",
     "nodemon": "^3.1.0",
     "ts-node": "^10.9.2",
     "tsx": "^4.7.3",
