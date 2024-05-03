@@ -14,7 +14,7 @@ function Header(): JSX.Element {
             alt="logo"
             className="h-8 w-8 sm:h-10 sm:w-10 ml-1 sm:ml-10"
             height={50}
-            src="icon/logo.png"
+            src="/icon/logo.png"
             width={50}
           />
         </Link>

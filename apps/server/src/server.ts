@@ -14,9 +14,13 @@ server.register(cors, {
 const io: Server = new Server(server.server, {
   cors: {
     origin: "http://localhost:3000",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Authorization"],
   },
 });
 export { io };
+import { setupSocket } from "./socket";
+setupSocket(io);
 
 server.register(index);
 
