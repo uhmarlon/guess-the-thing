@@ -3,14 +3,10 @@ import React from "react";
 
 type UserProps = {
   name: string;
-  level?: string;
+  level?: number;
 };
 
-type StarIconProps = {
-  number: number;
-};
-
-const StarIcon: React.FC<StarIconProps> = () => {
+const StarIcon: React.FC = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

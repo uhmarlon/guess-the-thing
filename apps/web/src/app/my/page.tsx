@@ -66,7 +66,10 @@ export default function Page(): JSX.Element {
                 </div>
                 <div className="px-6 mt-16">
                   <h1 className="font-bold text-3xl text-center mb-1 flex justify-center items-center">
-                    <UserInfo name={session.user.name} level={level} />
+                    <UserInfo
+                      name={session.user.name as string}
+                      level={level}
+                    />
                   </h1>
 
                   {loading ? (
