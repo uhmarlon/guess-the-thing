@@ -7,33 +7,38 @@ import { useParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
 
-//set cookie and load cookie
-
-const generateGuestToken = () => {
-  const array = new Uint8Array(16);
-  crypto.getRandomValues(array);
-  return (
-    "gust-" +
-    Array.from(array, (byte) => byte.toString(16).padStart(2, "0")).join("")
-  );
-};
+function checkifavlidlocalstorgeiteam(test: string) {
+  const guestToken = "gust-" + Math.random().toString(36).substring(2);
+  if (localStorage.getItem(test) === null) {
+    localStorage.setItem(test, guestToken);
+  } else {
+    if (localStorage.getItem(test).includes("gust-") === false) {
+      localStorage.setItem(test, guestToken);
+    }
+    if (localStorage.getItem(test).startsWith("gust-") === false) {
+      localStorage.setItem(test, guestToken);
+    }
+    return localStorage.getItem(test) as string;
+  }
+}
 
 export default function Page(): JSX.Element {
   const { data: session } = useSession();
   const router = useParams();
 
-  if (session?.user?.id) {
-    socket.emit("join", router.id, "multi", "flag", session.user.id);
-  } else {
-    const guestToken = generateGuestToken();
-    socket.emit("join", router.id, "multi", "flag", guestToken);
-  }
-
   useEffect(() => {
-    socket.on("players", (players) => {
-      console.log(players);
-    });
-  }, []);
+    if (session?.user?.id) {
+      socket.emit("join", router.id, "multi", "flag", session.user.id);
+    } else {
+      socket.emit(
+        "join",
+        router.id,
+        "multi",
+        "flag",
+        checkifavlidlocalstorgeiteam("guestToken")
+      );
+    }
+  }, [session]); // Emit only when session or router.id changes
 
   return (
     <Viewhead>
