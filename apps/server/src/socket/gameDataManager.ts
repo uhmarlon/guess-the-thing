@@ -18,6 +18,18 @@ class GameDataManager {
     return this.gameData.lobbies;
   }
 
+  generateGameCode(): string {
+    let code = "";
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    for (let i = 0; i < 4; i++) {
+      code += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    if (this.gameData.lobbies.find((lobby) => lobby.gamekey === code)) {
+      return this.generateGameCode();
+    }
+    return code;
+  }
+
   getLobbyById(lobbyId: string): Lobby | undefined {
     return this.gameData.lobbies.find((lobby) => lobby.id === lobbyId);
   }

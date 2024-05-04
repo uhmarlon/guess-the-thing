@@ -11,6 +11,7 @@ type Player = {
 
 type Lobby = {
   id: string;
+  gamekey?: string;
   roundlobby?: number;
   hostIdplayer: string;
   players: Player[];

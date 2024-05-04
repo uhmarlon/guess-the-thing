@@ -7,20 +7,26 @@ export default function Page(): JSX.Element {
   const router = useRouter();
 
   // Function to generate a random alphanumeric string
-  const generateRandomString = () => {
-    const characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    let result = "";
-    const charactersLength = characters.length;
-    for (let i = 0; i < 15; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
+  const generateFormattedString = () => {
+    const generateRandomString = (length: number) => {
+      const characters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      let result = "";
+      const charactersLength = characters.length;
+      for (let i = 0; i < length; i++) {
+        result += characters.charAt(
+          Math.floor(Math.random() * charactersLength)
+        );
+      }
+      return result;
+    };
+
+    return `${generateRandomString(7)}-${generateRandomString(4)}-${generateRandomString(4)}-${generateRandomString(4)}-${generateRandomString(7)}`;
   };
 
   // Function to handle button click
   const handleButtonClick = () => {
-    const randomString = generateRandomString();
+    const randomString = generateFormattedString();
     router.push(`/game/multi/flag/${randomString}`);
   };
 

@@ -27,6 +27,7 @@ class JoinHandler {
           if (!lobby) {
             lobby = {
               id: lobbyId,
+              gamekey: manager.generateGameCode(),
               hostIdplayer: playerId,
               players: [],
               gameMode: gamemode,
@@ -34,6 +35,10 @@ class JoinHandler {
               gameState: "waiting",
             };
             manager.addLobby(lobby);
+          }
+          if (lobby.gameState === "inGame" || lobby.gameState === "postGame") {
+            // TODO: Handel this case
+            return;
           }
           let hasLoggedin: boolean = false;
           if (!playerId.startsWith("guest-")) {
@@ -76,6 +81,7 @@ class JoinHandler {
             };
             manager.addPlayerToLobby(lobbyId, newPlayer);
             socket.join(lobbyId);
+            socket.emit("gamekey", lobby.gamekey);
             // TODO: SECURITY: Emitting not all information about the player
             socket.to(lobbyId).emit("player", lobby.players);
           }
@@ -84,6 +90,7 @@ class JoinHandler {
     );
   }
 
+  // TODO: Implement this method or clean up after time
   static disconnect(socket: Socket): void {
     const manager = GameDataManager.getInstance();
     manager.getLobbies().forEach((lobby) => {
