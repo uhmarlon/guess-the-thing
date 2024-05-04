@@ -1,30 +1,21 @@
 "use client";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
+import { socket } from "../../../../../utils/game-socket";
+import { getOrCreateGuestToken } from "../../../../../lib/guest/getToken";
 import { Viewhead } from "../../../../../components/viewc";
 import Button from "../../../../../components/ds/button";
-import { socket } from "../../../../../utils/game-socket";
-import { useParams } from "next/navigation";
-import { useSession } from "next-auth/react";
-import { useEffect } from "react";
 
-function checkifavlidlocalstorgeiteam(test: string) {
-  const guestToken = "gust-" + Math.random().toString(36).substring(2);
-  if (localStorage.getItem(test) === null) {
-    localStorage.setItem(test, guestToken);
-  } else {
-    if (localStorage.getItem(test).includes("gust-") === false) {
-      localStorage.setItem(test, guestToken);
-    }
-    if (localStorage.getItem(test).startsWith("gust-") === false) {
-      localStorage.setItem(test, guestToken);
-    }
-    return localStorage.getItem(test) as string;
-  }
+interface Player {
+  id: string;
+  name: string;
 }
 
 export default function Page(): JSX.Element {
   const { data: session } = useSession();
   const router = useParams();
+  const [players, setPlayers] = useState<Player[]>([]);
 
   useEffect(() => {
     if (session?.user?.id) {
@@ -35,25 +26,43 @@ export default function Page(): JSX.Element {
         router.id,
         "multi",
         "flag",
-        checkifavlidlocalstorgeiteam("guestToken")
+        getOrCreateGuestToken("guestToken")
       );
     }
-  }, [session]); // Emit only when session or router.id changes
+
+    socket.on("player", (data: Player[]) => {
+      setPlayers(data);
+    });
+
+    // Clean up the socket listener when the component unmounts
+    return () => {
+      socket.off("player");
+    };
+  }, [session, router.id]);
 
   return (
     <Viewhead>
       <main>
-        <div>
-          <div className="flex flex-col items-center justify-center h-screen">
-            <h1 className="text-4xl font-bold">{session?.user.id}</h1>
-            <div onClick={() => signIn()} className="p-2">
-              <Button
-                bgColor="bg-gttlightblue/80"
-                borderColor="border-gttlightblue"
-              >
-                Click here to sign in
-              </Button>
-            </div>
+        <div className="flex flex-col items-center justify-center h-screen">
+          <h1 className="text-4xl font-bold">{session?.user?.id || "Guest"}</h1>
+          <div className="p-2">
+            {players.length > 0 ? (
+              <ul>
+                {players.map((player) => (
+                  <li key={player.id}>{player.name}</li>
+                ))}
+              </ul>
+            ) : (
+              <p>No players connected yet.</p>
+            )}
+          </div>
+          <div onClick={() => signIn()} className="p-2">
+            <Button
+              bgColor="bg-gttlightblue/80"
+              borderColor="border-gttlightblue"
+            >
+              Click here to sign in
+            </Button>
           </div>
         </div>
       </main>

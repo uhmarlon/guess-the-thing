@@ -14,8 +14,6 @@ class GameDataManager {
     }
     return GameDataManager.instance;
   }
-
-  // Getters
   getLobbies(): Lobby[] {
     return this.gameData.lobbies;
   }
@@ -24,7 +22,6 @@ class GameDataManager {
     return this.gameData.lobbies.find((lobby) => lobby.id === lobbyId);
   }
 
-  // Setters
   addLobby(lobby: Lobby): void {
     this.gameData.lobbies.push(lobby);
   }
@@ -35,7 +32,6 @@ class GameDataManager {
     );
   }
 
-  // More complex business logic
   addPlayerToLobby(lobbyId: string, player: Player): void {
     const lobby = this.getLobbyById(lobbyId);
     if (lobby && !lobby.players.find((p) => p.id === player.id)) {

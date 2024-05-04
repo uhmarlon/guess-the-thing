@@ -4,9 +4,7 @@ type Player = {
   points: number;
   level: number;
   loggedIn?: boolean;
-  authtoken?: string;
   socketId: string;
-  inactivityTimeout?: NodeJS.Timeout;
   isHost?: boolean;
   isClassroom?: boolean;
 };
@@ -31,7 +29,7 @@ type Gameinside = {
     hasPlayed: boolean;
     isReady: boolean;
   }[];
-  gamespacel?: [];
+  gameSpecial?: [];
 };
 
 type GameResult = {

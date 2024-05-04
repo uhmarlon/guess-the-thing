@@ -25,12 +25,14 @@ function Header(): JSX.Element {
         </Link>
 
         <nav className="hidden sm:flex gap-4 ml-6">
-          <Link className="hover:text-gray-400" href="/home">
+          <div className="hover:text-gray-400">HOME</div>
+          <div className="hover:text-gray-400">ABOUT</div>
+          {/* <Link className="hover:text-gray-400" href="/home">
             GAME 1
           </Link>
           <Link className="hover:text-gray-400" href="/about">
             Game 2
-          </Link>
+          </Link> */}
         </nav>
       </div>
 

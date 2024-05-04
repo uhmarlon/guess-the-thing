@@ -1,75 +1,84 @@
 import { Socket } from "socket.io";
 import GameDataManager from "./gameDataManager";
 import { Player } from "../utlis/gametype";
+import { UserExists } from "../api/player/checks/exists";
+import { db } from "../db";
+import { eq } from "drizzle-orm";
+import { users } from "../db/schema";
 
 class JoinHandler {
-  static bind(socket: Socket): void {
+  static async bind(socket: Socket): Promise<void> {
     const manager = GameDataManager.getInstance();
 
     socket.on(
       "join",
-      (
+      async (
         lobbyId: string,
-        gameType: string,
-        gameFlag: string,
+        gameVariant: string,
+        gamemode: string,
         playerId: string
       ) => {
         if (!playerId) {
-          console.log("No player ID provided, cannot join lobby.");
+          socket.emit("error", "Player ID is required to join a lobby.");
           return;
         }
+        if (gameVariant === "multi") {
+          let lobby = manager.getLobbyById(lobbyId);
+          if (!lobby) {
+            lobby = {
+              id: lobbyId,
+              hostIdplayer: playerId,
+              players: [],
+              gameMode: gamemode,
+              gameinside: { gameId: "game_" + lobbyId, scores: [] },
+              gameState: "waiting",
+            };
+            manager.addLobby(lobby);
+          }
+          let hasLoggedin: boolean = false;
+          if (!playerId.startsWith("guest-")) {
+            console.log(`Checking if user ${playerId} exists`);
+            const userExists = new UserExists();
+            const exists = await userExists.checkUserExists(playerId);
+            console.log(`User ${playerId} exists: ${exists}`);
+            if (exists) {
+              hasLoggedin = true;
+            }
+          }
 
-        let lobby = manager.getLobbyById(lobbyId);
-        if (!lobby) {
-          lobby = {
-            id: lobbyId,
-            hostIdplayer: playerId,
-            players: [],
-            gameMode: gameType,
-            gameinside: { gameId: "game_" + lobbyId, scores: [] },
-            gameState: "waiting",
-          };
-          manager.addLobby(lobby);
-        }
+          const existingPlayer = lobby.players.find((p) => p.id === playerId);
 
-        const authToken = socket.handshake.auth.token;
-        const existingPlayer = lobby.players.find(
-          (p) => p.id === playerId && p.authtoken === authToken
-        );
-        if (existingPlayer) {
-          existingPlayer.socketId = socket.id;
-          clearTimeout(existingPlayer.inactivityTimeout);
-          existingPlayer.inactivityTimeout = setTimeout(() => {
-            manager.removePlayerFromLobby(lobbyId, existingPlayer.id);
-            console.log(
-              `Player ${existingPlayer.id} removed due to inactivity.`
-            );
-          }, 120000); // 2 minutes
-          console.log(`Player ${playerId} reconnected to lobby ${lobbyId}`);
-        } else {
-          const newPlayer: Player = {
-            id: playerId,
-            name: "",
-            points: 0,
-            level: 1,
-            loggedIn: true,
-            authtoken: authToken,
-            socketId: socket.id,
-            isHost: lobby.players.length === 0,
-            inactivityTimeout: setTimeout(() => {
-              manager.removePlayerFromLobby(lobbyId, playerId);
-              console.log(`Player ${playerId} removed due to inactivity.`);
-            }, 120000),
-          };
-          manager.addPlayerToLobby(lobbyId, newPlayer);
-          socket.join(lobbyId);
-          // emit to all players in the lobby all players in the lobby
-          //socket.to(lobbyId).emit("players", lobby.players);
-          console.log(
-            `Emitting players data for lobby ${lobbyId}:`,
-            lobby.players
-          );
-          console.log(`Player ${playerId} joined lobby ${lobbyId}`);
+          if (existingPlayer) {
+            existingPlayer.socketId = socket.id;
+            console.log(`Player ${playerId} reconnected to lobby ${lobbyId}`);
+          } else {
+            let username: string;
+            if (hasLoggedin) {
+              const getname = await db
+                .select()
+                .from(users)
+                .where(eq(users.id, playerId));
+              username = getname[0].name as string;
+            } else {
+              const randomNames = ["Stranger", "StrangerDanger", "Newbie"];
+              username =
+                randomNames[Math.floor(Math.random() * randomNames.length)];
+            }
+
+            const newPlayer: Player = {
+              id: playerId,
+              name: username,
+              points: 0,
+              level: 1,
+              loggedIn: hasLoggedin,
+              socketId: socket.id,
+              isHost: lobby.players.length === 0,
+            };
+            manager.addPlayerToLobby(lobbyId, newPlayer);
+            socket.join(lobbyId);
+            // TODO: SECURITY: Emitting not all information about the player
+            socket.to(lobbyId).emit("player", lobby.players);
+          }
         }
       }
     );
@@ -80,7 +89,6 @@ class JoinHandler {
     manager.getLobbies().forEach((lobby) => {
       lobby.players.forEach((player) => {
         if (player.socketId === socket.id) {
-          clearTimeout(player.inactivityTimeout);
           manager.removePlayerFromLobby(lobby.id, player.id);
           if (lobby.players.length === 0) {
             manager.removeLobby(lobby.id);
