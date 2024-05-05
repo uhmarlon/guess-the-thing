@@ -42,7 +42,6 @@ class JoinHandler {
           }
           let hasLoggedin: boolean = false;
           if (!playerId.startsWith("guest-")) {
-            console.log(`Checking if user ${playerId} exists`);
             const userExists = new UserExists();
             const exists = await userExists.checkUserExists(playerId);
             console.log(`User ${playerId} exists: ${exists}`);
@@ -80,10 +79,29 @@ class JoinHandler {
               isHost: lobby.players.length === 0,
             };
             manager.addPlayerToLobby(lobbyId, newPlayer);
+            const gameLobbyClientInfo = {
+              id: lobby.id,
+              gamekey: lobby.gamekey,
+              playersinfo: [
+                ...lobby.players.map((player) => {
+                  return {
+                    id: player.id,
+                    name: player.name,
+                    points: player.points,
+                    level: player.level,
+                    loggedIn: player.loggedIn,
+                    isHost: player.isHost,
+                  };
+                }),
+              ],
+              gameState: lobby.gameState,
+            };
             socket.join(lobbyId);
             socket.emit("gamekey", lobby.gamekey);
             // TODO: SECURITY: Emitting not all information about the player
-            socket.to(lobbyId).emit("player", lobby.players);
+            socket.emit("player", gameLobbyClientInfo);
+            socket.to(lobbyId).emit("player", gameLobbyClientInfo);
+            console.log(gameLobbyClientInfo);
           }
         }
       }

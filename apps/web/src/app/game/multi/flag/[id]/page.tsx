@@ -8,15 +8,20 @@ import { Viewc } from "../../../../../components/viewc";
 import Button from "../../../../../components/ds/button";
 import QuizEntry from "../../../../../components/game/QuizEntryProps";
 
-interface Player {
+type Player = {
   id: string;
   name: string;
-}
+  points: number | null;
+  level: number;
+  loggedIn: boolean;
+  socketId: string;
+  isHost: boolean;
+};
 
 export default function Page(): JSX.Element {
   const { data: session } = useSession();
   const router = useParams();
-  const [players, setPlayers] = useState<Player[]>([]);
+  const [players, setPlayers] = useState(
   const [gameId, setGameId] = useState<string | null>(null);
 
   useEffect(() => {
@@ -32,7 +37,7 @@ export default function Page(): JSX.Element {
       );
     }
 
-    socket.on("player", (data: Player[]) => {
+    socket.on("player", (data) => {
       setPlayers(data);
     });
 
@@ -65,16 +70,8 @@ export default function Page(): JSX.Element {
 
               <div className="mt-4">
                 <h2 className="text-lg font-bold">Player List</h2>
-                <p>{players.length} players in the lobby</p>
-                {players.length > 0 ? (
-                  <ul>
-                    {players.map((player) => (
-                      <li key={player.id}>{player.name}</li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p>No players connected yet.</p>
-                )}
+                <p>{players} players in the lobby</p>
+                <ul></ul>
               </div>
 
               {/* <p className="text-lg text-center font-medium">Host settings</p>
