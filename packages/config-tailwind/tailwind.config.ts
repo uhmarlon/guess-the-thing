@@ -10,7 +10,7 @@ const config: Omit<Config, "content"> = {
         gttcyan: "#69E0C7",
         gttlightpurple: "#8A24FF",
         gttpink: "#FF7D7D",
-        gttgreen: "#65CF58",
+        gttgreen: "#4CAF50",
         gttorgange: "#F15223",
         gttpurple: "#5041AB",
         gttred: "#CC2936",

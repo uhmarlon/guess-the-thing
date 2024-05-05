@@ -51,6 +51,15 @@ class GameDataManager {
     }
   }
 
+  updateLobby(updatedLobby: Lobby): void {
+    const index = this.gameData.lobbies.findIndex(
+      (lobby) => lobby.id === updatedLobby.id
+    );
+    if (index !== -1) {
+      this.gameData.lobbies[index] = updatedLobby;
+    }
+  }
+
   removePlayerFromLobby(lobbyId: string, playerId: string): void {
     const lobby = this.getLobbyById(lobbyId);
     if (lobby) {

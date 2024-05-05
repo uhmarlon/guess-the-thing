@@ -22,9 +22,10 @@ type Lobby = {
 
 type Gameinside = {
   gameId: string;
+  maxTime?: number;
   round?: number;
   maxRounds?: number;
-  scores: {
+  scores?: {
     playerId: string;
     score: number;
     hasPlayed: boolean;

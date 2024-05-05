@@ -86,12 +86,10 @@ const UserInfo: React.FC<UserProps> = ({ name, level }) => {
   return (
     <div className="flex items-center">
       <div className="mr-2">{name?.toUpperCase()}</div>
-      {!level && (
-        <>
-          <StarIcon />
-          <div className=" text-sm">{level}</div>
-        </>
-      )}
+      <>
+        <StarIcon />
+        <div className="text-sm">{level}</div>
+      </>
     </div>
   );
 };

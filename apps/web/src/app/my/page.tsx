@@ -34,6 +34,7 @@ export default function Page(): JSX.Element {
           setCurrentPoints(data.currentPoints);
           setStartPoints(data.rangeStart);
           setEndPoints(data.rangeEnd);
+
           setlevel(data.currentLevel);
         } catch (error) {
           console.error("Failed to fetch data:", error);

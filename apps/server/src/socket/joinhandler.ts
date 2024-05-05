@@ -5,6 +5,7 @@ import { UserExists } from "../api/player/checks/exists";
 import { db } from "../db";
 import { eq } from "drizzle-orm";
 import { users } from "../db/schema";
+import GameFactory from "./multi/GameFactory";
 
 class JoinHandler {
   static async bind(socket: Socket): Promise<void> {
@@ -41,9 +42,11 @@ class JoinHandler {
             return;
           }
           let hasLoggedin: boolean = false;
+          let level = 0;
           if (!playerId.startsWith("guest-")) {
             const userExists = new UserExists();
             const exists = await userExists.checkUserExists(playerId);
+            level = (await userExists.getUserLevel(playerId)) as number;
             console.log(`User ${playerId} exists: ${exists}`);
             if (exists) {
               hasLoggedin = true;
@@ -73,7 +76,7 @@ class JoinHandler {
               id: playerId,
               name: username,
               points: 0,
-              level: 1,
+              level: level,
               loggedIn: hasLoggedin,
               socketId: socket.id,
               isHost: lobby.players.length === 0,
@@ -97,15 +100,46 @@ class JoinHandler {
               gameState: lobby.gameState,
             };
             socket.join(lobbyId);
-            socket.emit("gamekey", lobby.gamekey);
-            // TODO: SECURITY: Emitting not all information about the player
-            socket.emit("player", gameLobbyClientInfo);
-            socket.to(lobbyId).emit("player", gameLobbyClientInfo);
-            console.log(gameLobbyClientInfo);
+            socket.emit("gamelobbyinfo", gameLobbyClientInfo);
+            socket.to(lobbyId).emit("gamelobbyinfo", gameLobbyClientInfo);
           }
         }
       }
     );
+
+    socket.on("setRoundTime", (lobbyId: string, time: number) => {
+      const lobby = manager.getLobbyById(lobbyId);
+      if (lobby) {
+        if (lobby.players.find((p) => p.socketId === socket.id && p.isHost)) {
+          lobby.gameinside.maxTime = time;
+        }
+      }
+    });
+
+    socket.on("setRound", (lobbyId: string, round: number) => {
+      const lobby = manager.getLobbyById(lobbyId);
+      if (lobby) {
+        if (lobby.players.find((p) => p.socketId === socket.id && p.isHost)) {
+          lobby.gameinside.maxRounds = round;
+        }
+      }
+    });
+
+    socket.on("startGame", (lobbyId: string) => {
+      const lobby = manager.getLobbyById(lobbyId);
+      if (lobby && lobby.gameState === "waiting") {
+        if (lobby.players.length < 2) {
+          socket.emit("gameStartError");
+          return;
+        }
+        try {
+          const game = GameFactory.createGame(lobby);
+          game.startGame();
+        } catch (error) {
+          console.error("Failed to start game:", error);
+        }
+      }
+    });
   }
 
   // TODO: Implement this method or clean up after time
@@ -115,6 +149,9 @@ class JoinHandler {
       lobby.players.forEach((player) => {
         if (player.socketId === socket.id) {
           manager.removePlayerFromLobby(lobby.id, player.id);
+          // TODO: Implement try to remove user form lobby
+          // try {
+          // }
           if (lobby.players.length === 0) {
             manager.removeLobby(lobby.id);
           }

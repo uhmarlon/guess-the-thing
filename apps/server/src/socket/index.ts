@@ -1,5 +1,5 @@
 import { Server } from "socket.io";
-import JoinHandler from "./joinhandler";
+import JoinHandler from "./joinHandler";
 
 export const setupSocket = (io: Server): void => {
   io.on("connection", (socket) => {

@@ -1,54 +1,64 @@
 "use client";
-import { signIn, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { socket } from "../../../../../utils/game-socket";
 import { getOrCreateGuestToken } from "../../../../../lib/guest/getToken";
 import { Viewc } from "../../../../../components/viewc";
-import Button from "../../../../../components/ds/button";
 import QuizEntry from "../../../../../components/game/QuizEntryProps";
+import UserInfo from "../../../../../components/ds/username";
+import Link from "next/link";
+import GameSettings from "../../../../../components/game/flag/GameSettings";
 
 type Player = {
   id: string;
   name: string;
-  points: number | null;
+  points: number;
   level: number;
-  loggedIn: boolean;
-  socketId: string;
-  isHost: boolean;
+  loggedIn?: boolean;
+  isHost?: boolean;
+};
+
+type gameLobbyClientInfo = {
+  id: string;
+  gamekey: string;
+  hostIdplayer: string;
+  playersinfo: Player[];
 };
 
 export default function Page(): JSX.Element {
   const { data: session } = useSession();
+  const [imHost, setImHost] = useState(false);
+
   const router = useParams();
-  const [players, setPlayers] = useState(
-  const [gameId, setGameId] = useState<string | null>(null);
+  const [players, setPlayers] = useState<gameLobbyClientInfo>({
+    id: "",
+    gamekey: "",
+    hostIdplayer: "",
+    playersinfo: [],
+  });
 
   useEffect(() => {
+    const gustid = getOrCreateGuestToken("guestToken");
     if (session?.user?.id) {
       socket.emit("join", router.id, "multi", "flag", session.user.id);
     } else {
-      socket.emit(
-        "join",
-        router.id,
-        "multi",
-        "flag",
-        getOrCreateGuestToken("guestToken")
-      );
+      socket.emit("join", router.id, "multi", "flag", gustid);
     }
 
-    socket.on("player", (data) => {
+    socket.on("gamelobbyinfo", (data) => {
       setPlayers(data);
+      const host = data.playersinfo.find((player: Player) => player.isHost);
+      if (host?.id === session?.user?.id) {
+        setImHost(true);
+      }
+      if (host?.id === gustid) {
+        setImHost(true);
+      }
     });
 
-    socket.on("gamekey", (data: string) => {
-      setGameId(data);
-    });
-
-    // Clean up the socket listener when the component unmounts
     return () => {
-      socket.off("player");
-      socket.off("gamekey");
+      socket.off("gamelobbyinfo");
     };
   }, [session, router.id]);
 
@@ -58,7 +68,7 @@ export default function Page(): JSX.Element {
         <div className="mt-3">
           <div className="grid grid-cols-1 sm:grid-cols-4 ">
             <div className="col-span-1 sm:col-start-4">
-              <QuizEntry gameId={gameId} url="www.localhost:3000" />
+              <QuizEntry gameId={players.gamekey} url="www.localhost:3000" />
             </div>
             <div className="col-span-1 sm:col-span-2 lg:col-span-3 sm:row-start-1 sm:col-start-1">
               <h1 className="text-lg font-bold mt-2 sm:text-4xl">
@@ -67,34 +77,41 @@ export default function Page(): JSX.Element {
               <p className="text-sm pb-2">
                 Guess the flag of the country based on the image shown.
               </p>
+              {!session?.user && (
+                <div className="bg-red-500 text-white p-2 rounded mt-2 max-w-sm ">
+                  <p className="text-sm flex flex-row">
+                    <Link href="/" className="text-white underline ml-1">
+                      Login
+                    </Link>
+                    &nbsp;to sync your rank and points with your account
+                  </p>
+                </div>
+              )}
 
               <div className="mt-4">
                 <h2 className="text-lg font-bold">Player List</h2>
-                <p>{players} players in the lobby</p>
-                <ul></ul>
+                <ul>
+                  {players.playersinfo.map((player) => (
+                    <li key={player.id}>
+                      {/*  if player is host  */}
+                      <div className="flex flex-row">
+                        <UserInfo name={player.name} level={player.level} />
+                        {player.isHost && (
+                          <p className="text-xs">&nbsp; Host</p>
+                        )}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+                <div className="border-t border-gray-500 my-2 max-w-md"></div>
+                <ul className="text-sm">
+                  {players.playersinfo.length} players
+                </ul>
               </div>
 
-              {/* <p className="text-lg text-center font-medium">Host settings</p>
-              <div className="p-2">
-                <select
-                  className="block w-full bg-gray-800 text-white border border-gray-700 rounded-md py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-900 focus:border-gray-900"
-                  id="grid-state"
-                  value="5"
-                  // onChange={(e) => setRound(parseInt(e.target.value))}
-                >
-                  <option value={5}>5 rounds</option>
-                  <option value={10}>10 rounds</option>
-                  <option value={15}>15 rounds</option>
-                </select>
-                <input
-                  type="number"
-                  className="block w-full bg-gray-800 text-white border border-gray-700 rounded-md py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-900 focus:border-gray-900"
-                  id="round-time"
-                  min={1}
-                  max={60}
-                  placeholder="Max Round Time (seconds)"
-                />
-              </div> */}
+              {imHost ? (
+                <GameSettings isHost={true} lobbyid={players.id} />
+              ) : null}
             </div>
           </div>
         </div>
