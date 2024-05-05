@@ -75,6 +75,9 @@ importers:
       '@auth/drizzle-adapter':
         specifier: ^1.0.1
         version: 1.0.1
+      '@logsnag/node':
+        specifier: ^1.0.1
+        version: 1.0.1
       country-flag-icons:
         specifier: ^1.5.11
         version: 1.5.11
@@ -2070,6 +2073,10 @@ packages:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
+
+  /@logsnag/node@1.0.1:
+    resolution: {integrity: sha512-JW2S1KN91XyOb0oG2PblboZ1Ys4mkOSMn83GDYjM8CXzcFbkYFMnlFQoEgP0Y5z+1A56hOO+a7uLsvxO5IdUFA==}
+    dev: false
 
   /@next/env@14.2.3:
     resolution: {integrity: sha512-W7fd7IbkfmeeY2gXrzJYDx8D2lWKbVoTIj1o1ScPHNzvp30s1AuoEFSdr39bC5sjxJaxTtq3OTCZboNp0lNWHA==}

@@ -4,6 +4,12 @@ import type { Adapter } from "next-auth/adapters";
 import DiscordProvider from "next-auth/providers/discord";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { db } from "../../utils/db/schema.ts";
+import { LogSnag } from "@logsnag/node";
+
+const logsnag = new LogSnag({
+  token: process.env.LOGSNAG_TOKEN!,
+  project: "uhmarlondev",
+});
 
 declare module "next-auth" {
   interface Session {
@@ -26,7 +32,17 @@ export const authOptions: NextAuthOptions = {
       }
       return session;
     },
-    jwt: async ({ user, token }) => {
+
+    jwt: async ({ user, token, isNewUser }) => {
+      if (isNewUser) {
+        await logsnag.track({
+          channel: "gtt",
+          event: "New user created",
+          description: `New user created with ID`,
+          icon: "🆕",
+          notify: true,
+        });
+      }
       if (user) {
         token.uid = user.id;
       }
