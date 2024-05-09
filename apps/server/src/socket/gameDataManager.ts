@@ -18,16 +18,22 @@ class GameDataManager {
     return this.gameData.lobbies;
   }
 
-  generateGameCode(): string {
+  async generateGameCode(): Promise<string> {
     let code = "";
     const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     for (let i = 0; i < 4; i++) {
       code += characters.charAt(Math.floor(Math.random() * characters.length));
     }
-    if (this.gameData.lobbies.find((lobby) => lobby.gamekey === code)) {
-      return this.generateGameCode();
+    const exists = await this.checkCodeExists(code);
+    if (exists) {
+      return this.generateGameCode(); // Rekursion, beachte die Stack-Größe oder überlege dir eine Schleife
     }
     return code;
+  }
+
+  async checkCodeExists(code: string): Promise<boolean> {
+    // Stelle eine Datenbankabfrage hier, um zu prüfen, ob der Code existiert
+    return this.gameData.lobbies.some((lobby) => lobby.gamekey === code);
   }
 
   getLobbyById(lobbyId: string): Lobby | undefined {

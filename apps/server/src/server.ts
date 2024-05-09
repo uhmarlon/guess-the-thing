@@ -19,8 +19,9 @@ const io: Server = new Server(server.server, {
   },
 });
 export { io };
-import { setupSocket } from "./socket";
-setupSocket(io);
+import { SocketSetup } from "./socket";
+const socketSetup = new SocketSetup(io);
+socketSetup.setup();
 
 server.register(index);
 

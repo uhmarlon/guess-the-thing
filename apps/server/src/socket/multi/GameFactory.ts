@@ -1,12 +1,12 @@
 import BaseGame from "./BaseGame";
-import ExampleGame from "./example/ExampleGame";
+import FlagGame from "./flag/FlagGame";
 import { Lobby } from "../../utlis/gametype";
 
 class GameFactory {
   static createGame(lobby: Lobby): BaseGame {
     switch (lobby.gameMode) {
       case "flag":
-        return new ExampleGame(lobby);
+        return new FlagGame(lobby);
       //case "anotherGameType":
       //return new AnotherGameType(lobby);
       // Add more cases as new games are developed

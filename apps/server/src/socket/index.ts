@@ -1,11 +1,20 @@
 import { Server } from "socket.io";
 import JoinHandler from "./joinHandler";
 
-export const setupSocket = (io: Server): void => {
-  io.on("connection", (socket) => {
-    JoinHandler.bind(socket);
-    socket.on("disconnect", () => {
-      JoinHandler.disconnect(socket);
+export class SocketSetup {
+  private io: Server;
+
+  constructor(io: Server) {
+    this.io = io;
+  }
+
+  public async setup(): Promise<void> {
+    this.io.on("connection", async (socket) => {
+      JoinHandler.bind(socket);
+
+      socket.on("disconnect", async () => {
+        JoinHandler.disconnect(socket);
+      });
     });
-  });
-};
+  }
+}

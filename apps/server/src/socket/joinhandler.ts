@@ -28,7 +28,7 @@ class JoinHandler {
           if (!lobby) {
             lobby = {
               id: lobbyId,
-              gamekey: manager.generateGameCode(),
+              gamekey: await manager.generateGameCode(),
               hostIdplayer: playerId,
               players: [],
               gameMode: gamemode,
