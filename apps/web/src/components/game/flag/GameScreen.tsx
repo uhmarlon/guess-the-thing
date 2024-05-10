@@ -13,23 +13,6 @@ export default function FlagGameScreen(): JSX.Element {
     animate: { scale: 1 },
     exit: { scale: 0, transition: { duration: 0.5 } },
   };
-
-  const [countdown, setCountdown] = useState<number | null>(null);
-
-  useEffect(() => {
-    setCountdown(12); // Starting countdown at 3
-  }, []);
-
-  useEffect(() => {
-    if (countdown !== null && countdown >= 0) {
-      const timer = setTimeout(() => {
-        setCountdown(countdown - 1);
-      }, 1000);
-
-      return () => clearTimeout(timer);
-    }
-  }, [countdown]);
-
   return (
     <div className="mt-3">
       <div className="fixed top-2 right-2 md:right-5 bg-purple-600 text-white font-bold text-xs md:text-sm lg:text-base p-2 shadow-lg rounded-lg">

@@ -60,7 +60,7 @@ export default function LobbyComponent(): JSX.Element {
           {!session?.user && (
             <div className="bg-red-500 text-white p-2 rounded mt-2 max-w-sm">
               <p className="text-sm flex flex-row">
-                <Link href="/" className="text-white underline ml-1">
+                <Link href="/" className="text-white underline">
                   Login
                 </Link>
                 &nbsp;to sync your rank and points with your account

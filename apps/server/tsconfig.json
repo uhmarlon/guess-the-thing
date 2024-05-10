@@ -6,7 +6,15 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "src/*": ["src/*"],
+      "@socket/*": ["src/socket/*"],
+      "@utils/*": ["src/utils/*"],
+      "@data/*": ["src/data/*"],
+      "@api/*": ["src/api/*"]
+    }
   },
   "include": ["**/*.ts", "src/**/*.json"],
   "exclude": ["node_modules"]

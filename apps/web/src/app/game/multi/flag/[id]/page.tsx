@@ -6,7 +6,7 @@ import { socket } from "@utils/game-socket";
 import { Viewc } from "@components/viewc";
 import { GameState } from "src/utils/types/game";
 import LobbyComponent from "@components/game/LobbyComponent";
-//import StartCounter from "@components/game/StartCounter";
+import StartCounter from "@components/game/StartCounter";
 import FlagGameScreen from "@components/game/flag/GameScreen";
 
 export default function Page(): JSX.Element {
@@ -15,17 +15,24 @@ export default function Page(): JSX.Element {
   const [gameState, setGameState] = useState<GameState>(GameState.LOBBY);
 
   useEffect(() => {
-    socket.on("gameStart", () => {
-      setGameState(GameState.START_COUNTER);
-      console.log("Game started");
+    socket.on("gameLobby", () => {
+      setGameState(GameState.END);
     });
-    socket.on("endGame", () => {
+    socket.on("gameCounter", () => {
+      setGameState(GameState.START_COUNTER);
+    });
+    socket.on("gameScreen", () => {
+      setGameState(GameState.GAME);
+    });
+    socket.on("gameEnd", () => {
       setGameState(GameState.END);
     });
 
     return () => {
-      socket.off("startGame");
-      socket.off("endGame");
+      socket.off("gameLobby");
+      socket.off("gameCounter");
+      socket.off("gameScreen");
+      socket.off("gameEnd");
     };
   }, []);
 
@@ -34,9 +41,9 @@ export default function Page(): JSX.Element {
       case GameState.LOBBY:
         return <LobbyComponent />;
       case GameState.START_COUNTER:
+        return <StartCounter />;
+      case GameState.GAME:
         return <FlagGameScreen />;
-      // case GameState.GAME:
-      //   return <GameComponent onGameEnd={() => setGameState(GameState.END)} />;
       // case GameState.END:
       //   return (
       //     <EndGameComponent onRestart={() => setGameState(GameState.LOBBY)} />

@@ -16,7 +16,7 @@ abstract class BaseGame {
   abstract endGame(): void;
 
   // A method to update the lobby information in GameDataManager
-  protected updateLobby(): void {
+  protected async updateLobby(): Promise<void> {
     this.gameDataManager.updateLobby(this.lobby);
   }
 }

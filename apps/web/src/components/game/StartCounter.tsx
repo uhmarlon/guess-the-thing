@@ -2,19 +2,12 @@
 "use client";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { socket } from "@utils/game-socket";
 
 export default function StartCounter(): JSX.Element {
   const [countdown, setCountdown] = useState<number | null>(null);
 
   useEffect(() => {
-    socket.on("startCounter", () => {
-      setCountdown(3); // Starting countdown at 3
-    });
-
-    return () => {
-      socket.off("startCounter");
-    };
+    setCountdown(3);
   }, []);
 
   useEffect(() => {
@@ -48,7 +41,7 @@ export default function StartCounter(): JSX.Element {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1, transition: { duration: 0.5 } }}
               exit={{ scale: 0.5, opacity: 0 }}
-              className="text-6xl font-bold text-center"
+              className=" text-9xl font-bold text-center"
             >
               {countdown}
             </motion.div>

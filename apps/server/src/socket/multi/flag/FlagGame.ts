@@ -1,28 +1,43 @@
 import BaseGame from "../BaseGame";
 import { Lobby } from "../../../utlis/gametype";
 import { io } from "../../../server";
+import flags_en from "@data/flags/en_us.json";
+
+type FlagData = {
+  [key: string]: string;
+};
 
 class FlagGame extends BaseGame {
   constructor(lobby: Lobby) {
     super(lobby);
   }
 
-  startGame(): void {
-    console.log("Starting Example Game for lobby:", this.lobby.id);
-    // emit to lobby that game has started io.to("some room").emit("some event");
-    io.to(this.lobby.id).emit("gameStart");
-
-    this.lobby.gameState = "inGame";
-    this.updateLobby(); // Reflect the game state change+
-    // wait 1 second
+  async startGame(): Promise<void> {
+    console.log("Starting Flag Game for lobby:", this.lobby);
+    io.to(this.lobby.id).emit("gameCounter");
     setTimeout(() => {
-      io.to(this.lobby.id).emit("startCounter");
-    }, 1000);
-
-    console.log(this.lobby);
+      this.lobby.gameState = "inGame";
+      this.updateLobby();
+    }, 3000);
+    setTimeout(() => {
+      io.to(this.lobby.id).emit("gameScreen");
+    }, 5000);
   }
 
-  endGame(): void {
+  async gameLoop(): Promise<void> {
+    this.updateLobby();
+  }
+
+  async getRandomFlag(previousFlag: string): Promise<FlagData> {
+    const flags = flags_en;
+    let flag = flags[Math.floor(Math.random() * flags.length)];
+    while (flag.name === previousFlag) {
+      flag = flags[Math.floor(Math.random() * flags.length)];
+    }
+    return flag;
+  }
+
+  async endGame(): Promise<void> {
     console.log("Ending Example Game for lobby:", this.lobby.id);
     this.lobby.gameState = "postGame";
     this.updateLobby();
