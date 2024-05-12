@@ -1,5 +1,5 @@
 import { Server } from "socket.io";
-import JoinHandler from "./joinHandler";
+import JoinHandler from "./joinhandler";
 import { AnswerHandler } from "./AnswerHandler";
 
 export class SocketSetup {
