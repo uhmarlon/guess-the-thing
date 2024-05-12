@@ -31,7 +31,7 @@ type Gameinside = {
     hasPlayed: boolean;
     isReady: boolean;
   }[];
-  gameSpecial?: [];
+  gameSpecial?: [unknown];
 };
 
 type GameResult = {

@@ -1,20 +1,29 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
-export default function TimerComponent({ maxTime }: { maxTime: number }) {
-  const intervalTime = 80; // Intervallzeit in Millisekunden für glattere Animation
-  const [timeLeft, setTimeLeft] = useState(maxTime * 1000); // Zeit in Millisekunden
-
+export default function TimerComponent({
+  maxTime,
+  round,
+}: {
+  maxTime: number;
+  round: number;
+}) {
+  const intervalTime = 100;
+  const [timeLeft, setTimeLeft] = useState(maxTime * 1000);
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft((prevTime) => (prevTime > 0 ? prevTime - intervalTime : 0));
+    if (!Number.isFinite(maxTime)) {
+      console.error("Invalid maxTime received:", maxTime);
+      return;
+    }
+    setTimeLeft(maxTime * 1000);
+
+    const timerId = setInterval(() => {
+      setTimeLeft((prevTime) => Math.max(prevTime - intervalTime, 0));
     }, intervalTime);
 
-    return () => clearInterval(timer);
-  }, []);
-
-  // Berechnung für die Animation der SVG-Border
-  const totalLength = 475; // Gesamtlänge des Pfads
+    return () => clearInterval(timerId);
+  }, [maxTime, round]);
+  const totalLength = 475;
   const dashOffset = ((1 - timeLeft / (maxTime * 1000)) * totalLength).toFixed(
     0
   );
@@ -28,8 +37,6 @@ export default function TimerComponent({ maxTime }: { maxTime: number }) {
         preserveAspectRatio="none"
       >
         <path
-          width="100%"
-          height="100%"
           fill="rgba(138 36 255 / 0.3)"
           stroke="#CC2936"
           strokeWidth="8"
@@ -38,7 +45,7 @@ export default function TimerComponent({ maxTime }: { maxTime: number }) {
             strokeDasharray: totalLength,
             strokeDashoffset: dashOffset,
             stroke: "rgb(138 36 255 / 0.8)",
-            transition: "stroke-dashoffset 0.05s linear", // Glättet die Änderung der dashoffset
+            transition: "stroke-dashoffset 0.05s linear",
           }}
         ></path>
         <text

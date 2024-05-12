@@ -149,9 +149,7 @@ class JoinHandler {
       lobby.players.forEach((player) => {
         if (player.socketId === socket.id) {
           manager.removePlayerFromLobby(lobby.id, player.id);
-          // TODO: Implement try to remove user form lobby
-          // try {
-          // }
+
           if (lobby.players.length === 0) {
             manager.removeLobby(lobby.id);
           }
