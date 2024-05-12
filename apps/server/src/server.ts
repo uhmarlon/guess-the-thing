@@ -2,6 +2,7 @@ import createFastify from "fastify";
 import cors from "@fastify/cors";
 import { Server } from "socket.io";
 import index from "./api/player/level";
+import join from "./api/game/join";
 
 const PORT = 3005;
 const server = createFastify();
@@ -20,10 +21,12 @@ const io: Server = new Server(server.server, {
 });
 export { io };
 import { SocketSetup } from "./socket";
+
 const socketSetup = new SocketSetup(io);
 socketSetup.setup();
 
 server.register(index);
+server.register(join);
 
 const start = async (): Promise<void> => {
   try {

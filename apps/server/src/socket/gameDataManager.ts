@@ -19,21 +19,37 @@ class GameDataManager {
   }
 
   async generateGameCode(): Promise<string> {
-    let code = "";
     const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    for (let i = 0; i < 4; i++) {
-      code += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    const exists = await this.checkCodeExists(code);
-    if (exists) {
-      return this.generateGameCode(); // Rekursion, beachte die Stack-Größe oder überlege dir eine Schleife
-    }
+    const codeLength = 4;
+    let code: string;
+    do {
+      code = Array.from({ length: codeLength }, () =>
+        characters.charAt(
+          crypto.getRandomValues(new Uint32Array(1))[0] % characters.length
+        )
+      ).join("");
+    } while (await this.checkCodeExists(code));
+
     return code;
   }
 
   async checkCodeExists(code: string): Promise<boolean> {
-    // Stelle eine Datenbankabfrage hier, um zu prüfen, ob der Code existiert
     return this.gameData.lobbies.some((lobby) => lobby.gamekey === code);
+  }
+
+  static async getLobbyIdByCode(
+    code: string
+  ): Promise<"error" | { lobbyId: string; game: string }> {
+    const gameDataManager = GameDataManager.getInstance();
+    const lobby = gameDataManager.gameData.lobbies.find(
+      (lobby) => lobby.gamekey === code
+    );
+    const game = lobby?.gameMode;
+
+    if (!lobby || !game) {
+      return "error";
+    }
+    return { lobbyId: lobby.id, game: game };
   }
 
   getLobbyById(lobbyId: string): Lobby | undefined {

@@ -14,27 +14,25 @@ class FlagGame extends BaseGame {
     super(lobby);
   }
 
+  async delay(ms: number): Promise<void> {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
   async startGame(): Promise<void> {
-    console.log("Starting Flag Game for lobby:", this.lobby);
     io.to(this.lobby.id).emit("gameCounter");
-    setTimeout(() => {
-      this.lobby.gameState = "inGame";
-      this.updateLobby();
-    }, 3000);
-    setTimeout(() => {
-      io.to(this.lobby.id).emit("gameScreen");
-      this.gameLoop();
-    }, 5000);
+    await this.delay(3000);
+    this.lobby.gameState = "inGame";
+    this.updateLobby();
+    await this.delay(2000);
+    io.to(this.lobby.id).emit("gameScreen");
+    this.gameLoop();
   }
 
   async gameLoop(): Promise<void> {
     for (let i = 0; i < (this.lobby.gameinside?.maxRounds || 5); i++) {
       this.lobby.gameinside.round = i + 1;
-      const gameInfo = {
-        maxTime: this.lobby.gameinside.maxTime,
-        round: this.lobby.gameinside.round,
-        maxRounds: this.lobby.gameinside.maxRounds,
-      };
+      const { maxTime, round, maxRounds } = this.lobby.gameinside;
+      const gameInfo = { maxTime, round, maxRounds };
       await this.initializeScores();
 
       const flagData: FlagData = await this.getRandomFlag();
@@ -71,7 +69,13 @@ class FlagGame extends BaseGame {
           level: this.lobby.players.map((player) => player.level),
         },
       };
-      console.log(scoreboard);
+
+      if (i === (this.lobby.gameinside?.maxRounds ?? 0) - 1) {
+        this.updateLobby();
+        await this.endGame();
+        return;
+      }
+
       io.to(this.lobby.id).emit("scoreBoard", scoreboard);
       await this.wait(5);
 
@@ -99,11 +103,7 @@ class FlagGame extends BaseGame {
   }
 
   async hideString(input: string): Promise<string> {
-    let hiddenString = "";
-    for (const char of input) {
-      hiddenString += char === " " ? " " : "*";
-    }
-    return hiddenString;
+    return input.replace(/[^ -]/g, "*");
   }
 
   static async answerHandel(
@@ -200,8 +200,8 @@ class FlagGame extends BaseGame {
   }
 
   async endGame(): Promise<void> {
-    console.log("Ending Example Game for lobby:", this.lobby.id);
     this.lobby.gameState = "postGame";
+    console.log("Ending Example Game for lobby:", this.lobby);
     this.updateLobby();
   }
 }

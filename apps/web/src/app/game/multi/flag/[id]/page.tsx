@@ -1,7 +1,5 @@
 "use client";
-//import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-//import { useParams } from "next/navigation";
 import { socket } from "@utils/game-socket";
 import { Viewc } from "@components/viewc";
 import { GameState } from "src/utils/types/game";
@@ -10,8 +8,6 @@ import StartCounter from "@components/game/StartCounter";
 import FlagGameScreen from "@components/game/flag/GameScreen";
 
 export default function Page(): JSX.Element {
-  //const { data: session } = useSession();
-  //const router = useParams();
   const [gameState, setGameState] = useState<GameState>(GameState.LOBBY);
 
   useEffect(() => {
