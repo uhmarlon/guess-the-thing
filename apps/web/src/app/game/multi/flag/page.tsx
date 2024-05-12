@@ -2,31 +2,12 @@
 import { useRouter } from "next/navigation";
 import { Viewhead } from "../../../../components/viewc";
 import React from "react";
+import { uuid } from "@utils/util";
 
 export default function Page(): JSX.Element {
   const router = useRouter();
-
-  // Function to generate a random alphanumeric string
-  const generateFormattedString = () => {
-    const generateRandomString = (length: number) => {
-      const characters =
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-      let result = "";
-      const charactersLength = characters.length;
-      for (let i = 0; i < length; i++) {
-        result += characters.charAt(
-          Math.floor(Math.random() * charactersLength)
-        );
-      }
-      return result;
-    };
-
-    return `${generateRandomString(7)}-${generateRandomString(4)}-${generateRandomString(4)}-${generateRandomString(4)}-${generateRandomString(7)}`;
-  };
-
-  // Function to handle button click
   const handleButtonClick = () => {
-    const randomString = generateFormattedString();
+    const randomString = uuid();
     router.push(`/game/multi/flag/${randomString}`);
   };
 
