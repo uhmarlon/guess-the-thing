@@ -2,13 +2,14 @@
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useParams } from "next/navigation";
-import { socket } from "@utils/game-socket";
 import { getOrCreateGuestToken } from "@lib/guest/getToken";
 import QuizEntry from "@components/game/QuizEntryProps";
 import UserInfo from "@components/ds/username";
 import Link from "next/link";
 import GameSettings from "@components/game/flag/GameSettings";
 import { Player, gameLobbyClientInfo } from "@utils/types/game";
+
+import { socket } from "@utils/game-socket";
 
 export default function LobbyComponent(): JSX.Element {
   const { data: session } = useSession();
