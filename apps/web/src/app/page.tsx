@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import LoginBtn from "../components/login-btn";
 import { Viewhead } from "../components/viewc";
 
 export default function Page(): JSX.Element {
