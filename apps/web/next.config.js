@@ -6,6 +6,7 @@ const withPWA = require("next-pwa")({
 });
 
 const nextConfig = {
+  jsconfigPaths: true,
   reactStrictMode: true, // Enable React strict mode for improved error handling
   swcMinify: true, // Enable SWC minification for improved performance
   compiler: {
@@ -14,7 +15,6 @@ const nextConfig = {
 };
 
 const additionalConfig = {
-  jsconfigPaths: true,
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
