@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 import UserInfo from "src/components/ds/username";
 import { Levelprogressbar } from "src/components/my/progressbar";
 import { socket } from "@utils/game-socket";
+import { getBackendURL } from "@utils/game-api";
 
 export default function FlagGameEnd(): JSX.Element {
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
@@ -24,7 +25,7 @@ export default function FlagGameEnd(): JSX.Element {
     async function fetchUserData() {
       if (session) {
         try {
-          const response = await fetch(`http://localhost:3005/player/level`, {
+          const response = await fetch(`${getBackendURL()}/player/level`, {
             method: "GET",
             headers: {
               Authorization: `Bearer ${session.user.id}`,

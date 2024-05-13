@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Levelprogressbar } from "../../components/my/progressbar";
 import Button from "../../components/ds/button";
 import UserInfo from "../../components/ds/username";
+import { getBackendURL } from "../../utils/game-api";
 
 export default function Page(): JSX.Element {
   const { data: session } = useSession();
@@ -19,7 +20,7 @@ export default function Page(): JSX.Element {
     async function fetchUserData() {
       if (session) {
         try {
-          const response = await fetch(`http://localhost:3005/player/level`, {
+          const response = await fetch(`${getBackendURL()}/player/level`, {
             method: "GET",
             headers: {
               Authorization: `Bearer ${session.user.id}`,
