@@ -6,6 +6,7 @@ import { GameState } from "src/utils/types/game";
 import LobbyComponent from "@components/game/LobbyComponent";
 import StartCounter from "@components/game/StartCounter";
 import FlagGameScreen from "@components/game/flag/GameScreen";
+import FlagGameEnd from "@components/game/flag/GameEndScreen";
 
 export default function Page(): JSX.Element {
   const [gameState, setGameState] = useState<GameState>(GameState.LOBBY);
@@ -40,10 +41,8 @@ export default function Page(): JSX.Element {
         return <StartCounter />;
       case GameState.GAME:
         return <FlagGameScreen />;
-      // case GameState.END:
-      //   return (
-      //     <EndGameComponent onRestart={() => setGameState(GameState.LOBBY)} />
-      //   );
+      case GameState.END:
+        return <FlagGameEnd />;
       default:
         return <div>Unknown state</div>;
     }

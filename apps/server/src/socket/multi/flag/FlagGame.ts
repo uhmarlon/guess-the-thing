@@ -201,6 +201,7 @@ class FlagGame extends BaseGame {
 
   async endGame(): Promise<void> {
     this.lobby.gameState = "postGame";
+    io.to(this.lobby.id).emit("gameEnd");
     console.log("Ending Example Game for lobby:", this.lobby);
     this.updateLobby();
   }
