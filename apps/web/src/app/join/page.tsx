@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Viewc } from "src/components/viewc";
 import { useRouter } from "next/navigation";
+import { getBackendURL } from "../../utils/game-api";
 
 export default function Page(): JSX.Element {
   const router = useRouter();
@@ -24,7 +25,7 @@ export default function Page(): JSX.Element {
   const fetchGameToken = async (fullCode: string) => {
     try {
       const response = await fetch(
-        `http://localhost:3005/join?code=${fullCode.toUpperCase()}`,
+        `${getBackendURL()}/join?code=${fullCode.toUpperCase()}`,
         {
           method: "GET",
         }
