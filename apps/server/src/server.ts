@@ -7,14 +7,20 @@ import join from "./api/game/join";
 const PORT = 3005;
 const server = createFastify();
 server.register(cors, {
-  origin: "http://localhost:3000",
+  // if process.env.development is true, allow http://localhost:3000 else allow https://www.guessthething.io/ and https://guessthething.io/
+  origin: process.env.development
+    ? "http://localhost:3000"
+    : ["https://www.guessthething.io", "https://guessthething.io"],
+
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Authorization"],
 });
 
 const io: Server = new Server(server.server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: process.env.development
+      ? "http://localhost:3000"
+      : ["https://www.guessthething.io", "https://guessthething.io"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Authorization"],
   },
