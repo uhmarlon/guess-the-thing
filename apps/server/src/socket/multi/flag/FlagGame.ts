@@ -228,8 +228,17 @@ class FlagGame extends BaseGame {
         score: score,
       };
     });
-    console.log(playerData);
     io.to(this.lobby.id).emit("gameEnd");
+    io.to(this.lobby.id).emit("playerData", playerData);
+    for (const player of this.lobby.players) {
+      const score =
+        this.lobby.gameinside.scores?.find((s) => s.playerId === player.id)
+          ?.score || 0;
+      if (score > 0 && player.loggedIn) {
+        io.to(player.socketId).emit("xpGained", Math.floor(score / 2));
+      }
+    }
+
     this.updateLobby();
   }
 
