@@ -20,6 +20,7 @@ const io: Server = new Server(server.server, {
     allowedHeaders: ["Authorization"],
   },
 });
+
 export { io };
 import { SocketSetup } from "./socket";
 

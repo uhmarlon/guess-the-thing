@@ -2,11 +2,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import LoginBtn from "../components/login-btn";
-import { Viewheadonly } from "../components/viewc";
+import { Viewhead } from "../components/viewc";
 
 export default function Page(): JSX.Element {
   return (
-    <Viewheadonly>
+    <Viewhead>
       <main className="mt-6 md:mt-12">
         <div className="z-20 flex w-full flex-col">
           <span className="mx-auto mb-6 rounded-full border border-white/20 bg-white/10 px-9 py-2 text-center font-medium text-white backdrop-blur-sm">
@@ -38,8 +38,6 @@ export default function Page(): JSX.Element {
               </Link>
             </div>
 
-            <LoginBtn />
-
             <div className="relative w-[20rem] md:w-1/2 h-[15rem] mb-3">
               <Link href="/gusstheflag">
                 <Image
@@ -60,6 +58,6 @@ export default function Page(): JSX.Element {
           </div>
         </div>
       </main>
-    </Viewheadonly>
+    </Viewhead>
   );
 }

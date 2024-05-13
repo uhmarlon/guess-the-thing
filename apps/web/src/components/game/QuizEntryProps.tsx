@@ -29,9 +29,9 @@ const QuizEntry: React.FC<QuizEntryProps> = ({ gameId, url }) => {
           {gameId ? gameId : "Generating Game ID..."}
         </h2>
         <div className="p-2">
-          <p className="text-center text-gray-200 text-sm md:text-2xl">
+          {/* <p className="text-center text-gray-200 text-sm md:text-2xl">
             {url}/join/{gameId}
-          </p>
+          </p> */}
         </div>
       </div>
     </div>
