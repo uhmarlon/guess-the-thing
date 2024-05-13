@@ -3,6 +3,11 @@ import { Lobby } from "../../../utlis/gametype";
 import { io } from "../../../server";
 import { Socket } from "socket.io";
 import * as flags_en from "../../../data/flags/en_us.json";
+import { UserExists } from "../../../api/player/checks/exists";
+import { db } from "../../../db";
+import { eq } from "drizzle-orm";
+import { userLevels } from "../../../db/schema";
+import { Player } from "../../../utlis/gametype";
 
 type FlagData = {
   [key: string]: string;
@@ -77,7 +82,7 @@ class FlagGame extends BaseGame {
       }
 
       io.to(this.lobby.id).emit("scoreBoard", scoreboard);
-      await this.wait(5);
+      await this.delay(5000);
 
       this.updateLobby();
     }
@@ -201,9 +206,54 @@ class FlagGame extends BaseGame {
 
   async endGame(): Promise<void> {
     this.lobby.gameState = "postGame";
+    for (const player of this.lobby.players) {
+      const score =
+        this.lobby.gameinside.scores?.find((s) => s.playerId === player.id)
+          ?.score || 0;
+      if (score > 0 && player.loggedIn) {
+        const userExists = new UserExists();
+        if (await userExists.checkUserExists(player.id)) {
+          await this.addXPLoginPlayer(player);
+        }
+      }
+    }
+
     io.to(this.lobby.id).emit("gameEnd");
     console.log("Ending Example Game for lobby:", this.lobby);
     this.updateLobby();
+  }
+
+  async addXPLoginPlayer(player: Player): Promise<void> {
+    const playerScore =
+      this.lobby.gameinside.scores?.find((s) => s.playerId === player.id)
+        ?.score || 0;
+    const xpToAdd = Math.floor(playerScore / 2);
+
+    try {
+      const levelExists = await db
+        .select()
+        .from(userLevels)
+        .where(eq(userLevels.userId, player.id));
+
+      if (levelExists.length > 0) {
+        await db
+          .update(userLevels)
+          .set({
+            levelpoints: levelExists[0].levelpoints + xpToAdd,
+          })
+          .where(eq(userLevels.userId, player.id));
+      } else {
+        await db.insert(userLevels).values({
+          userId: player.id,
+          levelpoints: xpToAdd,
+        });
+      }
+    } catch (error) {
+      console.error(
+        "Failed to add/update XP:",
+        error + " for user " + player.id
+      );
+    }
   }
 }
 

@@ -9,15 +9,50 @@ import { Levelprogressbar } from "src/components/my/progressbar";
 export default function FlagGameEnd(): JSX.Element {
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
   const { data: session } = useSession();
+  const [currentPoints, setCurrentPoints] = useState(0);
+  const [startPoints, setStartPoints] = useState(0);
+  const [level, setlevel] = useState(0);
+  const [endPoints, setEndPoints] = useState(100);
+  const [loading, setLoading] = useState(true);
 
-  // Example users data, replace or update with actual game results data fetched from your server
+  useEffect(() => {
+    async function fetchUserData() {
+      if (session) {
+        try {
+          const response = await fetch(`http://localhost:3005/player/level`, {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${session.user.id}`,
+            },
+          });
+
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+
+          const data = await response.json();
+          setCurrentPoints(data.currentPoints);
+          setStartPoints(data.rangeStart);
+          setEndPoints(data.rangeEnd);
+
+          setlevel(data.currentLevel);
+        } catch (error) {
+          console.error("Failed to fetch data:", error);
+        } finally {
+          setLoading(false);
+        }
+      }
+    }
+
+    fetchUserData();
+  }, [session]);
+
   const users = [
     { name: "Alice", points: 98 },
     { name: "Test", points: 85 },
   ];
   const podium = [users[1], users[0], users[2]];
 
-  // Sort users by points in descending order
   users.sort((a, b) => b.points - a.points);
 
   useEffect(() => {
@@ -57,10 +92,7 @@ export default function FlagGameEnd(): JSX.Element {
         <p className="text-sm pb-2 text-gttred">
           This game is in beta. If you see a bug, please report it.
         </p>
-        {/* Winner's podium */}
-        {/* // user.lengt till 2 and not more */}
         {users.length <= 2 && (
-          // two lines of users with the first as the winner in lines one by one dont use the podium
           <div className="relative">
             {users.map((user, index) => (
               <div
@@ -80,8 +112,6 @@ export default function FlagGameEnd(): JSX.Element {
         {users.length > 2 && (
           <div className="space-x-2 flex justify-center items-end mb-4">
             {users.slice(0, 3).map((user, index) => (
-              // sort the users by points and put the first play in the middel then the second as first and the third as last
-              // then render the podium
               <motion.div
                 key={index}
                 className={`w-32 h-${[40, 48, 36][index]} bg-gttlightpurple/${["25", "40", "25"][index]} rounded-md flex flex-col justify-center items-center p-2`}
@@ -99,26 +129,9 @@ export default function FlagGameEnd(): JSX.Element {
                   {["nd", "st", "rd"][index]}
                 </span>
               </motion.div>
-
-              // <motion.div
-              //   key={index}
-              //   className={`w-${24 + index * 4} h-${32 + index * 8} bg-gray-${300 + index * 100} rounded-md flex flex-col justify-center items-center p-2`}
-              //   variants={podiumVariants}
-              //   initial="initial"
-              //   animate="animate"
-              //   custom={0.1 * index}
-              // >
-              //   <span className="text-lg font-bold">{user.name}</span>
-              //   <span className="text-sm">{user.points} pts</span>
-              //   <span className="text-xl font-bold">
-              //     {index + 1}
-              //     {["st", "nd", "rd"][index]}
-              //   </span>
-              // </motion.div>
             ))}
           </div>
         )}
-        {/* Additional users table */}
         {users.length > 3 && (
           <div className="mt-2 relative">
             <table className="w-96 divide-y divide-gray-200 text-sm text-center">
@@ -137,20 +150,23 @@ export default function FlagGameEnd(): JSX.Element {
             </table>
           </div>
         )}
-        {session?.user && (
-          <div className="mt-4 text-center">
-            {/* add xp to your level and current level */}
-            <div className="text-lg font-bold">You earned 20 points!</div>
-            <div className="text-sm">You are now level 2</div>
-            <div className="w-96">
-              <Levelprogressbar
-                currentPoints={20}
-                rangeStart={0}
-                rangeEnd={100}
-              />
+        {session?.user &&
+          (loading ? (
+            <div className="text-lg font-bold">Loading...</div>
+          ) : (
+            <div className="mt-4 text-center w-96">
+              <div className="text-lg font-bold">You earned 20 points!</div>
+              <div className="text-sm">You are now level {level}</div>
+              <div className="">
+                <Levelprogressbar
+                  currentPoints={currentPoints}
+                  rangeStart={startPoints}
+                  rangeEnd={endPoints}
+                />
+              </div>
             </div>
-          </div>
-        )}
+          ))}
+
         {/* // back home button */}
         <div className="mt-4">
           <button
