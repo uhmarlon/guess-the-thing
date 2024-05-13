@@ -1,59 +1,108 @@
+// pages/index.tsx
+
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { Viewhead } from "../components/viewc";
+import { signIn, useSession } from "next-auth/react";
+
+// Spiele-Daten
+const games = [
+  {
+    title: "Guess The Flag",
+    description: "Guess the flag of a country",
+    href: "/game/multi/flag",
+    imgSrc: "/flag.webp",
+    bgColor: "bg-red-500",
+  },
+  {
+    title: "",
+    description: "We are working on new games!",
+    href: "#",
+    imgSrc: "/commingsoon.webp", // Placeholder image
+    bgColor: "bg-blue-500",
+  },
+  {
+    title: "",
+    description: "We are working on new games!",
+    href: "#",
+    imgSrc: "/commingsoon.webp", // Placeholder image
+    bgColor: "bg-blue-500",
+  },
+];
 
 export default function Page(): JSX.Element {
+  const { data: session } = useSession();
   return (
     <Viewhead>
-      <main className="mt-6 md:mt-12">
-        <div className="z-20 flex w-full flex-col">
-          <span className="mx-auto mb-6 rounded-full border border-white/20 bg-white/10 px-9 py-2 text-center font-medium text-white backdrop-blur-sm">
-            Multiplayer and single-player guess games
-          </span>
-          <h1 className="text-4xl font-bold text-center mb-2">
-            Guess The Thing
-          </h1>
-          <span className="text-1xl text-center mb-2">
-            Challenge your friends or test your skills solo.
-          </span>
+      <main className="mt-6 md:mt-12 bg-gray-900 text-white">
+        <div className="z-20 flex w-full flex-col items-center">
+          <div className="w-full bg-yellow-500 text-black py-3 text-center">
+            <motion.p
+              className="text-lg font-medium"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              We are currently in Beta. Join now to help us improve!
+            </motion.p>
+          </div>
+          <div className="w-full bg-gradient-to-r from-purple-700 to-indigo-500 py-12 text-center">
+            <motion.h1
+              className="text-4xl font-bold mb-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
+              Guess The Thing
+            </motion.h1>
+            <motion.p
+              className="text-xl mb-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.5 }}
+            >
+              Join our platform to enjoy various guessing games. Challenge your
+              friends or test your skills solo across multiple fun and engaging
+              game modes!
+            </motion.p>
+            {!session && (
+              <div className="flex justify-center space-x-4">
+                <motion.button
+                  className="bg-yellow-500 text-black px-6 py-3 rounded-full font-medium"
+                  whileHover={{ scale: 1.1 }}
+                  onClick={() => signIn()}
+                >
+                  Register Now
+                </motion.button>
+              </div>
+            )}
+          </div>
 
-          <div className="grid grid-cols-1 gap-1 m-4 justify-center items-center content-center justify-items-center">
-            <div className="relative w-[20rem] md:w-1/2 h-[15rem] mb-3">
-              <Link href="/gussthecocktail">
-                <Image
-                  alt=""
-                  className="rounded-xl layout-fill object-cover"
-                  fill
-                  src="https://www.thecocktaildb.com/images/media/drink/nkwr4c1606770558.jpg"
-                />
-                <div className="absolute bottom-0 w-full h-full bg-gradient-to-t from-black/80 to-transparent rounded-xl" />{" "}
-                <div className="absolute bottom-0 w-full h-full flex flex-col justify-end px-6 pb-6">
-                  <h3 className="text-2xl font-bold mb-2 text-white">
-                    Guess The Cocktail
-                  </h3>
-                  <p className="text-white/80">Guess the Cocktail of a Image</p>
-                </div>
-              </Link>
-            </div>
-
-            <div className="relative w-[20rem] md:w-1/2 h-[15rem] mb-3">
-              <Link href="/gusstheflag">
-                <Image
-                  alt=""
-                  className="rounded-xl layout-fill object-cover"
-                  fill
-                  src="/flag.webp"
-                />
-                <div className="absolute bottom-0 w-full h-full bg-gradient-to-t from-black/80 to-transparent rounded-xl" />
-                <div className="absolute bottom-0 w-full h-full flex flex-col justify-end px-6 pb-6">
-                  <h3 className="text-2xl font-bold mb-2 text-white">
-                    Guess The Flag
-                  </h3>
-                  <p className="text-white/80">Guess the flag of a country.</p>
-                </div>
-              </Link>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-6 w-full max-w-screen-lg">
+            {games.map((game) => (
+              <motion.div
+                key={game.title}
+                className={`relative w-full h-48 ${game.bgColor} rounded-xl overflow-hidden`}
+                whileHover={{ scale: 1.05 }}
+              >
+                <Link href={game.href}>
+                  <Image
+                    alt={game.title}
+                    className="object-cover"
+                    layout="fill"
+                    src={game.imgSrc}
+                  />
+                  <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/80 to-transparent p-4">
+                    <h3 className="text-2xl font-bold text-white">
+                      {game.title}
+                    </h3>
+                    <p className="text-white/80">{game.description}</p>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
           </div>
         </div>
       </main>
