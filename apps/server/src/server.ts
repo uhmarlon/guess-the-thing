@@ -3,29 +3,21 @@ import cors from "@fastify/cors";
 import { Server } from "socket.io";
 import index from "./api/player/level";
 import join from "./api/game/join";
-import * as dotenv from "dotenv";
-dotenv.config();
 
 const PORT = 3005;
 const server = createFastify();
 
 server.register(cors, {
-  origin: process.env.development
-    ? "http://localhost:3000"
-    : ["https://www.guessthething.io", "https://guessthething.io"],
-
+  origin: "https://guessthething.io",
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Authorization"],
 });
 
 const io: Server = new Server(server.server, {
   cors: {
-    origin: process.env.development
-      ? "http://localhost:3000"
-      : ["https://www.guessthething.io", "https://guessthething.io"],
+    origin: "https://guessthething.io",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Authorization"],
-    credentials: true,
   },
 });
 export { io };
