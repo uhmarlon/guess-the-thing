@@ -93,6 +93,15 @@ importers:
       drizzle-orm:
         specifier: ^0.30.9
         version: 0.30.9(@types/react@18.2.61)(mysql2@3.9.7)(react@18.2.0)
+      eslint:
+        specifier: ^8.57.0
+        version: 8.57.0
+      eslint-plugin-react:
+        specifier: ^7.34.1
+        version: 7.34.1(eslint@8.57.0)
+      eslint-plugin-react-hooks:
+        specifier: ^4.6.2
+        version: 4.6.2(eslint@8.57.0)
       framer-motion:
         specifier: ^11.1.7
         version: 11.1.7(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -160,15 +169,6 @@ importers:
       drizzle-kit:
         specifier: ^0.20.17
         version: 0.20.17
-      eslint:
-        specifier: ^8.57.0
-        version: 8.57.0
-      eslint-plugin-react:
-        specifier: ^7.34.1
-        version: 7.34.1(eslint@8.57.0)
-      eslint-plugin-react-hooks:
-        specifier: ^4.6.2
-        version: 4.6.2(eslint@8.57.0)
       pnpm:
         specifier: ^9.0.6
         version: 9.0.6
