@@ -1,3 +1,4 @@
 export function getBackendURL(): string {
-  return process.env.BACKEND_URL as string;
+  const publicUrl = process.env.NEXT_PUBLIC_BACKEND_SERVER;
+  return publicUrl as string;
 }
