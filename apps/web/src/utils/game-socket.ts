@@ -1,14 +1,14 @@
 import { io } from "socket.io-client";
 
-export const socket = io(getSocketUrl());
+const socketUrl = getSocketUrl();
+
+export const socket = io(socketUrl, {
+  transports: ["websocket"],
+});
 
 function getSocketUrl(): string {
-  //TODO: REMOVE THIS
-  // if (process.env.NEXT_PUBLIC_GITPOD_WORKSPACE_URL) {
-  //   let workspaceUrl = process.env.NEXT_PUBLIC_GITPOD_WORKSPACE_URL;
-  //   workspaceUrl = workspaceUrl.slice(8);
-  //   return `https://3001-${workspaceUrl}`;
-  // }
-
+  if (!process.env.NEXT_PUBLIC_SOCKET_SERVER) {
+    throw new Error("NEXT_PUBLIC_SOCKET_SERVER is not defined");
+  }
   return process.env.NEXT_PUBLIC_SOCKET_SERVER as string;
 }
