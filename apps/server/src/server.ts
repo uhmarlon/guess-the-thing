@@ -3,11 +3,13 @@ import cors from "@fastify/cors";
 import { Server } from "socket.io";
 import index from "./api/player/level";
 import join from "./api/game/join";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 const PORT = 3005;
 const server = createFastify();
+
 server.register(cors, {
-  // if process.env.development is true, allow http://localhost:3000 else allow https://www.guessthething.io/ and https://guessthething.io/
   origin: process.env.development
     ? "http://localhost:3000"
     : ["https://www.guessthething.io", "https://guessthething.io"],
