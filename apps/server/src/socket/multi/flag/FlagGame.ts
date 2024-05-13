@@ -218,8 +218,18 @@ class FlagGame extends BaseGame {
       }
     }
 
+    const playerData = this.lobby.players.map((player) => {
+      const score =
+        this.lobby.gameinside.scores?.find((s) => s.playerId === player.id)
+          ?.score || 0;
+      return {
+        name: player.name,
+        level: player.level,
+        score: score,
+      };
+    });
+    console.log(playerData);
     io.to(this.lobby.id).emit("gameEnd");
-    console.log("Ending Example Game for lobby:", this.lobby);
     this.updateLobby();
   }
 
