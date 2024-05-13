@@ -129,6 +129,9 @@ importers:
       tailwindcss:
         specifier: ^3.4.3
         version: 3.4.3(ts-node@10.9.2(@types/node@20.11.24)(typescript@5.3.3))
+      typescript:
+        specifier: ^5.3.3
+        version: 5.3.3
     devDependencies:
       '@next/eslint-plugin-next':
         specifier: ^14.1.1
@@ -169,9 +172,6 @@ importers:
       pnpm:
         specifier: ^9.0.6
         version: 9.0.6
-      typescript:
-        specifier: ^5.3.3
-        version: 5.3.3
 
   packages/config-tailwind:
     devDependencies:
