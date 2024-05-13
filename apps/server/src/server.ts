@@ -23,6 +23,7 @@ const io: Server = new Server(server.server, {
       : ["https://www.guessthething.io", "https://guessthething.io"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Authorization"],
+    credentials: true,
   },
 });
 export { io };
