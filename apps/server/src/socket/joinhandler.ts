@@ -125,7 +125,7 @@ class JoinHandler {
       }
     });
 
-    socket.on("startGame", (lobbyId: string) => {
+    socket.on("startGame", (lobbyId: string, language: "en" | "de") => {
       const lobby = manager.getLobbyById(lobbyId);
       if (lobby && lobby.gameState === "waiting") {
         if (lobby.players.length < 2) {
@@ -133,7 +133,7 @@ class JoinHandler {
           return;
         }
         try {
-          const game = GameFactory.createGame(lobby);
+          const game = GameFactory.createGame(lobby, language);
           game.startGame();
         } catch (error) {
           console.error("Failed to start game:", error);

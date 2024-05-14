@@ -14,6 +14,7 @@ const GameSettings: React.FC<Props> = ({ isHost, lobbyid }) => {
   const [roundTimeCheck, setRoundTimeCheck] = useState("10");
   const [gameStart, setGameStart] = useState(false);
   const [fewPlayers, setFewPlayers] = useState(false);
+  const [language, setLanguage] = useState<"en" | "de">("en");
 
   useEffect(() => {
     //TODO FIX ERROR WITH IMPUT VALUE that is be null
@@ -41,9 +42,9 @@ const GameSettings: React.FC<Props> = ({ isHost, lobbyid }) => {
 
   useEffect(() => {
     if (gameStart) {
-      socket.emit("startGame", lobbyid);
+      socket.emit("startGame", lobbyid, language);
     }
-  }, [gameStart, lobbyid]);
+  }, [gameStart, lobbyid, language]);
 
   useEffect(() => {
     socket.on("gameStartError", () => {
@@ -89,6 +90,15 @@ const GameSettings: React.FC<Props> = ({ isHost, lobbyid }) => {
           value={roundTime}
           placeholder="Max Round Time (seconds)"
         />
+        <span className="text-gray-200 text-sm">Language</span>
+        <select
+          className="block w-full bg-gray-800 text-white border border-gray-700 rounded-md py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-900 focus:border-gray-900 max-w-md"
+          id="grid-state"
+          onChange={(e) => setLanguage(e.target.value as "en" | "de")}
+        >
+          <option value="en">English</option>
+          <option value="de">German</option>
+        </select>
       </div>
       {fewPlayers && (
         <p className="text-gttred">

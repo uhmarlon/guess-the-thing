@@ -3,6 +3,7 @@ import { Lobby } from "../../../utlis/gametype";
 import { io } from "../../../server";
 import { Socket } from "socket.io";
 import * as flags_en from "../../../data/flags/en_us.json";
+import * as flags_de from "../../../data/flags/de_de.json";
 import { UserExists } from "../../../api/player/checks/exists";
 import { db } from "../../../db";
 import { eq } from "drizzle-orm";
@@ -15,8 +16,11 @@ type FlagData = {
 
 class FlagGame extends BaseGame {
   private usedFlags: Set<string> = new Set();
-  constructor(lobby: Lobby) {
+  private language: "en" | "de";
+
+  constructor(lobby: Lobby, language: "en" | "de") {
     super(lobby);
+    this.language = language;
   }
 
   async delay(ms: number): Promise<void> {
@@ -193,7 +197,8 @@ class FlagGame extends BaseGame {
   }
 
   async getRandomFlag(): Promise<FlagData> {
-    const flagKeys = Object.keys(flags_en).filter(
+    const flagData = this.language === "de" ? flags_de : flags_en;
+    const flagKeys = Object.keys(flagData).filter(
       (key) => !this.usedFlags.has(key)
     );
 
@@ -203,7 +208,7 @@ class FlagGame extends BaseGame {
     }
     const newFlagKey = flagKeys[Math.floor(Math.random() * flagKeys.length)];
     this.usedFlags.add(newFlagKey);
-    return { [newFlagKey]: flags_en[newFlagKey as keyof typeof flags_en] };
+    return { [newFlagKey]: flagData[newFlagKey as keyof typeof flagData] };
   }
 
   async endGame(): Promise<void> {
