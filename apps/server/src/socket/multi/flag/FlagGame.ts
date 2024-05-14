@@ -136,14 +136,15 @@ class FlagGame extends BaseGame {
           (score) => score.playerId === player.id
         );
         if (playerScore && !playerScore.hasPlayed) {
-          await FlagGame.rightAnswer(playerScore, lobby);
-          io.to(socket.id).emit(
-            "rightAnswer",
-            (lastFlagValue as FlagData).flagValue
-          );
+          const score = await FlagGame.rightAnswer(playerScore, lobby);
+          const rdata = {
+            score: score,
+            flagValue: (lastFlagValue as FlagData).flagValue,
+          };
+          io.to(socket.id).emit("rightAnswer", rdata);
         }
       } else {
-        console.log(player.id + " has answered wrong with " + data.answer);
+        return;
       }
     } catch (error) {
       console.error("Failed to handle answer:", error);
@@ -158,9 +159,9 @@ class FlagGame extends BaseGame {
       isReady: boolean;
     },
     lobby: Lobby
-  ): Promise<void> {
+  ): Promise<number> {
     if (!lobby.gameinside.scores) {
-      return;
+      return 0;
     }
     const playersAnswered = lobby.gameinside.scores.filter(
       (score) => score.hasPlayed
@@ -168,6 +169,7 @@ class FlagGame extends BaseGame {
     const multiplier = 1 + (lobby.players.length - playersAnswered) / 10;
     playerScore.score += Math.floor(50 * multiplier);
     playerScore.hasPlayed = true;
+    return playerScore.score;
   }
 
   async initializeScores(): Promise<void> {

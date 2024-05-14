@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { useParams } from "next/navigation";
 import { socket } from "@utils/game-socket";
@@ -20,15 +20,35 @@ const ResultsPopup = ({
   data: scoreBoardData;
 }) => {
   const [scores, setScores] = useState<number[]>([]);
+  const [sortedData, setSortedData] = useState<{
+    username: string[];
+    level: number[];
+    score: number[];
+  }>({ username: [], level: [], score: [] });
 
   useEffect(() => {
     setScores(data.player.score.map(() => 0));
 
-    const timers = data.player.score.map((score, index) => {
+    // Sort the data by score in descending order
+    const combinedData = data.player.username.map((username, index) => ({
+      username,
+      level: data.player.level[index],
+      score: data.player.score[index],
+    }));
+
+    combinedData.sort((a, b) => b.score - a.score);
+
+    setSortedData({
+      username: combinedData.map((item) => item.username),
+      level: combinedData.map((item) => item.level),
+      score: combinedData.map((item) => item.score),
+    });
+
+    const timers = combinedData.map((item, index) => {
       return setInterval(() => {
         setScores((prevScores) => {
           const newScores = [...prevScores];
-          if (newScores[index] < score) {
+          if (newScores[index] < item.score) {
             newScores[index] += 1;
           } else {
             clearInterval(timers[index]);
@@ -41,7 +61,7 @@ const ResultsPopup = ({
     return () => {
       timers.forEach((timer) => clearInterval(timer));
     };
-  }, [data.player.score]);
+  }, [data.player.level, data.player.score, data.player.username]);
 
   return (
     <motion.div className="absolute top-0 left-0 w-full h-full backdrop-blur-lg flex justify-center z-0">
@@ -59,10 +79,10 @@ const ResultsPopup = ({
         <h2 className="text-lg font-bold mb-2">Round Results</h2>
         <table className="min-w-full">
           <tbody>
-            {data.player.username.map((item, index) => (
+            {sortedData.username.map((item, index) => (
               <tr key={index}>
                 <td className="border px-4 py-2">
-                  <UserInfo name={item} level={data.player.level[index]} />
+                  <UserInfo name={item} level={sortedData.level[index]} />
                 </td>
                 <motion.td
                   className="border px-4 py-2 w-32 text-center"
@@ -88,8 +108,11 @@ export default function FlagGameScreen(): JSX.Element {
   const [flag, setFlag] = useState("US");
   const [countryString, setCountryString] = useState("***");
   const [activeInput, setActiveInput] = useState(true);
+  const [score, setScores] = useState(0);
   const [scoreBoard, setScoreBoard] = useState(false);
   const [scoreBoardData, setScoreBoardData] = useState<scoreBoardData>();
+
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const containerVariants = {
     initial: { scale: 0 },
@@ -106,14 +129,18 @@ export default function FlagGameScreen(): JSX.Element {
     });
 
     socket.on("flagData", (data) => {
-      setActiveInput(true);
       setFlag(data.flagKey);
       setCountryString(data.flagValue);
+      setActiveInput(true);
+      if (inputRef.current) {
+        inputRef.current.value = ""; // clear the input
+      }
     });
 
     socket.on("rightAnswer", (data) => {
       setActiveInput(false);
-      setCountryString(data);
+      setCountryString(data.flagValue);
+      setScores(data.score);
     });
 
     socket.on("scoreBoard", (data) => {
@@ -126,8 +153,17 @@ export default function FlagGameScreen(): JSX.Element {
       socket.off("gameInfo");
       socket.off("answerHandel");
       socket.off("flagData");
+      socket.off("rightAnswer");
+      socket.off("scoreBoard");
     };
   }, []);
+
+  useEffect(() => {
+    if (activeInput && inputRef.current) {
+      inputRef.current.value = ""; // clear the input
+      inputRef.current.focus(); // set focus to the input
+    }
+  }, [activeInput]);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
@@ -149,7 +185,7 @@ export default function FlagGameScreen(): JSX.Element {
             {round}/{maxRounds}
           </div>
           <div>SCORE</div>
-          <div>0</div>
+          <div>{score}</div>
         </div>
       </div>
 
@@ -186,8 +222,9 @@ export default function FlagGameScreen(): JSX.Element {
         {activeInput && (
           <div className="flex justify-center mt-4">
             <input
+              ref={inputRef}
               type="text"
-              placeholder="Land eingeben"
+              placeholder="Enter Country Name"
               onKeyDown={handleKeyDown}
               className="px-3 py-3 text-white border rounded-lg bg-gray-800 border-gttlightpurple/50 border-spacing-2 w-72 focus:border-blue-500 focus:outline-none focus:ring"
             />
