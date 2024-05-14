@@ -18,7 +18,7 @@ export default function BugTrackerPage(): JSX.Element {
         <main className="min-h-screen text-white flex flex-col items-center justify-center">
           <div className="text-center">
             <h1 className="text-3xl font-bold mb-4">
-              You must be logged in to access this page
+              You must be logged in to report a bug
             </h1>
             <button
               className="py-2 px-4 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition-colors duration-300 flex items-center justify-center"
