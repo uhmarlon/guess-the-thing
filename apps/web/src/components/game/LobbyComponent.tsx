@@ -12,7 +12,7 @@ import { Player, gameLobbyClientInfo } from "@utils/types/game";
 import { socket } from "@utils/game-socket";
 
 export default function LobbyComponent(): JSX.Element {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const [imHost, setImHost] = useState(false);
 
   const router = useParams();
@@ -25,27 +25,23 @@ export default function LobbyComponent(): JSX.Element {
 
   useEffect(() => {
     const gustid = getOrCreateGuestToken("guestToken");
-    if (session?.user?.id) {
-      socket.emit("join", router.id, "multi", "flag", session.user.id);
-    } else {
-      socket.emit("join", router.id, "multi", "flag", gustid);
-    }
+    const userId = session?.user?.id || gustid;
+    if (status !== "loading") {
+      socket.emit("join", router.id, "multi", "flag", userId);
 
-    socket.on("gamelobbyinfo", (data) => {
-      setPlayers(data);
-      const host = data.playersinfo.find((player: Player) => player.isHost);
-      if (host?.id === session?.user?.id) {
-        setImHost(true);
-      }
-      if (host?.id === gustid) {
-        setImHost(true);
-      }
-    });
+      socket.on("gamelobbyinfo", (data) => {
+        setPlayers(data);
+        const host = data.playersinfo.find((player: Player) => player.isHost);
+        if (host?.id === userId) {
+          setImHost(true);
+        }
+      });
+    }
 
     return () => {
       socket.off("gamelobbyinfo");
     };
-  }, [session, router.id]);
+  }, [session, router.id, status]);
 
   return (
     <div className="mt-3">

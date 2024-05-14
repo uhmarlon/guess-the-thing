@@ -5,7 +5,8 @@ import { useSession, signIn } from "next-auth/react";
 import React from "react";
 
 function Header(): JSX.Element {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+
   return (
     <header className="flex items-center justify-between bg-[#8A24FF] text-white p-1">
       <div className="flex items-center">
@@ -27,12 +28,6 @@ function Header(): JSX.Element {
         <nav className="hidden sm:flex gap-4 ml-6">
           <div className="hover:text-gray-400">HOME</div>
           <div className="hover:text-gray-400">ABOUT</div>
-          {/* <Link className="hover:text-gray-400" href="/home">
-            GAME 1
-          </Link>
-          <Link className="hover:text-gray-400" href="/about">
-            Game 2
-          </Link> */}
         </nav>
       </div>
 
@@ -42,13 +37,17 @@ function Header(): JSX.Element {
             JOIN WITH CODE
           </span>
         </Link>
-        {session?.user ? (
+        {status === "loading" ? (
+          <div className="flex items-center">
+            <span className="ml-2">Loading...</span>
+          </div>
+        ) : session?.user ? (
           <Link href="/my">
             <div className="hidden sm:flex">
               <React.Fragment>
                 <span className="rounded-full border border-white/20 bg-white/10 px-4 py-1 text-center font-medium text-white backdrop-blur-sm whitespace-nowrap flex items-center">
                   <Image
-                    alt="logo"
+                    alt="profile picture"
                     className="h-2 w-2 sm:h-8 sm:w-8 rounded-full mr-2"
                     height={50}
                     src={session.user.image ?? ""}
@@ -60,7 +59,7 @@ function Header(): JSX.Element {
             </div>
             <div className="sm:hidden">
               <Image
-                alt="logo"
+                alt="profile picture"
                 className="h-9 w-9 rounded-full"
                 height={50}
                 src={session.user.image ?? ""}
@@ -70,7 +69,7 @@ function Header(): JSX.Element {
           </Link>
         ) : (
           <span
-            className="rounded-full border border-blue-500/90 bg-blue-500/40 px-4 py-2 text-center font-medium text-white backdrop-blur-sm"
+            className="rounded-full border border-blue-500/90 bg-blue-500/40 px-4 py-2 text-center font-medium text-white backdrop-blur-sm cursor-pointer"
             onClick={(): unknown => signIn()}
           >
             LOGIN
