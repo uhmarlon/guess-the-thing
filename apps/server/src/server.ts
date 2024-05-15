@@ -10,7 +10,7 @@ const server = createFastify();
 server.register(cors, {
   origin: "https://guessthething.io",
   methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Authorization"],
+  allowedHeaders: ["Authorization", "Content-Type"],
 });
 
 const io: Server = new Server(server.server, {

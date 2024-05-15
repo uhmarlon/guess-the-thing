@@ -17,7 +17,7 @@ export default function BugTrackerPage(): JSX.Element {
         <main className="min-h-screen text-white flex flex-col items-center justify-center">
           <div className="text-center">
             <h1 className="text-3xl font-bold mb-4">
-              You must be logged in to report a bug
+              You have to be signed in to report a bug, that we can track it.
             </h1>
             <button
               className="py-2 px-4 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition-colors duration-300 flex items-center justify-center"
@@ -108,7 +108,7 @@ export default function BugTrackerPage(): JSX.Element {
               </p>
               <textarea
                 id="description"
-                className="w-full px-4 py-12 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-4 py-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               />
