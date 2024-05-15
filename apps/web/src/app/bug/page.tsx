@@ -1,16 +1,15 @@
-// pages/bug-tracker/page.tsx
-
 "use client";
 import { useSession, signIn } from "next-auth/react";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Viewhead } from "../../components/viewc";
+import { getBackendURL } from "../../utils/game-api";
 
 export default function BugTrackerPage(): JSX.Element {
   const { data: session } = useSession();
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [message, setMessage] = useState("");
+  const [title, setTitle] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
 
   if (!session) {
     return (
@@ -50,7 +49,7 @@ export default function BugTrackerPage(): JSX.Element {
     const newBug = { title, description };
 
     try {
-      const res = await fetch("/api/bug", {
+      const res = await fetch(getBackendURL() + "/bugreport", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -104,9 +103,12 @@ export default function BugTrackerPage(): JSX.Element {
               <label htmlFor="description" className="block text-white mb-2">
                 Description
               </label>
+              <p className="text-sm text-gray-200 mb-2">
+                Please provide as much detail as possible.
+              </p>
               <textarea
                 id="description"
-                className="w-full px-4 py-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-4 py-12 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               />
