@@ -123,11 +123,11 @@ export default function FlagGameScreen(): JSX.Element {
 
   useEffect(() => {
     socket.on("gameInfo", (data) => {
-      setPlaySound(true);
       setScoreBoard(false);
       setTime(data.maxTime);
       setRound(data.round);
       setMaxRounds(data.maxRounds);
+      setPlaySound(true);
     });
 
     socket.on("flagData", (data) => {
@@ -148,11 +148,8 @@ export default function FlagGameScreen(): JSX.Element {
     socket.on("scoreBoard", (data) => {
       setScoreBoard(true);
       setScoreBoardData(data);
+      setPlaySound(false);
       setTime(4);
-      // timeout 500 ms then setplaySound to false
-      setTimeout(() => {
-        setPlaySound(false);
-      }, 500);
     });
 
     return () => {

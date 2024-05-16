@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { socket } from "@utils/game-socket";
 import { Viewc } from "@components/viewc";
 import { GameState } from "src/utils/types/game";
-import LobbyComponent from "src/components/game/flag/LobbyComponent";
+import LobbyComponent from "src/components/game/drink/LobbyComponent";
 import StartCounter from "@components/game/StartCounter";
 import FlagGameScreen from "@components/game/flag/GameScreen";
 import FlagGameEnd from "@components/game/flag/GameEndScreen";

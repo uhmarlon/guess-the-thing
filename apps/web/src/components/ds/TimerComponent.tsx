@@ -1,15 +1,22 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+
+// Use the correct path to your sound file in the public directory
+const soundFile = "/sounds/timer.mp3";
 
 export default function TimerComponent({
   maxTime,
   round,
+  playSound = false, // Add a new prop for controlling sound playback
 }: {
   maxTime: number;
   round: number;
+  playSound?: boolean; // Make playSound an optional prop
 }) {
   const intervalTime = 100;
   const [timeLeft, setTimeLeft] = useState(maxTime * 1000);
+  const audioRef = useRef<HTMLAudioElement>(null); // Create a reference for the audio element
+
   useEffect(() => {
     if (!Number.isFinite(maxTime)) {
       console.error("Invalid maxTime received:", maxTime);
@@ -23,6 +30,13 @@ export default function TimerComponent({
 
     return () => clearInterval(timerId);
   }, [maxTime, round]);
+
+  useEffect(() => {
+    if (playSound && timeLeft <= 3000 && timeLeft > 0 && audioRef.current) {
+      audioRef.current.play();
+    }
+  }, [timeLeft, playSound]);
+
   const totalLength = 475;
   const dashOffset = ((1 - timeLeft / (maxTime * 1000)) * totalLength).toFixed(
     0
@@ -61,6 +75,7 @@ export default function TimerComponent({
             : `00:${Math.ceil(timeLeft / 1000)}`}
         </text>
       </svg>
+      {playSound && <audio ref={audioRef} src={soundFile} />}
     </div>
   );
 }
