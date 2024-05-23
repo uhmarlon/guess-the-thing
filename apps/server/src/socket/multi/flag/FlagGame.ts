@@ -213,10 +213,18 @@ class FlagGame extends BaseGame {
 
   async endGame(): Promise<void> {
     this.lobby.gameState = "postGame";
+
+    const anyPlayerHasScore =
+      this.lobby.gameinside.scores?.some((score) => score.score > 0) || false;
+
     for (const player of this.lobby.players) {
-      const score =
+      let score =
         this.lobby.gameinside.scores?.find((s) => s.playerId === player.id)
           ?.score || 0;
+      if (!anyPlayerHasScore) {
+        score = 0;
+      }
+
       if (score > 0 && player.loggedIn) {
         const userExists = new UserExists();
         if (await userExists.checkUserExists(player.id)) {
@@ -229,20 +237,26 @@ class FlagGame extends BaseGame {
       const score =
         this.lobby.gameinside.scores?.find((s) => s.playerId === player.id)
           ?.score || 0;
+      const finalScore = anyPlayerHasScore ? score : 0;
+
       return {
         name: player.name,
         level: player.level,
-        score: score,
+        score: finalScore,
       };
     });
+
     io.to(this.lobby.id).emit("gameEnd");
     io.to(this.lobby.id).emit("playerData", playerData);
+
     for (const player of this.lobby.players) {
       const score =
         this.lobby.gameinside.scores?.find((s) => s.playerId === player.id)
           ?.score || 0;
-      if (score > 0 && player.loggedIn) {
-        io.to(player.socketId).emit("xpGained", Math.floor(score / 2));
+      const finalScore = anyPlayerHasScore ? score : 0;
+
+      if (finalScore > 0 && player.loggedIn) {
+        io.to(player.socketId).emit("xpGained", Math.floor(finalScore / 2));
       }
     }
 
