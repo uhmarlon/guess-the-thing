@@ -35,7 +35,7 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ["www.thecocktaildb.com"], // Add domains for Next.js Image optimization
+    domains: ["www.thecocktaildb.com", "discordapp.com"], // Add domains for Next.js Image optimization
     unoptimized: true, // Disable optimization for images
   },
 };
