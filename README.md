@@ -1,172 +1,49 @@
-# Multiplayer Guess Games
+# Willkommen Entwickler 🚀
 
-This is a multiplayer game website built using Next.js, Tailwind CSS, and Socket.IO.
-The website allows players to guess
-the flag of a country or the name of a cocktail and compete with other players in real-time.
+Diese Projekt ist ein Multiplayer-Spiele Plattform, die es ermöglicht, mit Freunden verschiedene Spiele zu spielen.
+Alle Spiele werden eigenständig entwickelt und sind in dem Server integriert.
 
-## Dev Setup
+## Spiele
 
-<details>
-<summary>Run Project in Production Mode using Docker Compose</summary>
+- Flaggen Raten
+- Cocktails (Drinks) Raten
 
-### Run Project in Production Mode using docker
+## Development
 
-To get started, you will need to have [Docker](https://docs.docker.com/get-docker/) installed on your machine.
-Once Docker is installed, you can run the
-following command to start the application:
+Das ganze Projekt ist in einer Monorepo-Struktur aufgebaut. Das bedeutet, dass alle Spiele
+und der Server in einem Repository liegen.
 
-Start the docker-compose setup:
+Jeder Entwickler kann sich ein Spiel aussuchen und daran arbeiten. Die Spiele sind in eigenen
+Verzeichnissen unter `socket/ multi or singel` abgelegt.
 
-```bash
-docker-compose up --build
+### Wichtig für Entwickler
+
+- Jeder Entwickler sollte sich ein eigenes Branch erstellen und dort arbeiten.
+- Vor dem Pushen sollte ein Pull-Request erstellt werden.
+- Der Code sollte getestet sein und keine Fehler enthalten.
+- Env Variablen sollten in einem `.env` File abgelegt werden. ( Diese werden immer mit Marlon abgesprochen)
+- Alle env Variablen bekommt ihr von Marlon.
+
+### Installation
+
+1. Repository clonen
+2. `nvm use` ausführen für die richtige Node Version
+3. `pnpm install` ausführen immer ausführen wenn man neues Feature hinzufügt
+4. `pnpm run dev` ausführen um den Client zu starten (Client starte automatisch nach änderungen neu)
+5. `pnpm run server` ausführen um den Server zu starten (Server muss manuell neu gestartet werden)
+
+### Deployment
+
+Das Deployment wird auf Clientside automatisch durchgeführt. Der Server wird auf einen Root Server gehostet.
+Bei änderungen am Server muss man immer Marlon informieren für das Deployment.
+
+### Fragen
+
+Bei Fragen könnt ihr euch immer an Marlon wenden. Er wird euch bei allen Problemen helfen.
+
+### Viel Spaß beim Entwickeln 🚀
+
 ```
-
-This will start both the client and server applications,
-and you can access the game by navigating to http://guessthething.localhost in your browser.
-
-Client application will be running on http://guessthething.localhost, and the server application will be running on
-http://api.guessthething.localhost.
-
-</details>
-
-<details>
-<summary>Run Project in Development Mode using GitPod</summary>
-
-### Run Project in Development Mode using GitPod
-
-- First you need to install
-  the [GitPod Browser Extension](https://www.gitpod.io/docs/configure/user-settings/browser-extension), then you can
-  click
-  on the button below to start the project in GitPod.
-
-- Now you can start the project by clicking on the button next to the "Code" button in the top right corner:
-  ![Screenshot](https://zockerbandewqhd.nimbusweb.me/box/attachment/10234588/7nyg6sosh611lkliibrf/d2CNYbWn5ULiwZFY/screenshot-github.com-2024.02.10-00_50_18.png)
-
-- Login to GitPod and wait for the project to start.
-
-  - The Project will be installed and started automatically.
-
-- **⚠️ ATTENTION:** You have to set the WebSocket (Port 3001) to public.
-  Otherwise the Frontend cannot access the backend. (Should be done automatically)
-
-- Access the Application by clicking on the "Open Browser" button in the bottom right corner:
-  ![Screenshot](https://zockerbandewqhd.nimbusweb.me/box/attachment/10234594/641inbfau2ud6gp52pb9/TZ58Koy9NRng3CnD/screenshot-uhmarlon-guessthething-65249tt4ht3.ws-eu108.gitpod.io-2024.02.10-00_53_23.png)
-
-- If you closed the notification, you can access the application by clicking on the `PORTS`-Tab and Click on "Open
-  Browser" button:
-  ![Screenshot](https://zockerbandewqhd.nimbusweb.me/box/attachment/10234622/l5qrxmhyrxx290r13x3o/H72UC7CAJyGb3NnD/screenshot-uhmarlon-guessthething-65249tt4ht3.ws-eu108.gitpod.io-2024.02.10-00_54_47.png)
-
-#### Restarting the Project
-
-- To stop the Project, you can click into the terminal and press `Ctrl + C`.
-- To start the Project again, you can run the following command:
-  ```bash
-  ./start-docker-dev-setup
-  ```
-
-**⚠️ ATTENTION:** The `.env`-file of the server is regularly not needed. In GitPod mode, the `.env`-file is copied from
-the
-client
-and overwrites the one from the server.
-
-</details>
-
-<details>
-<summary>Run Project in Development Mode using local NodeJS</summary>
-
-### Run Project in Development Mode using local NodeJS
-
-Choose the correct NPM Version using NVM:  
-**Maybe you have to be the administrator of your system, so try to use sudo BUT JUST FOR NVM INSTALL**
-
-```bash
-sudo su
-nvm install
-exit
-nvm use
+ps: Bitte immer auf die Codequalität achten und sauberen Code schreiben.
+Wenn das Projekt geld einbringt, wird der Gewinn aufgeteilt anteilig an die Personen die am Projekt Prozentoal am Projekt gearbeitet haben. Beispiel: du machst 2 Games von insgesamt 10 Games, dann bekommst du 20% vom Gewinn.
 ```
-
-Install all npm dependencies:
-
-```bash
-npm run install-dependencies
-```
-
-Start the client application:
-
-```bash
-npm run dev-client
-```
-
-Start the server application in extra terminal:
-
-```bash
-npm run dev-server
-```
-
-The client application will be running on http://localhost:3000, and the server application will be running on
-http://localhost:3001.
-
-</details>
-
-<details>
-<summary>Run Project in Production Mode using Docker Compose</summary>
-
-### Run Project in Development Mode using docker
-
-To get started, you will need to have [Docker](https://docs.docker.com/get-docker/) installed on your machine.
-Once Docker is installed, you can run the
-following command to start the application:
-
-Start the docker-compose setup by using the following command:
-
-```bash
-./start-coker-dev-setup
-```
-
-This will start both the client and server applications,
-and you can access the game by navigating to http://guessthething.localhost in your browser.
-
-Client application will be running on http://guessthething.localhost, and the server application will be running on
-http://api.guessthething.localhost.
-
-</details>
-
-## Folder Structure
-
-The project is divided into two folders:
-
-- **client**: This folder contains the Next.js application that serves as the game's frontend.
-- **server**: This folder contains the Socket.IO server that handles game logic and real-time communication between
-  players.
-
-## Games
-
-The website currently has two games:
-
-- **Guess The Flag**: Guess the flag of a country.
-- **Guess The Cocktail**: Guess the name of a cocktail.
-
-More games are coming soon!
-
-## Contributing
-
-Contributions to the project are always welcome!  
-If you find a bug or have an idea for an improvement, feel free to
-submit a pull request.
-
-- **Keep in mind, that Frontend .env-Variables have to begin with `NEXT_PUBLIC_` to be accessible in the frontend.**
-  [[More Information]](https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables#bundling-environment-variables-for-the-browser)
-
-- **Before you submit a pull request, make sure that the project runs in every environment (Docker, GitPod, local NodeJS)
-  or send a note if it is not testet in every environment.**
-
-## License
-
-This project is licensed under the CC-BY-SA-4.0 License. See the [LICENSE](LICENSE) file for more information.
-
-## Deploy
-
-**Vercel**
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/uhmarlon/guess-the-flag)
