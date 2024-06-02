@@ -1,22 +1,30 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { useParams } from "next/navigation";
 import { socket } from "@utils/game-socket";
-import { CountryFlag } from "@components/game/flag/flag";
 import TimerComponent from "@components/ds/TimerComponent";
 import UserInfo from "@components/ds/username";
+import Image from "next/image";
+import CocktailButtons from "src/components/game/drink/CocktailButtonGroup";
 
 type scoreBoardData = {
-  flagString: string;
+  cocktailName: string;
   player: { username: []; score: []; level: [] };
 };
 
+type DrinkData = {
+  DrinkThumb: string;
+  options: {
+    idDrink: string;
+    strDrink: string;
+  }[];
+};
+
 const ResultsPopup = ({
-  flag,
+  cocktailImage,
   data,
 }: {
-  flag: string;
+  cocktailImage: string;
   data: scoreBoardData;
 }) => {
   const [scores, setScores] = useState<number[]>([]);
@@ -28,8 +36,7 @@ const ResultsPopup = ({
 
   useEffect(() => {
     setScores(data.player.score.map(() => 0));
-
-    // Sort the data by score in descending order
+    
     const combinedData = data.player.username.map((username, index) => ({
       username,
       level: data.player.level[index],
@@ -67,14 +74,18 @@ const ResultsPopup = ({
     <motion.div className="absolute top-0 left-0 w-full h-full backdrop-blur-lg flex justify-center z-0">
       <div className="p-4 mt-20 rounded-lg shadow-lg text-white">
         <div className="flex justify-center">
-          <CountryFlag
-            flagKey={flag}
-            size={300}
-            className="w-28 h-28 md:w-60 md:h-60"
-          />
+          <div className="w-60 h-60">
+            <Image
+              src={cocktailImage}
+              alt="Cocktail Image"
+              width={400}
+              height={400}
+              className="rounded-lg"
+            />
+          </div>
         </div>
         <h2 className="flex flex-row text-lg justify-center md:text-2xl font-bold">
-          {data.flagString}
+          {data.cocktailName}
         </h2>
         <h2 className="text-lg font-bold mb-2">Round Results</h2>
         <table className="min-w-full">
@@ -101,20 +112,17 @@ const ResultsPopup = ({
 };
 
 export default function FlagGameScreen(): JSX.Element {
-  const router = useParams();
   const [time, setTime] = useState(100);
   const [round, setRound] = useState(1);
   const [maxRounds, setMaxRounds] = useState(5);
-  const [flag, setFlag] = useState("US");
-  const [countryString, setCountryString] = useState("***");
+
+  const [correctDrinkData, setCorrectDrinkData] = useState<DrinkData>();
   const [activeInput, setActiveInput] = useState(true);
   const [score, setScores] = useState(0);
   const [scoreBoard, setScoreBoard] = useState(false);
   const [scoreBoardData, setScoreBoardData] = useState<scoreBoardData>();
   const [playSound, setPlaySound] = useState(false);
-
-  const inputRef = useRef<HTMLInputElement>(null);
-
+                
   const containerVariants = {
     initial: { scale: 0 },
     animate: { scale: 1 },
@@ -130,26 +138,22 @@ export default function FlagGameScreen(): JSX.Element {
       setPlaySound(true);
     });
 
-    socket.on("flagData", (data) => {
-      setFlag(data.flagKey);
-      setCountryString(data.flagValue);
+    socket.on("DrinkData", (data) => {
       setActiveInput(true);
-      if (inputRef.current) {
-        inputRef.current.value = ""; // clear the input
-      }
+      setCorrectDrinkData(data);
     });
 
     socket.on("rightAnswer", (data) => {
-      setActiveInput(false);
-      setCountryString(data.flagValue);
       setScores(data.score);
     });
 
     socket.on("scoreBoard", (data) => {
       setScoreBoard(true);
       setScoreBoardData(data);
-      setPlaySound(false);
-      setTime(4);
+      setTime(5);
+      setTimeout(() => {
+        setPlaySound(false);
+      }, 500);
     });
 
     return () => {
@@ -161,23 +165,6 @@ export default function FlagGameScreen(): JSX.Element {
     };
   }, []);
 
-  useEffect(() => {
-    if (activeInput && inputRef.current) {
-      inputRef.current.value = ""; // clear the input
-      inputRef.current.focus(); // set focus to the input
-    }
-  }, [activeInput]);
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      const data = {
-        lobbyId: router.id,
-        answer: e.currentTarget.value,
-      };
-      socket.emit("answerHandel", data);
-      e.currentTarget.value = "";
-    }
-  };
 
   return (
     <div className="mt-3">
@@ -193,7 +180,10 @@ export default function FlagGameScreen(): JSX.Element {
       </div>
 
       {scoreBoard && (
-        <ResultsPopup flag={flag} data={scoreBoardData as scoreBoardData} />
+        <ResultsPopup
+          cocktailImage={correctDrinkData?.DrinkThumb as string}
+          data={scoreBoardData as scoreBoardData}
+        />
       )}
 
       <motion.div
@@ -213,30 +203,38 @@ export default function FlagGameScreen(): JSX.Element {
         </div>
 
         <div className="flex items-center justify-center">
-          <CountryFlag
-            flagKey={flag}
-            size={300}
-            className="w-44 h-44 md:w-60 md:h-60"
-          />
+          {!correctDrinkData && (
+            <div className="text-white text-2xl md:text-4xl lg:text-6xl">
+              Loading...
+            </div>
+          )}
+          {correctDrinkData && (
+            <div className="flex items-center justify-center pt-2">
+              <div className="w-60 h-60 md:w-96 md:h-96 lg:w-96 lg:h-96">
+                <Image
+                  src={correctDrinkData.DrinkThumb}
+                  alt="Drink Image"
+                  width={400}
+                  height={400}
+                  className="rounded-lg"
+                />
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="flex items-center justify-center pt-2">
           <div className="w-80 h-15  text-center text-white md:w-96 lg:w-auto md:text-base lg:text-2xl overflow-hidden overflow-ellipsis">
-            {countryString}
+            {!correctDrinkData?.options ? (
+              "Loading..."
+            ) : (
+              <CocktailButtons
+                active={activeInput}
+                options={correctDrinkData?.options}
+              />
+            )}
           </div>
         </div>
-
-        {activeInput && (
-          <div className="flex justify-center mt-4">
-            <input
-              ref={inputRef}
-              type="text"
-              placeholder="Enter Country Name"
-              onKeyDown={handleKeyDown}
-              className="px-3 py-3 text-white border rounded-lg bg-gray-800 border-gttlightpurple/50 border-spacing-2 w-72 focus:border-blue-500 focus:outline-none focus:ring"
-            />
-          </div>
-        )}
       </motion.div>
     </div>
   );

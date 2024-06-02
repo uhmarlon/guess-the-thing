@@ -79,14 +79,14 @@ class FlagGame extends BaseGame {
         },
       };
 
+      io.to(this.lobby.id).emit("scoreBoard", scoreboard);
+      await this.delay(5000);
+
       if (i === (this.lobby.gameinside?.maxRounds ?? 0) - 1) {
         this.updateLobby();
         await this.endGame();
         return;
       }
-
-      io.to(this.lobby.id).emit("scoreBoard", scoreboard);
-      await this.delay(5000);
 
       this.updateLobby();
     }

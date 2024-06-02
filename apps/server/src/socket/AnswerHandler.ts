@@ -2,7 +2,7 @@
 import { Socket } from "socket.io";
 import GameDataManager from "./gameDataManager";
 import FlagGame from "./multi/flag/FlagGame";
-// import DrinkGame from "./multi/drink/DrinkGame";
+import DrinkGame from "./multi/drink/DrinkGame";
 
 export class AnswerHandler {
   static bind(socket: Socket): void {
@@ -17,7 +17,7 @@ export class AnswerHandler {
             FlagGame.answerHandel(socket, data, lobby);
             break;
           case "drink":
-            // DrinkGame.answerHandel(socket, data, lobby);
+            DrinkGame.answerHandel(socket, data, lobby);
             break;
           default:
             throw new Error("Unsupported game mode: " + lobby.gameMode);

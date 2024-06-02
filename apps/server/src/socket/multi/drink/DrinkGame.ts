@@ -1,7 +1,7 @@
 import BaseGame from "../BaseGame";
 import { Lobby } from "../../../utlis/gametype";
 import { io } from "../../../server";
-// import { Socket } from "socket.io";
+import { Socket } from "socket.io";
 import { UserExists } from "../../../api/player/checks/exists";
 import cocktailData from "../../../data/cocktail/cocktail.json";
 import { db } from "../../../db";
@@ -53,7 +53,6 @@ class DrinkGame extends BaseGame {
         options,
       };
 
-      console.log("correctDrink", inDrinkData);
 
       if (!this.lobby.gameinside.gameSpecial) {
         this.lobby.gameinside.gameSpecial = [{ i, correctDrinkid }];
@@ -63,7 +62,7 @@ class DrinkGame extends BaseGame {
 
       this.updateLobby();
 
-      //   io.to(this.lobby.id).emit("flagData", inFlagData);
+      io.to(this.lobby.id).emit("DrinkData", inDrinkData);
       io.to(this.lobby.id).emit("gameInfo", gameInfo);
 
       await this.wait(this.lobby.gameinside.maxTime);
@@ -71,24 +70,23 @@ class DrinkGame extends BaseGame {
       if (!this.lobby.gameinside.scores) {
         return;
       }
-      //   const scoreboard = {
-      //     flagString: flagValue,
-      //     player: {
-      //       username: this.lobby.players.map((player) => player.name),
-      //       score: this.lobby.gameinside.scores.map((score) => score.score),
-      //       level: this.lobby.players.map((player) => player.level),
-      //     },
-      //   };
+      const scoreboard = {
+        cocktailName: correctDrink.strDrink,
+        player: {
+          username: this.lobby.players.map((player) => player.name),
+          score: this.lobby.gameinside.scores.map((score) => score.score),
+          level: this.lobby.players.map((player) => player.level),
+        },
+      };
 
-      //   if (i === (this.lobby.gameinside?.maxRounds ?? 0) - 1) {
-      //     this.updateLobby();
-      //     await this.endGame();
-      //     return;
-      //   }
-
-      //   //   io.to(this.lobby.id).emit("scoreBoard", scoreboard);
+      io.to(this.lobby.id).emit("scoreBoard", scoreboard);
       await this.delay(5000);
 
+      if (i === (this.lobby.gameinside?.maxRounds ?? 0) - 1) {
+        this.updateLobby();
+        await this.endGame();
+        return;
+      }
       this.updateLobby();
     }
   }
@@ -151,66 +149,66 @@ class DrinkGame extends BaseGame {
     return { correctDrink, options };
   }
 
-  //   static async answerHandel(
-  //     socket: Socket,
-  //     data: { lobbyId: string; answer: string },
-  //     lobby: Lobby
-  //   ): Promise<void> {
-  //     try {
-  //       const player = lobby.players.find((p) => p.socketId === socket.id);
-  //       if (
-  //         !player ||
-  //         !lobby.gameinside.gameSpecial ||
-  //         !lobby.gameinside.scores
-  //       ) {
-  //         return;
-  //       }
-  //       const lastFlagValue =
-  //         lobby.gameinside.round &&
-  //         lobby.gameinside.gameSpecial[lobby.gameinside.round - 1];
-  //       if (
-  //         data.answer.toLowerCase() ===
-  //         (lastFlagValue as FlagData).flagValue.toLowerCase()
-  //       ) {
-  //         const playerScore = lobby.gameinside.scores.find(
-  //           (score) => score.playerId === player.id
-  //         );
-  //         if (playerScore && !playerScore.hasPlayed) {
-  //           const score = await FlagGame.rightAnswer(playerScore, lobby);
-  //           const rdata = {
-  //             score: score,
-  //             flagValue: (lastFlagValue as FlagData).flagValue,
-  //           };
-  //           io.to(socket.id).emit("rightAnswer", rdata);
-  //         }
-  //       } else {
-  //         return;
-  //       }
-  //     } catch (error) {
-  //       console.error("Failed to handle answer:", error);
-  //     }
-  //   }
+  static async answerHandel(
+    socket: Socket,
+    data: { lobbyId: string; answer: string },
+    lobby: Lobby
+  ): Promise<void> {
+    try {
+      const player = lobby.players.find((p) => p.socketId === socket.id);
+      if (
+        !player ||
+        !lobby.gameinside.gameSpecial ||
+        !lobby.gameinside.scores
+      ) {
+        return;
+      }
+      const lastDrinkValue =
+        lobby.gameinside.round &&
+        lobby.gameinside.gameSpecial[lobby.gameinside.round - 1];
+      if (
+        data.answer ===
+        (lastDrinkValue as { i: number; correctDrinkid: string }).correctDrinkid
+      ) {
+        const playerScore = lobby.gameinside.scores.find(
+          (score) => score.playerId === player.id
+        );
+        if (playerScore && !playerScore.hasPlayed) {
+          const score = await DrinkGame.rightAnswer(playerScore, lobby);
+          const rdata = {
+            score: score,
+            drinkValue: (
+              lastDrinkValue as { i: number; correctDrinkid: string }
+            ).correctDrinkid,
+          };
+          io.to(socket.id).emit("rightAnswer", rdata);
+        }
+      }
+    } catch (error) {
+      console.error("Failed to handle answer:", error);
+    }
+  }
 
-  //   static async rightAnswer(
-  //     playerScore: {
-  //       playerId: string;
-  //       score: number;
-  //       hasPlayed: boolean;
-  //       isReady: boolean;
-  //     },
-  //     lobby: Lobby
-  //   ): Promise<number> {
-  //     if (!lobby.gameinside.scores) {
-  //       return 0;
-  //     }
-  //     const playersAnswered = lobby.gameinside.scores.filter(
-  //       (score) => score.hasPlayed
-  //     ).length;
-  //     const multiplier = 1 + (lobby.players.length - playersAnswered) / 10;
-  //     playerScore.score += Math.floor(50 * multiplier);
-  //     playerScore.hasPlayed = true;
-  //     return playerScore.score;
-  //   }
+  static async rightAnswer(
+    playerScore: {
+      playerId: string;
+      score: number;
+      hasPlayed: boolean;
+      isReady: boolean;
+    },
+    lobby: Lobby
+  ): Promise<number> {
+    if (!lobby.gameinside.scores) {
+      return 0;
+    }
+    const playersAnswered = lobby.gameinside.scores.filter(
+      (score) => score.hasPlayed
+    ).length;
+    const multiplier = 1 + (lobby.players.length - playersAnswered) / 8;
+    playerScore.score += Math.floor(50 * multiplier);
+    playerScore.hasPlayed = true;
+    return playerScore.score;
+  }
 
   async initializeScores(): Promise<void> {
     if (

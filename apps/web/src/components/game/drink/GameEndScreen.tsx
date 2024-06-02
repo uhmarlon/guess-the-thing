@@ -73,6 +73,9 @@ export default function FlagGameEnd(): JSX.Element {
 
   useEffect(() => {
     setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+    const audio = new Audio("/sounds/gameend.mp3");
+    audio.volume = 0.5;
+    audio.play();
   }, []);
 
   const podiumVariants = {

@@ -148,8 +148,7 @@ export default function FlagGameScreen(): JSX.Element {
     socket.on("scoreBoard", (data) => {
       setScoreBoard(true);
       setScoreBoardData(data);
-      setTime(4);
-      // timeout 500 ms then setplaySound to false
+      setTime(5);
       setTimeout(() => {
         setPlaySound(false);
       }, 500);

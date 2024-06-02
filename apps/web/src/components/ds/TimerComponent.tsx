@@ -33,6 +33,7 @@ export default function TimerComponent({
 
   useEffect(() => {
     if (playSound && timeLeft <= 3000 && timeLeft > 0 && audioRef.current) {
+      audioRef.current.volume = 0.5;
       audioRef.current.play();
     }
   }, [timeLeft, playSound]);
