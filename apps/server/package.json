@@ -4,6 +4,7 @@
   "main": "src/server.ts",
   "scripts": {
     "testbuild": "tsc && node dist/server.js",
+    "serverbuild": "tsc",
     "start": "node dist/server.js",
     "lint": "eslint src --ext .ts"
   },

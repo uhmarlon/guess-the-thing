@@ -8,6 +8,8 @@
     "clean": "turbo clean",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "server": "cd ./apps/server/ && pnpm run testbuild",
+    "serverbuild": "cd ./apps/server/ && pnpm run build",
+    "serverstart": "cd ./apps/server/ && pnpm run start",
     "startweb": "cd ./apps/web/ && pnpm run start"
   },
   "devDependencies": {
