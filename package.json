@@ -7,7 +7,8 @@
     "type-check": "turbo type-check",
     "clean": "turbo clean",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "server": "cd ./apps/server/ && pnpm run testbuild"
+    "server": "cd ./apps/server/ && pnpm run testbuild",
+    "startweb": "cd ./apps/web/ && pnpm run server"
   },
   "devDependencies": {
     "eslint": "^8.57.0",
