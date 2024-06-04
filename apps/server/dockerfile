@@ -2,9 +2,13 @@ FROM node:21.0.0
 
 WORKDIR /usr/src/app
 
+# Install pnpm globally
+RUN npm install -g pnpm
+
+# Rest of your Dockerfile instructions
 COPY package*.json ./
 
-RUN pnpm install
+RUN pnpm install --production  # Consider using --production for prod builds
 
 COPY . .
 
@@ -12,5 +16,4 @@ RUN pnpm run serverbuild
 
 EXPOSE 3005
 
-# Define the command to run the application
 CMD ["pnpm", "start"]
