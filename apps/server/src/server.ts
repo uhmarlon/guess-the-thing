@@ -12,14 +12,14 @@ const PORT = process.env.PORT || 3005;
 const server = createFastify();
 
 server.register(cors, {
-  origin: "*",
+  origin: "https://guessthething.io",
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Authorization", "Content-Type"],
 });
 
 const io: Server = new Server(server.server, {
   cors: {
-    origin: "*",
+    origin: "https://guessthething.io",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Authorization"],
   },
