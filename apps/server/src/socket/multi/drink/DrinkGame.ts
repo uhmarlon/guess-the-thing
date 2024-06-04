@@ -36,6 +36,7 @@ class DrinkGame extends BaseGame {
     this.updateLobby();
     await this.delay(2000);
     io.to(this.lobby.id).emit("gameScreen");
+    await this.delay(500);
     this.gameLoop();
   }
 
@@ -52,7 +53,6 @@ class DrinkGame extends BaseGame {
         DrinkThumb: correctDrink.strDrinkThumb,
         options,
       };
-
 
       if (!this.lobby.gameinside.gameSpecial) {
         this.lobby.gameinside.gameSpecial = [{ i, correctDrinkid }];
