@@ -3,7 +3,7 @@ FROM node:21.0.0
 WORKDIR /usr/src/app
 
 # Install pnpm globally
-RUN npm install -g pnpm
+RUN npm install -g pnpm@9.1.1
 
 # Rest of your Dockerfile instructions
 COPY package*.json ./
