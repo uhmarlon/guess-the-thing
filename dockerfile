@@ -1,13 +1,15 @@
-FROM node:21.0.0
+    FROM node:21.0.0
 
-RUN npm install -g pnpm@9.1.1
+    RUN npm install -g pnpm@9.1.1
 
-WORKDIR /
+    WORKDIR /
 
-RUN pnpm install 
+    COPY package*.json ./
 
-RUN pnpm run serverbuild
+    RUN pnpm install 
 
-EXPOSE 3005
+    RUN pnpm run serverbuild
 
-CMD ["pnpm", "serverstart"]
+    EXPOSE 3005
+
+    CMD ["pnpm", "serverstart"]
