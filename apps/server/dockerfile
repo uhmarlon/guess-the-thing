@@ -1,0 +1,16 @@
+FROM node:21.0.0
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN pnpm install
+
+COPY . .
+
+RUN pnpm run serverbuild
+
+EXPOSE 3005
+
+# Define the command to run the application
+CMD ["pnpm", "start"]
