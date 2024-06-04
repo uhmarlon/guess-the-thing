@@ -36,7 +36,7 @@ class DrinkGame extends BaseGame {
     this.updateLobby();
     await this.delay(2000);
     io.to(this.lobby.id).emit("gameScreen");
-    await this.delay(500);
+    await this.delay(50);
     this.gameLoop();
   }
 
