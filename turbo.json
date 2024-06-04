@@ -10,6 +10,7 @@
     "lint": {},
     "type-check": {},
     "dev": {
+      "dotEnv": [".env.local"],
       "cache": false,
       "persistent": true
     },
