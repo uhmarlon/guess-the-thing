@@ -6,6 +6,8 @@
 
     COPY package*.json ./
 
+    COPY . .
+
     RUN pnpm install 
 
     RUN pnpm run serverbuild
