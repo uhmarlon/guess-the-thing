@@ -42,14 +42,41 @@ export default function Page(): JSX.Element {
   };
 
   const handleInput = (value: string, index: number) => {
-    const upperValue = value.toUpperCase();
     const newCode = [...code];
+    const upperValue = value.toUpperCase();
+
+    // Handle pasting
+    if (value.length > 1) {
+      const pastedValues = value.split("").slice(0, 4 - index);
+      pastedValues.forEach((char, i) => {
+        newCode[index + i] = char.toUpperCase();
+      });
+      setCode(newCode);
+      if (newCode.every((digit) => digit !== "")) {
+        fetchGameToken(newCode.join(""));
+      } else {
+        inputRefs[Math.min(index + pastedValues.length, 3)].current?.focus();
+      }
+      return;
+    }
+
+    // Handle single character input
     newCode[index] = upperValue;
     setCode(newCode);
+
     if (upperValue && index < 3) {
       inputRefs[index + 1].current?.focus();
     } else if (index === 3 && newCode.every((digit) => digit !== "")) {
       fetchGameToken(newCode.join(""));
+    }
+  };
+
+  const handleKeyDown = (
+    e: React.KeyboardEvent<HTMLInputElement>,
+    index: number
+  ) => {
+    if (e.key === "Backspace" && !code[index] && index > 0) {
+      inputRefs[index - 1].current?.focus();
     }
   };
 
@@ -74,6 +101,10 @@ export default function Page(): JSX.Element {
                 maxLength={1}
                 value={digit}
                 onChange={(e) => handleInput(e.target.value, index)}
+                onKeyDown={(e) => handleKeyDown(e, index)}
+                onPaste={(e) =>
+                  handleInput(e.clipboardData.getData("Text"), index)
+                }
                 transition={{ duration: 0.2 }}
               />
             ))}
