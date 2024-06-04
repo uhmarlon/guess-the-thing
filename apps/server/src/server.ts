@@ -19,7 +19,7 @@ server.register(cors, {
 
 const io: Server = new Server(server.server, {
   cors: {
-    origin: "ttps://guessthething.io",
+    origin: "https://guessthething.io",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Authorization"],
   },
