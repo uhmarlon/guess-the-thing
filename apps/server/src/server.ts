@@ -38,7 +38,7 @@ server.register(apiindex);
 
 const start = async (): Promise<void> => {
   try {
-    await server.listen({ port: PORT as number });
+    await server.listen({ port: PORT as number, host: "0.0.0.0" });
     console.log(`\x1b[35m%s\x1b[0m`, `✨[ GTT API Server - PORT ${PORT} ]✨`);
   } catch (err) {
     server.log.error(err);
