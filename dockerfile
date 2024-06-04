@@ -1,6 +1,6 @@
 FROM node:21.0.0
 
-WORKDIR /usr/src/app
+WORKDIR /apps/server
 
 # Install pnpm globally
 RUN npm install -g pnpm@9.1.1
