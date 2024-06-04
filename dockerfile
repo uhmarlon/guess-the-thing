@@ -2,7 +2,7 @@
 
     RUN npm install -g pnpm@9.1.1
 
-    WORKDIR /
+    WORKDIR /usr/src/app
 
     COPY package*.json ./
 
