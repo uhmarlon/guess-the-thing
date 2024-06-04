@@ -40,14 +40,14 @@ const CocktailButtons: React.FC<CocktailButtonProps> = ({
   );
 
   return (
-    <div className="flex flex-wrap justify-center gap-3 text-lg">
+    <div className="flex flex-wrap justify-center gap-2 text-lg md:grid md:grid-cols-2">
       {options.map((cocktailoptions) => (
         <button
-          className={`rounded-lg w-full max-w-xs p-4 ${
+          className={`rounded-lg w-full md:min-w-48 p-4 text-white ${
             clickedId === cocktailoptions.idDrink
-              ? "bg-blue-600 text-white"
-              : "bg-gray-600 text-white"
-          } ${!active || disabled ? "disabled:bg-gray-800" : ""}`}
+              ? "bg-gttlightpurple"
+              : "bg-gray-600 hover:bg-gray-700"
+          } ${disabled && "bg-gray-800"}`}
           disabled={!active || disabled}
           key={cocktailoptions.idDrink}
           onClick={() => handleClick(cocktailoptions.idDrink)}

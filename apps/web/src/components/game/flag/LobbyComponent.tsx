@@ -8,12 +8,14 @@ import UserInfo from "@components/ds/username";
 import Link from "next/link";
 import GameSettings from "@components/game/flag/GameSettings";
 import { Player, gameLobbyClientInfo } from "@utils/types/game";
+import RenameDialog from "src/components/ds/RenameDialog";
 
 import { socket } from "@utils/game-socket";
 
 export default function LobbyComponent(): JSX.Element {
   const { data: session, status } = useSession();
   const [imHost, setImHost] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const router = useParams();
   const [players, setPlayers] = useState<gameLobbyClientInfo>({
@@ -79,6 +81,23 @@ export default function LobbyComponent(): JSX.Element {
             </ul>
             <div className="border-t border-gray-500 my-2 max-w-md"></div>
             <ul className="text-sm">{players.playersinfo.length} players</ul>
+            {!session?.user && (
+              <div className="mt-2">
+                <button
+                  className="bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-lg"
+                  onClick={() => setIsDialogOpen(true)}
+                >
+                  Rename
+                </button>
+                <RenameDialog
+                  isOpen={isDialogOpen}
+                  onClose={() => setIsDialogOpen(false)}
+                  onSubmit={() => {
+                    setIsDialogOpen(false);
+                  }}
+                />
+              </div>
+            )}
           </div>
 
           {imHost ? <GameSettings isHost={true} lobbyid={players.id} /> : null}

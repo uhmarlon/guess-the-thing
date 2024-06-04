@@ -53,7 +53,6 @@ class FlagGame extends BaseGame {
         flagKey,
         flagValue: hiddenFlag,
       };
-      console.log("flag " + flagValue);
 
       if (!this.lobby.gameinside.gameSpecial) {
         this.lobby.gameinside.gameSpecial = [{ i, flagValue }];
@@ -152,7 +151,7 @@ class FlagGame extends BaseGame {
         return;
       }
     } catch (error) {
-      console.error("Failed to handle answer:", error);
+      console.error("Flag: Failed to handle answer:", error);
     }
   }
 
@@ -204,7 +203,7 @@ class FlagGame extends BaseGame {
     );
 
     if (flagKeys.length === 0) {
-      console.error("No more flags available");
+      console.error("Flag: No more flags available");
       return {};
     }
     const newFlagKey = flagKeys[Math.floor(Math.random() * flagKeys.length)];
@@ -291,7 +290,7 @@ class FlagGame extends BaseGame {
       }
     } catch (error) {
       console.error(
-        "Failed to add/update XP:",
+        "Flag: Failed to add/update XP:",
         error + " for user " + player.id
       );
     }

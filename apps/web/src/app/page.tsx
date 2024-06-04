@@ -10,21 +10,33 @@ import { signIn, useSession } from "next-auth/react";
 // Spiele-Daten
 const games = [
   {
-    title: "Guess The Flag",
-    description: "Guess the flag of a country",
+    title: "Guees The Flag",
     href: "/game/multi/flag",
-    imgSrc: "/flag.webp",
+    imgSrc: "/gameimages/flagen.webp",
     bgColor: "bg-red-500",
   },
   {
-    title: "",
+    title: "Guess The Drink",
+    href: "/game/multi/drink",
+    imgSrc: "/gameimages/drinks.webp", // Placeholder image
+    bgColor: "bg-blue-500",
+  },
+  {
+    title: "Coming Soon",
     description: "We are working on new games!",
     href: "#",
     imgSrc: "/commingsoon.webp", // Placeholder image
     bgColor: "bg-blue-500",
   },
   {
-    title: "",
+    title: "Coming Soon",
+    description: "We are working on new games!",
+    href: "#",
+    imgSrc: "/commingsoon.webp", // Placeholder image
+    bgColor: "bg-blue-500",
+  },
+  {
+    title: "Coming Soon",
     description: "We are working on new games!",
     href: "#",
     imgSrc: "/commingsoon.webp", // Placeholder image
@@ -48,7 +60,7 @@ export default function Page(): JSX.Element {
               We are currently in Beta. Join now to help us improve!
             </motion.p>
           </div>
-          <div className="w-full bg-gradient-to-r from-purple-700 to-indigo-500 py-12 text-center">
+          <div className="w-full bg-gradient-to-r  from-purple-700 to-indigo-500 py-12 text-center">
             <motion.h1
               className="text-4xl font-bold mb-4"
               initial={{ opacity: 0 }}
@@ -80,26 +92,21 @@ export default function Page(): JSX.Element {
             )}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-6 w-full max-w-screen-lg">
-            {games.map((game) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 p-6 w-full max-w-screen-lg">
+            {games.map((game, index) => (
               <motion.div
-                key={game.title}
+                key={index}
                 className={`relative w-full h-48 ${game.bgColor} rounded-xl overflow-hidden`}
                 whileHover={{ scale: 1.05 }}
               >
                 <Link href={game.href}>
                   <Image
                     alt={game.title}
-                    className="object-cover"
-                    layout="fill"
                     src={game.imgSrc}
+                    fill
+                    className="object-cover"
                   />
-                  <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/80 to-transparent p-4">
-                    <h3 className="text-2xl font-bold text-white">
-                      {game.title}
-                    </h3>
-                    <p className="text-white/80">{game.description}</p>
-                  </div>
+                  <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/80 to-transparent p-4"></div>
                 </Link>
               </motion.div>
             ))}

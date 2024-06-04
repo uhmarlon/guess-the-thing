@@ -96,16 +96,7 @@ class DrinkGame extends BaseGame {
       maxTime = maxTime * 1000;
     }
     const startTime = Date.now();
-    let playersAnswered = 0;
-    let allAnswered = false;
-    while (!allAnswered && Date.now() - startTime < (maxTime || 30000)) {
-      if (!this.lobby.gameinside.scores) {
-        return;
-      }
-      playersAnswered = this.lobby.gameinside.scores.filter(
-        (score) => score.hasPlayed
-      ).length;
-      allAnswered = playersAnswered === this.lobby.players.length;
+    while (Date.now() - startTime < (maxTime || 30000)) {
       await new Promise((resolve) => setTimeout(resolve, 1000));
     }
   }
@@ -166,13 +157,14 @@ class DrinkGame extends BaseGame {
       const lastDrinkValue =
         lobby.gameinside.round &&
         lobby.gameinside.gameSpecial[lobby.gameinside.round - 1];
+
+      const playerScore = lobby.gameinside.scores.find(
+        (score) => score.playerId === player.id
+      );
       if (
         data.answer ===
         (lastDrinkValue as { i: number; correctDrinkid: string }).correctDrinkid
       ) {
-        const playerScore = lobby.gameinside.scores.find(
-          (score) => score.playerId === player.id
-        );
         if (playerScore && !playerScore.hasPlayed) {
           const score = await DrinkGame.rightAnswer(playerScore, lobby);
           const rdata = {
@@ -183,6 +175,9 @@ class DrinkGame extends BaseGame {
           };
           io.to(socket.id).emit("rightAnswer", rdata);
         }
+      } else {
+        playerScore?.hasPlayed == true;
+        return;
       }
     } catch (error) {
       console.error("Failed to handle answer:", error);
@@ -204,7 +199,7 @@ class DrinkGame extends BaseGame {
     const playersAnswered = lobby.gameinside.scores.filter(
       (score) => score.hasPlayed
     ).length;
-    const multiplier = 1 + (lobby.players.length - playersAnswered) / 8;
+    const multiplier = 1 + ((lobby.players.length - playersAnswered) / 10) * 2;
     playerScore.score += Math.floor(50 * multiplier);
     playerScore.hasPlayed = true;
     return playerScore.score;

@@ -36,7 +36,7 @@ const ResultsPopup = ({
 
   useEffect(() => {
     setScores(data.player.score.map(() => 0));
-    
+
     const combinedData = data.player.username.map((username, index) => ({
       username,
       level: data.player.level[index],
@@ -72,7 +72,7 @@ const ResultsPopup = ({
 
   return (
     <motion.div className="absolute top-0 left-0 w-full h-full backdrop-blur-lg flex justify-center z-0">
-      <div className="p-4 mt-20 rounded-lg shadow-lg text-white">
+      <div className="p-4 mt-24 md:mt-28 h-fit rounded-lg bg-gray-800/70  text-white">
         <div className="flex justify-center">
           <div className="w-60 h-60">
             <Image
@@ -84,10 +84,10 @@ const ResultsPopup = ({
             />
           </div>
         </div>
-        <h2 className="flex flex-row text-lg justify-center md:text-2xl font-bold">
+        <h2 className="flex pt-2 flex-row text-lg justify-center md:text-2xl font-bold">
           {data.cocktailName}
         </h2>
-        <h2 className="text-lg font-bold mb-2">Round Results</h2>
+        <h2 className="text-lg md:pt-2 font-bold mb-2">Round Results</h2>
         <table className="min-w-full">
           <tbody>
             {sortedData.username.map((item, index) => (
@@ -122,7 +122,7 @@ export default function FlagGameScreen(): JSX.Element {
   const [scoreBoard, setScoreBoard] = useState(false);
   const [scoreBoardData, setScoreBoardData] = useState<scoreBoardData>();
   const [playSound, setPlaySound] = useState(false);
-                
+
   const containerVariants = {
     initial: { scale: 0 },
     animate: { scale: 1 },
@@ -164,7 +164,6 @@ export default function FlagGameScreen(): JSX.Element {
       socket.off("scoreBoard");
     };
   }, []);
-
 
   return (
     <div className="mt-3">

@@ -107,6 +107,37 @@ class JoinHandler {
       }
     );
 
+    socket.on("rename", (newName: string) => {
+      const lobby = manager
+        .getLobbies()
+        .find((lobby) => lobby.players.find((p) => p.socketId === socket.id));
+      if (lobby) {
+        const player = lobby.players.find((p) => p.socketId === socket.id);
+        if (player) {
+          player.name = newName;
+          const gameLobbyClientInfo = {
+            id: lobby.id,
+            gamekey: lobby.gamekey,
+            playersinfo: [
+              ...lobby.players.map((player) => {
+                return {
+                  id: player.id,
+                  name: player.name,
+                  points: player.points,
+                  level: player.level,
+                  loggedIn: player.loggedIn,
+                  isHost: player.isHost,
+                };
+              }),
+            ],
+            gameState: lobby.gameState,
+          };
+          socket.emit("gamelobbyinfo", gameLobbyClientInfo);
+          socket.to(lobby.id).emit("gamelobbyinfo", gameLobbyClientInfo);
+        }
+      }
+    });
+
     socket.on("setRoundTime", (lobbyId: string, time: number) => {
       const lobby = manager.getLobbyById(lobbyId);
       if (lobby) {
