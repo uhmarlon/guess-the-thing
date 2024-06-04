@@ -12,8 +12,6 @@ RUN npm install -g pnpm@9.1.1
 # Rest of your Dockerfile instructions
 COPY package*.json ./
 
-RUN pnpm install 
-
 COPY . .
 
 RUN pnpm run serverbuild
