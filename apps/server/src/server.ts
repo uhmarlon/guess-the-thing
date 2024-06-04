@@ -2,10 +2,13 @@ import createFastify from "fastify";
 import cors from "@fastify/cors";
 import { Server } from "socket.io";
 import index from "./api/player/level";
+import { apiindex } from "./api/index";
 import join from "./api/game/join";
 import bugtracker from "./api/bugtracker";
+import * as dotenv from "dotenv";
+dotenv.config();
 
-const PORT = 3005;
+const PORT = process.env.PORT || 3005;
 const server = createFastify();
 
 server.register(cors, {
@@ -16,7 +19,7 @@ server.register(cors, {
 
 const io: Server = new Server(server.server, {
   cors: {
-    origin: "https://guessthething.io",
+    origin: "ttps://guessthething.io",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Authorization"],
   },
@@ -31,10 +34,11 @@ socketSetup.setup();
 server.register(index);
 server.register(join);
 server.register(bugtracker);
+server.register(apiindex);
 
 const start = async (): Promise<void> => {
   try {
-    await server.listen({ port: PORT });
+    await server.listen({ port: PORT as number });
     console.log(`\x1b[35m%s\x1b[0m`, `✨[ GTT API Server - PORT ${PORT} ]✨`);
   } catch (err) {
     server.log.error(err);
