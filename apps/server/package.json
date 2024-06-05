@@ -11,6 +11,7 @@
   "author": "uhmarlon",
   "dependencies": {
     "@fastify/cors": "^9.0.1",
+    "discord.js": "^14.15.3",
     "drizzle-orm": "^0.30.9",
     "fastify": "^4.26.2",
     "mysql2": "^3.9.7",

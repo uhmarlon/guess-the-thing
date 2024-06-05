@@ -3,12 +3,8 @@ import { Lobby } from "../../../utlis/gametype";
 import { io } from "../../../server";
 import { Socket } from "socket.io";
 import * as flags_en from "../../../data/flags/en_us.json";
-import * as flags_de from "../../../data/flags/de_de.json";
 import { UserExists } from "../../../api/player/checks/exists";
-import { db } from "../../../db";
-import { eq } from "drizzle-orm";
-import { userLevels } from "../../../db/schema";
-import { Player } from "../../../utlis/gametype";
+import * as flags_de from "../../../data/flags/de_de.json";
 
 type FlagData = {
   [key: string]: string;
@@ -23,19 +19,15 @@ class FlagGame extends BaseGame {
     this.language = language;
   }
 
-  async delay(ms: number): Promise<void> {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
-
   async startGame(): Promise<void> {
     io.to(this.lobby.id).emit("gameCounter");
     await this.delay(3000);
     this.lobby.gameState = "inGame";
-    this.updateLobby();
+    await this.updateLobby();
     await this.delay(2000);
     io.to(this.lobby.id).emit("gameScreen");
     await this.delay(50);
-    this.gameLoop();
+    await this.gameLoop();
   }
 
   async gameLoop(): Promise<void> {
@@ -60,7 +52,7 @@ class FlagGame extends BaseGame {
         this.lobby.gameinside.gameSpecial[i] = { i, flagValue };
       }
 
-      this.updateLobby();
+      await this.updateLobby();
 
       io.to(this.lobby.id).emit("flagData", inFlagData);
       io.to(this.lobby.id).emit("gameInfo", gameInfo);
@@ -83,12 +75,12 @@ class FlagGame extends BaseGame {
       await this.delay(5000);
 
       if (i === (this.lobby.gameinside?.maxRounds ?? 0) - 1) {
-        this.updateLobby();
+        await this.updateLobby();
         await this.endGame();
         return;
       }
 
-      this.updateLobby();
+      await this.updateLobby();
     }
   }
 
@@ -107,7 +99,7 @@ class FlagGame extends BaseGame {
         (score) => score.hasPlayed
       ).length;
       allAnswered = playersAnswered === this.lobby.players.length;
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await this.delay(1000);
     }
   }
 
@@ -176,26 +168,6 @@ class FlagGame extends BaseGame {
     return playerScore.score;
   }
 
-  async initializeScores(): Promise<void> {
-    if (
-      !this.lobby.gameinside.scores ||
-      this.lobby.gameinside.scores.length === 0
-    ) {
-      this.lobby.gameinside.scores = this.lobby.players.map((player) => ({
-        playerId: player.id,
-        score: 0,
-        hasPlayed: false,
-        isReady: false,
-      }));
-    } else {
-      this.lobby.gameinside.scores.forEach((player) => {
-        player.hasPlayed = false;
-        player.isReady = false;
-      });
-    }
-    this.updateLobby();
-  }
-
   async getRandomFlag(): Promise<FlagData> {
     const flagData = this.language === "de" ? flags_de : flags_en;
     const flagKeys = Object.keys(flagData).filter(
@@ -260,40 +232,7 @@ class FlagGame extends BaseGame {
       }
     }
 
-    this.updateLobby();
-  }
-
-  async addXPLoginPlayer(player: Player): Promise<void> {
-    const playerScore =
-      this.lobby.gameinside.scores?.find((s) => s.playerId === player.id)
-        ?.score || 0;
-    const xpToAdd = Math.floor(playerScore / 2);
-
-    try {
-      const levelExists = await db
-        .select()
-        .from(userLevels)
-        .where(eq(userLevels.userId, player.id));
-
-      if (levelExists.length > 0) {
-        await db
-          .update(userLevels)
-          .set({
-            levelpoints: levelExists[0].levelpoints + xpToAdd,
-          })
-          .where(eq(userLevels.userId, player.id));
-      } else {
-        await db.insert(userLevels).values({
-          userId: player.id,
-          levelpoints: xpToAdd,
-        });
-      }
-    } catch (error) {
-      console.error(
-        "Flag: Failed to add/update XP:",
-        error + " for user " + player.id
-      );
-    }
+    await this.updateLobby();
   }
 }
 

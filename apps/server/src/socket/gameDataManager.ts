@@ -14,6 +14,7 @@ class GameDataManager {
     }
     return GameDataManager.instance;
   }
+
   getLobbies(): Lobby[] {
     return this.gameData.lobbies;
   }
@@ -24,9 +25,7 @@ class GameDataManager {
     let code: string;
     do {
       code = Array.from({ length: codeLength }, () =>
-        characters.charAt(
-          crypto.getRandomValues(new Uint32Array(1))[0] % characters.length
-        )
+        characters.charAt(Math.floor(Math.random() * characters.length))
       ).join("");
     } while (await this.checkCodeExists(code));
 
@@ -86,7 +85,22 @@ class GameDataManager {
     const lobby = this.getLobbyById(lobbyId);
     if (lobby) {
       lobby.players = lobby.players.filter((player) => player.id !== playerId);
+      if (lobby.players.length === 0) {
+        this.removeLobby(lobbyId);
+      }
     }
+  }
+
+  static async getActiveLobbiesCount(): Promise<number> {
+    const gameDataManager = GameDataManager.getInstance();
+    return gameDataManager.gameData.lobbies.length;
+  }
+
+  static async getConnectedUsersCount(): Promise<number> {
+    const gameDataManager = GameDataManager.getInstance();
+    return gameDataManager.gameData.lobbies.reduce((acc, lobby) => {
+      return acc + lobby.players.length;
+    }, 0);
   }
 }
 

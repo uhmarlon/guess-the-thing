@@ -111,7 +111,7 @@ const ResultsPopup = ({
   );
 };
 
-export default function DrinkGameScreen(): JSX.Element {
+export default function PriceGameScreen(): JSX.Element {
   const [time, setTime] = useState(100);
   const [round, setRound] = useState(1);
   const [maxRounds, setMaxRounds] = useState(5);

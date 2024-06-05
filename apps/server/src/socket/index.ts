@@ -10,13 +10,16 @@ export class SocketSetup {
   }
 
   public async setup(): Promise<void> {
-    this.io.on("connection", async (socket) => {
+    this.io.on("connection", (socket) => {
       JoinHandler.bind(socket);
-
       AnswerHandler.bind(socket);
 
-      socket.on("disconnect", async () => {
+      socket.on("disconnect", () => {
         JoinHandler.disconnect(socket);
+      });
+
+      socket.on("error", (err) => {
+        console.error(`Socket error: ${err}`);
       });
     });
   }

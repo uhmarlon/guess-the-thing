@@ -6,6 +6,8 @@ import { apiindex } from "./api/index";
 import join from "./api/game/join";
 import bugtracker from "./api/bugtracker";
 import * as dotenv from "dotenv";
+import "./discordbot/discordBot";
+
 dotenv.config();
 
 const PORT = process.env.PORT || 3005;

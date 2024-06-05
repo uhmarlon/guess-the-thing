@@ -8,7 +8,7 @@ import { Levelprogressbar } from "src/components/my/progressbar";
 import { socket } from "@utils/game-socket";
 import { getBackendURL } from "@utils/game-api";
 
-export default function DrinkGameEnd(): JSX.Element {
+export default function PriceGameEnd(): JSX.Element {
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
   const { data: session } = useSession();
   const [currentPoints, setCurrentPoints] = useState(0);

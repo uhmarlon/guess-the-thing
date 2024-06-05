@@ -5,8 +5,8 @@ import { Viewc } from "@components/viewc";
 import { GameState } from "src/utils/types/game";
 import LobbyComponent from "src/components/game/drink/LobbyComponent";
 import StartCounter from "@components/game/StartCounter";
-import FlagGameScreen from "@components/game/drink/GameScreen";
-import FlagGameEnd from "@components/game/drink/GameEndScreen";
+import DrinkGameScreen from "@components/game/drink/GameScreen";
+import DrinkGameEnd from "@components/game/drink/GameEndScreen";
 
 export default function Page(): JSX.Element {
   const [gameState, setGameState] = useState<GameState>(GameState.LOBBY);
@@ -40,9 +40,9 @@ export default function Page(): JSX.Element {
       case GameState.START_COUNTER:
         return <StartCounter />;
       case GameState.GAME:
-        return <FlagGameScreen />;
+        return <DrinkGameScreen />;
       case GameState.END:
-        return <FlagGameEnd />;
+        return <DrinkGameEnd />;
       default:
         return <div>Unknown state</div>;
     }
