@@ -4,6 +4,7 @@ import Header from "../components/header";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import Footer from "./footer";
 
 export function Viewc({
   children,
@@ -11,9 +12,9 @@ export function Viewc({
   children: React.ReactNode;
 }): JSX.Element {
   return (
-    <div>
-      <div className="text-white  bg-gradient-to-bl from-gttpurple to-gttblack min-h-screen">
-        <header className="p-1">
+    <div className="flex flex-col min-h-screen">
+      <div className="flex-grow text-white bg-gradient-to-bl from-gttpurple to-gttblack">
+        <header className="p-2">
           <div className="flex items-center">
             <Link href="/">
               <Image
@@ -31,10 +32,11 @@ export function Viewc({
             </Link>
           </div>
         </header>
-        <div className="flex flex-row w-full h-full justify-center ">
+        <div className="flex flex-row w-full h-full justify-center text-white">
           <div className="w-[80%] md:w-[90%]">{children}</div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
@@ -45,11 +47,12 @@ export function Viewhead({
   children: React.ReactNode;
 }): JSX.Element {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <div className="text-white flex flex-row justify-center w-full h-full bg-gradient-to-bl from-gttpurple to-gttblack  min-h-screen">
-        <div className="w-[80%] md:w-[65rem]">{children}</div>
+      <div className="flex-grow flex justify-center w-full bg-gradient-to-bl from-gttpurple to-gttblack text-white">
+        <div className="w-[92%] md:w-[65rem]">{children}</div>
       </div>
+      <Footer />
     </div>
   );
 }
