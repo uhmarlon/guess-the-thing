@@ -2,11 +2,12 @@
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Viewc } from "src/components/viewc";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { getBackendURL } from "../../utils/game-api";
 
 export default function Page(): JSX.Element {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [code, setCode] = useState(new Array(4).fill(""));
   const [gameToken, setGameToken] = useState<string | null>(null);
 
@@ -45,7 +46,6 @@ export default function Page(): JSX.Element {
     const newCode = [...code];
     const upperValue = value.toUpperCase();
 
-    // Handle pasting
     if (value.length > 1) {
       const pastedValues = value.split("").slice(0, 4 - index);
       pastedValues.forEach((char, i) => {
@@ -60,7 +60,6 @@ export default function Page(): JSX.Element {
       return;
     }
 
-    // Handle single character input
     newCode[index] = upperValue;
     setCode(newCode);
 
@@ -81,8 +80,16 @@ export default function Page(): JSX.Element {
   };
 
   useEffect(() => {
+    const initialCode = searchParams.get("c");
+    if (initialCode && initialCode.length === 4) {
+      const initialCodeArray = initialCode.toUpperCase().split("");
+      setCode(initialCodeArray);
+      if (initialCodeArray.every((digit) => digit !== "")) {
+        fetchGameToken(initialCodeArray.join(""));
+      }
+    }
     firstInputRef.current?.focus();
-  }, []);
+  }, [searchParams]);
 
   return (
     <Viewc>
