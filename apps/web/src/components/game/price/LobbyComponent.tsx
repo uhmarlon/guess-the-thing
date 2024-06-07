@@ -40,6 +40,10 @@ export default function LobbyComponent(): JSX.Element {
       });
     }
 
+    if (!session?.user) {
+      setIsDialogOpen(true);
+    }
+
     return () => {
       socket.off("gamelobbyinfo");
     };

@@ -180,7 +180,7 @@ const RenameDialog: React.FC<{
       }`}
     >
       <div className="bg-gttpurple/60 rounded-lg p-6 shadow-xl">
-        <h2 className="text-2xl font-bold mb-4">Change Display Name</h2>
+        <h2 className="text-2xl font-bold mb-4">Who are you?</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <input
@@ -210,7 +210,7 @@ const RenameDialog: React.FC<{
               type="submit"
               className="bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              Rename
+              Continue
             </button>
           </div>
         </form>
