@@ -29,7 +29,7 @@ const QuizEntry: React.FC<QuizEntryProps> = ({ gameId, url }) => {
     <div className="relative max-w-lg mx-auto">
       <div className="rounded overflow-hidden shadow-md bg-gttlightpurple">
         <QRCode
-          value={fullUrl}
+          value={"https://guessthething.io/join?c=" + gameId}
           size={200}
           bgColor="#00000000" // Transparent background
           fgColor="#FFFFFF" // White foreground

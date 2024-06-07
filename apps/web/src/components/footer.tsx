@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React from "react";
 
 export default function Footer(): JSX.Element {
@@ -7,14 +8,15 @@ export default function Footer(): JSX.Element {
       <div className="text-sm mb-4 md:mb-0">
         <span className="text-gray-400 ml-4">guessthething.io</span>
       </div>
-      <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 text-sm text-center md:text-left">
-        {/* <a
-          href="/start"
-          className="text-gray-400 hover:text-white transition-colors"
-        >
-          START
-        </a>
-        <a
+      <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 text-sm text-center md:text-left mr-4">
+        <Link href={"/bug"}>
+          <p>
+            <a className="text-gray-400 hover:text-white transition-colors">
+              BUG REPORT
+            </a>
+          </p>
+        </Link>
+        {/* <a 
           href="/resources"
           className="text-gray-400 hover:text-white transition-colors"
         >

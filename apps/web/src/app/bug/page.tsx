@@ -1,49 +1,13 @@
 "use client";
-import { useSession, signIn } from "next-auth/react";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Viewhead } from "../../components/viewc";
 import { getBackendURL } from "../../utils/game-api";
 
 export default function BugTrackerPage(): JSX.Element {
-  const { data: session } = useSession();
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [message, setMessage] = useState<string>("");
-
-  if (!session) {
-    return (
-      <Viewhead>
-        <main className="min-h-screen text-white flex flex-col items-center justify-center">
-          <div className="text-center">
-            <h1 className="text-3xl font-bold mb-4">
-              You have to be signed in to report a bug, that we can track it.
-            </h1>
-            <button
-              className="py-2 px-4 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition-colors duration-300 flex items-center justify-center"
-              onClick={() => signIn()}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 mr-2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-              Sign In
-            </button>
-          </div>
-        </main>
-      </Viewhead>
-    );
-  }
 
   const handleBugSubmit = async (): Promise<void> => {
     const newBug = { title, description };
