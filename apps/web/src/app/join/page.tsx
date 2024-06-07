@@ -99,7 +99,7 @@ function Content() {
           <motion.input
             key={index}
             ref={inputRefs[index]}
-            className="w-14 h-14 md:w-32 md:h-32 text-center text-2xl md:text-6xl border-4 border-gttlightpurple bg-gttpurple rounded-lg"
+            className="w-14 h-14 md:w-32 md:h-32 text-center text-2xl md:text-6xl border-4 border-gttlightpurple bg-gttpurple rounded-lg focus:outline-none focus:ring-2 focus:ring-gttgold focus:border-gttgold"
             type="text"
             maxLength={1}
             value={digit}
@@ -110,6 +110,10 @@ function Content() {
           />
         ))}
       </div>
+      <h2 className="text-center text-1x text-white pt-4">
+        Enter the 4-letter code to join the game
+      </h2>
+
       {gameToken && (
         <p className="text-center text-lg text-white">
           Game Token: {gameToken}
@@ -124,8 +128,8 @@ export default function Page(): JSX.Element {
   return (
     <Viewc>
       <main className="justify-center">
-        <h1 className="text-1xl md:text-2xl text-center font-bold text-white pt-[32vh]">
-          Enter the code
+        <h1 className="text-1xl md:text-2xl text-center font-bold text-gttgold pt-[32vh]">
+          Join the fun!
         </h1>
         <Suspense fallback={<div>Loading...</div>}>
           <Content />

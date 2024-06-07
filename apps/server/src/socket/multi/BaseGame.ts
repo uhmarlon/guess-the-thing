@@ -2,7 +2,7 @@ import { Lobby, Player } from "../../utlis/gametype";
 import GameDataManager from "../gameDataManager";
 import { db } from "../../db";
 import { eq } from "drizzle-orm";
-import { userLevels } from "../../db/schema";
+import { userLevels, gameStatistics } from "../../db/schema";
 
 abstract class BaseGame {
   protected lobby: Lobby;
@@ -42,6 +42,32 @@ abstract class BaseGame {
       });
     }
     await this.updateLobby();
+  }
+
+  protected async addStatistics(
+    player: Player,
+    gamemodeID: number,
+    language: string
+  ): Promise<void> {
+    const playerScore =
+      this.lobby.gameinside.scores?.find((s) => s.playerId === player.id)
+        ?.score || 0;
+
+    try {
+      await db.insert(gameStatistics).values({
+        playerId: player.id,
+        gameId: gamemodeID,
+        score: playerScore,
+        language: language,
+      });
+    } catch (error) {
+      console.error(
+        "Failed to insert statistics:",
+        error,
+        "for user",
+        player.id
+      );
+    }
   }
 
   protected async addXPLoginPlayer(player: Player): Promise<void> {

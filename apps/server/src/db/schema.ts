@@ -1,9 +1,11 @@
 import {
   int,
   timestamp,
+  decimal,
   mysqlTable,
   primaryKey,
   varchar,
+  longtext,
 } from "drizzle-orm/mysql-core";
 import * as dotenv from "dotenv";
 dotenv.config();
@@ -58,4 +60,30 @@ export const userLevels = mysqlTable("userlevel", {
     .notNull()
     .references(() => users.id, { onDelete: "cascade" }),
   levelpoints: int("levelpoints").notNull(),
+});
+
+export const games = mysqlTable("games", {
+  id: int("id").primaryKey(),
+  name: varchar("name", { length: 255 }),
+  gametag: varchar("gametag", { length: 255 }),
+});
+
+export const gameStatistics = mysqlTable("game_statistics", {
+  gameId: int("gameId")
+    .notNull()
+    .references(() => games.id, { onDelete: "cascade" }),
+  playerId: varchar("playerId", { length: 255 })
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  score: int("score").notNull(),
+  timestamp: timestamp("timestamp", { fsp: 3 }),
+  language: varchar("language", { length: 255 }).notNull(),
+});
+
+export const preisguess = mysqlTable("preisguess", {
+  id: int("id").primaryKey(),
+  title: varchar("title", { length: 255 }).notNull(),
+  price: decimal("price", { precision: 10, scale: 2 }),
+  image: longtext("image"),
+  createdAt: timestamp("created_at"),
 });

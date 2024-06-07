@@ -207,6 +207,7 @@ class DrinkGame extends BaseGame {
         const userExists = new UserExists();
         if (await userExists.checkUserExists(player.id)) {
           await this.addXPLoginPlayer(player);
+          await this.addStatistics(player, 2, this.language);
         }
       }
     }
