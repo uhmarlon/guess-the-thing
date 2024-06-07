@@ -60,7 +60,7 @@ export default async function (server: FastifyInstance): Promise<void> {
 
       reply.send(statistices);
     } catch (error) {
-      console.error(error);
+      console.error("Error fetching game statistics", error);
       reply.code(500).send({ error: "Internal server error" });
     }
   });

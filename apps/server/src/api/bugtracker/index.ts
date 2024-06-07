@@ -49,7 +49,7 @@ export default async function (server: FastifyInstance): Promise<void> {
 
         reply.code(200).send({ success: true });
       } catch (error) {
-        console.error(error);
+        console.error("Error creating issue: ", error);
         reply
           .code(500)
           .send({ error: "Internal server error", details: error });

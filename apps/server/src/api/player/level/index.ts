@@ -35,7 +35,7 @@ export default async function (server: FastifyInstance): Promise<void> {
       const level = LevelSystem.getLevelInfo(data[0].levelpoints);
       reply.send(level);
     } catch (error) {
-      console.error(error);
+      console.error("Error getting user level: ", error);
       reply.code(500).send({ error: "Internal server error" });
     }
   });

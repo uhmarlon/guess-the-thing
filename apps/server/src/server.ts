@@ -4,6 +4,7 @@ import { Server } from "socket.io";
 import index from "./api/player/level";
 import { apiindex } from "./api/index";
 import join from "./api/game/join";
+import statistices from "./api/game/statistices";
 import bugtracker from "./api/bugtracker";
 import * as dotenv from "dotenv";
 import "./discordbot/discordBot";
@@ -37,6 +38,7 @@ server.register(index);
 server.register(join);
 server.register(bugtracker);
 server.register(apiindex);
+server.register(statistices);
 
 const start = async (): Promise<void> => {
   try {
@@ -48,4 +50,6 @@ const start = async (): Promise<void> => {
   }
 };
 
-start();
+start().catch((err) => {
+  server.log.error("Unexpected error server.ts:", err);
+});
