@@ -49,7 +49,7 @@ export default function LobbyComponent(): JSX.Element {
     <div className="mt-3">
       <div className="grid grid-cols-1 sm:grid-cols-4 ">
         <div className="col-span-1 sm:col-start-4">
-          <QuizEntry gameId={players.gamekey} url="www.localhost:3000" />
+          <QuizEntry gameId={players.gamekey} url="www.guessthething.io" />
         </div>
         <div className="col-span-1 sm:col-span-2 lg:col-span-3 sm:row-start-1 sm:col-start-1">
           <h1 className="text-lg font-bold mt-2 sm:text-4xl">

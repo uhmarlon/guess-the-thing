@@ -90,7 +90,7 @@ function Content() {
       }
     }
     firstInputRef.current?.focus();
-  }, [fetchGameToken, searchParams]);
+  }, []);
 
   return (
     <div className="text-center text-white text-sm md:text-lg">

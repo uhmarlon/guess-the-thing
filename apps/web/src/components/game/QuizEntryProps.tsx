@@ -15,7 +15,9 @@ const QuizEntry: React.FC<QuizEntryProps> = ({ gameId, url }) => {
 
   const copyToClipboard = async () => {
     try {
-      await navigator.clipboard.writeText(fullUrl);
+      await navigator.clipboard.writeText(
+        "https://guessthething.io/join?c=" + gameId
+      );
       setCopied(true);
       setTimeout(() => setCopied(false), 2000); // Reset after 2 seconds
     } catch (err) {
