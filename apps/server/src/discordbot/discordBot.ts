@@ -52,7 +52,7 @@ if (!DISCORD_TOKEN) {
         await updateServerStatus(serverStatusMessage);
       }, UPDATE_INTERVAL);
     } catch (error) {
-      console.error("Error fetching guild or channel: ", error);
+      handleError("Error initializing bot: ", error);
     }
   });
 
@@ -87,7 +87,7 @@ if (!DISCORD_TOKEN) {
           ],
         });
       } catch (error) {
-        console.error("Error fetching lobby or user data: ", error);
+        handleError("Error fetching lobby or user data: ", error);
         await message
           .reply("An error occurred while fetching the data.")
           .catch(console.error);
@@ -95,42 +95,58 @@ if (!DISCORD_TOKEN) {
     }
   });
 
-  client.login(DISCORD_TOKEN).catch(console.error);
+  client.login(DISCORD_TOKEN).catch((error) => {
+    handleError("Error logging in: ", error);
+  });
 }
 
 async function postServerStatus(channel: TextChannel): Promise<Message> {
-  const embed = await generateServerStatusEmbed();
-  const message = await channel.send({ embeds: [embed] });
-  return message;
+  try {
+    const embed = await generateServerStatusEmbed();
+    const message = await channel.send({ embeds: [embed] });
+    return message;
+  } catch (error) {
+    handleError("Error posting server status: ", error);
+    throw error;
+  }
 }
 
 async function updateServerStatus(message: Message): Promise<void> {
-  const embed = await generateServerStatusEmbed();
-  await message.edit({ embeds: [embed] });
+  try {
+    const embed = await generateServerStatusEmbed();
+    await message.edit({ embeds: [embed] });
+  } catch (error) {
+    handleError("Error updating server status: ", error);
+  }
 }
 
 async function generateServerStatusEmbed(): Promise<EmbedBuilder> {
-  const activeLobbiesCount = await GameDataManager.getActiveLobbiesCount();
-  const connectedUsersCount = await GameDataManager.getConnectedUsersCount();
-  const uptime = process.uptime();
+  try {
+    const activeLobbiesCount = await GameDataManager.getActiveLobbiesCount();
+    const connectedUsersCount = await GameDataManager.getConnectedUsersCount();
+    const uptime = process.uptime();
 
-  return new EmbedBuilder()
-    .setColor(0x8a24ff)
-    .setTitle("Guess The Thing - Server Status")
-    .setDescription("Current server status and statistics")
-    .addFields(
-      {
-        name: "Active Lobbies",
-        value: activeLobbiesCount.toString(),
-        inline: true,
-      },
-      {
-        name: "Connected Users",
-        value: connectedUsersCount.toString(),
-        inline: true,
-      },
-      { name: "Server Uptime", value: formatUptime(uptime), inline: true }
-    );
+    return new EmbedBuilder()
+      .setColor(0x8a24ff)
+      .setTitle("Guess The Thing - Server Status")
+      .setDescription("Current server status and statistics")
+      .addFields(
+        {
+          name: "Active Lobbies",
+          value: activeLobbiesCount.toString(),
+          inline: true,
+        },
+        {
+          name: "Connected Users",
+          value: connectedUsersCount.toString(),
+          inline: true,
+        },
+        { name: "Server Uptime", value: formatUptime(uptime), inline: true }
+      );
+  } catch (error) {
+    handleError("Error generating server status embed: ", error);
+    throw error;
+  }
 }
 
 function formatUptime(seconds: number): string {
@@ -142,4 +158,8 @@ function formatUptime(seconds: number): string {
   seconds = Math.floor(seconds % 60);
 
   return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
+
+function handleError(message: string, error: unknown): void {
+  console.error("Discord bot: " + message, error);
 }
