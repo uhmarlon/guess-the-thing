@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { getBackendURL } from "@utils/game-api";
+import { motion, useAnimation } from "framer-motion";
 import UserInfo from "./username";
 
 interface LeaderboardProps {
@@ -27,6 +28,7 @@ async function getData(game: string): Promise<LeaderboardData> {
       headers: {
         "Content-Type": "application/json",
       },
+      cache: "force-cache",
     }
   );
 
@@ -37,10 +39,24 @@ async function getData(game: string): Promise<LeaderboardData> {
   return res.json();
 }
 
+function getTimeRemaining(nextReset: string) {
+  const now = new Date();
+  const resetTime = new Date(nextReset);
+  const timeDifference = resetTime.getTime() - now.getTime();
+
+  const hours = Math.floor(timeDifference / (1000 * 60 * 60));
+  const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+  return `${hours}h : ${minutes}m : ${seconds}s`;
+}
+
 export default function Leaderboard({ game }: LeaderboardProps) {
   const [activeTab, setActiveTab] = useState<string>("leaderboard");
   const [data, setData] = useState<LeaderboardData | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [timeRemaining, setTimeRemaining] = useState<string>("");
+  const controls = useAnimation();
 
   useEffect(() => {
     async function fetchData() {
@@ -54,6 +70,17 @@ export default function Leaderboard({ game }: LeaderboardProps) {
 
     fetchData();
   }, [game]);
+
+  useEffect(() => {
+    if (data) {
+      const interval = setInterval(() => {
+        setTimeRemaining(getTimeRemaining(data.nextReset));
+        controls.start({ opacity: 1 });
+      }, 1000);
+
+      return () => clearInterval(interval);
+    }
+  }, [data, controls]);
 
   if (error) {
     return <div className="text-red-500">Error: {error}</div>;
@@ -88,7 +115,12 @@ export default function Leaderboard({ game }: LeaderboardProps) {
             Single Player Leaderboard
           </button>
         </div>
-        <div className="text-sm font-bold mt-2 md:mt-0 blur-sm">20h 30min</div>
+        <motion.div
+          className="text-sm font-bold mt-2 md:mt-0"
+          animate={controls}
+        >
+          {timeRemaining}
+        </motion.div>
       </div>
       {activeTab === "leaderboard" && (
         <div className="h-64 overflow-y-scroll border-t-2 border-gray-700 custom-scrollbar">

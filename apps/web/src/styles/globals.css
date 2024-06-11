@@ -29,7 +29,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-  width: 12px;
+  width: 8px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
