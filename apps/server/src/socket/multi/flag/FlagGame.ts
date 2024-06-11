@@ -46,6 +46,8 @@ class FlagGame extends BaseGame {
         flagValue: hiddenFlag,
       };
 
+      console.log("Flag: ", flagValue);
+
       if (!this.lobby.gameinside.gameSpecial) {
         this.lobby.gameinside.gameSpecial = [{ i, flagValue }];
       } else {
