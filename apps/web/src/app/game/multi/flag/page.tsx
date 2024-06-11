@@ -1,13 +1,13 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { Viewhead } from "../../../../components/viewc";
-import React, { useState } from "react";
+import React from "react";
 import { uuid } from "@utils/util";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Leaderboard from "src/components/ds/leaderboard";
 
 export default function Page(): JSX.Element {
-  const [activeTab, setActiveTab] = useState("leaderboard");
   const router = useRouter();
   const handleButtonClick = () => {
     const randomString = uuid();
@@ -56,87 +56,7 @@ export default function Page(): JSX.Element {
               </button>
             </div>
           </div>
-
-          <div className="mt-12  mb:mt-2 ">
-            <div className="flex flex-col md:flex-row justify-between items-center mb-4">
-              <div className="flex flex-col md:flex-row">
-                <button
-                  className={`px-4 py-1 mb-2 md:mb-0 ${activeTab === "leaderboard" ? "bg-gttlightpurple text-white" : "bg-gttpurple text-white"} rounded-md md:rounded-none md:rounded-tl-md`}
-                  onClick={() => setActiveTab("leaderboard")}
-                >
-                  Online Leaderboard
-                </button>
-                <button
-                  className={`px-4 py-1 ${activeTab === "anotherTab" ? "bg-gttlightpurple text-white" : "bg-gttpurple text-white"} rounded-t-md md:rounded-none md:rounded-tr-md md:ml-2`}
-                  onClick={() => setActiveTab("anotherTab")}
-                >
-                  Single Player Leaderboard
-                </button>
-              </div>
-              <div className="text-sm font-bold mt-2 md:mt-0 blur-sm">
-                20h 30min
-              </div>
-            </div>
-            {activeTab === "leaderboard" && (
-              <div className="h-64 overflow-y-scroll border-t-2 border-gray-700 custom-scrollbar blur-sm">
-                <table className="w-full text-left">
-                  <thead>
-                    <tr>
-                      <th className="pb-2 border-b border-gray-600">#</th>
-                      <th className="pb-2 border-b border-gray-600">Name</th>
-                      <th className="pb-2 border-b border-gray-600">S/N/U</th>
-                      <th className="pb-2 border-b border-gray-600">Zeit</th>
-                      <th className="pb-2 border-b border-gray-600">
-                        Punktzahl
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td className="py-2">1.</td>
-                      <td className="py-2">cebu</td>
-                      <td className="py-2">90 / 3 / 215</td>
-                      <td className="py-2">00h 28m</td>
-                      <td className="py-2">4103</td>
-                    </tr>
-                    <tr>
-                      <td className="py-2">2.</td>
-                      <td className="py-2">Lunita</td>
-                      <td className="py-2">107 / 2 / 235</td>
-                      <td className="py-2">00h 47m</td>
-                      <td className="py-2">3469</td>
-                    </tr>
-                    <tr>
-                      <td className="py-2">3.</td>
-                      <td className="py-2">Agata</td>
-                      <td className="py-2">69 / 6 / 174</td>
-                      <td className="py-2">00h 34m</td>
-                      <td className="py-2">3396</td>
-                    </tr>
-                    <tr>
-                      <td className="py-2">4.</td>
-                      <td className="py-2">Love, learn h...</td>
-                      <td className="py-2">53 / 3 / 115</td>
-                      <td className="py-2">00h 25m</td>
-                      <td className="py-2">3015</td>
-                    </tr>
-                    <tr>
-                      <td className="py-2">5.</td>
-                      <td className="py-2">Luuk</td>
-                      <td className="py-2">54 / 2 / 115</td>
-                      <td className="py-2">00h 23m</td>
-                      <td className="py-2">2930</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            )}
-            {activeTab === "anotherTab" && (
-              <div className="h-64 overflow-y-scroll border-t-2 border-gray-700 custom-scrollbar blur-sm">
-                {/* Content for another tab */}
-              </div>
-            )}
-          </div>
+          <Leaderboard game="flag" />
         </motion.div>
       </main>
     </Viewhead>

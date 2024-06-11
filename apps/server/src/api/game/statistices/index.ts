@@ -1,7 +1,8 @@
 import type { FastifyInstance } from "fastify";
 import { db } from "../../../db";
-import { games, gameStatistics } from "../../../db/schema";
+import { games, gameStatistics, userLevels, users } from "../../../db/schema";
 import { and, eq, gte, sql } from "drizzle-orm";
+import { LevelSystem } from "../../player/level/levelsystem";
 
 export default async function (server: FastifyInstance): Promise<void> {
   server.get("/game/statistices", async (request, reply) => {
@@ -38,12 +39,15 @@ export default async function (server: FastifyInstance): Promise<void> {
 
       const dataStatistics = await db
         .select({
-          playerId: gameStatistics.playerId,
+          userName: users.name,
           score: gameStatistics.score,
+          levelpoints: userLevels.levelpoints,
           timestamp: gameStatistics.timestamp,
           language: gameStatistics.language,
         })
         .from(gameStatistics)
+        .leftJoin(users, eq(users.id, gameStatistics.playerId))
+        .leftJoin(userLevels, eq(userLevels.userId, gameStatistics.playerId))
         .where(
           and(
             eq(gameStatistics.gameId, gameId[0].id),
@@ -51,6 +55,10 @@ export default async function (server: FastifyInstance): Promise<void> {
             sql`(playerid, score) IN (SELECT playerid, MAX(score) FROM game_statistics WHERE gameId = ${gameId[0].id} GROUP BY playerid)`
           )
         );
+
+      dataStatistics.forEach((data) => {
+        data.levelpoints = LevelSystem.getLevel(data.levelpoints as number);
+      });
 
       const statistices = {
         gametag: gametag,
