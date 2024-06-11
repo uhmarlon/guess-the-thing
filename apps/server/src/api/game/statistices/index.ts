@@ -48,7 +48,7 @@ export default async function (server: FastifyInstance): Promise<void> {
           and(
             eq(gameStatistics.gameId, gameId[0].id),
             gte(gameStatistics.timestamp, new Date(lastSunday)),
-            sql`(playerid, score) IN (SELECT playerid, MAX(score) FROM game_statistics GROUP BY playerid)`
+            sql`(playerid, score) IN (SELECT playerid, MAX(score) FROM game_statistics WHERE gameId = ${gameId[0].id} GROUP BY playerid)`
           )
         );
 
