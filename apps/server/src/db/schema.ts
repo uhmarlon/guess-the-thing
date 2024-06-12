@@ -77,6 +77,8 @@ export const gameStatistics = mysqlTable("game_statistics", {
     .references(() => users.id, { onDelete: "cascade" }),
   score: int("score").notNull(),
   timestamp: timestamp("timestamp", { fsp: 3 }),
+  rounds_played: int("rounds_played").notNull(),
+  correct_rounds: int("correct_rounds").notNull(),
   language: varchar("language", { length: 255 }).notNull(),
 });
 

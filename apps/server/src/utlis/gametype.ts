@@ -28,6 +28,7 @@ type Gameinside = {
   scores?: {
     playerId: string;
     score: number;
+    correctRounds?: number;
     hasPlayed: boolean;
     isReady: boolean;
   }[];

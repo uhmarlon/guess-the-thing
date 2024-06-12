@@ -180,6 +180,7 @@ class DrinkGame extends BaseGame {
     playerScore: {
       playerId: string;
       score: number;
+      correctRounds?: number;
       hasPlayed: boolean;
       isReady: boolean;
     },
@@ -194,6 +195,7 @@ class DrinkGame extends BaseGame {
     const multiplier = 1 + ((lobby.players.length - playersAnswered) / 10) * 2;
     playerScore.score += Math.floor(50 * multiplier);
     playerScore.hasPlayed = true;
+    playerScore.correctRounds = (playerScore.correctRounds || 0) + 1;
     return playerScore.score;
   }
 

@@ -104,7 +104,7 @@ export default function Leaderboard({ game }: LeaderboardProps) {
           >
             Online Leaderboard
           </button>
-          <button
+          {/* <button
             className={`px-4 py-1 ${
               activeTab === "anotherTab"
                 ? "bg-gttlightpurple text-white"
@@ -113,7 +113,7 @@ export default function Leaderboard({ game }: LeaderboardProps) {
             onClick={() => setActiveTab("anotherTab")}
           >
             Single Player Leaderboard
-          </button>
+          </button> */}
         </div>
         <motion.div
           className="text-sm font-bold mt-2 md:mt-0"
@@ -129,7 +129,9 @@ export default function Leaderboard({ game }: LeaderboardProps) {
               <tr>
                 <th className="pb-2 border-b border-gray-600">#</th>
                 <th className="pb-2 border-b border-gray-600">Player</th>
-                <th className="pb-2 border-b border-gray-600">Language</th>
+                <th className="pb-2 border-b text-right border-gray-600">
+                  Language
+                </th>
                 <th className="pb-2 border-b pr-2 text-right border-gray-600">
                   Score
                 </th>
@@ -146,7 +148,7 @@ export default function Leaderboard({ game }: LeaderboardProps) {
                         level={entry.levelpoints}
                       />
                     </td>
-                    <td className="py-2">
+                    <td className="py-2 text-right">
                       {entry.language === "en" ? "English" : "German"}
                     </td>
                     <td className="py-2 pr-2 text-right">{entry.score}</td>

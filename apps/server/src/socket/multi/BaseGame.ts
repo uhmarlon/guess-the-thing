@@ -33,6 +33,7 @@ abstract class BaseGame {
         playerId: player.id,
         score: 0,
         hasPlayed: false,
+        correctRounds: 0,
         isReady: false,
       }));
     } else {
@@ -53,12 +54,19 @@ abstract class BaseGame {
       this.lobby.gameinside.scores?.find((s) => s.playerId === player.id)
         ?.score || 0;
 
+    const roundsPlayed = this.lobby.gameinside.round || 0;
+    const correctRounds =
+      this.lobby.gameinside.scores?.find((s) => s.playerId === player.id)
+        ?.correctRounds || 0;
+
     try {
       await db.insert(gameStatistics).values({
         playerId: player.id,
         gameId: gamemodeID,
         score: playerScore,
         language: language,
+        rounds_played: roundsPlayed,
+        correct_rounds: correctRounds,
       });
     } catch (error) {
       console.error(
