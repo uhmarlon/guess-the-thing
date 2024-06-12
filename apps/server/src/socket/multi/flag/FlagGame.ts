@@ -46,8 +46,6 @@ class FlagGame extends BaseGame {
         flagValue: hiddenFlag,
       };
 
-      console.log("Flag: ", flagValue);
-
       if (!this.lobby.gameinside.gameSpecial) {
         this.lobby.gameinside.gameSpecial = [{ i, flagValue }];
       } else {
@@ -224,6 +222,7 @@ class FlagGame extends BaseGame {
     });
 
     io.to(this.lobby.id).emit("gameEnd");
+    await this.delay(60);
     io.to(this.lobby.id).emit("playerData", playerData);
 
     for (const player of this.lobby.players) {

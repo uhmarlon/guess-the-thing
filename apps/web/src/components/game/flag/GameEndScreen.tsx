@@ -13,7 +13,7 @@ export default function FlagGameEnd(): JSX.Element {
   const { data: session } = useSession();
   const [currentPoints, setCurrentPoints] = useState(0);
   const [startPoints, setStartPoints] = useState(0);
-  const [level, setlevel] = useState(0);
+  const [level, setLevel] = useState(0);
   const [endPoints, setEndPoints] = useState(100);
   const [loading, setLoading] = useState(true);
   const [xpGained, setXpGained] = useState(0);
@@ -40,8 +40,7 @@ export default function FlagGameEnd(): JSX.Element {
           setCurrentPoints(data.currentPoints);
           setStartPoints(data.rangeStart);
           setEndPoints(data.rangeEnd);
-
-          setlevel(data.currentLevel);
+          setLevel(data.currentLevel);
         } catch (error) {
           console.error("Failed to fetch data:", error);
         } finally {
@@ -55,9 +54,8 @@ export default function FlagGameEnd(): JSX.Element {
 
   useEffect(() => {
     socket.on("playerData", (data) => {
-      setPlayerData(data);
+      setPlayerData([...data].sort((a, b) => b.score - a.score));
     });
-    playerData.sort((a, b) => b.score - a.score);
 
     socket.on("xpGained", (xp) => {
       setXpGained(xp);
@@ -67,9 +65,7 @@ export default function FlagGameEnd(): JSX.Element {
       socket.off("playerData");
       socket.off("xpGained");
     };
-  });
-
-  const podium = [playerData[1], playerData[0], playerData[2]];
+  }, []);
 
   useEffect(() => {
     setWindowSize({ width: window.innerWidth, height: window.innerHeight });
@@ -121,7 +117,7 @@ export default function FlagGameEnd(): JSX.Element {
                 <span className="text-sm">{user.score} pts</span>
                 <span className="text-xl font-bold">
                   {index + 1}
-                  {["st", "nd"][index]}
+                  {["st", "nd", "rd"][index]}
                 </span>
               </div>
             ))}
@@ -129,25 +125,48 @@ export default function FlagGameEnd(): JSX.Element {
         )}
         {playerData.length > 2 && (
           <div className="space-x-2 flex justify-center items-end mb-4">
-            {playerData.slice(0, 3).map((user, index) => (
-              <motion.div
-                key={index}
-                className={`w-32 h-${[40, 48, 36][index]} bg-gttlightpurple/${["25", "40", "25"][index]} rounded-md flex flex-col justify-center items-center p-2`}
-                variants={podiumVariants}
-                initial="initial"
-                animate="animate"
-                custom={0.1 * index}
-              >
-                <span className="text-lg font-bold text-balance">
-                  {podium[index].name}
-                </span>
-                <span className="text-sm">{podium[index].score} pts</span>
-                <span className="text-xl font-bold">
-                  {[2, 1, 3][index]}
-                  {["nd", "st", "rd"][index]}
-                </span>
-              </motion.div>
-            ))}
+            <motion.div
+              key={1}
+              className={`w-32 h-36 bg-gttlightpurple/25 rounded-md flex flex-col justify-center items-center p-2`}
+              variants={podiumVariants}
+              initial="initial"
+              animate="animate"
+              custom={0.1}
+            >
+              <span className="text-lg font-bold text-balance">
+                {playerData[1]?.name}
+              </span>
+              <span className="text-sm">{playerData[1]?.score} pts</span>
+              <span className="text-xl font-bold">2nd</span>
+            </motion.div>
+            <motion.div
+              key={0}
+              className={`w-32 h-48 bg-gttlightpurple/40 rounded-md flex flex-col justify-center items-center p-2`}
+              variants={podiumVariants}
+              initial="initial"
+              animate="animate"
+              custom={0.2}
+            >
+              <span className="text-lg font-bold text-balance">
+                {playerData[0]?.name}
+              </span>
+              <span className="text-sm">{playerData[0]?.score} pts</span>
+              <span className="text-xl font-bold">1st</span>
+            </motion.div>
+            <motion.div
+              key={2}
+              className={`w-32 h-32 bg-gttlightpurple/25 rounded-md flex flex-col justify-center items-center p-2`}
+              variants={podiumVariants}
+              initial="initial"
+              animate="animate"
+              custom={0.3}
+            >
+              <span className="text-lg font-bold text-balance">
+                {playerData[2]?.name}
+              </span>
+              <span className="text-sm">{playerData[2]?.score} pts</span>
+              <span className="text-xl font-bold">3rd</span>
+            </motion.div>
           </div>
         )}
         {playerData.length > 3 && (
@@ -188,8 +207,6 @@ export default function FlagGameEnd(): JSX.Element {
               </div>
             </div>
           ))}
-
-        {/* // back home button */}
         <div className="mt-4">
           <button
             className="p-4 bg-blue-500 text-white rounded"

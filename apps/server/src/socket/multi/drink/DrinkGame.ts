@@ -225,6 +225,7 @@ class DrinkGame extends BaseGame {
       };
     });
     io.to(this.lobby.id).emit("gameEnd");
+    await this.delay(60);
     io.to(this.lobby.id).emit("playerData", playerData);
     for (const player of this.lobby.players) {
       const score =
