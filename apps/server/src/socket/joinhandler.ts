@@ -101,7 +101,7 @@ class JoinHandler {
             };
             socket.join(lobbyId);
             socket.emit("gamelobbyinfo", gameLobbyClientInfo);
-            socket.to(lobbyId).emit("gamelobbyinfo", gameLobbyClientInfo);
+            socket.in(lobbyId).emit("gamelobbyinfo", gameLobbyClientInfo);
           }
         }
       }
@@ -133,7 +133,7 @@ class JoinHandler {
             gameState: lobby.gameState,
           };
           socket.emit("gamelobbyinfo", gameLobbyClientInfo);
-          socket.to(lobby.id).emit("gamelobbyinfo", gameLobbyClientInfo);
+          socket.in(lobby.id).emit("gamelobbyinfo", gameLobbyClientInfo);
         }
       }
     });

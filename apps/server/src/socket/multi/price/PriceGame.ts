@@ -15,8 +15,6 @@ type PriceData = {
   createdAt: Date | null;
 };
 
-type gameScoreSpecial = { priceguess: number; differanz: number };
-
 class PriceGame extends BaseGame {
   private usedPrice: Set<number> = new Set();
   private language: "en";
@@ -27,12 +25,12 @@ class PriceGame extends BaseGame {
   }
 
   async startGame(): Promise<void> {
-    io.to(this.lobby.id).emit("gameCounter");
+    io.in(this.lobby.id).emit("gameCounter");
     await this.delay(3000);
     this.lobby.gameState = "inGame";
     this.updateLobby();
     await this.delay(2000);
-    io.to(this.lobby.id).emit("gameScreen");
+    io.in(this.lobby.id).emit("gameScreen");
     await this.delay(60);
     this.gameLoop();
   }
@@ -48,7 +46,7 @@ class PriceGame extends BaseGame {
         differanz: "0",
       })),
     };
-    io.to(this.lobby.id).emit("initalleaderboard", leaderboardInt);
+    io.in(this.lobby.id).emit("initalleaderboard", leaderboardInt);
 
     for (let i = 0; i < (this.lobby.gameinside?.maxRounds || 5); i++) {
       this.lobby.gameinside.round = i + 1;
@@ -58,7 +56,6 @@ class PriceGame extends BaseGame {
 
       const randomItem: PriceData = await this.getRandomItem();
       const correctItem = randomItem;
-      console.log("Firstload:" + randomItem.price);
       const inPriceData = {
         Image: randomItem.image,
         title: randomItem.title,
@@ -72,8 +69,8 @@ class PriceGame extends BaseGame {
 
       this.updateLobby();
 
-      io.to(this.lobby.id).emit("EbayData", inPriceData);
-      io.to(this.lobby.id).emit("gameInfo", gameInfo);
+      io.in(this.lobby.id).emit("EbayData", inPriceData);
+      io.in(this.lobby.id).emit("gameInfo", gameInfo);
 
       await this.wait(this.lobby.gameinside.maxTime);
       if (!this.lobby.gameinside.scores) {
@@ -108,7 +105,7 @@ class PriceGame extends BaseGame {
           .sort((a, b) => b.score - a.score), // Sortierung nach Score
       };
 
-      io.to(this.lobby.id).emit("scoreBoard", scoreboard);
+      io.in(this.lobby.id).emit("scoreBoard", scoreboard);
       await this.delay(5000);
 
       for (const playerScore of this.lobby.gameinside.scores) {
@@ -129,9 +126,7 @@ class PriceGame extends BaseGame {
     if (!this.lobby.gameinside.scores) {
       return;
     }
-
     const correctPriceFloat = parseFloat(correctPrice);
-    console.log("Correct Price:" + correctPriceFloat);
 
     // Berechnung der Differenz und Vergabe von Punkten
     for (const player of this.lobby.players) {
@@ -247,7 +242,6 @@ class PriceGame extends BaseGame {
         playerScore.hasPlayed = true;
         playerScore.gameScoreSpecial = [{ priceguess: answer, differanz }];
       }
-      console.log(playerScore);
     } catch (error) {
       console.error("Failed to handle answer:", error);
     }
@@ -278,9 +272,9 @@ class PriceGame extends BaseGame {
         score: score,
       };
     });
-    io.to(this.lobby.id).emit("gameEnd");
+    io.in(this.lobby.id).emit("gameEnd");
     await this.delay(60);
-    io.to(this.lobby.id).emit("playerData", playerData);
+    io.in(this.lobby.id).emit("playerData", playerData);
     for (const player of this.lobby.players) {
       const score =
         this.lobby.gameinside.scores?.find((s) => s.playerId === player.id)
