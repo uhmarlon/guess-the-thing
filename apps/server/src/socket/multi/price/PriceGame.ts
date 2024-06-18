@@ -3,30 +3,27 @@ import { Lobby } from "../../../utlis/gametype";
 import { io } from "../../../server";
 import { Socket } from "socket.io";
 import { UserExists } from "../../../api/player/checks/exists";
-import cocktailData from "../../../data/cocktail/cocktail.json";
 import { db } from "../../../db";
-import { eq } from "drizzle-orm";
-import { userLevels } from "../../../db/schema";
-import { Player } from "../../../utlis/gametype";
+import { preisguess } from "../../../db/schema";
+import { sql } from "drizzle-orm";
 
-type CocktailData = {
-  strDrink: string;
-  idDrink: string;
-  strDrinkThumb: string;
-  strInstructions: string;
+type PriceData = {
+  id: number;
+  title: string;
+  price: string;
+  image: string | null;
+  createdAt: Date | null;
 };
 
-class DrinkGame extends BaseGame {
-  private usedDrinks: Set<string> = new Set();
+type gameScoreSpecial = { priceguess: number; differanz: number };
+
+class PriceGame extends BaseGame {
+  private usedPrice: Set<number> = new Set();
   private language: "en";
 
   constructor(lobby: Lobby, language: "en") {
     super(lobby);
     this.language = language;
-  }
-
-  async delay(ms: number): Promise<void> {
-    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
   async startGame(): Promise<void> {
@@ -36,51 +33,88 @@ class DrinkGame extends BaseGame {
     this.updateLobby();
     await this.delay(2000);
     io.to(this.lobby.id).emit("gameScreen");
-    await this.delay(50);
+    await this.delay(60);
     this.gameLoop();
   }
 
   async gameLoop(): Promise<void> {
+    const leaderboardInt = {
+      ItemPrice: 0,
+      player: this.lobby.players.map((player) => ({
+        username: player.name,
+        level: player.level,
+        score: 0,
+        priceguess: "**",
+        differanz: "0",
+      })),
+    };
+    io.to(this.lobby.id).emit("initalleaderboard", leaderboardInt);
+
     for (let i = 0; i < (this.lobby.gameinside?.maxRounds || 5); i++) {
       this.lobby.gameinside.round = i + 1;
       const { maxTime, round, maxRounds } = this.lobby.gameinside;
       const gameInfo = { maxTime, round, maxRounds };
       await this.initializeScores();
 
-      const { correctDrink, options } = await this.getRandomDrink();
-      const correctDrinkid = correctDrink.idDrink;
-      const inDrinkData = {
-        DrinkThumb: correctDrink.strDrinkThumb,
-        options,
+      const randomItem: PriceData = await this.getRandomItem();
+      const correctItem = randomItem;
+      console.log("Firstload:" + randomItem.price);
+      const inPriceData = {
+        Image: randomItem.image,
+        title: randomItem.title,
       };
 
       if (!this.lobby.gameinside.gameSpecial) {
-        this.lobby.gameinside.gameSpecial = [{ i, correctDrinkid }];
+        this.lobby.gameinside.gameSpecial = [{ i, correctItem }];
       } else {
-        this.lobby.gameinside.gameSpecial[i] = { i, correctDrinkid };
+        this.lobby.gameinside.gameSpecial[i] = { i, correctItem };
       }
 
       this.updateLobby();
 
-      io.to(this.lobby.id).emit("DrinkData", inDrinkData);
+      io.to(this.lobby.id).emit("EbayData", inPriceData);
       io.to(this.lobby.id).emit("gameInfo", gameInfo);
 
       await this.wait(this.lobby.gameinside.maxTime);
-
       if (!this.lobby.gameinside.scores) {
         return;
       }
+      await this.calculateScores(randomItem.price);
+
       const scoreboard = {
-        cocktailName: correctDrink.strDrink,
-        player: {
-          username: this.lobby.players.map((player) => player.name),
-          score: this.lobby.gameinside.scores.map((score) => score.score),
-          level: this.lobby.players.map((player) => player.level),
-        },
+        ItemPrice: randomItem.price,
+        player: this.lobby.players
+          .map((player) => {
+            const playerScore = this.lobby.gameinside.scores?.find(
+              (s) => s.playerId === player.id
+            );
+            const gameScoreSpecial = playerScore?.gameScoreSpecial?.[0] as {
+              priceguess: number;
+              differanz: number;
+            };
+
+            return {
+              username: player.name,
+              level: player.level,
+              score: playerScore?.score ?? 0,
+              priceguess: gameScoreSpecial
+                ? gameScoreSpecial.priceguess.toString()
+                : "**",
+              differanz: gameScoreSpecial
+                ? gameScoreSpecial.differanz.toString()
+                : "**",
+            };
+          })
+          .sort((a, b) => b.score - a.score), // Sortierung nach Score
       };
 
       io.to(this.lobby.id).emit("scoreBoard", scoreboard);
       await this.delay(5000);
+
+      for (const playerScore of this.lobby.gameinside.scores) {
+        playerScore.gameScoreSpecial = [{ priceguess: 0, differanz: 0 }];
+        playerScore.hasPlayed = false;
+      }
 
       if (i === (this.lobby.gameinside?.maxRounds ?? 0) - 1) {
         this.updateLobby();
@@ -88,6 +122,57 @@ class DrinkGame extends BaseGame {
         return;
       }
       this.updateLobby();
+    }
+  }
+
+  async calculateScores(correctPrice: string): Promise<void> {
+    if (!this.lobby.gameinside.scores) {
+      return;
+    }
+
+    const correctPriceFloat = parseFloat(correctPrice);
+    console.log("Correct Price:" + correctPriceFloat);
+
+    // Berechnung der Differenz und Vergabe von Punkten
+    for (const player of this.lobby.players) {
+      const playerScore = this.lobby.gameinside.scores.find(
+        (s) => s.playerId === player.id
+      );
+
+      if (!playerScore) {
+        continue;
+      }
+
+      let gameScoreSpecial: { priceguess: number; differanz: number | string } =
+        {
+          priceguess: 0,
+          differanz: 0,
+        };
+
+      if (
+        playerScore.gameScoreSpecial &&
+        playerScore.gameScoreSpecial.length > 0
+      ) {
+        gameScoreSpecial = playerScore.gameScoreSpecial[0] as {
+          priceguess: number;
+          differanz: number | string;
+        };
+      }
+
+      const priceguess = gameScoreSpecial.priceguess;
+      if (playerScore.hasPlayed && priceguess !== 0) {
+        const differanz = correctPriceFloat - priceguess;
+        const absDifferanz = Math.abs(differanz);
+        const score = Math.floor(Math.max(0, 100 - absDifferanz));
+
+        playerScore.score += score;
+        playerScore.gameScoreSpecial = [
+          {
+            priceguess,
+            differanz: (differanz >= 0 ? "+" : "") + differanz.toFixed(2),
+          },
+        ];
+      }
     }
   }
 
@@ -101,48 +186,47 @@ class DrinkGame extends BaseGame {
     }
   }
 
-  async getRandomDrink(): Promise<{
-    correctDrink: CocktailData;
-    options: { idDrink: string; strDrink: string }[];
-  }> {
-    const drinks: CocktailData[] = cocktailData as unknown as CocktailData[];
-    const availableDrinks = drinks.filter(
-      (drink) => !this.usedDrinks.has(drink.idDrink)
-    );
-
-    if (availableDrinks.length === 0) {
-      console.error("No more drinks available");
-      return {
-        correctDrink: {
-          strDrink: "",
-          idDrink: "",
-          strDrinkThumb: "",
-          strInstructions: "",
-        },
-        options: [],
-      };
+  async getRandomItem(): Promise<PriceData> {
+    console.time("getRandomItem");
+    try {
+      const item = await this.fetchRandomItem();
+      console.timeEnd("getRandomItem");
+      return item;
+    } catch (error) {
+      console.error("Failed to get random item from DB:", error);
+      throw error;
     }
-    const correctDrink =
-      availableDrinks[Math.floor(Math.random() * availableDrinks.length)];
-    this.usedDrinks.add(correctDrink.idDrink);
+  }
 
-    const otherOptions = drinks
-      .filter((drink) => drink.idDrink !== correctDrink.idDrink)
-      .sort(() => 0.5 - Math.random())
-      .slice(0, 3)
-      .map((drink) => ({ idDrink: drink.idDrink, strDrink: drink.strDrink }));
+  private async fetchRandomItem(): Promise<PriceData> {
+    let retries = 0;
+    const maxRetries = 10;
 
-    const options = [
-      ...otherOptions,
-      { idDrink: correctDrink.idDrink, strDrink: correctDrink.strDrink },
-    ].sort(() => 0.5 - Math.random());
+    while (retries < maxRetries) {
+      const data = await db
+        .select()
+        .from(preisguess)
+        .where(sql`id >= FLOOR(RAND() * (SELECT MAX(id) FROM ${preisguess}))`)
+        .limit(1)
+        .execute();
+      if (data.length === 0) {
+        retries++;
+        continue;
+      }
+      const item = data[0];
+      if (!this.usedPrice.has(item.id)) {
+        this.usedPrice.add(item.id);
+        return item;
+      }
 
-    return { correctDrink, options };
+      retries++;
+    }
+    throw new Error("Exceeded maximum retries to fetch a unique item.");
   }
 
   static async answerHandel(
     socket: Socket,
-    data: { lobbyId: string; answer: string },
+    data: { lobbyId: string; answer: number },
     lobby: Lobby
   ): Promise<void> {
     try {
@@ -154,75 +238,19 @@ class DrinkGame extends BaseGame {
       ) {
         return;
       }
-      const lastDrinkValue =
-        lobby.gameinside.round &&
-        lobby.gameinside.gameSpecial[lobby.gameinside.round - 1];
-
+      const answer = data.answer;
+      const differanz = 0;
       const playerScore = lobby.gameinside.scores.find(
-        (score) => score.playerId === player.id
+        (s) => s.playerId === player.id
       );
-      if (
-        data.answer ===
-        (lastDrinkValue as { i: number; correctDrinkid: string }).correctDrinkid
-      ) {
-        if (playerScore && !playerScore.hasPlayed) {
-          const score = await DrinkGame.rightAnswer(playerScore, lobby);
-          const rdata = {
-            score: score,
-            drinkValue: (
-              lastDrinkValue as { i: number; correctDrinkid: string }
-            ).correctDrinkid,
-          };
-          io.to(socket.id).emit("rightAnswer", rdata);
-        }
-      } else {
-        playerScore?.hasPlayed == true;
-        return;
+      if (playerScore) {
+        playerScore.hasPlayed = true;
+        playerScore.gameScoreSpecial = [{ priceguess: answer, differanz }];
       }
+      console.log(playerScore);
     } catch (error) {
       console.error("Failed to handle answer:", error);
     }
-  }
-
-  static async rightAnswer(
-    playerScore: {
-      playerId: string;
-      score: number;
-      hasPlayed: boolean;
-      isReady: boolean;
-    },
-    lobby: Lobby
-  ): Promise<number> {
-    if (!lobby.gameinside.scores) {
-      return 0;
-    }
-    const playersAnswered = lobby.gameinside.scores.filter(
-      (score) => score.hasPlayed
-    ).length;
-    const multiplier = 1 + ((lobby.players.length - playersAnswered) / 10) * 2;
-    playerScore.score += Math.floor(50 * multiplier);
-    playerScore.hasPlayed = true;
-    return playerScore.score;
-  }
-
-  async initializeScores(): Promise<void> {
-    if (
-      !this.lobby.gameinside.scores ||
-      this.lobby.gameinside.scores.length === 0
-    ) {
-      this.lobby.gameinside.scores = this.lobby.players.map((player) => ({
-        playerId: player.id,
-        score: 0,
-        hasPlayed: false,
-        isReady: false,
-      }));
-    } else {
-      this.lobby.gameinside.scores.forEach((player) => {
-        player.hasPlayed = false;
-        player.isReady = false;
-      });
-    }
-    this.updateLobby();
   }
 
   async endGame(): Promise<void> {
@@ -235,6 +263,7 @@ class DrinkGame extends BaseGame {
         const userExists = new UserExists();
         if (await userExists.checkUserExists(player.id)) {
           await this.addXPLoginPlayer(player);
+          await this.addStatistics(player, 2, this.language);
         }
       }
     }
@@ -250,6 +279,7 @@ class DrinkGame extends BaseGame {
       };
     });
     io.to(this.lobby.id).emit("gameEnd");
+    await this.delay(60);
     io.to(this.lobby.id).emit("playerData", playerData);
     for (const player of this.lobby.players) {
       const score =
@@ -262,39 +292,6 @@ class DrinkGame extends BaseGame {
 
     this.updateLobby();
   }
-
-  async addXPLoginPlayer(player: Player): Promise<void> {
-    const playerScore =
-      this.lobby.gameinside.scores?.find((s) => s.playerId === player.id)
-        ?.score || 0;
-    const xpToAdd = Math.floor(playerScore / 2);
-
-    try {
-      const levelExists = await db
-        .select()
-        .from(userLevels)
-        .where(eq(userLevels.userId, player.id));
-
-      if (levelExists.length > 0) {
-        await db
-          .update(userLevels)
-          .set({
-            levelpoints: levelExists[0].levelpoints + xpToAdd,
-          })
-          .where(eq(userLevels.userId, player.id));
-      } else {
-        await db.insert(userLevels).values({
-          userId: player.id,
-          levelpoints: xpToAdd,
-        });
-      }
-    } catch (error) {
-      console.error(
-        "Failed to add/update XP:",
-        error + " for user " + player.id
-      );
-    }
-  }
 }
 
-export default DrinkGame;
+export default PriceGame;

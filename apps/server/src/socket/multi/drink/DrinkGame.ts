@@ -97,6 +97,7 @@ class DrinkGame extends BaseGame {
     correctDrink: CocktailData;
     options: { idDrink: string; strDrink: string }[];
   }> {
+    console.time("getRandomDrink");
     const drinks: CocktailData[] = cocktailData as unknown as CocktailData[];
     const availableDrinks = drinks.filter(
       (drink) => !this.usedDrinks.has(drink.idDrink)
@@ -128,6 +129,7 @@ class DrinkGame extends BaseGame {
       ...otherOptions,
       { idDrink: correctDrink.idDrink, strDrink: correctDrink.strDrink },
     ].sort(() => 0.5 - Math.random());
+    console.timeEnd("getRandomDrink");
 
     return { correctDrink, options };
   }

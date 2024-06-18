@@ -85,7 +85,7 @@ export const gameStatistics = mysqlTable("game_statistics", {
 export const preisguess = mysqlTable("preisguess", {
   id: int("id").primaryKey(),
   title: varchar("title", { length: 255 }).notNull(),
-  price: decimal("price", { precision: 10, scale: 2 }),
+  price: decimal("price", { precision: 10, scale: 2 }).notNull(),
   image: longtext("image"),
   createdAt: timestamp("created_at"),
 });

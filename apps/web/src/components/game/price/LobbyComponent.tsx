@@ -29,7 +29,7 @@ export default function LobbyComponent(): JSX.Element {
     const gustid = getOrCreateGuestToken("guestToken");
     const userId = session?.user?.id || gustid;
     if (status !== "loading") {
-      socket.emit("join", router.id, "multi", "drink", userId);
+      socket.emit("join", router.id, "multi", "price", userId);
 
       socket.on("gamelobbyinfo", (data) => {
         setPlayers(data);

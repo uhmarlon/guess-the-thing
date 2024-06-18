@@ -28,7 +28,7 @@ async function getData(game: string): Promise<LeaderboardData> {
       headers: {
         "Content-Type": "application/json",
       },
-      cache: "force-cache",
+      cache: "no-cache",
     }
   );
 

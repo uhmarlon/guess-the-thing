@@ -5,122 +5,37 @@ import { socket } from "@utils/game-socket";
 import TimerComponent from "@components/ds/TimerComponent";
 import UserInfo from "@components/ds/username";
 import Image from "next/image";
-import CocktailButtons from "src/components/game/drink/CocktailButtonGroup";
+import { useParams } from "next/navigation";
+type Player = {
+  username: string;
+  level: number;
+  score: number;
+  priceguess: string;
+  differanz: string;
+};
 
 type scoreBoardData = {
-  cocktailName: string;
-  player: { username: []; score: []; level: [] };
+  ItemPrice: number;
+  player: Player[];
 };
 
-type DrinkData = {
-  DrinkThumb: string;
-  options: {
-    idDrink: string;
-    strDrink: string;
-  }[];
-};
-
-const ResultsPopup = ({
-  cocktailImage,
-  data,
-}: {
-  cocktailImage: string;
-  data: scoreBoardData;
-}) => {
-  const [scores, setScores] = useState<number[]>([]);
-  const [sortedData, setSortedData] = useState<{
-    username: string[];
-    level: number[];
-    score: number[];
-  }>({ username: [], level: [], score: [] });
-
-  useEffect(() => {
-    setScores(data.player.score.map(() => 0));
-
-    const combinedData = data.player.username.map((username, index) => ({
-      username,
-      level: data.player.level[index],
-      score: data.player.score[index],
-    }));
-
-    combinedData.sort((a, b) => b.score - a.score);
-
-    setSortedData({
-      username: combinedData.map((item) => item.username),
-      level: combinedData.map((item) => item.level),
-      score: combinedData.map((item) => item.score),
-    });
-
-    const timers = combinedData.map((item, index) => {
-      return setInterval(() => {
-        setScores((prevScores) => {
-          const newScores = [...prevScores];
-          if (newScores[index] < item.score) {
-            newScores[index] += 1;
-          } else {
-            clearInterval(timers[index]);
-          }
-          return newScores;
-        });
-      }, 10);
-    });
-
-    return () => {
-      timers.forEach((timer) => clearInterval(timer));
-    };
-  }, [data.player.level, data.player.score, data.player.username]);
-
-  return (
-    <motion.div className="absolute top-0 left-0 w-full h-full backdrop-blur-lg flex justify-center z-0">
-      <div className="p-4 mt-24 md:mt-28 h-fit rounded-lg bg-gray-800/70  text-white">
-        <div className="flex justify-center">
-          <div className="w-60 h-60">
-            <Image
-              src={cocktailImage}
-              alt="Cocktail Image"
-              width={400}
-              height={400}
-              className="rounded-lg"
-            />
-          </div>
-        </div>
-        <h2 className="flex pt-2 flex-row text-lg justify-center md:text-2xl font-bold">
-          {data.cocktailName}
-        </h2>
-        <h2 className="text-lg md:pt-2 font-bold mb-2">Round Results</h2>
-        <table className="min-w-full">
-          <tbody>
-            {sortedData.username.map((item, index) => (
-              <tr key={index}>
-                <td className="border px-4 py-2">
-                  <UserInfo name={item} level={sortedData.level[index]} />
-                </td>
-                <motion.td
-                  className="border px-4 py-2 w-32 text-center"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                >
-                  {scores[index]}
-                </motion.td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </motion.div>
-  );
+type PriceData = {
+  Image: string;
+  title: string;
 };
 
 export default function PriceGameScreen(): JSX.Element {
+  const router = useParams();
+  const [leaderboard, setLeaderboard] = useState<scoreBoardData>();
   const [time, setTime] = useState(100);
   const [round, setRound] = useState(1);
   const [maxRounds, setMaxRounds] = useState(5);
 
-  const [correctDrinkData, setCorrectDrinkData] = useState<DrinkData>();
+  const [priceInData, setPriceInData] = useState<PriceData>();
   const [activeInput, setActiveInput] = useState(true);
   const [score, setScores] = useState(0);
-  const [scoreBoard, setScoreBoard] = useState(false);
-  const [scoreBoardData, setScoreBoardData] = useState<scoreBoardData>();
+  const [price, setPrice] = useState("**.**");
+  const [guessPrice, setGuessPrice] = useState("");
   const [playSound, setPlaySound] = useState(false);
 
   const containerVariants = {
@@ -130,17 +45,22 @@ export default function PriceGameScreen(): JSX.Element {
   };
 
   useEffect(() => {
+    socket.on("initalleaderboard", (data: scoreBoardData) => {
+      setLeaderboard(data);
+    });
+
     socket.on("gameInfo", (data) => {
-      setScoreBoard(false);
       setTime(data.maxTime);
       setRound(data.round);
       setMaxRounds(data.maxRounds);
       setPlaySound(true);
     });
 
-    socket.on("DrinkData", (data) => {
+    socket.on("EbayData", (data) => {
       setActiveInput(true);
-      setCorrectDrinkData(data);
+      setGuessPrice("");
+      setPrice("**.**");
+      setPriceInData(data);
     });
 
     socket.on("rightAnswer", (data) => {
@@ -148,8 +68,10 @@ export default function PriceGameScreen(): JSX.Element {
     });
 
     socket.on("scoreBoard", (data) => {
-      setScoreBoard(true);
-      setScoreBoardData(data);
+      setActiveInput(false);
+      setPrice(data.ItemPrice as string);
+      setLeaderboard(data);
+
       setTime(5);
       setTimeout(() => {
         setPlaySound(false);
@@ -165,6 +87,18 @@ export default function PriceGameScreen(): JSX.Element {
     };
   }, []);
 
+  const handelPrice = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setGuessPrice(e.target.value);
+  };
+
+  const sendAnswer = () => {
+    const data = {
+      lobbyId: router.id,
+      answer: guessPrice,
+    };
+    socket.emit("answerHandel", data);
+  };
+
   return (
     <div className="mt-3">
       <div className="fixed top-2 right-2 md:right-5 bg-purple-600 text-white font-bold text-xs md:text-sm lg:text-base p-2 shadow-lg rounded-lg">
@@ -173,17 +107,10 @@ export default function PriceGameScreen(): JSX.Element {
           <div>
             {round}/{maxRounds}
           </div>
-          <div>SCORE</div>
+          <div>POINTS</div>
           <div>{score}</div>
         </div>
       </div>
-
-      {scoreBoard && (
-        <ResultsPopup
-          cocktailImage={correctDrinkData?.DrinkThumb as string}
-          data={scoreBoardData as scoreBoardData}
-        />
-      )}
 
       <motion.div
         initial="initial"
@@ -201,37 +128,84 @@ export default function PriceGameScreen(): JSX.Element {
           </div>
         </div>
 
-        <div className="flex items-center justify-center">
-          {!correctDrinkData && (
-            <div className="text-white text-2xl md:text-4xl lg:text-6xl">
-              Loading...
-            </div>
-          )}
-          {correctDrinkData && (
-            <div className="flex items-center justify-center pt-2">
-              <div className="w-60 h-60 md:w-96 md:h-96 lg:w-96 lg:h-96">
+        <div className="bg-gttlightpurple/20 grid grid-cols-1 md:grid-cols-8 p-4 max-w-6xl mx-auto">
+          <div className="md:col-span-5 md:col-start-4 flex flex-col items-center">
+            <div className="w-64 h-64 md:w-96 md:h-96 m-2 flex items-center justify-center">
+              {(priceInData?.Image && (
                 <Image
-                  src={correctDrinkData.DrinkThumb}
-                  alt="Drink Image"
-                  width={400}
-                  height={400}
-                  className="rounded-lg"
+                  src={priceInData?.Image}
+                  alt="Price Image"
+                  className="rounded-lg h-auto max-w-full object-contain"
+                  priority
+                  height={280}
+                  width={280}
                 />
+              )) || (
+                <div className="w-64 h-64 md:w-96 md:h-96 lg:w-96 lg:h-96 bg-gttblack/95 text-white flex items-center justify-center rounded-lg">
+                  <div className="text-center">Loading Image...</div>
+                </div>
+              )}
+            </div>
+            <div className="bg-gttblack/95 text-white w-full rounded-lg p-4">
+              <div className="flex flex-col p-2 space-y-1 bg-opacity-10 bg-white rounded-lg">
+                <div className="flex justify-between p-1 bg-opacity-10 hover:bg-gttgold/90 hover:text-black rounded-md">
+                  <div className="pr-2 font-semibold">Title:</div>
+                  <div className="text-right">
+                    {priceInData?.title || "Loading Title..."}
+                  </div>
+                </div>
+                <div className="flex justify-between p-1 bg-opacity-10 hover:bg-gttgold/90 hover:text-black rounded-md">
+                  <div className="font-semibold">Price:</div>
+                  <div>{price} $</div>
+                </div>
+              </div>
+              <div className="flex p-2 space-x-2 bg-opacity-10 bg-white rounded-lg mt-4">
+                <input
+                  className="w-full p-2 text-black rounded-lg focus:border-gttlightpurple ring-gttlightpurple"
+                  type="number"
+                  placeholder="Enter your guess ..."
+                  step="0.01"
+                  min="0.01"
+                  max="100000000"
+                  disabled={!activeInput}
+                  onChange={handelPrice}
+                  value={guessPrice}
+                />
+                <button
+                  onClick={sendAnswer}
+                  className="bg-gttlightpurple/80 text-white p-2 rounded-lg"
+                >
+                  GUESS
+                </button>
               </div>
             </div>
-          )}
-        </div>
-
-        <div className="flex items-center justify-center pt-2">
-          <div className="w-80 h-15  text-center text-white md:w-96 lg:w-auto md:text-base lg:text-2xl overflow-hidden overflow-ellipsis">
-            {!correctDrinkData?.options ? (
-              "Loading..."
-            ) : (
-              <CocktailButtons
-                active={activeInput}
-                options={correctDrinkData?.options}
-              />
-            )}
+          </div>
+          <div className="md:col-span-3 md:col-start-1 md:row-start-1 self-start bg-opacity-10 bg-white rounded-lg p-4 overflow-auto max-h-64 md:max-h-[25rem] custom-scrollbar">
+            <p className="p-1 font-semibold text-center">Leaderboard</p>
+            <table className="min-w-full divide-y divide-gray-200 text-sm">
+              <thead>
+                <tr>
+                  <th className="p-1 text-left">#</th>
+                  <th className="p-1 text-left">Name</th>
+                  <th className="p-1 text-right">Price</th>
+                  <th className="p-1 text-right">+/−</th>
+                  <th className="p-1 text-right">Points</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                {leaderboard?.player.map((player, index) => (
+                  <tr key={index}>
+                    <td className="p-1 text-left">{index + 1}</td>
+                    <td className="p-1 text-left">
+                      <UserInfo name={player.username} level={player.level} />
+                    </td>
+                    <td className="p-1 text-right">{player.priceguess} $</td>
+                    <td className="p-1 text-right">{player.differanz} $</td>
+                    <td className="p-1 text-right">{player.score}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </motion.div>

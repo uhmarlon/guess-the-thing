@@ -31,6 +31,7 @@ type Gameinside = {
     correctRounds?: number;
     hasPlayed: boolean;
     isReady: boolean;
+    gameScoreSpecial?: [unknown];
   }[];
   gameSpecial?: [unknown];
 };

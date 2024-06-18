@@ -41,6 +41,41 @@ export function Viewc({
   );
 }
 
+export function ViewWithOutW({
+  children,
+}: {
+  children: React.ReactNode;
+}): JSX.Element {
+  return (
+    <div className="flex flex-col min-h-screen">
+      <div className="flex-grow text-white bg-gradient-to-bl from-gttpurple to-gttblack">
+        <header className="p-2">
+          <div className="flex items-center">
+            <Link href="/">
+              <Image
+                alt="logo"
+                className="h-8 w-8 sm:h-10 sm:w-10 ml-1 sm:ml-10"
+                height={50}
+                src="/icon/logo.png"
+                width={50}
+              />
+            </Link>
+            <Link href="/">
+              <nav className="hidden sm:flex">
+                <div className="font-bold">Guess The Thing</div>
+              </nav>
+            </Link>
+          </div>
+        </header>
+        <div className="flex flex-row w-full h-full justify-center text-white">
+          {children}
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
+}
+
 export function Viewhead({
   children,
 }: {
