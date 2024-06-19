@@ -47,7 +47,6 @@ class JoinHandler {
             const userExists = new UserExists();
             const exists = await userExists.checkUserExists(playerId);
             level = (await userExists.getUserLevel(playerId)) as number;
-            console.log(`User ${playerId} exists: ${exists}`);
             if (exists) {
               hasLoggedin = true;
             }
