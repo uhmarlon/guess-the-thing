@@ -92,6 +92,15 @@ export default function PriceGameScreen(): JSX.Element {
     setGuessPrice(e.target.value);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      if (guessPrice === "") {
+        return;
+      }
+      sendAnswer();
+    }
+  };
+
   const sendAnswer = () => {
     const data = {
       lobbyId: router.id,
@@ -168,6 +177,7 @@ export default function PriceGameScreen(): JSX.Element {
                   max="100000000"
                   disabled={!activeInput}
                   onChange={handelPrice}
+                  onKeyDown={handleKeyDown}
                   value={guessPrice}
                 />
                 <button

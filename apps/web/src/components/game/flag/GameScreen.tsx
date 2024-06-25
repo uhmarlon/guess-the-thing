@@ -181,6 +181,17 @@ export default function FlagGameScreen(): JSX.Element {
     }
   };
 
+  const sendAnswer = () => {
+    const data = {
+      lobbyId: router.id,
+      answer: inputRef.current?.value,
+    };
+    socket.emit("answerHandel", data);
+    if (inputRef.current) {
+      inputRef.current.value = ""; // clear the input
+    }
+  };
+
   return (
     <div className="mt-3">
       <div className="fixed top-2 right-2 md:right-5 bg-purple-600 text-white font-bold text-xs md:text-sm lg:text-base p-2 shadow-lg rounded-lg">
@@ -230,13 +241,22 @@ export default function FlagGameScreen(): JSX.Element {
 
         {activeInput && (
           <div className="flex justify-center mt-4">
-            <input
-              ref={inputRef}
-              type="text"
-              placeholder="Enter Country Name"
-              onKeyDown={handleKeyDown}
-              className="px-3 py-3 text-white border rounded-lg bg-gray-800 border-gttlightpurple/50 border-spacing-2 w-72 focus:border-blue-500 focus:outline-none focus:ring"
-            />
+            <div className="flex p-2 space-x-2 bg-opacity-10 bg-white rounded-lg mt-4">
+              <input
+                ref={inputRef}
+                type="text"
+                placeholder="Enter Country Name"
+                onKeyDown={handleKeyDown}
+                className="px-3 py-3 text-white border rounded-lg bg-gray-800 border-gttlightpurple/50 border-spacing-2 w-72 focus:border-blue-500 focus:outline-none focus:ring"
+              />
+
+              <button
+                onClick={sendAnswer}
+                className="bg-gttlightpurple/80 text-white p-2 rounded-lg"
+              >
+                GUESS
+              </button>
+            </div>
           </div>
         )}
       </motion.div>
