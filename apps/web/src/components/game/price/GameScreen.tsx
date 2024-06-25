@@ -6,6 +6,7 @@ import TimerComponent from "@components/ds/TimerComponent";
 import UserInfo from "@components/ds/username";
 import Image from "next/image";
 import { useParams } from "next/navigation";
+
 type Player = {
   username: string;
   level: number;
@@ -118,8 +119,8 @@ export default function PriceGameScreen(): JSX.Element {
         exit="exit"
         variants={containerVariants}
       >
-        <div className="flex items-center justify-center pb-2 md:pb-0">
-          <div className="w-1/4 md:w-[6%]">
+        <div className="flex items-center justify-center pb-2 md:pb-2">
+          <div className="w-1/4 md:w-[10%]">
             <TimerComponent
               maxTime={time}
               round={round}
@@ -128,20 +129,18 @@ export default function PriceGameScreen(): JSX.Element {
           </div>
         </div>
 
-        <div className="bg-gttlightpurple/20 grid grid-cols-1 md:grid-cols-8 p-4 max-w-6xl mx-auto">
+        <div className="bg-gttlightpurple/20 grid grid-cols-1 md:grid-cols-8 gap-4 p-4 max-w-6xl mx-auto rounded-none md:rounded-lg">
           <div className="md:col-span-5 md:col-start-4 flex flex-col items-center">
-            <div className="w-64 h-64 md:w-96 md:h-96 m-2 flex items-center justify-center">
-              {(priceInData?.Image && (
+            <div className="relative w-64 h-64 md:w-96 md:h-96 m-2 bg-gttblack/95 flex items-center justify-center">
+              {priceInData?.Image ? (
                 <Image
                   src={priceInData?.Image}
                   alt="Price Image"
-                  className="rounded-lg h-auto max-w-full object-contain"
-                  priority
-                  height={280}
-                  width={280}
+                  className="object-contain"
+                  fill
                 />
-              )) || (
-                <div className="w-64 h-64 md:w-96 md:h-96 lg:w-96 lg:h-96 bg-gttblack/95 text-white flex items-center justify-center rounded-lg">
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-white rounded-lg">
                   <div className="text-center">Loading Image...</div>
                 </div>
               )}
