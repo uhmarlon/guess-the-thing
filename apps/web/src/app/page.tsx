@@ -22,10 +22,9 @@ const games = [
     bgColor: "bg-blue-600",
   },
   {
-    title: "Coming Soon",
-    description: "We are working on new games!",
-    href: "#",
-    imgSrc: "/commingsoon.webp", // Placeholder image
+    title: "Guess The Price",
+    href: "/game/multi/price",
+    imgSrc: "/gameimages/price.webp", // Placeholder image
     bgColor: "bg-green-600",
   },
   {
@@ -68,7 +67,7 @@ export default function Page(): JSX.Element {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            We are currently in Beta. Join now to help us improve!
+            We are currently in Beta. Please report any issues.
           </motion.div>
           <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 gap-6">
             {games.map((game, index) => (
