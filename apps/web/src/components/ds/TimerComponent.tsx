@@ -37,15 +37,31 @@ export default function TimerComponent({
   }, [maxTime]);
 
   useEffect(() => {
-    setTimeLeft(maxTime * 1000);
-    startTimer();
+    // Clears existing timer and restarts
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
+
+    const endTime = Date.now() + maxTime * 1000;
+    setTimeLeft(maxTime * 1000); // Set the initial state for time left
+
+    timerRef.current = setInterval(() => {
+      const newTimeLeft = Math.max(endTime - Date.now(), 0);
+      setTimeLeft(newTimeLeft);
+
+      if (newTimeLeft === 0) {
+        clearInterval(timerRef.current || undefined);
+        timerRef.current = null;
+      }
+    }, intervalTime);
 
     return () => {
       if (timerRef.current) {
         clearInterval(timerRef.current);
       }
     };
-  }, [maxTime, round, startTimer]);
+  }, [maxTime, round]);
 
   useEffect(() => {
     if (playSound && timeLeft <= 3098 && timeLeft > 0) {

@@ -34,8 +34,10 @@ export default function PriceGameScreen(): JSX.Element {
 
   const [priceInData, setPriceInData] = useState<PriceData>();
   const [activeInput, setActiveInput] = useState(true);
-  const [score, setScores] = useState(0);
+  const [guessPlayer, setGuessPlayer] = useState(0);
+  const [maxPlayer, setMaxPlayer] = useState(2);
   const [price, setPrice] = useState("**.**");
+  const [rightPrice, setRightPrice] = useState("");
   const [guessPrice, setGuessPrice] = useState("");
   const [playSound, setPlaySound] = useState(false);
 
@@ -64,8 +66,9 @@ export default function PriceGameScreen(): JSX.Element {
       setPriceInData(data);
     });
 
-    socket.on("rightAnswer", (data) => {
-      setScores(data.score);
+    socket.on("guessBoard", (data) => {
+      setGuessPlayer(data.guessPlayer);
+      setMaxPlayer(data.maxPlayer);
     });
 
     socket.on("scoreBoard", (data) => {
@@ -73,7 +76,7 @@ export default function PriceGameScreen(): JSX.Element {
       setPrice(data.ItemPrice as string);
       setLeaderboard(data);
 
-      setTime(5);
+      setTime(10.1);
       setTimeout(() => {
         setPlaySound(false);
       }, 500);
@@ -107,18 +110,21 @@ export default function PriceGameScreen(): JSX.Element {
       answer: guessPrice,
     };
     socket.emit("answerHandel", data);
+    setActiveInput(false);
   };
 
   return (
     <div className="mt-3">
       <div className="fixed top-2 right-2 md:right-5 bg-purple-600 text-white font-bold text-xs md:text-sm lg:text-base p-2 shadow-lg rounded-lg">
         <div className="flex justify-between space-x-4">
+          <div>GUESSED</div>
+          <div>
+            {guessPlayer}/{maxPlayer}
+          </div>
           <div>ROUND</div>
           <div>
             {round}/{maxRounds}
           </div>
-          <div>POINTS</div>
-          <div>{score}</div>
         </div>
       </div>
 
@@ -156,13 +162,17 @@ export default function PriceGameScreen(): JSX.Element {
             </div>
             <div className="bg-gttblack/95 text-white w-full rounded-lg p-4">
               <div className="flex flex-col p-2 space-y-1 bg-opacity-10 bg-white rounded-lg">
-                <div className="flex justify-between p-1 bg-opacity-10 hover:bg-gttgold/90 hover:text-black rounded-md">
+                <div className="flex justify-between p-1 bg-opacity-10  rounded-md">
                   <div className="pr-2 font-semibold">Title:</div>
                   <div className="text-right">
                     {priceInData?.title || "Loading Title..."}
                   </div>
                 </div>
-                <div className="flex justify-between p-1 bg-opacity-10 hover:bg-gttgold/90 hover:text-black rounded-md">
+                <div
+                  className="flex justify-between p-1 bg-opacity-10 rounded-md
+                  ${rightPrice}
+                "
+                >
                   <div className="font-semibold">Price:</div>
                   <div>{price} $</div>
                 </div>

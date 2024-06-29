@@ -25,12 +25,12 @@ class PriceGame extends BaseGame {
   }
 
   async startGame(): Promise<void> {
-    io.in(this.lobby.id).emit("gameCounter");
+    io.to(this.lobby.id).emit("gameCounter");
     await this.delay(3000);
     this.lobby.gameState = "inGame";
     this.updateLobby();
     await this.delay(2000);
-    io.in(this.lobby.id).emit("gameScreen");
+    io.to(this.lobby.id).emit("gameScreen");
     await this.delay(60);
     this.gameLoop();
   }
@@ -46,7 +46,12 @@ class PriceGame extends BaseGame {
         differanz: "0",
       })),
     };
-    io.in(this.lobby.id).emit("initalleaderboard", leaderboardInt);
+    io.to(this.lobby.id).emit("initalleaderboard", leaderboardInt);
+    const maxPlayer = this.lobby.players.length;
+    io.to(this.lobby.id).emit("guessBoard", {
+      guessPlayer: 0,
+      maxPlayer,
+    });
 
     for (let i = 0; i < (this.lobby.gameinside?.maxRounds || 5); i++) {
       this.lobby.gameinside.round = i + 1;
@@ -69,8 +74,8 @@ class PriceGame extends BaseGame {
 
       this.updateLobby();
 
-      io.in(this.lobby.id).emit("EbayData", inPriceData);
-      io.in(this.lobby.id).emit("gameInfo", gameInfo);
+      io.to(this.lobby.id).emit("EbayData", inPriceData);
+      io.to(this.lobby.id).emit("gameInfo", gameInfo);
 
       await this.wait(this.lobby.gameinside.maxTime);
       if (!this.lobby.gameinside.scores) {
@@ -105,8 +110,8 @@ class PriceGame extends BaseGame {
           .sort((a, b) => b.score - a.score), // Sortierung nach Score
       };
 
-      io.in(this.lobby.id).emit("scoreBoard", scoreboard);
-      await this.delay(5000);
+      io.to(this.lobby.id).emit("scoreBoard", scoreboard);
+      await this.delay(10000);
 
       for (const playerScore of this.lobby.gameinside.scores) {
         playerScore.gameScoreSpecial = [{ priceguess: 0, differanz: 0 }];
@@ -176,8 +181,17 @@ class PriceGame extends BaseGame {
       maxTime = maxTime * 1000;
     }
     const startTime = Date.now();
-    while (Date.now() - startTime < (maxTime || 30000)) {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+    let playersAnswered = 0;
+    let allAnswered = false;
+    while (!allAnswered && Date.now() - startTime < (maxTime || 30000)) {
+      if (!this.lobby.gameinside.scores) {
+        return;
+      }
+      playersAnswered = this.lobby.gameinside.scores.filter(
+        (score) => score.hasPlayed
+      ).length;
+      allAnswered = playersAnswered === this.lobby.players.length;
+      await this.delay(1000);
     }
   }
 
@@ -242,6 +256,15 @@ class PriceGame extends BaseGame {
         playerScore.hasPlayed = true;
         playerScore.gameScoreSpecial = [{ priceguess: answer, differanz }];
       }
+      // give me hove many players have played and how many players are in the lobby
+      const playersAnswered = lobby.gameinside.scores.filter(
+        (score) => score.hasPlayed
+      ).length;
+      const maxPlayer = lobby.players.length;
+      io.to(lobby.id).emit("guessBoard", {
+        guessPlayer: playersAnswered,
+        maxPlayer,
+      });
     } catch (error) {
       console.error("Failed to handle answer:", error);
     }
@@ -272,9 +295,9 @@ class PriceGame extends BaseGame {
         score: score,
       };
     });
-    io.in(this.lobby.id).emit("gameEnd");
+    io.to(this.lobby.id).emit("gameEnd");
     await this.delay(60);
-    io.in(this.lobby.id).emit("playerData", playerData);
+    io.to(this.lobby.id).emit("playerData", playerData);
     for (const player of this.lobby.players) {
       const score =
         this.lobby.gameinside.scores?.find((s) => s.playerId === player.id)

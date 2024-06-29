@@ -1,49 +1,22 @@
-# Willkommen Entwickler 🚀
+# About the Project
 
-Diese Projekt ist ein Multiplayer-Spiele Plattform, die es ermöglicht, mit Freunden verschiedene Spiele zu spielen.
-Alle Spiele werden eigenständig entwickelt und sind in dem Server integriert.
+This repository is the home for a dynamic web-based game platform that allows users to engage in a variety of interactive guessing games. The project is structured as a turbo monorepo, comprising a frontend web application developed with Next.js and a backend that includes a Fastify server, a WebSocket server, and a Discord bot for enhanced interaction possibilities.
 
-## Spiele
+## Key Features:
 
-- Flaggen Raten
-- Cocktails (Drinks) Raten
+- Interactive Games: Players can choose from several games, including:
 
-## Development
+  - Guess the Flag: Identify the correct country from its flag.
+  - Guess the Cocktail: Figure out the cocktail based a image.
+  - Guess the Price: Estimate the price of various items.
 
-Das ganze Projekt ist in einer Monorepo-Struktur aufgebaut. Das bedeutet, dass alle Spiele
-und der Server in einem Repository liegen.
+- Real-Time Interaction: Utilizing a WebSocket server, the game offers a seamless real-time gaming experience, promoting active player engagement.
+- Community and Collaboration: The integration of a Discord bot enables a community-driven approach, fostering interaction and collective gameplay.
+- Extensible Framework: The platform's modular design makes it straightforward for developers to introduce new games and expand existing features.
 
-Jeder Entwickler kann sich ein Spiel aussuchen und daran arbeiten. Die Spiele sind in eigenen
-Verzeichnissen unter `socket/ multi or singel` abgelegt.
+## Technology Stack:
 
-### Wichtig für Entwickler
+- Frontend: The user interface is built using Next.js, providing a robust and scalable solution for real-time web applications.
+- Backend: Powered by Fastify, the backend ensures fast and efficient server-side logic, complemented by a WebSocket server for real-time data transmission.
 
-- Jeder Entwickler sollte sich ein eigenes Branch erstellen und dort arbeiten.
-- Vor dem Pushen sollte ein Pull-Request erstellt werden.
-- Der Code sollte getestet sein und keine Fehler enthalten.
-- Env Variablen sollten in einem `.env` File abgelegt werden. ( Diese werden immer mit Marlon abgesprochen)
-- Alle env Variablen bekommt ihr von Marlon.
-
-### Installation
-
-1. Repository clonen
-2. `nvm use` ausführen für die richtige Node Version
-3. `pnpm install` ausführen immer ausführen wenn man neues Feature hinzufügt
-4. `pnpm run dev` ausführen um den Client zu starten (Client starte automatisch nach änderungen neu)
-5. `pnpm run server` ausführen um den Server zu starten (Server muss manuell neu gestartet werden)
-
-### Deployment
-
-Das Deployment wird auf Clientside automatisch durchgeführt. Der Server wird auf einen Root Server gehostet.
-Bei änderungen am Server muss man immer Marlon informieren für das Deployment.
-
-### Fragen
-
-Bei Fragen könnt ihr euch immer an Marlon wenden. Er wird euch bei allen Problemen helfen.
-
-### Viel Spaß beim Entwickeln 🚀
-
-```
-ps: Bitte immer auf die Codequalität achten und sauberen Code schreiben.
-Wenn das Projekt geld einbringt, wird der Gewinn aufgeteilt anteilig an die Personen die am Projekt Prozentoal am Projekt gearbeitet haben. Beispiel: du machst 2 Games von insgesamt 10 Games, dann bekommst du 20% vom Gewinn.
-```
+The primary goal of this project is to provide an engaging and interactive environment for game enthusiasts and developers alike, fostering a community where creativity and collaboration thrive.
