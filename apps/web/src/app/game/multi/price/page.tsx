@@ -29,7 +29,7 @@ export default function Page(): JSX.Element {
                 <Image
                   alt="Flag Game Image"
                   className="rounded-lg"
-                  src="/gameimages/Price.webp"
+                  src="/gameimages/price.webp"
                   priority
                   fill
                 />

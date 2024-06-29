@@ -75,6 +75,7 @@ export default function PriceGameScreen(): JSX.Element {
       setActiveInput(false);
       setPrice(data.ItemPrice as string);
       setLeaderboard(data);
+      setGuessPlayer(0);
 
       setTime(10.1);
       setTimeout(() => {
