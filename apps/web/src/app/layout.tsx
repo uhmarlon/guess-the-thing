@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { NextAuthProvider } from "../components/nextauthprovider";
 import type { Viewport } from "next";
+import CookieConsent from "../components/CookieConsent";
 
 export const viewport: Viewport = {
   themeColor: "#5041AB",
@@ -58,6 +59,7 @@ export default function RootLayout({
       <NextAuthProvider>
         <body className={`${inter.className} `}>
           <div>{children}</div>
+          <CookieConsent />
         </body>
       </NextAuthProvider>
     </html>
