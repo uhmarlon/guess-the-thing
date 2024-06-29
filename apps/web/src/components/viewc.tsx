@@ -98,9 +98,12 @@ export function Viewheadonly({
   children: React.ReactNode;
 }): JSX.Element {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <div>{children}</div>
+      <div className="flex-grow flex justify-center w-full bg-gradient-to-bl from-gttpurple to-gttblack text-white">
+        <div>{children}</div>
+      </div>
+      <Footer />
     </div>
   );
 }

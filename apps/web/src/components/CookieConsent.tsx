@@ -20,7 +20,7 @@ const CookieConsent: React.FC = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white p-4 rounded-lg shadow-lg flex items-center space-x-4 w-11/12 md:w-auto max-w-md">
+    <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white p-4 rounded-lg shadow-lg flex items-center space-x-4 w-11/12 md:w-auto max-w-md md:max-w-lg">
       <span className="text-yellow-400 text-2xl">🍪</span>
       <div className="flex-1 text-sm md:text-base">
         We use cookies for functional purposes.
