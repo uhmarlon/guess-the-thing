@@ -107,7 +107,7 @@ class PriceGame extends BaseGame {
                 : "**",
             };
           })
-          .sort((a, b) => b.score - a.score), // Sortierung nach Score
+          .sort((a, b) => b.score - a.score),
       };
 
       io.to(this.lobby.id).emit("scoreBoard", scoreboard);
@@ -133,7 +133,6 @@ class PriceGame extends BaseGame {
     }
     const correctPriceFloat = parseFloat(correctPrice);
 
-    // Berechnung der Differenz und Vergabe von Punkten
     for (const player of this.lobby.players) {
       const playerScore = this.lobby.gameinside.scores.find(
         (s) => s.playerId === player.id
@@ -256,7 +255,6 @@ class PriceGame extends BaseGame {
         playerScore.hasPlayed = true;
         playerScore.gameScoreSpecial = [{ priceguess: answer, differanz }];
       }
-      // give me hove many players have played and how many players are in the lobby
       const playersAnswered = lobby.gameinside.scores.filter(
         (score) => score.hasPlayed
       ).length;

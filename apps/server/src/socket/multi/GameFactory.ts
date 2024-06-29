@@ -13,9 +13,6 @@ class GameFactory {
         return new DrinkGame(lobby, "en");
       case "price":
         return new PriceGame(lobby, "en");
-      //case "anotherGameType":
-      //return new AnotherGameType(lobby);
-      // Add more cases as new games are developed
       default:
         throw new Error("Unsupported game mode: " + lobby.gameMode);
     }

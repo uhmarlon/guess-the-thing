@@ -1,4 +1,3 @@
-// AnswerHandler.ts
 import { Socket } from "socket.io";
 import GameDataManager from "./gameDataManager";
 import FlagGame from "./multi/flag/FlagGame";

@@ -207,8 +207,6 @@ export default function DrinkGameEnd(): JSX.Element {
               </div>
             </div>
           ))}
-
-        {/* // back home button */}
         <div className="mt-4">
           <button
             className="p-4 bg-blue-500 text-white rounded"

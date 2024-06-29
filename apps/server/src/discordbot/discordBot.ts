@@ -13,7 +13,7 @@ dotenv.config();
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
 const CHANNEL_ID = "705749365079277569";
 const SERVER_ID = "702575294095294609";
-const UPDATE_INTERVAL = 3 * 60 * 1000; // 3 Minuten
+const UPDATE_INTERVAL = 3 * 60 * 1000;
 
 if (!DISCORD_TOKEN) {
   console.warn(

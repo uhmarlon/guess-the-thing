@@ -37,7 +37,7 @@ export default function PriceGameScreen(): JSX.Element {
   const [guessPlayer, setGuessPlayer] = useState(0);
   const [maxPlayer, setMaxPlayer] = useState(2);
   const [price, setPrice] = useState("**.**");
-  const [rightPrice, setRightPrice] = useState("");
+  // const [rightPrice, setRightPrice] = useState("");
   const [guessPrice, setGuessPrice] = useState("");
   const [playSound, setPlaySound] = useState(false);
 

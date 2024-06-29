@@ -131,12 +131,7 @@ const MobileBurgerMenu = () => {
           className="absolute top-0 right-0 mt-4 mr-4"
           onClick={() => setIsOpen(false)}
         >
-          <Image
-            src="/icon/cross.svg" // Stellen Sie sicher, dass Sie ein Schließ-Icon haben
-            alt="Schließen"
-            width={25}
-            height={25}
-          />
+          <Image src="/icon/cross.svg" alt="Schließen" width={25} height={25} />
         </button>
         <div className="p-5">
           <h2 className="text-xl font-bold">Guess The Thing</h2>
@@ -144,9 +139,6 @@ const MobileBurgerMenu = () => {
             <Link href="/">
               <li className="py-2">Home</li>
             </Link>
-            {/* <li className="py-2">Über uns</li>
-            <li className="py-2">Dienstleistungen</li>
-            <li className="py-2">Kontakt</li> */}
           </ul>
         </div>
       </motion.div>

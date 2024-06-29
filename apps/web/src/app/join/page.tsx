@@ -5,7 +5,6 @@ import { Viewc } from "src/components/viewc";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getBackendURL } from "../../utils/game-api";
 
-// Composant séparé pour le contenu principal
 function Content() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -123,7 +122,6 @@ function Content() {
   );
 }
 
-// Composant principal
 export default function Page(): JSX.Element {
   return (
     <Viewc>

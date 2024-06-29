@@ -19,6 +19,11 @@ export default async function (server: FastifyInstance): Promise<void> {
       }
 
       const githubToken = process.env.GITHUB_TOKEN;
+      if (!githubToken) {
+        reply.code(500).send({ error: "GitHub token is not configured" });
+        return;
+      }
+
       const repoOwner = "uhmarlon";
       const repoName = "new-guess-the-thing";
 
@@ -52,7 +57,10 @@ export default async function (server: FastifyInstance): Promise<void> {
         console.error("Error creating issue: ", error);
         reply
           .code(500)
-          .send({ error: "Internal server error", details: error });
+          .send({
+            error: "Internal server error",
+            details: (error as Error).message,
+          });
       }
     }
   );

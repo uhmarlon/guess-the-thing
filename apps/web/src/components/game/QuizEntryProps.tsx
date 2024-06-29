@@ -19,7 +19,7 @@ const QuizEntry: React.FC<QuizEntryProps> = ({ gameId, url }) => {
         "https://guessthething.io/join?c=" + gameId
       );
       setCopied(true);
-      setTimeout(() => setCopied(false), 2000); // Reset after 2 seconds
+      setTimeout(() => setCopied(false), 2000);
     } catch (err) {
       console.log("Failed to copy: ", err);
     }
@@ -31,8 +31,8 @@ const QuizEntry: React.FC<QuizEntryProps> = ({ gameId, url }) => {
         <QRCode
           value={"https://guessthething.io/join?c=" + gameId}
           size={200}
-          bgColor="#00000000" // Transparent background
-          fgColor="#FFFFFF" // White foreground
+          bgColor="#00000000"
+          fgColor="#FFFFFF"
           className="mx-auto mt-4 hidden sm:block"
         />
         <div className="sm:hidden">

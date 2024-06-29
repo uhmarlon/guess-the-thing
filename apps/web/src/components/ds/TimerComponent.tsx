@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 const soundFile = "/sounds/timer.mp3";
 
@@ -18,33 +18,32 @@ export default function TimerComponent({
   const audioRef = useRef<HTMLAudioElement>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const startTimer = useCallback(() => {
-    const endTime = Date.now() + maxTime * 1000;
+  // const startTimer = useCallback(() => {
+  //   const endTime = Date.now() + maxTime * 1000;
 
-    if (timerRef.current) {
-      clearInterval(timerRef.current);
-    }
+  //   if (timerRef.current) {
+  //     clearInterval(timerRef.current);
+  //   }
 
-    timerRef.current = setInterval(() => {
-      const newTimeLeft = Math.max(endTime - Date.now(), 0);
-      setTimeLeft(newTimeLeft);
+  //   timerRef.current = setInterval(() => {
+  //     const newTimeLeft = Math.max(endTime - Date.now(), 0);
+  //     setTimeLeft(newTimeLeft);
 
-      if (newTimeLeft <= 0) {
-        clearInterval(timerRef.current!);
-        timerRef.current = null;
-      }
-    }, intervalTime);
-  }, [maxTime]);
+  //     if (newTimeLeft <= 0) {
+  //       clearInterval(timerRef.current!);
+  //       timerRef.current = null;
+  //     }
+  //   }, intervalTime);
+  // }, [maxTime]);
 
   useEffect(() => {
-    // Clears existing timer and restarts
     if (timerRef.current) {
       clearInterval(timerRef.current);
       timerRef.current = null;
     }
 
     const endTime = Date.now() + maxTime * 1000;
-    setTimeLeft(maxTime * 1000); // Set the initial state for time left
+    setTimeLeft(maxTime * 1000);
 
     timerRef.current = setInterval(() => {
       const newTimeLeft = Math.max(endTime - Date.now(), 0);

@@ -50,10 +50,7 @@ export default function Page(): JSX.Element {
 
   return (
     <ViewWithOutW>
-      <main>
-        {/* <PriceGameScreen /> */}
-        {renderGameComponent()}
-      </main>
+      <main>{renderGameComponent()}</main>
     </ViewWithOutW>
   );
 }

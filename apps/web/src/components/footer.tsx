@@ -14,24 +14,6 @@ export default function Footer(): JSX.Element {
             BUG REPORT
           </p>
         </Link>
-        {/* <a 
-          href="/resources"
-          className="text-gray-400 hover:text-white transition-colors"
-        >
-          RESOURCES
-        </a>
-        <a
-          href="/privacy-policy"
-          className="text-gray-400 hover:text-white transition-colors"
-        >
-          PRIVACY POLICY
-        </a>
-        <a
-          href="/contact"
-          className="text-gray-400 hover:text-white transition-colors"
-        >
-          CONTACT INFORMATION
-        </a> */}
       </div>
     </footer>
   );

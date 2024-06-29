@@ -8,7 +8,7 @@ import { LogSnag } from "@logsnag/node";
 
 const logsnag = new LogSnag({
   token: process.env.LOGSNAG_TOKEN!,
-  project: "uhmarlondev",
+  project: process.env.LOGSNAG_PROJECT!,
 });
 
 declare module "next-auth" {
@@ -37,8 +37,8 @@ export const authOptions: NextAuthOptions = {
       if (isNewUser) {
         await logsnag.track({
           channel: "gtt",
-          event: "New user created",
-          description: `New user created with ID`,
+          event: "We have a new user!",
+          description: `New user just signed up! 🎉`,
           icon: "🆕",
           notify: true,
         });
