@@ -73,7 +73,7 @@ export default function Page(): JSX.Element {
             {games.map((game, index) => (
               <motion.div
                 key={index}
-                className={`relative w-full h-40 md:h-48 rounded-xl overflow-hidden`}
+                className={`relative w-full h-44 sm:h-48 md:h-48 rounded-xl overflow-hidden`}
                 whileHover={{ scale: 1.05 }}
               >
                 <Link href={game.href}>
@@ -97,7 +97,7 @@ export default function Page(): JSX.Element {
           <h2 className="text-4xl font-bold mb-8 text-yellow-400">
             Why Join Us?
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-6 px-4">
             <div className="bg-gray-700 rounded-lg p-6 shadow-lg transform hover:scale-105 transition-transform duration-300 flex flex-col items-center">
               <div className="text-5xl text-yellow-400 mb-4">🎮</div>
               <h3 className="text-2xl font-bold mb-2">Fun Games</h3>
